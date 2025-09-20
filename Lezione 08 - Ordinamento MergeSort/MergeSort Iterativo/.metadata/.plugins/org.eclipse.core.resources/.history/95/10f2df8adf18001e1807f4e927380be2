@@ -1,0 +1,113 @@
+package adsfasdfasdf;
+
+import java.util.Arrays
+
+	
+public class MergeIterativo
+	{
+	    public int[] merge(int A[], int ind_primo, int ind_ultimo)
+	    {
+	        // se il vettore ha elementi in numero dispari
+	        if (A.length % 2 != 0)
+	        {
+	            for (int a = 0; a <= A.length/2; a++)
+	            {
+	                A = fondi(A, ind_primo, (ind_primo + ind_ultimo) / 2-1, ind_ultimo);
+	                A = fondi(A, ind_primo, (ind_primo + ind_ultimo) / 2, ind_ultimo);
+	            }
+	        }
+	        else
+	        {
+	            for (int a = 0; a <= A.length; a++)
+	            {
+	                A = fondi(A, ind_primo, (ind_primo + ind_ultimo) / 2, ind_ultimo);
+	            }
+	        }
+	        return A;
+	    }
+
+
+	    public int[] fondi(int[] A, int ind_primo, int ind_medio, int ind_ultimo)
+	    {
+	        int i = ind_primo;
+	        int j = ind_medio+1;
+	        int k = 0;
+	        int[] B = new int[A.length];
+
+	        while((i <= ind_medio) && (j <= ind_ultimo))
+	        {
+	            if (A[i] < A[j])
+	            {
+	                B[k] = A[i];
+	                i++;
+	            }
+	            else
+	            {
+	                B[k] = A[j];
+	                j++;
+	            }
+	            k++;
+	        }
+
+	        // finché il primo sottovettore non è terminato
+	        while(i <= ind_medio)
+	        {
+	            // se c'è più di un elemento
+	            // mettili in ordine
+	            if (i+1 <= ind_medio && A[i] > A[i + 1])
+	            {
+	                int temp = A[i];
+	                A[i] = A[i+1];
+	                A[i+1] = temp;
+	            }
+	            B[k] = A[i];
+	            i++;
+	            k++;
+	        }
+
+	        // finché il secondo sottovettore non è terminato
+	        while(j <= ind_ultimo)
+	        {
+	            // se c'è più di un elemento
+	            // mettili in ordine
+	            if (j+1 <= ind_ultimo && A[j] > A[j + 1])
+	            {
+	                int temp = A[j];
+	                A[j] = A[j+1];
+	                A[j+1] = temp;
+	            }
+	            B[k] = A[j];
+	            j++;
+	            k++;
+	        }
+	        for (int a = 0; a < A.length; a++)
+	        {
+	            A[a] = B[a];
+	        }
+	        return A;
+	    }
+
+	    // stampa
+	    public void print(int[] array)
+	    {
+	        System.out.println(Arrays.toString(array));
+	    }
+
+	    public static void main(String[] args)
+	    {
+	        int[] arrayPari = { 6, 1, 9, 0, 3, 8, 5, 4 };
+	        int[] arrayDispari = { 6, 1, 9, 0, 3, 8, 5 };
+	        MergeIterativo m = new MergeIterativo();
+
+	        System.out.println("Array pari prima dell'ordinamento:");
+	        m.print(arrayPari);
+	        System.out.println("Array pari dopo l'ordinamento:");
+	        m.print(m.merge(arrayPari, 0, arrayPari.length-1));
+
+	        System.out.println("Array dispari prima dell'ordinamento:");
+	        m.print(arrayDispari);
+	        System.out.println("Array dispari dopo l'ordinamento:");
+	        m.print(m.merge(arrayDispari, 0, arrayDispari.length-1));
+	    }
+	}
+

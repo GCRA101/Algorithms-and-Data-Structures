@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;adsfasdfasdf.asdfasdfasdf.java&apos; to &apos;MergeIterativo.java&apos;&#x0D;&#x0A;- Original project: &apos;adsfasdfasdf&apos;&#x0D;&#x0A;- Original element: &apos;adsfasdfasdf.asdfasdfasdf.java&apos;&#x0D;&#x0A;- Renamed element: &apos;adsfasdfasdf.MergeIterativo.java&apos;" description="Rename compilation unit &apos;asdfasdfasdf.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;adsfasdfasdf{asdfasdfasdf.java" name="MergeIterativo.java" references="false" stamp="1688305811734" version="1.0"/>
+</session>
