@@ -9,17 +9,17 @@ Created on Sun Jul 23 16:44:46 2023
 class RecordSingolo:
     
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _data=None
     _next=None
 
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,_data=None,_next=None):
         self._data=_data
         self._next=_next
     
-    # METODI
+    # METHODS
     
     'Setters'
     def setData(self,_data):

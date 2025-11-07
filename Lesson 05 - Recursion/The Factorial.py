@@ -13,14 +13,14 @@ import matplotlib.pyplot as plt
 
 
 
-# LA RICORSIONE
+# RECURSION
 
 '''
-CALCOLO del FATTORIALE
-Il calcolo del fattoriale puo' essere eseguito tramite un algoritmo ITERATIVO
-ma anche tramite un algoritmo RICORSIVO'''
+FACTORIAL CALCULATION
+The factorial calculation can be performed using an ITERATIVE algorithm
+but also using a RECURSIVE algorithm'''
 
-# Algoritmo ITERATIVO
+# ITERATIVE Algorithm
 
 def fattorialeIterativo(n):
     fatt=1                      #Θ(1)
@@ -28,21 +28,21 @@ def fattorialeIterativo(n):
         fatt=fatt*i             #Θ(1)
     return fatt                 #Θ(1)
 
-# Dimensione input: valore intero n
-# Caso migliore e caso peggiore coincidono per qualsiasi valore grande
-# di n dato che l'algoritmo scorre sempre e cmq tutti i valori da 1 a n.
-# Costo Computazionale: T(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
+# Input size: valore intero n
+# Best case and worst case coincide for any large value
+# of n since the algorithm always iterates through all values from 1 to n.
+# Computational Cost: T(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
 
-# Algoritmo RICORSIVO
+# RECURSIVE Algorithm
 
 def fattorialeRicorsivo(n):
-    if n==1:                              #Θ(1)     'Caso Base'
+    if n==1:                              #Θ(1)     'Base Case'
         return 1                          #Θ(1)     
     else:                                 #Θ(1)
-        return n*fattorialeRicorsivo(n-1) # T(n-1)  'Passo Ricorsivo'
+        return n*fattorialeRicorsivo(n-1) # T(n-1)  'Recursive Step'
 
-# Dimensione input: valore intero n
-# Costo Computazionale: T(n)=Θ(1)+T(n-1) -> Equazioni di Ricorrenza
+# Input size: valore intero n
+# Computational Cost: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
 n=61
@@ -57,13 +57,13 @@ fattRicors=fattorialeRicorsivo(n)
 toc=time.perf_counter()
 fattRicorsTime=round(toc-tic,6)
 
-print('Algoritmo Iterativo : ',fattIterTime, ' [secs]')
-print('Algoritmo Ricorsivo : ',fattRicorsTime, ' [secs]')
+print('Iterative Algorithm : ',fattIterTime, ' [secs]')
+print('Recursive Algorithm : ',fattRicorsTime, ' [secs]')
 
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

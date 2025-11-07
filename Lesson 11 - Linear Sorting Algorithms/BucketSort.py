@@ -33,7 +33,7 @@ numero di elementi contenuti nel vettore medesimo)
 
 * Caratteristiche Principali *
 Le caratteristiche principali dell'algoritmo BUCKET SORT sono le seguenti:
-    - Algoritmo ITERATIVO (NON RICORSIVO!!)
+    - ITERATIVE Algorithm (NON RICORSIVO!!)
     - Processo di ordinamento NON IN LOCO
     - Funziona solo per valori interi positivi 
         - in caso non siano interi e/o positivi, e' necessario renderli 
@@ -42,7 +42,7 @@ Le caratteristiche principali dell'algoritmo BUCKET SORT sono le seguenti:
     - I valori nel vettore in input devono essere distribuiti in modo 
       uniforme
     
-- Costo Computazionale: Θ(n)   (Caso migliore - valori unif distribuiti)
+- Computational Cost: Θ(n)   (Caso migliore - valori unif distribuiti)
                         Θ(n^2) (Caso peggiore - valori tutti uguali)
 
 '''
@@ -91,13 +91,13 @@ def bucketSort(A):                                         # T(n)
     return                                                 # Θ(1)
 
 
-# Dimensione input: numero n di elementi nell'array A
+# Input size: numero n di elementi nell'array A
 # Caso migliore e caso peggiore differiscono.
 # Caso migliore-> valori uniformemente distribuiti - Θ(n)
 # Caso peggiore-> valori tutti DIVERSI ma molto vicini tali
 #                 da finire tutti nello stesso bucket, ordinati 
 #                 in ORDINE INVERSO e facendo uso dell'INSERTION SORT - Θ(n^2)
-# Costo Computazionale: T(n)=+Θ(1)+n*Θ(1)+k//delta*Θ(1)+n*Θ(1)+n*Θ(1)+n*Θ(1)
+# Computational Cost: T(n)=+Θ(1)+n*Θ(1)+k//delta*Θ(1)+n*Θ(1)+n*Θ(1)+n*Θ(1)
 # T(n)=Θ(n)
 
 
@@ -118,7 +118,7 @@ bucketSort(Abest)
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

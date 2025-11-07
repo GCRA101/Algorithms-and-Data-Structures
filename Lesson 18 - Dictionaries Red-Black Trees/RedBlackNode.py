@@ -15,20 +15,20 @@ bilanciamento" che contiene il colore assegnato al nodo e che puo' essere
 solamente o ROSSO o NERO.
 '''
 
-# IMPORT LIBRERIE dal PACKAGE
+# IMPORT LIBRARIES dal PACKAGE
 from Color import Colore
 
 
 class Nodo:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     key=None
     color=None
     left=None
     right=None
     parent=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,key=None, color=None, 
                  parent=None, left=None, right=None):
@@ -39,7 +39,7 @@ class Nodo:
         self.right=right
         
         
-    # METODI
+    # METHODS
     
     'Setters'
     def setKey(self,key):

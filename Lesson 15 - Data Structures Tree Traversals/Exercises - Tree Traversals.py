@@ -15,7 +15,7 @@ import time
 import matplotlib.pyplot as plt
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from Modified_Stack import Pila 
 from BinaryNode import Nodo
 from BinaryTree import AlberoBinario
@@ -100,7 +100,7 @@ def visitaInPreOrdineIter(p):                                     #T(n)
             pila.push(psx)                                        #Θ(1) 
     return                                                        #Θ(1) 
 
-# Costo Computazionale
+# Computational Cost
 # Dimensione Input: numero dei nodi dell'albero (incognito a priori)
 # T(n)=Θ(1)+n*Θ(1)+Θ(1)=Θ(n)
 
@@ -142,7 +142,7 @@ def linearSearch(A,v):                   # S(n)
     else:                                # Θ(1)
         return -1                        # Θ(1)
 
-# Costo Computazionale: S(n)=Θ(n)
+# Computational Cost: S(n)=Θ(n)
 
 
 'Funzione Ausiliaria TrovaFigli'
@@ -159,7 +159,7 @@ def trovaFigli(Q,v):                     # V(n)
         dx=None                          # Θ(1)
     return sx,dx                         # Θ(1)
     
-# Costo Computazionale: V(n)=Θ(n)
+# Computational Cost: V(n)=Θ(n)
 
 
 'Funzione di Visita In Preordine'
@@ -175,7 +175,7 @@ def visitaInPreOrdineRecurs(Q,v):            # T(n)
             visitaInPreOrdineRecurs(Q,dx)    # T(n-k-1)
     return
 
-# Costo Computazionale: T(n)=T(k)+T(n-k-1)+Θ(m)  -> T(n)=Θ(n^2)
+# Computational Cost: T(n)=T(k)+T(n-k-1)+Θ(m)  -> T(n)=Θ(n^2)
 
 'TEST 1'
 # Risultato atteso: [3,1,8,8,0,4,8,5,5,3,2] 
@@ -218,7 +218,7 @@ def trovaFigliHash(H,v):                     # V(n)
             dx=None                          # Θ(1)                                                 
     return sx,dx                             # Θ(1)                        
 
-# Costo Computazionale: V(n)=Θ(1)
+# Computational Cost: V(n)=Θ(1)
 
 
 'Funzione di Visita In Preordine'
@@ -234,7 +234,7 @@ def visitaInPreOrdineRecurs(H,v):            # T(n)
             visitaInPreOrdineRecurs(H,dx)    # T(n-k-1)
     return
 
-# Costo Computazionale: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n)
+# Computational Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n)
 
 'TEST 1'
 # Risultato atteso: [3,1,8,8,0,4,8,5,5,3,2] 

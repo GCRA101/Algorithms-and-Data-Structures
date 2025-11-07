@@ -53,7 +53,7 @@ def trovaIndici(array,el):              # S(n)
         return None                     # Θ(1)
     return indici                       # Θ(1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensione Input: numero elementi nell'array
 # S(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
 
@@ -88,8 +88,8 @@ def convertiAPosizionale(R,P,Q=None,i=None,j=[0]):                #T(n)
         convertiAPosizionale(R,P,Q,indici[n],[2*j[n]+1,2*j[n]+2]) #T(n/2) 
     return Q
 
-# Costo Computazionale
-# Dimensione input = numero elementi nel vettore dei padri
+# Computational Cost
+# Input size = numero elementi nel vettore dei padri
 # T(n)=Θ(1)+Θ(n)+Θ(n)+2*(Θ(1)+T(n/2))  - dove k=2 nel caso peggiore (2 figli)
 # T(n)=2*T(n/2)+Θ(n) -> T(n)=Θ(n*logn) [tramite Metodo Principale]
 
@@ -137,7 +137,7 @@ def numeroNodi(array,nullValue=None):   # S(n)
             numNodi+=1                  # Θ(1)
     return numNodi                      # Θ(1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensione Input: numero elementi nell'array
 # S(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
 
@@ -176,8 +176,8 @@ def convertiAPadri(Q,R=None, P=None):                         #T(n)
 
     return R,P                                                #Θ(1)
 
-# Costo Computazionale
-# Dimensione input = numero elementi nel Vettore Posizionale
+# Computational Cost
+# Input size = numero elementi nel Vettore Posizionale
 # T(n)=Θ(1)+Θ(n)+Θ(1)+Θ(n)+Θ(1) -> T(n)=Θ(n)
 
 

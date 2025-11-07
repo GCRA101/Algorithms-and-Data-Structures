@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from SingleRecord import RecordSingolo
 
 
@@ -55,7 +55,7 @@ def search(p,k):                             # T(n)
         i+=1                                 # Θ(1)
     return p_corr                            # Θ(1)
 
-# Costo Computazionale: 
+# Computational Cost: 
 # Caso peggiore - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -la key non c'e' 
 # Caso migliore - T(n)=Θ(1)+1*Θ(1)+Θ(1)=O(1) -la key e' in prima posizione
 
@@ -71,7 +71,7 @@ def insertHead(p,k):                  # T(n)
     p=k.getPointer()                  # Θ(1)
     return p                          # Θ(1)
 
-# Costo Computazionale: 
+# Computational Cost: 
 # T(n)=Θ(1) (per caso migliore e per caso peggiore)
 
 pInsertHead=insertHead(118612,addRecord)
@@ -87,7 +87,7 @@ def insertInside(p,k,d):              # T(n)
     else:                             # Θ(1)
         return None                   # Θ(1)
 
-# Costo Computazionale: 
+# Computational Cost: 
 # T(n)=Θ(1) (per caso migliore e per caso peggiore)
 
 pInsertInside=insertInside(544312,listA[5],addRecord)
@@ -110,7 +110,7 @@ def delete (p,k):                                      # T(n)
         listA[i].delete()                              # Θ(1)
     return p                                           # Θ(1)
 
-# Costo Computazionale: 
+# Computational Cost: 
 # T(n)=O(n) - Caso peggiore (elemento da eliminare non esiste)
 # T(n)=Ω(1) - Caso migliore (elemento da eliminare e' il primo della lista)
 

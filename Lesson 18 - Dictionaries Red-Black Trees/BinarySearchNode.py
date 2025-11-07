@@ -18,13 +18,13 @@ In un Albero Binario Ordinato, il figlio Sx viene prima del figlio Dx.
 
 class Nodo:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     key=None
     left=None
     right=None
     parent=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,key=None, parent=None, left=None, right=None):
         self.key=key
@@ -33,7 +33,7 @@ class Nodo:
         self.right=right
         
         
-    # METODI
+    # METHODS
     
     'Setters'
     def setKey(self,key):

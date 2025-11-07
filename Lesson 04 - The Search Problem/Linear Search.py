@@ -14,9 +14,9 @@ import time
 
 # LINEAR SEARCH
 
-# Dimensione input: numero elementi contenuti nell'array A
+# Input size: number of elements contained in array A
 
-# CASO PEGGIORE: L'elemento ricercato v non e' presente nell'array A
+# WORST CASE: The searched element v is not present in array A
 
 def linearSearch(A,v):
     i=0                              # Θ(1)
@@ -28,17 +28,17 @@ def linearSearch(A,v):
         return -1                    # Θ(1)
         
 
-# Costo computazionale
+# Computational cost
 # T(n)=Θ(1)+n*Θ(1)+Θ(1)+Θ(1)
-# Dato che le costanti si trascurano (a meno che siano all'esponente...),
-# si tiene solo il valore di ordine massimo per valori sufficientemente 
-# grandi di n e per la commutativita' del prodotto...
+# Since constants are neglected (unless they are in the exponent...),
+# only the maximum order value is kept for sufficiently 
+# large values of n and for the commutativity of the product...
 # T(n)=Θ(n)
-# Costo computazionale: Θ(n)
+# Computational cost: Θ(n)
         
         
         
-# CASO MIGLIORE: L'elemento ricercato v e' presente nella prima 
+# BEST CASE: L'elemento ricercato v e' presente nella prima 
 # cella dell'array A   
 
 def linearSearch(A,v):
@@ -52,16 +52,16 @@ def linearSearch(A,v):
 
 # (*): La condizione del ciclo while non si verifica mai!        
         
-# Costo computazionale
+# Computational cost
 # T(n)=Θ(1)
-# Costo computazionale: Θ(1)
+# Computational cost: Θ(1)
         
     
-# CONCLUSIONE
-# L'algoritmo e' un O(n) e un Ω(1)
+# CONCLUSION
+# The algorithm is O(n) e un Ω(1)
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 A=list(range(1,1000))
 

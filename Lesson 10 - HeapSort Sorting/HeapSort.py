@@ -30,14 +30,14 @@ di tipo Heap.'
 
 * Caratteristiche Principali *
 Le caratteristiche principali dell'algoritmo HEAP SORT sono le seguenti:
-    - Algoritmo RICORSIVO
+    - RECURSIVE Algorithm
     - Si serve di due funzioni ausiliarie: Heapify e BuildHeap
     - Equazione di Ricorrenza risolubile tramite Metodo Principale (Teorema
       Master)
     - Processo di ordinamento IN LOCO
     - Lavora solo con strutture dati di tipo Heap
     
-- Costo Computazionale: Θ(nlogn)
+- Computational Cost: Θ(nlogn)
 
 '''
 
@@ -110,8 +110,8 @@ Note Importanti
 
 '''
 
-# Dimensione input: numero n di elementi nell'array A
-# Caso migliore e caso peggiore coincidono.
+# Input size: numero n di elementi nell'array A
+# Best case and worst case coincide.
 # Il costo computazionale dei 3 algoritmi Heapify, BuildHeap e HeapSort e' 
 # come segue:
 # - Heapify:   T(n)=T(2/3n)+Θ(1)  -> T(n)=O(logn)
@@ -129,7 +129,7 @@ heapSort(Abest)
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

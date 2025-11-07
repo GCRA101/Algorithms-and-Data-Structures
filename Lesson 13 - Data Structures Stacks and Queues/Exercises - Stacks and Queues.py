@@ -50,18 +50,18 @@ Costruita servendosi della Struttura Dati di ARRAY
 
 class Coda:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _head=0
     _tail=-1
     nElem=0
     array=[]
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,maxDim):
         self.array=[None]*maxDim
         
-    # METODI
+    # METHODS
 
     'ENQUEUE'
     def enqueue(self,el):                       # T(n)
@@ -148,17 +148,17 @@ Costruita servendosi della Struttura Dati di ARRAY
 
 class Pila:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _top=-1
     nElem=0
     array=[]
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,maxDim):
         self.array=[None]*maxDim
         
-    # METODI
+    # METHODS
 
     'PUSH'
     def push(self,el):                       # T(n)

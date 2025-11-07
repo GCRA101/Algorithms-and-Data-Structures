@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from SingleRecord import RecordSingolo
 
 '''
@@ -33,15 +33,15 @@ Quindi...
 
 class Pila:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _top=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,_top=None):
         self._top=_top
         
-    # METODI
+    # METHODS
     
     'PUSH'
     def push(self,el):                          # T(n)

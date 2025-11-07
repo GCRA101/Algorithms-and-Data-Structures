@@ -13,31 +13,31 @@ import matplotlib.pyplot as plt
 
 
 
-# LA RICORSIONE
+# RECURSION
 
 '''
 CALCOLO NUMERO DI FIBONACCI
-Il calcolo del numero di Fibonacci e' un problema prettamente ricorsivo.
+Il calcolo del numero di Fibonacci e' un problema prettamente recursive method.
 E' possibile, pero', risolverlo anche con un processo iterativo. 
 Confrontiamo i due algoritmi'''
 
-# Algoritmo RICORSIVO di FIBONACCI
+# RECURSIVE Algorithm di FIBONACCI
 
 def fibRicorsivo(n):
     if n==0 or n==1:                                # Θ(1) 'Casi Base
         return n                                    # Θ(1)
-    else:                                           # Θ(1) 'Passo Ricorsivo
+    else:                                           # Θ(1) 'Recursive Step
         return fibRicorsivo(n-1)+fibRicorsivo(n-2)  # T(n-1)+T(n-2)
 
 
-# Dimensione input: valore del numero n
-# Caso migliore e caso peggiore coincidono per valori grandi di n (gli unici
+# Input size: valore del numero n
+# Best case and worst case coincide per valori grandi di n (gli unici
 # validi per il calcolo di notazione asintotica).
-# Costo Computazionale: T(n)=Θ(1)+T(n-1)+T(n-2) -> Equazioni di Ricorrenza
+# Computational Cost: T(n)=Θ(1)+T(n-1)+T(n-2) -> Recurrence Equations
 
 
 
-# Algoritmo ITERATIVO di FIBONACCI
+# ITERATIVE Algorithm di FIBONACCI
 
 def fibIterativo(n):
     if n<=1:                             # Θ(1)
@@ -48,17 +48,17 @@ def fibIterativo(n):
         fib0,fib1=fib1,fib               # Θ(1)
     return fib                           # Θ(1)
 
-# Dimensione input: valore del numero n
-# Caso migliore e caso peggiore coincidono per valori grandi di n (gli unici
+# Input size: valore del numero n
+# Best case and worst case coincide per valori grandi di n (gli unici
 # validi per il calcolo di notazione asintotica).
-# Costo Computazionale: T(n)=Θ(1)+n*Θ(1)+Θ(1)=Θ(n)    
+# Computational Cost: T(n)=Θ(1)+n*Θ(1)+Θ(1)=Θ(n)    
 
 n=13
 fibIt=fibIterativo(n)
 fibRic=fibRicorsivo(n)
 
 print("Per n=",n," il numero di Fibonacci e' pari a ",
-      "\nAlgoritmo Iterativo: ", fibIt,"\nAlgoritmo Ricorsivo: ", fibRic)
+      "\nIterative Algorithm: ", fibIt,"\nRecursive Algorithm: ", fibRic)
 
 
 n=28
@@ -73,8 +73,8 @@ fibRic=fibRicorsivo(n)
 toc=time.perf_counter_ns()
 fibRicTime=round(toc-tic,6)
 
-print('Algoritmo Iterativo : ',fibItTime,' [nanosecs]')
-print('Algoritmo Ricorsivo : ',fibRicTime,' [nanosecs]')
+print('Iterative Algorithm : ',fibItTime,' [nanosecs]')
+print('Recursive Algorithm : ',fibRicTime,' [nanosecs]')
 
 
 
@@ -85,7 +85,7 @@ ITERATIVO. Sia in termini di TIME che di SPACE COMPLEXITY!!
 '''
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

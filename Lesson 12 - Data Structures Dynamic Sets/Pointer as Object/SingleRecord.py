@@ -18,17 +18,17 @@ Un'implementazione piu' robusta e semplice da usare ed anche piu' pratica.
 class RecordSingolo:
     
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _data=None
     _next=None
 
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,_data=None,_next=None):
         self._data=_data
         self._next=_next
     
-    # METODI
+    # METHODS
     
     'Setters'
     def setData(self,_data):

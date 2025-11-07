@@ -12,35 +12,35 @@ import copy
 from Disk import Disco
 
 
-# CLASSE PIOLO
+# CLASS PEG
 
 class Piolo:
     
-    # ATTRIBUTI
-    dischi=list()
+    # ATTRIBUTES
+    disks=list()
     
-    # COSTRUTTORI
+    # CONSTRUCTORS
     'Default and Overloaded'
     def __init__(self,n=None):
-        self.dischi=list()
+        self.disks=list()
         if n!=None:
             for i in range(n,0,-1):
-                self.dischi.append(Disco(i))
+                self.disks.append(Disco(i))
             
             
-    # METODI
-    'Rimuovi disco in cima alla pila'
+    # METHODS
+    'Remove disk from top of stack'
     def rimuoviDisco(self):
-        if len(self.dischi)!=0:
-            return self.dischi.pop()
+        if len(self.disks)!=0:
+            return self.disks.pop()
     
-    'Aggiungi disco in cima alla pila'
-    def aggiungiDisco(self,disco):
-        '''Se la pila e vuota o il disco da aggiungere ha diametro minore
-         del disco in cima alla pila...aggiungi il disco'''
-        if len(self.dischi)==0 or disco.minoreDi(self.dischi[-1]):
-            self.dischi.append(disco)
+    'Add disk to top of stack'
+    def aggiungiDisco(self,disk):
+        '''If the stack is empty or the disk to add has a smaller diameter
+         than the disk at the top of the stack...add the disk'''
+        if len(self.disks)==0 or disk.minoreDi(self.disks[-1]):
+            self.disks.append(disk)
 
     def getCopiaDischi(self):
-        return copy.copy(self.dischi)
+        return copy.copy(self.disks)
         

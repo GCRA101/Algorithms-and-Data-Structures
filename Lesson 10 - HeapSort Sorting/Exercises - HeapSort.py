@@ -88,8 +88,8 @@ def heapMinimum(A):                             # T(n)
     return A[iMin]                              # Θ(1)
         
 
-# Dimensione input: numero n di elementi nell'array A
-# Costo Computazionale: T(n)=O(n)+Θ(1)+Θ(logn)+Θ(1)=O(n)
+# Input size: numero n di elementi nell'array A
+# Computational Cost: T(n)=O(n)+Θ(1)+Θ(logn)+Θ(1)=O(n)
 
 minA1=heapMinimum(A1)
 minA2=heapMinimum(A2)
@@ -161,8 +161,8 @@ def heapSortMin(A):                         # T(n)
     return                                  # Θ(1)
 
 
-# Dimensione input: numero n di elementi nell'array A
-# Caso migliore e caso peggiore coincidono.
+# Input size: numero n di elementi nell'array A
+# Best case and worst case coincide.
 # Il costo computazionale dei 3 algoritmi Heapify, BuildHeap e HeapSort e' 
 # come segue:
 # - Heapify:   T(n)=T(2/3n)+Θ(1)  -> T(n)=O(logn)

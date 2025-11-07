@@ -71,8 +71,8 @@ def mergeSortIter(A,indStart,indEnd):          # T(n)
         length=2*length                        # Θ(1)
 
 
-# Dimensione input: numero n di elementi nell'array A
-# Costo Computazionale: T(n)=Θ(n*log(n))
+# Input size: numero n di elementi nell'array A
+# Computational Cost: T(n)=Θ(n*log(n))
 
 
 mergeSortIter(A1,0,len(A1)-1)
@@ -127,7 +127,7 @@ def mergeSortRecurs(A,indStart,indEnd):            # T(n)
     return 
 
 
-# Dimensione input: numero n di elementi nell'array A
+# Input size: numero n di elementi nell'array A
 #  T(n)=Θ(nlogn)
 
 

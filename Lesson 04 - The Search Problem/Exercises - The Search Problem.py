@@ -38,8 +38,8 @@ def ricercaSequenziale(A,a,b):
        i+=1                         # Θ(1)
     return n                        # Θ(1)
 
-# Dimensione input: n elementi in array A
-# Costo Computazionale: T(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
+# Input size: n elementi in array A
+# Computational Cost: T(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
 
 
 # Algoritmo di RICERCA BINARIA
@@ -88,8 +88,8 @@ def ricercaBinaria(A,a,b):
     return bf-af+1                  # Θ(1)
 
 
-# Dimensione input: n elementi in array A
-# Costo Computazionale: T(n)=Θ(1)+2*logn*Θ(1)+Θ(1)=Θ(logn)
+# Input size: n elementi in array A
+# Computational Cost: T(n)=Θ(1)+2*logn*Θ(1)+Θ(1)=Θ(logn)
 
 A=[1, 4, 8, 17, 22, 25, 31, 36, 44, 52, 55, 63, 71, 78, 92]
 a=20
@@ -143,8 +143,8 @@ def ricercaBinaria(A,a,b):
 
 
         
-# Dimensione input: n elementi in array A
-# Costo Computazionale: T(n)=Θ(1)+2*Θ(1)+Θ(1)=Θ(1)
+# Input size: n elementi in array A
+# Computational Cost: T(n)=Θ(1)+2*Θ(1)+Θ(1)=Θ(1)
 
 A=[1, 4, 8, 20, 22, 25, 31, 36, 44, 52, 55, 60, 71, 78, 92]
 a=20
@@ -154,12 +154,12 @@ nSeq2=ricercaSequenziale(A, a, b)
 nBin2=ricercaBinaria(A, a, b)
 
 
-# Costo Computazionale Complessivo: O(logn) e Ω(1)
+# Computational Cost Complessivo: O(logn) e Ω(1)
 
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

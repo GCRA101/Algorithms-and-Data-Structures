@@ -14,9 +14,9 @@ import time
 
 # BINARY SEARCH
 
-# Dimensione input: numero elementi contenuti nell'array A
+# Input size: number of elements contained in array A
 
-# CASO PEGGIORE: L'elemento ricercato v non e' presente nell'array A
+# WORST CASE: The searched element v is not present in array A
 
 def binarySearch(A,v):
     a=0                              # Θ(1)
@@ -34,18 +34,18 @@ def binarySearch(A,v):
         return -1                    # Θ(1)
         
 
-# Costo computazionale
+# Computational cost
 # T(n)=Θ(1)+logn*Θ(1)+Θ(1)
-# Dato che le costanti si trascurano (a meno che siano all'esponente...),
-# si tiene solo il valore di ordine massimo per valori sufficientemente 
-# grandi di n e per la commutativita' del prodotto...
+# Since constants are neglected (unless they are in the exponent...),
+# only the maximum order value is kept for sufficiently 
+# large values of n and for the commutativity of the product...
 # T(n)=Θ(logn)
-# Costo computazionale: Θ(logn)
+# Computational cost: Θ(logn)
         
         
         
-# CASO MIGLIORE: L'elemento ricercato v e' presente nella cella in mezzo 
-# all'array A   
+# BEST CASE: The searched element v is present in the middle cell 
+# of array A   
 
 def binarySearch(A,v):
     a=0                              # Θ(1)
@@ -64,16 +64,16 @@ def binarySearch(A,v):
 
 # (*): La condizione del ciclo while non si verifica mai!        
         
-# Costo computazionale
+# Computational cost
 # T(n)=Θ(1)
-# Costo computazionale: Θ(1)
+# Computational cost: Θ(1)
         
     
-# CONCLUSIONE
-# L'algoritmo e' un O(logn) e un Ω(1)
+# CONCLUSION
+# The algorithm is O(logn) e un Ω(1)
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 A=list(range(1,1000))
 

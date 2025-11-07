@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from SingleRecord import RecordSingolo
 
 '''
@@ -22,17 +22,17 @@ Costruita servendosi della Struttura Dati di LISTA PUNTATA SINGOLA
 
 class Coda:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _head=None
     _tail=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,_head=None,_tail=None):
         self._head=_head
         self._tail=_tail
         
-    # METODI
+    # METHODS
     
     'ENQUEUE'
     def enqueue(self,el):                       # T(n)

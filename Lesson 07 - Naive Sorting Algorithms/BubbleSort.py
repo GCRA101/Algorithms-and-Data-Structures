@@ -22,7 +22,7 @@ bubble SORT'
 L'algoritmo BUBBLE SORT presenta lo stesso costo computazionale per il caso
 peggiore (serie dati ordinata in ordine inverso) e il caso migliore (serie dati
 gia' ordinata)
-- Costo Computazionale: Θ(n^2)
+- Computational Cost: Θ(n^2)
 '''
 
 A=[56,1,5,3,7,8,2,11,4]
@@ -39,11 +39,11 @@ def bubbleSort(A):                      # T(n)
     return A
     
 
-# Dimensione input: numero n di elementi nell'array A
-# Caso migliore e caso peggiore coincidono per qualsiasi valore grande di n 
+# Input size: numero n di elementi nell'array A
+# Best case and worst case coincide for any large value di n 
 # dato che il ciclo for interno passsera' in rassegna sempre tutti gli elementi
 # per trovare i minimi parziali
-# Costo Computazionale: T(n)=Θ(n^2) - Caso peggiore/migliore
+# Computational Cost: T(n)=Θ(n^2) - Caso peggiore/migliore
 
 
 Asorted1=bubbleSort(A)
@@ -52,7 +52,7 @@ Asorted3=bubbleSort(Abest)
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

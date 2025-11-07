@@ -10,14 +10,14 @@ from SingleRecord import RecordSingolo
 
 class ListaPuntataSingola:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _primoRecord=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     def __init__(self,_primoRecord):
         self._primoRecord=_primoRecord
     
-    # METODI
+    # METHODS
     
     'Setters'
     def setPrimoRecord(self,_primoRecord):
@@ -58,7 +58,7 @@ class ListaPuntataSingola:
         'Restituzione valore contenuto nel Record'
         return p_corr.getData()                          # Θ(1)
         
-    # Costo Computazionale: 
+    # Computational Cost: 
     # Caso peggiore - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -l'index e' maggiore del max'
     # Caso migliore - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -l'index e' zero'
 
@@ -77,7 +77,7 @@ class ListaPuntataSingola:
             return i                                     # Θ(1)
         return None                                      # Θ(1)
     
-    # Costo Computazionale: 
+    # Computational Cost: 
     # Caso peggiore - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -la key non c'e' 
     # Caso migliore - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -la key e' in prima posizione
     
@@ -115,7 +115,7 @@ class ListaPuntataSingola:
         return                                          # Θ(1)
             
         
-    # Costo Computazionale: 
+    # Computational Cost: 
     # T(n)=Θ(1)+n*Θ(1)=O(n) (per caso peggiore - index>indexMax)
     # T(n)=Θ(1)+1*Θ(1)=Ω(1) (per caso migliore - index<=0)
     
@@ -147,7 +147,7 @@ class ListaPuntataSingola:
       return                                              # Θ(1)
         
   
-  # Costo Computazionale: 
+  # Computational Cost: 
   # T(n)=O(n) - Caso peggiore (elemento da eliminare non esiste)
   # T(n)=Ω(1) - Caso migliore (elemento da eliminare e' il primo della lista)  
     

@@ -10,13 +10,13 @@ Created on Sat Jul 29 16:52:07 2023
 
 class RecordDoppio:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _key=None
     _prev=None
     _next=None
     _pointer=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,_key=None,_prev=None,_next=None,_pointer=None):
         self._key=_key
@@ -25,7 +25,7 @@ class RecordDoppio:
         self._pointer=_pointer
         
         
-    # METODI
+    # METHODS
     
     'Setters'
     def setKey(self,_key):

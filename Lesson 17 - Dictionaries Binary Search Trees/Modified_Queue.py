@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from SingleRecord import RecordSingolo
 
 '''
@@ -34,18 +34,18 @@ Quindi...
 
 class Coda:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _head=None
     _tail=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,_head=None,_tail=None):
         self._head=_head
         self._tail=_tail
    
         
-    # METODI
+    # METHODS
     
 
     'ENQUEUE'

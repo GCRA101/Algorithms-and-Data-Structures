@@ -23,7 +23,7 @@ L'algoritmo BUBBLE SORT, SE OTTIMIZZATO CON UN PARAMETRO DI CONTROLLO CHE NE
 BLOCCHI L'ESECUZIONE NEL CASO IN CUI IL VETTORE SIA ORDINATO, presenta 
 DIVERSO costo computazionale per il caso peggiore (serie dati ordinata in 
 ordine inverso) e il caso migliore (serie dati gia' ordinata)
-Costo Computazionale: T(n)=O(n^2) - Caso peggiore
+Computational Cost: T(n)=O(n^2) - Caso peggiore
                       T(n)=Ω(n)   - Caso migliore
 '''
 
@@ -44,11 +44,11 @@ def bubbleSortOptimized(A):               # T(n)
     return A
     
 
-# Dimensione input: numero n di elementi nell'array A
-# Caso migliore e caso peggiore coincidono per qualsiasi valore grande di n 
+# Input size: numero n di elementi nell'array A
+# Best case and worst case coincide for any large value di n 
 # dato che il ciclo for interno passsera' in rassegna sempre tutti gli elementi
 # per trovare i minimi parziali
-# Costo Computazionale: T(n)=Θ(n^2) - Caso peggiore/migliore
+# Computational Cost: T(n)=Θ(n^2) - Caso peggiore/migliore
 
 
 Asorted1=bubbleSortOptimized(A)
@@ -57,7 +57,7 @@ Asorted3=bubbleSortOptimized(Abest)
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

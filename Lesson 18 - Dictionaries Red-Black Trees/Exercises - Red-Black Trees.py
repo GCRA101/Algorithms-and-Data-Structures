@@ -13,7 +13,7 @@ import time
 import matplotlib.pyplot as plt
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from BinarySearchNode import Nodo
 from BinarySearchTree import AlberoBinarioDiRicerca
 
@@ -76,7 +76,7 @@ def ABR_insert(albero,z):                         # T(h)
     # Restituisci l'albero modificato...
     return p                                     # Θ(1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensione dell'input: Altezza h dell'albero
 # Costo: T(h)= Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
@@ -100,7 +100,7 @@ def visitaInOrdine(p,array=[],i=-1):             # T(n)
     'CASO BASE'
     return array                                 # Θ(1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensioni input: numero nodi dell'albero (incognito a priori)
 # CoTto: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
@@ -121,7 +121,7 @@ for i in range(0,len(arrayChiavi),1):                  # n*Θ(1)+Θ(1)
 arrayChiavi=visitaInOrdine(albero.getRoot())           # S(n)
 
 
-# Costo Computazionale
+# Computational Cost
 # Dimensioni input: numero elementi/chiavi all'interno dell'array
 # Costo: T(n)=sommatoria_1_n(Θ(logi))+S(n)
 #        T(n)=Θ(log(n*(n+1)/2))+Θ(n)=Θ(log(n^2))+Θ(log(n))+Θ(n)

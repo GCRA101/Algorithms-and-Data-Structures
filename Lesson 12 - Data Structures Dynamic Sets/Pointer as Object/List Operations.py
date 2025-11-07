@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from SingleRecord import RecordSingolo
 from DoubleRecord import RecordDoppio
 from SinglyLinkedList import ListaPuntataSingola

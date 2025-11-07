@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from BinaryNode import Nodo
 from BinaryTree import AlberoBinario
 from Modified_Queue import Coda
@@ -58,7 +58,7 @@ def visitaPreordine(p):                    # T(n)
     'CASO BASE'
     return                                 # Θ(1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensioni input: numero nodi dell'albero (incognito a priori)
 # Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
@@ -83,7 +83,7 @@ def visitaInordine(p):                      # T(n)
     'CASO BASE'
     return                                  # Θ(1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensioni input: numero nodi dell'albero (incognito a priori)
 # Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
@@ -109,7 +109,7 @@ def visitaPostordine(p):                    # T(n)
     'CASO BASE'
     return                                  # Θ(1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensioni input: numero nodi dell'albero (incognito a priori)
 # Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
@@ -121,7 +121,7 @@ visitaPostordine(albero.getRoot())
 
 
 'VISITA per LIVELLI'
-# Per visitare un albero per livelli, l'approccio ricorsivo non puo' funzionare
+# Per visitare un albero per livelli, l'approccio recursive method non puo' funzionare
 # La soluzione e' usare un approccio iterativo che faccia uso di una coda di 
 # appoggio per scorrere tutti i nodi un livello dopo l'altro.
 # IMPORTANTE!
@@ -166,7 +166,7 @@ def visitaPerLivelli(p):                       # T(n)
     return                                     # Θ(1)
     
 
-# Costo Computazionale
+# Computational Cost
 # Dimensioni input: numero nodi dell'albero (incognito a priori)
 # Cost: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
 

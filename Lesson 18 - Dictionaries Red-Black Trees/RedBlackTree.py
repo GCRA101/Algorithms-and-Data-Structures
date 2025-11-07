@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 'Nodo con 3 puntatori: Padre (parent), FiglioSx (left) e FiglioDx (right) e '
 'e 2 campi: Chiave (key) e Colore (color).'
 from RedBlackNode import Nodo
@@ -43,30 +43,30 @@ Questo campo puo' assumere solo due valori: Rosso o Nero.'
 class AlberoRossoNero:
     
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     root=None
     
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,root=None):
         self.root=root
         
         
-    # METODI
+    # METHODS
     
     'GET ROOT'
     def getRoot(self):                               # T(n)
         return self.root                             # Θ(1)  
     
-    # Costo Computazionale: T(n)=Θ(1)
+    # Computational Cost: T(n)=Θ(1)
     
     
     'SET ROOT'
     def setRoot(self,root):                          # T(n)
         self.root=root                               # Θ(1) 
 
-    # Costo Computazionale: T(n)=Θ(1)
+    # Computational Cost: T(n)=Θ(1)
     
 
     'VISITA IN PREORDINE'
@@ -90,7 +90,7 @@ class AlberoRossoNero:
         self._visitaPreOrdine(p)                     # S(n)
         return                                       # Θ(1)
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensioni input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
@@ -117,7 +117,7 @@ class AlberoRossoNero:
         p=self.root                                  # Θ(1)
         self._visitaInOrdine(p)                      # S(n)
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensioni input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
@@ -144,7 +144,7 @@ class AlberoRossoNero:
         p=self.root                                  # Θ(1)
         self._visitaPostOrdine(p)                    # S(n)
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensioni input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
@@ -187,7 +187,7 @@ class AlberoRossoNero:
                 coda.enqueue(p.getRight())         # Θ(1)
         return                                     # Θ(1)
         
-    # Costo Computazionale
+    # Computational Cost
     # Dimensioni input: numero nodi dell'albero (incognito a priori)
     # Costo: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
 
@@ -198,9 +198,9 @@ class AlberoRossoNero:
     # Funzione Privata Ricorsiva
     def _calcola_n(self,p):                          # S(n)
         if p!=None:                                  # Θ(1)
-            # 1. Passo Ricorsivo SottoAlbero Sx
+            # 1. Recursive Step SottoAlbero Sx
             num_l=self._calcola_n(p.getLeft())       # S(k)
-            # 2. Passo Ricorsivo SottoAlbero Dx
+            # 2. Recursive Step SottoAlbero Dx
             num_r=self._calcola_n(p.getRight())      # S(n-k-1)
             # 3. Operazione sul Nodo
             num=num_l+num_r+1                        # Θ(1)     
@@ -212,7 +212,7 @@ class AlberoRossoNero:
         p=self.root                                  # Θ(1)
         return self._calcola_n(p)                    # S(n)
     
-    # Costo Computazionale
+    # Computational Cost
     # Dimensione Input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   
@@ -227,7 +227,7 @@ class AlberoRossoNero:
             return -1                                        # Θ(1)
         if p.getLeft()==None and p.getRight()==None:         # Θ(1)
             return 0                                         # Θ(1)
-        # 1. 2. Passo Ricorsivo SottoAlbero Sx e Dx
+        # 1. 2. Recursive Step SottoAlbero Sx e Dx
         h=max(self._calcola_h(p.getLeft()),                  # S(k)
               self._calcola_h(p.getRight()))                 # S(n-k-1)
         # 3. Operazione sul Nodo
@@ -238,7 +238,7 @@ class AlberoRossoNero:
         p=self.root                                          # Θ(1)
         return self._calcola_h(p)                            # S(n)
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensione Input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)
@@ -253,9 +253,9 @@ class AlberoRossoNero:
             return 0                                         # Θ(1)
         if k==i:                                             # Θ(1)
             return 1                                         # Θ(1)
-        # 1. Passo Ricorsivo SottoAlbero Sx
+        # 1. Recursive Step SottoAlbero Sx
         k_left=self._conta_k(k,i+1,p.getLeft())              # S(k)
-        # 2. Passo Ricorsivo SottoAlbero Dx
+        # 2. Recursive Step SottoAlbero Dx
         k_right=self._conta_k(k,i+1,p.getRight())            # S(n-k-1)
         # 3. Operazione sul Nodo
         return k_left+k_right                                # Θ(1)
@@ -265,7 +265,7 @@ class AlberoRossoNero:
         p=self.root                                          # Θ(1)
         return self._conta_k(k, 0, p)                        # S(n)
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensione Input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   
@@ -292,7 +292,7 @@ class AlberoRossoNero:
         p=self.getRoot()                            # Θ(1)
         return self._cerca(p,k)                     # Θ(h)
     
-    # Costo Computazionale
+    # Computational Cost
     # Dimensione dell'input: Altezza h dell'albero
     # Si esegue la funzione h volte con operazioni ogni volta di costo costante
     # Θ(1). Quindi il costo totale equivale a h volte Θ(1).
@@ -322,8 +322,8 @@ class AlberoRossoNero:
         'Chiamata a funzione ricorsiva privata'
         return self._minimoRecurs(p)                 # S(h)
     
-    # Costo Computazionale
-    # Dimensione input: altezza dell'albero h
+    # Computational Cost
+    # Input size: altezza dell'albero h
     # Costo: T(h)=Θ(1)+S(h)=Θ(1)+Θ(h) -> T(h)=Θ(h)
     
     
@@ -346,8 +346,8 @@ class AlberoRossoNero:
         'Chiamata a funzione iterativa privata'
         return self._minimoIter(p)                   # Θ(h)
     
-    # Costo Computazionale
-    # Dimensione input: altezza dell'albero h
+    # Computational Cost
+    # Input size: altezza dell'albero h
     # Costo: T(h)=Θ(1)+S(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
     
     
@@ -374,8 +374,8 @@ class AlberoRossoNero:
         'Chiamata a funzione ricorsiva privata'
         return self._massimoRecurs(p)                 # Θ(h) 
     
-    # Costo Computazionale
-    # Dimensione input: altezza dell'albero h
+    # Computational Cost
+    # Input size: altezza dell'albero h
     # Costo: T(h)=Θ(1)+S(h)=Θ(1)+Θ(h) -> T(h)=Θ(h)
     
     
@@ -398,8 +398,8 @@ class AlberoRossoNero:
         'Chiamata a funzione iterativa privata'
         return self._massimoIter(p)                   # Θ(h) 
     
-    # Costo Computazionale
-    # Dimensione input: altezza dell'albero h
+    # Computational Cost
+    # Input size: altezza dell'albero h
     # Costo: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
@@ -461,8 +461,8 @@ class AlberoRossoNero:
             return self._predecRecurs(nodo)           # S(h)
         return predecessor                            # Θ(1)
     
-    # Costo Computazionale
-    # Dimensione input: altezza dell'albero h
+    # Computational Cost
+    # Input size: altezza dell'albero h
     # Costo Iterativa: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
     # Costo Ricorsiva: T(h)=Θ(h) + Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
     
@@ -525,8 +525,8 @@ class AlberoRossoNero:
             return self._succesRecurs(nodo)            # S(h)
         return successor                               # Θ(1)
 
-    # Costo Computazionale
-    # Dimensione input: altezza dell'albero h
+    # Computational Cost
+    # Input size: altezza dell'albero h
     # Costo Iterativa: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) ->T(h)=Ω(1) o O(h)  
     # Costo Ricorsiva: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) + S(h) ->T(h)=Ω(1) o O(h) 
     
@@ -567,9 +567,9 @@ class AlberoRossoNero:
         # 3.4 Assegna "b" al campo parent di "a"
         a.setParent(b)                                  # Θ(1)
 
-        # Costo Computazionale
-        # Dimensione input: altezza dell'albero h
-        # Costo Computazionale: T(h)=Θ(1)
+        # Computational Cost
+        # Input size: altezza dell'albero h
+        # Computational Cost: T(h)=Θ(1)
         
     # Rotazione DX
     def rotazioneDx(self,pivot):                        # T(n)
@@ -604,9 +604,9 @@ class AlberoRossoNero:
         # 3.4 Assegna "b" al campo parent di "a"
         a.setParent(b)                                  # Θ(1)
         
-        # Costo Computazionale
-        # Dimensione input: altezza dell'albero h
-        # Costo Computazionale: T(h)=Θ(1)
+        # Computational Cost
+        # Input size: altezza dell'albero h
+        # Computational Cost: T(h)=Θ(1)
     
     
     'INSERIMENTO'
@@ -652,9 +652,9 @@ class AlberoRossoNero:
         # Ritorna il nodo inserito 
         return z                                        # Θ(1)
 
-        # Costo Computazionale
-        # Dimensione input: altezza dell'albero h
-        # Costo Computazionale: T(h)=Θ(h)+Θ(1)=Θ(h)
+        # Computational Cost
+        # Input size: altezza dell'albero h
+        # Computational Cost: T(h)=Θ(h)+Θ(1)=Θ(h)
 
 
     # PASSO DI AGGIUSTAMENTO
@@ -748,9 +748,9 @@ class AlberoRossoNero:
                     self.rotazioneDx(grandParent)                # Θ(1)
         return
             
-        # Costo Computazionale
-        # Dimensione input: altezza dell'albero h
-        # Costo Computazionale: S(h)=Θ(1)+S(h-1)=Ω(1) o O(h)=O(logn)      
+        # Computational Cost
+        # Input size: altezza dell'albero h
+        # Computational Cost: S(h)=Θ(1)+S(h-1)=Ω(1) o O(h)=O(logn)      
         
     
     # Funzione Pubblica Wrapper per il lancio della funzione privata ricors
@@ -760,9 +760,9 @@ class AlberoRossoNero:
         # Chiama Funzione Privata Ricorsiva
         self.__passoDiAggiustamento(p,z)             # S(h)
     
-        # Costo Computazionale
-        # Dimensione input: altezza dell'albero h
-        # Costo Computazionale: T(h)=O(h)=O(logn)     
+        # Computational Cost
+        # Input size: altezza dell'albero h
+        # Computational Cost: T(h)=O(h)=O(logn)     
     
      # INSERIMENTO
     'Funzione Principale'
@@ -770,9 +770,9 @@ class AlberoRossoNero:
         zz=self._passoPreliminare(z)                 # Θ(h)
         self._passoDiAggiustamento(zz)               # O(h) 
     
-        # Costo Computazionale
-        # Dimensione input: altezza dell'albero h
-        # Costo Computazionale: T(h)=O(h)=O(logn)           
+        # Computational Cost
+        # Input size: altezza dell'albero h
+        # Computational Cost: T(h)=O(h)=O(logn)           
   
     
   
@@ -839,8 +839,8 @@ class AlberoRossoNero:
                 nodo.setKey(succes.getKey())                         # Θ(1)
                 self.cancellaFoglia(self.getRoot(),succes)           # Θ(1)
 
-        # Costo Computazionale
-        # Dimensione input: altezza dell'albero h
+        # Computational Cost
+        # Input size: altezza dell'albero h
         # Costo Iterativa: T_caso1(h)=O(h)+Θ(1)=O(h)
         #                  T_caso2(h)=O(h)+Θ(1)=O(h)
         #                  T_caso3(h)=O(h)+O(h)+Θ(1)=O(h)

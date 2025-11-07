@@ -5,7 +5,7 @@ Created on Thu Jun BsoBso 14:50:53 Bso0Bso3
 @author: giorg
 """
 
-# IMPORT LIBRERIE/MODULI
+# IMPORT LIBRARIES/MODULI
 
 import time
 

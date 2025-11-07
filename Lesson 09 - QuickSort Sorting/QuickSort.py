@@ -28,7 +28,7 @@ Esso si differenzia rispetto all'algoritmo di MergeSort nei seguenti punti:
     - Vantaggio: Riordinamento IN LOCO
             - Gli elementi del vettore vengono riordinati IN LOCO e cio'
               consente di aver una MIGLIORE COMPLESSITA' SPAZIALE
-    - Svantaggio: Alto Costo Computazionale nel Caso Peggiore
+    - Svantaggio: Alto Computational Cost nel Caso Peggiore
             - Nel Caso Peggiore, il costo computazionale e' O(n^2) anziche' 
               O(nlogn). Il Caso Peggiore, in ogni caso, puo' essere facilmente
               evitato andando a RANDOMIZZARE/DISORDINARE i dati in input'
@@ -38,14 +38,14 @@ nelle funzioni dei principali linguaggi di programmazione.
 
 * Caratteristiche Principali *
 Le caratteristiche principali dell'algoritmo MERGE SORT sono le seguenti:
-    - Algoritmo RICORSIVO
+    - RECURSIVE Algorithm
     - Tecnica Algoritmica del DIVIDE ET IMPERA
     - Equazione di Ricorrenza risolubile tramite Metodo Principale (Teorema
       Master)
     - Processo di ordinamento IN LOCO
     - Lavora meglio con sequenze di dati DISORDINATE
     
-- Costo Computazionale: O(n^2)   (Caso Peggiore)
+- Computational Cost: O(n^2)   (Caso Peggiore)
                         Ω(nlogn) (Caso Migliore)                    
 '''
 
@@ -82,7 +82,7 @@ def quickSort(A,indStart,indEnd):                  # T(n)
     return 
 
 
-# Dimensione input: numero n di elementi nell'array A
+# Input size: numero n di elementi nell'array A
 # Caso migliore e caso peggiore differiscono in base al livello di disordine
 # dei dati in input.
 # Se i dati in input sono gia' abbastanza ordinati, il pivot, se scelto sempre
@@ -105,7 +105,7 @@ quickSort(Abest,0,len(Abest)-1)
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

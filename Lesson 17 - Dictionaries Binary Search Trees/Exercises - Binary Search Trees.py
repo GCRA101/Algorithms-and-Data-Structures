@@ -13,7 +13,7 @@ import time
 import matplotlib.pyplot as plt
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from BinarySearchNode import Nodo
 from BinarySearchTree import AlberoBinarioDiRicerca
 
@@ -71,7 +71,7 @@ def ABR_searchRic(p,k):                         # T(h)
     else:                                       # Θ(1)
         return ABR_searchRic(p.getRight(),k)    # T(h-1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensione dell'input: Altezza h dell'albero
 # Si esegue la funzione h volte con operazioni ogni volta di costo costante
 # Θ(1). Quindi il costo totale equivale a h volte Θ(1).
@@ -84,7 +84,7 @@ def ABR_searchRic(p,k):                         # T(h)
 # ESERCIZIO 1 ################################################################
 
 '''
-Scrivere lo pseudocodice (sia iterativo che ricorsivo) della funzione che 
+Scrivere lo pseudocodice (sia iterativo che recursive method) della funzione che 
 calcola il MINIMO in un ABR.
 '''
 
@@ -96,8 +96,8 @@ def minimoRecurs(p):                             # T(h)
         return p                                 # Θ(1)
     return minimoRecurs(p.getLeft())             # T(h-1)
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo: T(h)=Θ(1)+T(h-1) -> T(h)=Θ(h)
 
 
@@ -109,8 +109,8 @@ def minimoIter(p):                               # T(h)
         p=p.getLeft()                            # Θ(1)
     return p                                     # Θ(1)
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
@@ -126,7 +126,7 @@ print("Minimo: " + str(minimoIter(albero.getRoot())) + " [Iterativo]")
 # ESERCIZIO 2 ################################################################
 
 '''
-Scrivere lo pseudocodice (sia iterativo che ricorsivo) della funzione che
+Scrivere lo pseudocodice (sia iterativo che recursive method) della funzione che
 calcola il massimo in un ABR.
 '''
 
@@ -138,8 +138,8 @@ def massimoRecurs(p):                             # T(h)
         return p                                  # Θ(1)
     return massimoRecurs(p.getRight())            # T(h-1)
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo: T(h)=Θ(1)+T(h-1) -> T(h)=Θ(h)
 
 
@@ -151,8 +151,8 @@ def massimoIter(p):                               # T(h)
         p=p.getRight()                            # Θ(1)
     return p                                      # Θ(1)
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
@@ -227,8 +227,8 @@ def predecRecurs(nodo):                           # S(h)
     #    chiamata ricorsiva.
     return predecRecurs(nodo.getParent())         # S(h-1)   
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo Iterativa: T(h)=Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
 # Costo Ricorsiva: T(h)=Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
 
@@ -315,8 +315,8 @@ def succesRecurs(nodo):                            # S(h)
     #    chiamata ricorsiva.
     return succesRecurs(nodo.getParent())          # S(h-1)     
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo Iterativa: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
 # Costo Ricorsiva: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
 

@@ -18,12 +18,12 @@ Un'implementazione piu' robusta e semplice da usare ed anche piu' pratica.
 
 class RecordDoppio:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _data=None
     _prev=None
     _next=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,_data=None,_prev=None,_next=None):
         self._data=_data
@@ -31,7 +31,7 @@ class RecordDoppio:
         self._next=_next
         
         
-    # METODI
+    # METHODS
     
     'Setters'
     def setData(self,_data):

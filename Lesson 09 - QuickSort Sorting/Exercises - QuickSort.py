@@ -60,8 +60,8 @@ def partition(A,indStart,indEnd):         # T(n)
             return                        # Θ(1)
 
 
-# Dimensione input: numero n di elementi nell'array A
-# Costo Computazionale: T(n)=(n-k)*Θ(n)+k*Θ(1)+Θ(1)=Θ(n)
+# Input size: numero n di elementi nell'array A
+# Computational Cost: T(n)=(n-k)*Θ(n)+k*Θ(1)+Θ(1)=Θ(n)
 
 partition(A1,0,len(A1)-1)
 partition(A2,0,len(A2)-1)
@@ -129,8 +129,8 @@ def sortMatrix(M):
     for j in range(0,n,1):          # n*Θ(1)+Θ(1)
         quickSort(M[:,j],0,m-1)     # Θ(m*logm)
         
-# Dimensione input: n,m ovvero numero righe/colonne matrice M
-# Costo Computazionale:
+# Input size: n,m ovvero numero righe/colonne matrice M
+# Computational Cost:
 # T(n,m)=Θ(1)+m*Θ(n*logn)+n*Θ(m*logm)=Θ(n*m*logn)+Θ(m*n*logm)
 # Assumendo n==m avremo... T(n)=Θ((n^2)*logn)
         

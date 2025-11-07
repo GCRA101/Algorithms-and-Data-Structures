@@ -11,16 +11,16 @@ from DoubleRecord import RecordDoppio
 
 class ListaPuntataDoppia:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     _primoRecord=None
     _ultimoRecord=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     def __init__(self,_primoRecord=None,_ultimoRecord=None):
         self._primoRecord=_primoRecord
         self._ultimoRecord=_ultimoRecord
     
-    # METODI
+    # METHODS
     
     'Setters'
     def setPrimoRecord(self,_primoRecord):
@@ -65,7 +65,7 @@ class ListaPuntataDoppia:
         'Restituzione valore contenuto nel Record'
         return p_corr.getData()                          # Θ(1)
         
-    # Costo Computazionale: 
+    # Computational Cost: 
     # Caso peggiore - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -l'index e' maggiore del max'
     # Caso migliore - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -l'index e' zero'
 
@@ -84,7 +84,7 @@ class ListaPuntataDoppia:
             return i                                     # Θ(1)
         return None                                      # Θ(1)
     
-    # Costo Computazionale: 
+    # Computational Cost: 
     # Caso peggiore - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -la key non c'e' 
     # Caso migliore - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -la key e' in prima posizione
     
@@ -123,7 +123,7 @@ class ListaPuntataDoppia:
         return                                          # Θ(1)
             
         
-    # Costo Computazionale: 
+    # Computational Cost: 
     # T(n)=Θ(1)+n*Θ(1)=O(n) (per caso peggiore - index>indexMax)
     # T(n)=Θ(1)+1*Θ(1)=Ω(1) (per caso migliore - index<=0)
     
@@ -156,6 +156,6 @@ class ListaPuntataDoppia:
       return                                              # Θ(1)
         
   
-  # Costo Computazionale: 
+  # Computational Cost: 
   # T(n)=O(n) - Caso peggiore (elemento da eliminare non esiste)
   # T(n)=Ω(1) - Caso migliore (elemento da eliminare e' il primo della lista) 

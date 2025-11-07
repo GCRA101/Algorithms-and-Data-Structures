@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from BinaryNode import Nodo
 from BinaryTree import AlberoBinario
 
@@ -46,8 +46,8 @@ OPERAZIONI ******************************************************************
 'CONTEGGIO DEL NUMERO DEI NODI'
 def calcola_n(p):
     if p!=None:
-        num_l=calcola_n(p.getFiglioSx()) # Passo Ricorsivo 1 (SottoAlbero Sx)
-        num_r=calcola_n(p.getFiglioDx()) # Passo Ricorsivo 2 (SottoAlbero Dx)
+        num_l=calcola_n(p.getFiglioSx()) # Recursive Step 1 (SottoAlbero Sx)
+        num_r=calcola_n(p.getFiglioDx()) # Recursive Step 2 (SottoAlbero Dx)
         num=num_l+num_r+1                # Operazione sul Nodo
         return num
     return 0
@@ -58,10 +58,10 @@ def cerca(p,k):
     if p!=None:
       if p.getValore()==k:                 # Operazione sul Nodo
           return True
-      elif cerca(p.getFiglioSx(),k)==True: # Passo Ricorsivo 1 (SottoAlbero Sx)
+      elif cerca(p.getFiglioSx(),k)==True: # Recursive Step 1 (SottoAlbero Sx)
           return True
       else:
-          return cerca(p.getFiglioDx(),k)  # Passo Ricorsivo 2 (SottoAlbero Dx)
+          return cerca(p.getFiglioDx(),k)  # Recursive Step 2 (SottoAlbero Dx)
     return False
 
 
@@ -71,8 +71,8 @@ def calcola_h(p):
         return -1
     if p.getFiglioSx()==None and p.getFiglioDx()==None:
         return 0
-    h=max(calcola_h(p.getFiglioSx()),      # Passo Ricorsivo 1 (SottoAlbero Sx)
-          calcola_h(p.getFiglioDx()))      # Passo Ricorsivo 2 (SottoAlbero Dx)
+    h=max(calcola_h(p.getFiglioSx()),      # Recursive Step 1 (SottoAlbero Sx)
+          calcola_h(p.getFiglioDx()))      # Recursive Step 2 (SottoAlbero Dx)
     return h+1                             # Operazione sul Nodo
 
 
@@ -82,8 +82,8 @@ def conta_k(p,k,i):
         return 0
     if k==i:
         return 1
-    k_left=conta_k(p.getFiglioSx(),k,i+1)  # Passo Ricorsivo 1 (SottoAlbero Sx)
-    k_right=conta_k(p.getFiglioDx(),k,i+1) # Passo Ricorsivo 2 (SottoAlbero Dx)
+    k_left=conta_k(p.getFiglioSx(),k,i+1)  # Recursive Step 1 (SottoAlbero Sx)
+    k_right=conta_k(p.getFiglioDx(),k,i+1) # Recursive Step 2 (SottoAlbero Dx)
     return k_left+k_right                  # Operazione sul Nodo
         
 

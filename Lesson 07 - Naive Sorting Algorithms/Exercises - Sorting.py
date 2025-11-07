@@ -33,7 +33,7 @@ def ricercaMinimo(A,j):                 # T(n)
         if A[i]<min: min=A[i]           # Θ(1)
     return min                          # Θ(1)
 
-# Costo Computazionale: T(n)=O(n) o Ω(1)     
+# Computational Cost: T(n)=O(n) o Ω(1)     
 
 def selectionSort(A):                     # T(n)
     for i in range(0,len(A),1):           # n*Θ(1)+Θ(1)
@@ -42,7 +42,7 @@ def selectionSort(A):                     # T(n)
         A.insert(i,min)                   # Θ(1)
     return A
 
-# Costo Computazionale: T(n)=Θ(n^2)     
+# Computational Cost: T(n)=Θ(n^2)     
         
 
 A=[23,41,1,5,2,9,7,8,4,3,51,34,25,11,78]
@@ -71,7 +71,7 @@ def trovaValoriUnici(A):                 # T(n)
 
 # Caso peggiore: Non ci sono valori identici -> tj=n-1
 # Caso migliore: I primi due valori sono identici -> tj=1
-# Costo computazionale: O(n), Ω(1)'
+# Computational cost: O(n), Ω(1)'
 
 
 A=[3,26,34,73,44,77,11,2,3,4]

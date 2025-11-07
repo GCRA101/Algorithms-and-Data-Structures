@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from BinarySearchNode import Nodo
 from BinarySearchTree import AlberoBinarioDiRicerca
 
@@ -67,7 +67,7 @@ def ABR_searchRic(p,k):                         # T(h)
     else:                                       # Θ(1)
         return ABR_searchRic(p.getRight(),k)    # T(h-1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensione dell'input: Altezza h dell'albero
 # Si esegue la funzione h volte con operazioni ogni volta di costo costante
 # Θ(1). Quindi il costo totale equivale a h volte Θ(1).
@@ -110,7 +110,7 @@ def ABR_insert(p,z):                             # T(h)
     # Restituisci l'albero modificato...
     return p                                     # Θ(1)
 
-# Costo Computazionale
+# Computational Cost
 # Dimensione dell'input: Altezza h dell'albero
 # Costo: T(h)= Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
@@ -129,8 +129,8 @@ def minimoRecurs(p):                             # T(h)
         return p                                 # Θ(1)
     return minimoRecurs(p.getLeft())             # T(h-1)
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo: T(h)=Θ(1)+T(h-1) -> T(h)=Θ(h)
 
 
@@ -142,8 +142,8 @@ def minimoIter(p):                               # T(h)
         p=p.getLeft()                            # Θ(1)
     return p                                     # Θ(1)
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
@@ -161,8 +161,8 @@ def massimoRecurs(p):                             # T(h)
         return p                                  # Θ(1)
     return massimoRecurs(p.getRight())            # T(h-1)
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo: T(h)=Θ(1)+T(h-1) -> T(h)=Θ(h)
 
 
@@ -174,8 +174,8 @@ def massimoIter(p):                               # T(h)
         p=p.getRight()                            # Θ(1)
     return p                                      # Θ(1)
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
@@ -237,8 +237,8 @@ def predecRecurs(nodo):                           # S(h)
     #    chiamata ricorsiva.
     return predecRecurs(nodo.getParent())         # S(h-1)   
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo Iterativa: T(h)=Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
 # Costo Ricorsiva: T(h)=Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
 
@@ -301,8 +301,8 @@ def succesRecurs(nodo):                            # S(h)
     #    chiamata ricorsiva.
     return succesRecurs(nodo.getParent())          # S(h-1)     
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo Iterativa: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
 # Costo Ricorsiva: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
 
@@ -313,7 +313,7 @@ def succesRecurs(nodo):                            # S(h)
 # Elimina il nodo dell'albero avente la chiave del valore passato in input.
 # Il nodo eliminato viene sostituito con il suo predecessore o successore (
 # uno o l'altro e' lo stesso..il risultato e' il medesimo) in modo da evitare
-# la disconnessione dell'albero in due sottoalberi separati.
+# la disknnessione dell'albero in due sottoalberi separati.
 # Per ottenere cio' ci sono 3 casi differenti:
 # Caso 1) Il nodo da eliminare NON HA FIGLI
 #           - Si assegna valore nullo al campo figlio dx/sx corrispondente del
@@ -387,8 +387,8 @@ def cancella(p,k):                                               # T(h)
             nodo.setKey(succes.getKey())                         # Θ(1)
             cancellaFoglia(p,succes)                             # Θ(1)
 
-# Costo Computazionale
-# Dimensione input: altezza dell'albero h
+# Computational Cost
+# Input size: altezza dell'albero h
 # Costo Iterativa: T_caso1(h)=O(h)+Θ(1)=O(h)
 #                  T_caso2(h)=O(h)+Θ(1)=O(h)
 #                  T_caso3(h)=O(h)+O(h)+Θ(1)=O(h)

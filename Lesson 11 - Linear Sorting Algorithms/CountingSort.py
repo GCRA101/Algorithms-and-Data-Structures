@@ -29,7 +29,7 @@ anziche' Θ(nlogn).'
 
 * Caratteristiche Principali *
 Le caratteristiche principali dell'algoritmo COUNTING SORT sono le seguenti:
-    - Algoritmo ITERATIVO (NON RICORSIVO!!)
+    - ITERATIVE Algorithm (NON RICORSIVO!!)
     - Presenta 2 formulazioni leggermente differenti a seconda che sia o meno
       accettabile che gli elementi del vettore da ordinare siano sovrascritti
       (presenza di dati satellite/metadata)
@@ -40,7 +40,7 @@ Le caratteristiche principali dell'algoritmo COUNTING SORT sono le seguenti:
           tali prima di eseguire l'algoritmo e poi ritrasformarli nel loro
           valore originale'
     
-- Costo Computazionale: Θ(n)
+- Computational Cost: Θ(n)
 
 '''
 
@@ -98,9 +98,9 @@ def countingSortv2(A):                                        # T(n)
 
 
 
-# Dimensione input: numero n di elementi nell'array A
-# Caso migliore e caso peggiore coincidono.
-# Costo Computazionale: T(n)=+Θ(1)+n*Θ(1)+n*Θ(1)+k*Θ(1)+n*Θ(1)+n*Θ(1)+Θ(1)
+# Input size: numero n di elementi nell'array A
+# Best case and worst case coincide.
+# Computational Cost: T(n)=+Θ(1)+n*Θ(1)+n*Θ(1)+k*Θ(1)+n*Θ(1)+n*Θ(1)+Θ(1)
 # T(n)=Θ(5n)=Θ(n)
 
 
@@ -135,7 +135,7 @@ countingSortv2(Abest)
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

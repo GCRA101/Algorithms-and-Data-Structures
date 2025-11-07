@@ -22,13 +22,13 @@ rispetto agli algoritmi naif studiati finora (Insertion Sort, Selection Sort e
 Bubble Sort) e consente di ottenere il miglior costo computazionale possibile
 per un algoritmo di ordinamento basato su confronti: O(nlogn).
 Le caratteristiche principali dell'algoritmo MERGE SORT sono le seguenti:
-    - Algoritmo RICORSIVO
+    - RECURSIVE Algorithm
     - Tecnica Algoritmica del DIVIDE ET IMPERA
     - Equazione di Ricorrenza risolubile tramite Metodo Principale (Teorema
       Master)
     - Processo di ordinamento NON IN LOCO
     
-- Costo Computazionale: Θ(nlogn)
+- Computational Cost: Θ(nlogn)
 '''
 
 A=[56,1,5,3,7,8,2,11,32]
@@ -67,9 +67,9 @@ def mergeSort(A,indStart,indEnd):                  # T(n)
     return 
 
 
-# Dimensione input: numero n di elementi nell'array A
-# Caso migliore e caso peggiore coincidono per qualsiasi valore grande di n 
-# Costo Computazionale
+# Input size: numero n di elementi nell'array A
+# Best case and worst case coincide for any large value di n 
+# Computational Cost
 #   - merge function
 #       - S(n)=Θ(1)+tij*Θ(1)+Θ(1)+si*Θ(1)+Θ(1)+vj*Θ(1)+Θ(1)+Θ(1)
 #           - where tij_max=n and tij_min=n/2
@@ -92,7 +92,7 @@ mergeSort(Abest,0,len(Abest)-1)
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):

@@ -7,18 +7,18 @@ Created on Fri Jun  9 17:48:40 2023
 
 class Disco:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     diametro=0
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     def __init__(self,diametro):
         self.diametro=diametro
     
-    # METODI
+    # METHODS
     
     # Metodo di Utilita
-    def minoreDi(self,disco):
-        return self.diametro<disco.diametro
+    def minoreDi(self,disk):
+        return self.diametro<disk.diametro
     # Metodo Getter
     def getDiametro(self):
         return self.diametro

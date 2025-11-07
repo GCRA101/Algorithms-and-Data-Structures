@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 
 '''
 Dati in input due interi n e k, calcolare la potenza k-esima di n tramite 
-algoritmo ricorsivo
+algoritmo recursive method
 '''
 
 # Considerazioni
@@ -30,15 +30,15 @@ Caso base: per k=1->n=n
 # Algoritmo
 
 def es1(n,k):                     # T(k)
-    if k==1: return n             # Θ(1)      ' Caso Base
-    return n*es1(n,k-1)           # T(k-1)    ' Passo Ricorsivo
+    if k==1: return n             # Θ(1)      ' Base Case
+    return n*es1(n,k-1)           # T(k-1)    ' Recursive Step
 
-# Dimensione input: valore del coefficiente intero k
+# Input size: valore del coefficiente intero k
 # Il caso peggiore e il caso migliore coincidono. Infatti, anche se per k=0,
 # il costo computazionale sarebbe = Θ(1), la notazione asintotica si calcola
 # solo per valori grandi dell'input (i.e. k->∞) per cui il costo computazionale
 # e' maggiore di Θ(1) e cresce al crescere del valore di k.
-# Costo Computazionale: T(k)=Θ(1)+T(k-1) -> Equazioni di Ricorrenza
+# Computational Cost: T(k)=Θ(1)+T(k-1) -> Recurrence Equations
 
 
 
@@ -48,7 +48,7 @@ def es1(n,k):                     # T(k)
 
 '''
 Dato in input un array di n interi, calcolare la somma dei suoi elementi
-tramite un algoritmo ricorsivo
+tramite un algoritmo recursive method
 '''
 
 # Considerazioni
@@ -67,11 +67,11 @@ def es2a(A,sum=0,i=0):             # T(n)
     sum+=A[i]                      # Θ(1)
     return es2a(A,sum,i+1)         # T(n-1)
 
-# Dimensione input: numero n di valori contenuti nell'array A
+# Input size: numero n di valori contenuti nell'array A
 # Il caso peggiore e il caso migliore coincidono. Infatti, per qualunque valore
 # GRANDE di n, l'algoritmo scorrera' sempre tutti gli elementi dell'array A
 # dal primo all'ultimo.
-# Costo Computazionale: T(n)=Θ(1)+T(n-1) -> Equazioni di Ricorrenza
+# Computational Cost: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 '''
 ATTENZIONE!!!
@@ -86,14 +86,14 @@ Vediamo come riscrivere la funzione ricorsiva in modo corretto.
 # Algoritmo CORRETTO
 
 def es2b(A,i=0):                   # T(n)
-    if i==len(A)-1: return A[i]    # Θ(1)      ' Caso Base 
-    return (A[i]+es2b(A,i+1))      # T(n-1)    ' Passo Ricorsivo
+    if i==len(A)-1: return A[i]    # Θ(1)      ' Base Case 
+    return (A[i]+es2b(A,i+1))      # T(n-1)    ' Recursive Step
 
-# Dimensione input: numero n di valori contenuti nell'array A
+# Input size: numero n di valori contenuti nell'array A
 # Il caso peggiore e il caso migliore coincidono. Infatti, per qualunque valore
 # GRANDE di n, l'algoritmo scorrera' sempre tutti gli elementi dell'array A
 # dal primo all'ultimo.
-# Costo Computazionale: T(n)=Θ(1)+T(n-1) -> Equazioni di Ricorrenza
+# Computational Cost: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
 A=[1,2,3,4,5,6,7,8,9,10]
@@ -122,16 +122,16 @@ Il caso base si ha quando si raggiunge l'ultimo elemento nell'array'''
 A=[31,22,7,83,101,71,27,52,3,21,15,98,88,17]
 
 def es3(A,i=len(A)-1):                   # T(n)
-    if i==0: return A[i]                 # Θ(1)      ' Caso Base 
-    return min(A[i],es3(A,i-1))          # T(n-1)    ' Passo Ricorsivo
+    if i==0: return A[i]                 # Θ(1)      ' Base Case 
+    return min(A[i],es3(A,i-1))          # T(n-1)    ' Recursive Step
     
 minVal=es3(A)
 
-# Dimensione input: numero n di valori contenuti nell'array A
+# Input size: numero n di valori contenuti nell'array A
 # Il caso peggiore e il caso migliore coincidono. Infatti, per qualunque valore
 # GRANDE di n, l'algoritmo scorrera' sempre tutti gli elementi dell'array A
 # dal primo all'ultimo.
-# Costo Computazionale: T(n)=Θ(1)+T(n-1) -> Equazioni di Ricorrenza
+# Computational Cost: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
 
@@ -148,7 +148,7 @@ L'algoritmo deve ritornare un output di tipo boolean a seconda che l'array in
 input sia palindromo o meno.
 Casi base: 1) differenza indici estremi subArray <=1 
            2) valori negli indici estremi sono differenti
-Passo ricorsivo: confronto valori indici estremi per indici che si avvicinano
+Passo recursive method: confronto valori indici estremi per indici che si avvicinano
                  verso il punto medio dell'array'''
 
 'Best Case'
@@ -157,21 +157,21 @@ Passo ricorsivo: confronto valori indici estremi per indici che si avvicinano
 A=[38,12,71,4,22,9,32,9,22,4,71,12,38] 
                  
 def es4(A,i=0,j=len(A)-1):        # T(n)
-    if i>=j: return True          # Θ(1)    ' Caso Base
-    if A[i]!=A[j]: return False   # Θ(1)    ' Caso Base
-    return es4(A,i+1,j-1)         # T(n-2)  ' Passo Ricorsivo
+    if i>=j: return True          # Θ(1)    ' Base Case
+    if A[i]!=A[j]: return False   # Θ(1)    ' Base Case
+    return es4(A,i+1,j-1)         # T(n-2)  ' Recursive Step
 
 bool=es4(A)
 
-# Dimensione input: numero n di valori contenuti nell'array A
+# Input size: numero n di valori contenuti nell'array A
 
-# Costo Computazionale
+# Computational Cost
 # Il caso migliore e' il caso in cui gia' i due valori estremi dell'array sono
 # differenti (in tal caso, e' possibile uscire dalla ricorsione gia' alla prima
 # iterazione).
 # Il caso peggiore e' il caso in cui l'array e' palindromo.
 # Caso Migliore: T(n)=Θ(1)
-# Caso Peggiore: T(n)=Θ(1)+T(n-2) -> Equazioni di Ricorrenza
+# Caso Peggiore: T(n)=Θ(1)+T(n-2) -> Recurrence Equations
 
 
 
@@ -189,7 +189,7 @@ L'algoritmo deve arrivare a stampare l'ultimo elemento nel caso base e poi
 stampare tutti i restanti fino al primo nella sequenza di chiusura delle 
 chiamate di funzione.
 Caso base: 1) indice elemento = indice finale
-Passo ricorsivo: stampa elemento V[n] in console'''
+Passo recursive method: stampa elemento V[n] in console'''
 
 'Best/Worst Case'
 A=[12,51,22,61,32,81,9,43,78,101,2] 
@@ -210,13 +210,13 @@ def es5b(A,i=len(A)-1):
 print("Soluzione Prof")
 es5b(A)
 
-# Dimensione input: numero n di valori contenuti nell'array A
+# Input size: numero n di valori contenuti nell'array A
 
-# Costo Computazionale
+# Computational Cost
 # Per valori grandi di n, il caso migliore e il caso peggiore coincidono.
 # Infatti l'algoritmo deve sempre e comunque scorrere tutti gli elementi dell'
 # array.
-# Caso Migliore/Peggiore: T(n)=Θ(1)+T(n-1) -> Equazioni di Ricorrenza
+# Caso Migliore/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
 
@@ -233,7 +233,7 @@ L'algoritmo deve arrivare a stampare il primo elemento nel caso base e poi
 stampare tutti i restanti fino all'ultimo nella sequenza di chiusura delle 
 chiamate di funzione.
 Caso base: 1) indice elemento = indice iniziale
-Passo ricorsivo: stampa elemento V[n] in console'''
+Passo recursive method: stampa elemento V[n] in console'''
 
 'Best/Worst Case'
 A=[12,51,22,61,32,81,9,43,78,101,2] 
@@ -255,13 +255,13 @@ def es6b(A,i=0):
 print("Soluzione Prof")
 es6b(A)
 
-# Dimensione input: numero n di valori contenuti nell'array A
+# Input size: numero n di valori contenuti nell'array A
 
-# Costo Computazionale
+# Computational Cost
 # Per valori grandi di n, il caso migliore e il caso peggiore coincidono.
 # Infatti l'algoritmo deve sempre e comunque scorrere tutti gli elementi dell'
 # array.
-# Caso Migliore/Peggiore: T(n)=Θ(1)+T(n-1) -> Equazioni di Ricorrenza
+# Caso Migliore/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
 
@@ -276,7 +276,7 @@ VEDI IL FOLDER TORRE HANOI '''
 # ESERCIZI per CASA ##########################################################
 
 'Esercizio B'
-'''Progettare un algoritmo ricorsivo che, dati due numeri interi x e y, x>y>0,
+'''Progettare un algoritmo recursive method che, dati due numeri interi x e y, x>y>0,
 ne calcoli il massimo comun divisore utilizzando il seguente procedimento (di
 Euclide): 
     - se y=0 allora MCD(x,y)=x
@@ -292,10 +292,10 @@ x=73
 y=41
 print("\n\nMCD di ",x," e ",y, " e' ",MCD(x,y))
 
-# Dimensione input: numero n di valori contenuti nell'array A
+# Input size: numero n di valori contenuti nell'array A
 
-# Costo Computazionale
+# Computational Cost
 # Per valori grandi di n, il caso migliore e il caso peggiore coincidono.
 # Infatti l'algoritmo deve sempre e comunque scorrere tutti gli elementi dell'
 # array.
-# Caso Migliore/Peggiore: T(n)=Θ(1)+T(n-1) -> Equazioni di Ricorrenza
+# Caso Migliore/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations

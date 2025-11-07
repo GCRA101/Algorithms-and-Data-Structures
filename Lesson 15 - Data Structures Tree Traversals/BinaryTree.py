@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import random
 
 
-# IMPORT CLASSI DEL PACKAGE
+# IMPORT PACKAGE CLASSES
 from BinaryNode import Nodo
 from Modified_Queue import Coda
 
@@ -28,21 +28,21 @@ La classe albero, quindi deve solo contenere il record della radice.
 
 class AlberoBinario:
     
-    # ATTRIBUTI
+    # ATTRIBUTES
     root=None
     
-    # COSTRUTTORE
+    # CONSTRUCTOR
     'Default e Overloaded'
     def __init__(self,root=None):
         self.root=root
         
-    # METODI
+    # METHODS
     
     'GetRoot'
     def getRoot(self):                                  # T(n)
         return self.root                                # Θ(1)  
     
-    # Costo Computazionale: T(n)=Θ(1)
+    # Computational Cost: T(n)=Θ(1)
 
 
 
@@ -66,7 +66,7 @@ class AlberoBinario:
         self.__visitaPreOrdine(p)                    # S(n)
         return
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensioni input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
@@ -92,7 +92,7 @@ class AlberoBinario:
         p=self.root                                  # Θ(1)
         self.__visitaInOrdine(p)                     # S(n)
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensioni input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
@@ -118,7 +118,7 @@ class AlberoBinario:
         p=self.root                                  # Θ(1)
         self.__visitaPostOrdine(p)                   # S(n)
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensioni input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
@@ -159,7 +159,7 @@ class AlberoBinario:
                 coda.enqueue(p.getFiglioDx())      # Θ(1)
         return                                     # Θ(1)
         
-    # Costo Computazionale
+    # Computational Cost
     # Dimensioni input: numero nodi dell'albero (incognito a priori)
     # Costo: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
 
@@ -170,9 +170,9 @@ class AlberoBinario:
     # Funzione Privata Ricorsiva
     def __calcola_n(self,p):                         # S(n)
         if p!=None:                                  # Θ(1)
-            # 1. Passo Ricorsivo SottoAlbero Sx
+            # 1. Recursive Step SottoAlbero Sx
             num_l=self.__calcola_n(p.getFiglioSx())  # S(k)
-            # 2. Passo Ricorsivo SottoAlbero Dx
+            # 2. Recursive Step SottoAlbero Dx
             num_r=self.__calcola_n(p.getFiglioDx())  # S(n-k-1)
             # 3. Operazione sul Nodo
             num=num_l+num_r+1                        # Θ(1)     
@@ -184,7 +184,7 @@ class AlberoBinario:
         p=self.root                                  # Θ(1)
         return self.__calcola_n(p)                   # S(n)
     
-    # Costo Computazionale
+    # Computational Cost
     # Dimensione Input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   
@@ -199,11 +199,11 @@ class AlberoBinario:
           # 1. Operazione sul Nodo
           if p.getValore()==k.getValore():               # Θ(1)              
               return True                                # Θ(1) 
-          # 2. Passo Ricorsivo SottoAlbero Sx
+          # 2. Recursive Step SottoAlbero Sx
           elif self.__cerca(k,p.getFiglioSx())==True:    # S(k)
               return True                                # Θ(1) 
           else:                                          # Θ(1) 
-          # 3. Passo Ricorsivo SottoAlbero Dx
+          # 3. Recursive Step SottoAlbero Dx
               return self.__cerca(k,p.getFiglioDx())     # S(n-k-1)
         return False                                     # Θ(1) 
     
@@ -212,7 +212,7 @@ class AlberoBinario:
         p=self.root                                      # Θ(1) 
         return self.__cerca(k, p)                        # S(n)
     
-    # Costo Computazionale
+    # Computational Cost
     # Dimensione Input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)
@@ -227,7 +227,7 @@ class AlberoBinario:
             return -1                                        # Θ(1)
         if p.getFiglioSx()==None and p.getFiglioDx()==None:  # Θ(1)
             return 0                                         # Θ(1)
-        # 1. 2. Passo Ricorsivo SottoAlbero Sx e Dx
+        # 1. 2. Recursive Step SottoAlbero Sx e Dx
         h=max(self.__calcola_h(p.getFiglioSx()),             # S(k)
               self.__calcola_h(p.getFiglioDx()))             # S(n-k-1)
         # 3. Operazione sul Nodo
@@ -238,7 +238,7 @@ class AlberoBinario:
         p=self.root                                          # Θ(1)
         return self.__calcola_h(p)                           # S(n)
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensione Input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)
@@ -253,9 +253,9 @@ class AlberoBinario:
             return 0                                         # Θ(1)
         if k==i:                                             # Θ(1)
             return 1                                         # Θ(1)
-        # 1. Passo Ricorsivo SottoAlbero Sx
+        # 1. Recursive Step SottoAlbero Sx
         k_left=self.__conta_k(k,i+1,p.getFiglioSx())         # S(k)
-        # 2. Passo Ricorsivo SottoAlbero Dx
+        # 2. Recursive Step SottoAlbero Dx
         k_right=self.__conta_k(k,i+1,p.getFiglioDx())        # S(n-k-1)
         # 3. Operazione sul Nodo
         return k_left+k_right                                # Θ(1)
@@ -265,7 +265,7 @@ class AlberoBinario:
         p=self.root                                          # Θ(1)
         return self.__conta_k(k, 0, p)                       # S(n)
 
-    # Costo Computazionale
+    # Computational Cost
     # Dimensione Input: numero nodi dell'albero (incognito a priori)
     # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   

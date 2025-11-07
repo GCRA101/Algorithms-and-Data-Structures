@@ -128,7 +128,7 @@ def bucketSortHeap(A):                                     # T(n)
 lanciare l'algoritmo di ordinamento se il bucket non contiene nessun elemento'''
 
 
-# Costo Computazionale
+# Computational Cost
 # T(n)=Θ(nlogn)
 
 
@@ -230,7 +230,7 @@ def bucketSortCounting(A):                                 # T(n)
     return                                                 # Θ(1)
 
 
-# Costo Computazionale
+# Computational Cost
 # T(n)=Θ(n)
 
 

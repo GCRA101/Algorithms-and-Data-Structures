@@ -41,10 +41,10 @@ def insertionSort(A):               # T(n)
     return A
     
 
-# Dimensione input: numero n di elementi nell'array A
+# Input size: numero n di elementi nell'array A
 # Caso migliore e caso peggiore variano a seconda che l'array sia gia' ordinato
 # o, viceversa, sia ordinato in ordine inverso
-# Costo Computazionale: T(n)=O(n^2) - Caso peggiore
+# Computational Cost: T(n)=O(n^2) - Caso peggiore
 #                       T(n)=Ω(n)   - Caso migliore
 
 
@@ -54,7 +54,7 @@ Asorted3=insertionSort(Abest)
 
 
 
-# RAPPRESENTAZIONE GRAFICA
+# GRAPHICAL REPRESENTATION
 
 
 def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
