@@ -1,8 +1,10 @@
-# Introduzione-agli-Algoritmi
+# Introduction-to-Algorithms
 
-## Descrizione
+## Description
 
-Collezione di python scripts sviluppati nel corso di "Introduzione agli Algoritmi" presso l'universita' La Sapienza di Roma.
-Gli scripts contengono gli algoritmi studiati e lo svolgimento degli esercizi argomento per argomento.
+Collection of Python scripts developed during the "Introduction to Algorithms" course at La Sapienza University of Rome.
+The scripts contain the studied algorithms and the solutions to exercises organized by topic.
+
+**Note**: The original Italian version of this repository is preserved in the `i18n/italian/` directory.
 
 
