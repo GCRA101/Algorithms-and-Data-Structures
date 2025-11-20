@@ -15,7 +15,7 @@ import random
 # IMPORT PACKAGE CLASSES
 from BinaryNode import Nodo
 from BinaryTree import AlberoBinario
-from Modified_Queue import Coda
+from Modified_Queue import Queue
 
 '''
 PREPARAZIONE ALBERO
@@ -34,8 +34,8 @@ for the in range(0,(len(nodi)-2)//2+1,1):
         nodi[the].setFiglioDx(nodi[2*the+2])
         
 'COSTRUZIONE ALBERO BINARIO'     
-radice=nodi[0]
-albero=AlberoBinario(radice)
+root=nodi[0]
+tree=AlberoBinario(root)
 
 
 
@@ -44,7 +44,7 @@ VISITE *********************************************************************
 '''
 
 'VISITA in PREORDINE'
-# Ciascun nodo viene visitato first of visitare the suoi sottoalberi destro e 
+# Ciascun nodo viene visitato first of visitare the suoi sottoalberi destro and 
 # sinistro.
 
 def visitaPreordine(p):                    # T(n)
@@ -59,17 +59,17 @@ def visitaPreordine(p):                    # T(n)
     return                                 # Θ(1)
 
 # Computational Cost
-# Dimensioni input: number nodi dell'albero (incognito to priori)
+# Dimensions input: number nodi dell'tree (incognito to priori)
 # Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
 'Test'
 # Risultato atteso: [3,1,8,8,0,4,8,5,5,3,2]
 print("VISITA in PREORDINE")
-visitaPreordine(albero.getRoot())
+visitaPreordine(tree.getRoot())
 
 
 'VISITA in INORDINE'
-# Ciascun nodo viene visitato dopo aver visitato the suo sottoalbero sinistro
+# Ciascun nodo viene visitato after aver visitato the suo sottoalbero sinistro
 # ma first of visitare the suo sottoalbero destro.
 
 def visitaInordine(p):                      # T(n)
@@ -84,19 +84,19 @@ def visitaInordine(p):                      # T(n)
     return                                  # Θ(1)
 
 # Computational Cost
-# Dimensioni input: number nodi dell'albero (incognito to priori)
+# Dimensions input: number nodi dell'tree (incognito to priori)
 # Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
 'Test'
 # Risultato atteso: [8,8,0,1,8,4,5,3,3,5,2]
 print()
 print("VISITA in INORDINE")
-visitaInordine(albero.getRoot())
+visitaInordine(tree.getRoot())
 
 
 'VISITA in POSTORDINE'
-# Ciascun nodo viene visitato only dopo aver visitato entrambi the suoi sotto
-# alberi destro e sinistro
+# Ciascun nodo viene visitato only after aver visitato both the suoi sotto
+# alberi destro and sinistro
 
 def visitaPostordine(p):                    # T(n)
     if p!=None:                             # Θ(1)
@@ -110,67 +110,67 @@ def visitaPostordine(p):                    # T(n)
     return                                  # Θ(1)
 
 # Computational Cost
-# Dimensioni input: number nodi dell'albero (incognito to priori)
+# Dimensions input: number nodi dell'tree (incognito to priori)
 # Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
 'Test'
 # Risultato atteso: [8,0,8,8,5,4,1,3,2,5,3]
 print()
 print("VISITA in POSTORDINE")
-visitaPostordine(albero.getRoot())
+visitaPostordine(tree.getRoot())
 
 
 'VISITA for LIVELLI'
-# For visitare a albero for livelli, l'approccio recursive method not puo' funzionare
-# The soluzione e' usare a approccio iterativo that faccia uso of a coda of 
-# appoggio for scorrere all the nodi a livello dopo l'altro.
+# For visitare a tree for livelli, l'approccio recursive method not puo' funzionare
+# The soluzione is usare a approccio iterativo that faccia uso of a queue of 
+# appoggio for scorrere all the nodi a level after l'other.
 # IMPORTANTE!
 # 1.Volendo salvare all the nodi in a array mano to mano that li si visitano, 
-#   otteniamo esattamente the VETTORE POSIZIONALE dell'albero To MENO DEGLI SPAZI
+#   otteniamo esattamente the VETTORE POSIZIONALE dell'tree To MENO DEGLI SPAZI
 #   VUOTI for the nodi mancanti.
-# 2.The Coda, for poter funzionare, deve essere implementata in modo diverso 
-#   dal metodo classico. Ciascuno dei Record Singoli from cui e' costituita, 
+# 2.The Queue, for poter funzionare, deve essere implementata in a way diverso 
+#   dal metodo classico. Ciascuno dei Record Singoli from which is costituita, 
 #   dovra' contenere as value the riferimento al nodo corrispondente dell'
-#   albero e as PUNTATORE the riferimento al Record Singolo successivo della
-#   Coda (that conterra', as value, the riferimento al nodo successivo dell'
-#   albero binario).
+#   tree and as PUNTATORE the riferimento al Record Singolo successivo of the
+#   Queue (that conterra', as value, the riferimento al nodo successivo dell'
+#   tree binario).
 # >>>> VEDI CODICE PYTHON "Coda_Modificata.py" <<<<<
 
 
-'function Ausiliaria Controllo Riempimento Coda'
-def codaVuota(coda):
-    if coda.size()==0:
+'function Ausiliaria Controllo Riempimento Queue'
+def codaVuota(queue):
+    if queue.size()==0:
         return True
     return False
 
 'function iterative for Visita for Livelli'
 def visitaPerLivelli(p):                       # T(n)
-    # Controllo esistenza albero in input
+    # Controllo esistenza tree in input
     if p==None:                                # Θ(1)
         return                                 # Θ(1)
-    # Inizializzazione coda of supporto
-    coda=Coda()                                # Θ(1)                                                     
-    # Incodamento radice albero nella coda
-    coda.enqueue(p)                            # Θ(1)                           
-    # Scorrimento nodi albero through coda
-    while(not codaVuota(coda)):                # n*Θ(1)+Θ(1) 
-        # 1. Scoda e prints nodo
-        p=coda.dequeue()                       # Θ(1)
+    # Inizializzazione queue of supporto
+    queue=Queue()                                # Θ(1)                                                     
+    # Incodamento root tree in the queue
+    queue.enqueue(p)                            # Θ(1)                           
+    # Scorrimento nodi tree through queue
+    while(not codaVuota(queue)):                # n*Θ(1)+Θ(1) 
+        # 1. Scoda and prints nodo
+        p=queue.dequeue()                       # Θ(1)
         print(str(p),end=" ")                  # Θ(1)         
         # Incoda figlioSx
         if p.getFiglioSx()!=None:              # Θ(1)
-            coda.enqueue(p.getFiglioSx())      # Θ(1)
+            queue.enqueue(p.getFiglioSx())      # Θ(1)
         # Incoda figlio Dx
         if p.getFiglioDx()!=None:              # Θ(1)
-            coda.enqueue(p.getFiglioDx())      # Θ(1)
+            queue.enqueue(p.getFiglioDx())      # Θ(1)
     return                                     # Θ(1)
     
 
 # Computational Cost
-# Dimensioni input: number nodi dell'albero (incognito to priori)
+# Dimensions input: number nodi dell'tree (incognito to priori)
 # Cost: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
 
 'Test'
 # Risultato atteso: [3,1,5,8,4,3,2,8,0,8,5]
 print("VISITA for LIVELLI")
-visitaPerLivelli(albero.getRoot())
+visitaPerLivelli(tree.getRoot())

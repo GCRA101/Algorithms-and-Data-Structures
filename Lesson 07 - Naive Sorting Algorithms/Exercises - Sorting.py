@@ -21,7 +21,7 @@ ESERCIZI SVOLTI SU CARTA '''
 
 '''
 Write to function that, given to vector of n elements ed a index j, trovi
-the minimo del sottovettore To[j..n]. Riscrivere the SelectionSort sfruttando 
+the minimo del sub-vector To[j..n]. Riscrivere the SelectionSort sfruttando 
 this function.
 '''
 
@@ -59,8 +59,8 @@ SsTime=tocSs-ticSs
 
 '''
 Given to vector of n elements, design an algorithm that verifichi if ci
-are occorrenze ripetute of one stesso value (e, ad esempio, restituisca 1 if
-ve ne are e 0 altrimenti)
+are repeated occurrences of the same value (e, ad esempio, restituisca 1 if
+ve ne are and 0 altrimenti)
 '''
 
 def trovaValoriUnici(To):                 # T(n)

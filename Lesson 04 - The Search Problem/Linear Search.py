@@ -38,7 +38,7 @@ def linearSearch(To,v):
         
         
         
-# BEST CASE: L'element ricercato v e' presente nella first 
+# BEST CASE: The searched element v is present in the first 
 # cella dell'array To   
 
 def linearSearch(To,v):
@@ -50,7 +50,7 @@ def linearSearch(To,v):
     else:       
         return -1                    # Θ(1)
 
-# (*): The condizione del ciclo while not si verifica never!        
+# (*): The while loop condition never occurs!        
         
 # Computational cost
 # T(n)=Θ(1)
@@ -58,7 +58,7 @@ def linearSearch(To,v):
         
     
 # CONCLUSION
-# The algorithm is O(n) e a Ω(1)
+# The algorithm is O(n) and a Ω(1)
 
 
 # GRAPHICAL REPRESENTATION

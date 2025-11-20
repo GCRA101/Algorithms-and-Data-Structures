@@ -18,26 +18,26 @@ import random
 
 '''
 QUICK SORT 
-The algorithm Quick Sort e' an algorithm for sorting piu' avanzato e complesso
+The algorithm Quick Sort is an algorithm for sorting piu' avanzato and complesso
 rispetto agli algoritmi naif studiati finora (Insertion Sort, Selection Sort e
-Bubble Sort) e consente of ottenere the miglior costo computazionale possibile
+Bubble Sort) and consente of ottenere the miglior computational cost possibile
 for an algorithm for sorting based on comparisons: O(nlogn).
 
 * Confronto with MergeSort *
 Esso si differenzia rispetto althe algorithm of MergeSort nei seguenti punti:
     - Advantage: IN-PLACE reordering
-            - The elementi del vector vengono riordinati IN LOCO e cio'
+            - The elements del vector vengono riordinati IN LOCO and what'
               consente of aver a MIGLIORE complexity' SPAZIALE
     - Sadvantage: Alto Computational Cost nel worst case
-            - Nel worst case, the computational cost e' O(n^2) anziche' 
+            - Nel worst case, the computational cost is O(n^2) anziche' 
               O(nlogn). The worst case, in any case, can be easily
               evitato andando to RANDOMIZZARE/DISORDINARE the given as input'
-Conclusione: the QuickSort e' MEGLIO del MergeSort
-Indeed, the QuickSort e' the algorithm of sorting that viene in genere usato
-nelle funzioni dei principali linguaggi of programmazione.
+Conclusione: the QuickSort is MEGLIO del MergeSort
+Indeed, the QuickSort is the algorithm of sorting that viene in genere usato
+in the funzioni dei principali linguaggi of programmazione.
 
 * Caratteristiche Principali *
-The caratteristiche principali delthe algorithm MERGE SORT are the following:
+The caratteristiche principali than the algorithm MERGE SORT are the following:
     - RECURSIVE Algorithm
     - Tecnica Algoritmica del DIVIDE ET IMPERA
     - Recurrence Equation solvable through the Master Method (Teorema
@@ -83,13 +83,13 @@ def quickSort(To,indStart,indEnd):                  # T(n)
 
 
 # Input size: number n of elements in array To
-# Best case e worst case differiscono in base al livello of disordine
+# Best case and worst case differiscono in base al level of disordine
 # dei given as input.
-# If the given as input are already' abbastanza sorted, the pivot, if scelto always
-# as the first element del subarray, risultera' essere sovente lontano dalla
-# mezzeria. Al contrario sara' sovente in prossimita' della mezzeria.
-# The equazioni of ricorrenza corrispondenti ai cases peggiore e migliore sopra
-# illustrati are as segue:
+# If the data given as input are already fairly sorted, the pivot, if always chosen
+# as the first element of the subarray, will often be far from the
+# middle. On the contrary it will often be in proximity to the middle.
+# The recurrence equations corresponding to the worst and best cases above
+# illustrated are as follows:
 # - best case: T(n)=2*T(n/2)+Θ(n)   -> T(n)=Ω(nlogn)
 # - worst case: T(n)=T(n-1)+Θ(n)     -> T(n)=O(n^2)
 #

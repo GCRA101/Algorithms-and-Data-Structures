@@ -16,11 +16,11 @@ import matplotlib.pyplot as plt
 # ESERCIZIO 1
 
 '''
-Given to array To of n values numerici e two values estremi to e b, tale that 
+Given to array To of n values numerici and two values estremi to and b, tale that 
 to<b, creare two algoritmi for the conteggio dei valori contained in thel'array
-that siano compresi between to e b.
-An algorithm deve basarsi sulla ricerca sequenziale (Linear Search) mentre
-l'altro sulla ricerca binaria (Binary Search)
+that siano compresi between to and b.
+One algorithm must be based on sequential search (Linear Search) while
+the other on binary search (Binary Search)
 '''
 
 # algorithm of RICERCA SEQUENZIALE
@@ -38,14 +38,14 @@ def ricercaSequenziale(To,to,b):
        the+=1                         # Θ(1)
     return n                        # Θ(1)
 
-# Input size: n elementi in array To
+# Input size: n elements in array To
 # Computational Cost: T(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
 
 
 # algorithm of RICERCA BINARIA
 
 ''' worst case
-The estremi to e b not vengono incontrati if not alla last
+The estremi to and b not vengono incontrati if not to the last
 iterazione, in the case where siano presenti - at the k-th 
 iterazione k=logn'''
 
@@ -88,7 +88,7 @@ def ricercaBinaria(To,to,b):
     return bf-af+1                  # Θ(1)
 
 
-# Input size: n elementi in array To
+# Input size: n elements in array To
 # Computational Cost: T(n)=Θ(1)+2*logn*Θ(1)+Θ(1)=Θ(logn)
 
 To=[1, 4, 8, 17, 22, 25, 31, 36, 44, 52, 55, 63, 71, 78, 92]
@@ -100,7 +100,7 @@ nBin1=ricercaBinaria(To, to, b)
 
 
 ''' best case
-The estremi to e b vengono incontrati alla second
+The estremi to and b vengono incontrati to the second
 iterazione'''
 
 def ricercaBinaria(To,to,b):
@@ -143,7 +143,7 @@ def ricercaBinaria(To,to,b):
 
 
         
-# Input size: n elementi in array To
+# Input size: n elements in array To
 # Computational Cost: T(n)=Θ(1)+2*Θ(1)+Θ(1)=Θ(1)
 
 To=[1, 4, 8, 20, 22, 25, 31, 36, 44, 52, 55, 60, 71, 78, 92]
@@ -154,7 +154,7 @@ nSeq2=ricercaSequenziale(To, to, b)
 nBin2=ricercaBinaria(To, to, b)
 
 
-# Computational Cost Complessivo: O(logn) e Ω(1)
+# Computational Cost Complessivo: O(logn) and Ω(1)
 
 
 
@@ -225,13 +225,13 @@ for the in range(5,1000):
     
     
 rappresentazioneGrafica(range(5,1000),stepsA,0.000001,"Algoritmi of " 
-                        "Ricerca - Linear/Binary","Linear Search")
+                        "Search - Linear/Binary","Linear Search")
 
 rappresentazioneGrafica(range(5,1000),stepsB1,0.000001,"Algoritmi of " 
-                       "Ricerca - Linear/Binary","Binary Search - Worst Case")
+                       "Search - Linear/Binary","Binary Search - Worst Case")
 
 rappresentazioneGrafica(range(5,1000),stepsB2,0.000001,"Algoritmi of " 
-                       "Ricerca - Linear/Binary","Binary Search - Best Case")
+                       "Search - Linear/Binary","Binary Search - Best Case")
 
 
 

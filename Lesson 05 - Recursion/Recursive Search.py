@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 '''
 ALGORITMI of RICERCA RICORSIVA
-Sia the ricerca SEQUENZIALE sia the ricerca BINARIA possono essere definite
+Sia the search SEQUENZIALE sia the search BINARIA possono essere definite
 through algorithms RICORSIVI'''
 
 # RECURSIVE Algorithm of RICERCA SEQUENZIALE
@@ -33,16 +33,16 @@ def ricercaSequenzialeRicorsiva(To,v,the):
     
 
 # Input size: number n of elements in array To
-# Best case e worst case variano to second that l'element cercato v
-# si trovi nella first cella dell'array To o not esista affatto.
+# Best case and worst case variano to second that l'element cercato v
+# si trovi in the first cella dell'array To o not esista affatto.
 # Computational Cost: T(n)=Θ(1)+T(n-1)
 
 
-# Alternativamente...si possono utilizzare two funzioni, a interna all'altra
-# of cui only that interna e' recursive
+# Alternatively...two functions can be used, one internal to the other
+# of which only that internal is recursive
 
 def ricercaSequenziale(To,v):
-    'Chiamata of lancio della Ricorsione'
+    'Recursion launch call'
     return ricercaSequenzialeRicorsiva(To,v,len(To)-1) #T(n)
     
 def ricercaSequenzialeRicorsiva(To,v,n):
@@ -76,9 +76,9 @@ def ricercaBinariaRicorsiva(To,v,to,b):
 
 
 # Input size: number n of elements in array To
-# Best case e worst case variano to second that the value cercato
+# Best case and worst case variano to second that the value cercato
 # sia to meta' dell'array ordinato To (Ω(1)) o not sia affatto presente
-# all'interno dell'array To (O(logn))
+# inside the array To (O(logn))
 # Computational Cost: T(n)=Θ(1)+T(n/2) -> Recurrence Equations
 
 
@@ -96,8 +96,8 @@ found=ricercaBinaria(To,v)
 toc=time.perf_counter_ns()
 binRicTime=round(toc-tic,6)
 
-print('algorithm of Ricerca Sequenziale recursive : ',seqRicTime,' [nanosecs]')
-print('algorithm of Ricerca Binaria recursive : ',binRicTime,' [nanosecs]')
+print('algorithm of Search Sequenziale recursive : ',seqRicTime,' [nanosecs]')
+print('algorithm of Search Binaria recursive : ',binRicTime,' [nanosecs]')
 
 
 
@@ -152,10 +152,10 @@ for the in range(5,1000):
     stepsB.append(round(toc-tic,6))
 
     
-rappresentazioneGrafica(range(5,1000),stepsA,1000,"Algoritmi of Ricerca "  
+rappresentazioneGrafica(range(5,1000),stepsA,1000,"Algoritmi of Search "  
                         "Sequenziale/Binaria Ricorsiva","Sequenziale")
 
-rappresentazioneGrafica(range(5,1000),stepsB,1000,"Algoritmi of Ricerca "  
+rappresentazioneGrafica(range(5,1000),stepsB,1000,"Algoritmi of Search "  
                         "Sequenziale/Binaria Ricorsiva","Binaria")
 
 

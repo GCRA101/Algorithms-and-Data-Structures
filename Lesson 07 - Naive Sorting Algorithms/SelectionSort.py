@@ -16,8 +16,8 @@ import matplotlib.pyplot as plt
 
 '''
 SELECTION SORT 
-The algorithm Selection Sort e' one dethe algorithms piu' semplici for effettuare
-l'sorting to series/record of given along with INSERTION SORT e al 
+The algorithm Selection Sort is one of the algorithms simplest for performing
+l'sorting to series/record of given along with INSERTION SORT and al 
 BUBBLE SORT'
 The algorithm SELECTION SORT has the same computational cost for the case
 peggiore (given series sorted in reverse order) and the best case (serie given

@@ -21,15 +21,15 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Sia given to vector of length n containing only values 0 e 2. Design
-an algorithm with computational cost lineare that modifichi the vector in modo
-that all the occorrenze of 0 si trovino piu' to sinistra of all the occorrenze
+Sia given to vector of length n containing only values 0 and 2. Design
+an algorithm with computational cost lineare that modifichi the vector in a way
+that all the occurrences of 0 si trovino piu' to sinistra of all the occurrences
 of 2.
 '''
 
 # Considerazioni
 '''
-For risolvere the problema basta usare the algorithm of Partizione del QuickSort
+For risolvere the problema enough usare the algorithm of Partizione del QuickSort
 considerando, as pivot, the value 1.
 '''
 
@@ -81,8 +81,8 @@ partition(A3,0,len(A3)-1)
 
 '''
 Design an algorithm the piu' efficiente possibile for the seguente problema.
-  - Given aa matrice mxn, si vogliono rimescolare the suoi elementi in modo that 
-    all the vettori riga e all the vettori colonna siano sorted in senso 
+  - Given aa matrice mxn, si vogliono rimescolare the suoi elements in a way that 
+    all the vectors row and all the vectors colonna siano sorted in senso 
     not decrescente.'
 '''
 # algorithm
@@ -129,7 +129,7 @@ def sortMatrix(M):
     for j in range(0,n,1):          # n*Θ(1)+Θ(1)
         quickSort(M[:,j],0,m-1)     # Θ(m*logm)
         
-# Input size: n,m that is number righe/colonne matrice M
+# Input size: n,m that is number rows/colonne matrice M
 # Computational Cost:
 # T(n,m)=Θ(1)+m*Θ(n*logn)+n*Θ(m*logm)=Θ(n*m*logn)+Θ(m*n*logm)
 # Assumendo n==m avremo... T(n)=Θ((n^2)*logn)

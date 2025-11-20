@@ -62,7 +62,7 @@ def binarySearch(To,v):
     else:          
         return -1              
 
-# (*): The condizione del ciclo while not si verifica never!        
+# (*): The while loop condition never occurs!        
         
 # Computational cost
 # T(n)=Θ(1)
@@ -70,7 +70,7 @@ def binarySearch(To,v):
         
     
 # CONCLUSION
-# The algorithm is O(logn) e a Ω(1)
+# The algorithm is O(logn) and a Ω(1)
 
 
 # GRAPHICAL REPRESENTATION

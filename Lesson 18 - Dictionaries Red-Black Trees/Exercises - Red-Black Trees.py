@@ -30,22 +30,22 @@ ESERCIZI SVOLTI SU CARTA '''
 
 '''
 Scrivere the pseudocodice of a function that ordina a vector To:
-    - inserendo the suoi elementi in a ABR
-    - ricopiando on To the elementi incontrati eseguendo the visita inorder
+    - inserendo the suoi elements in a ABR
+    - ricopiando on To the elements incontrati eseguendo the visita inorder
       sull'ABR
-Valutarne the costo computazionale. If l'ABR fosse a Albero RossoNero, 
+Valutarne the computational cost. If l'ABR were a Tree RossoNero, 
 cambierebbe qualcosa? if si, cosa?
 '''
 
 
 'INSERIMENTO'
 
-# Given l'albero p e given the nodo z in input, the function returns l'albero with
-# the nodo aggiuntivo inserito nella posizione appropriata.
+# Given l'tree p and given the nodo z in input, the function returns l'tree with
+# the nodo aggiuntivo inserito in the position appropriata.
 
-def ABR_insert(albero,z):                         # T(h)
+def ABR_insert(tree,z):                         # T(h)
     'ESTRAZIONE RADICE ALBERO'
-    p=albero.getRoot()
+    p=tree.getRoot()
     '1. INIZIALIZZAZIONE Puntatori ausiliari'
     # Padre Nodo Corrente
     y=None                                       # Θ(1)
@@ -55,36 +55,36 @@ def ABR_insert(albero,z):                         # T(h)
     while x!=None:                               # h*Θ(1)+Θ(1)
         # Aggiorna y eguagliandolo to x...
         y=x                                      # Θ(1)
-        # Aggiorna x facendolo scendere to dx/sx in base alla sua key...
+        # Aggiorna x facendolo scendere to dx/sx in base to the sua key...
         if z.getKey()<x.getKey():                # Θ(1)
             x=x.getLeft()                        # Θ(1)
         else:                                    # Θ(1)
             x=x.getRight()                       # Θ(1)
     '3. AGGIUNTA Nuovo Nodo'
-    # If l'Albero e' Nullo, usa Nuovo Nodo as Radice dell'Albero...
+    # If l'Tree is Nullo, usa Nuovo Nodo as Radice dell'Tree...
     if y==None:                                  # Θ(1)
-        albero.root=z                            # Θ(1)
-        p=albero.root                            # Θ(1)
-    # If l'Albero not e' nullo, aggiungi the Nuovo Nodo to dx/sx dell'last...
+        tree.root=z                            # Θ(1)
+        p=tree.root                            # Θ(1)
+    # If l'Tree not is nullo, aggiungi the Nuovo Nodo to dx/sx dell'last...
     else:                                        # Θ(1)
         if z.getKey()<y.getKey():                # Θ(1)
             y.left=z                             # Θ(1)
         else:                                    # Θ(1)
             y.right=z                            # Θ(1)
-    # Aggiorna the campo Padre del nuovo nodo aggiunto all'albero...
+    # Aggiorna the campo Padre del nuovo nodo aggiunto all'tree...
     z.setParent(y)                               # Θ(1)
-    # Restituisci l'albero modificato...
+    # Restituisci l'tree modificato...
     return p                                     # Θ(1)
 
 # Computational Cost
-# Dimensione dell'input: Altezza h dell'albero
+# Dimension dell'input: Altezza h dell'tree
 # Cost: T(h)= Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
 'VISITA IN INORDINE'
 
-# Given l'albero e l'array in input, the function effettua a visita inordine
-# dell'albero e ne ricopia the chiavi dei nodi all'interno dell'array one ad
+# Given l'tree and l'array in input, the function effettua a visita inordine
+# dell'tree and ne ricopia the keys dei nodi inside the array one ad
 # one.
 
 # function recursive 
@@ -101,28 +101,28 @@ def visitaInOrdine(p,array=[],the=-1):             # T(n)
     return array                                 # Θ(1)
 
 # Computational Cost
-# Dimensioni input: number nodi dell'albero (incognito to priori)
+# Dimensions input: number nodi dell'tree (incognito to priori)
 # CoTto: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
 
 'ESERCIZIO'
 
-# Array delle Chiavi
+# Array of the Keys
 arrayChiavi=[18,11,33,7,15,22,80,13,16,50,91,42,64]    # Θ(1)
 # Binary Search Tree
-albero=AlberoBinarioDiRicerca()                        # Θ(1)
+tree=AlberoBinarioDiRicerca()                        # Θ(1)
     
-# Inserimento chiavi array in Albero of Ricerca Binaria
+# Insertion of array keys in Binary Search Tree
 for the in range(0,len(arrayChiavi),1):                  # n*Θ(1)+Θ(1)
     z=Nodo(arrayChiavi[the])                             # Θ(1)
-    ABR_insert(albero, z)                              # R(n)
-# Riordinamento chiavi in the array through Visita In Ordine
-# dell'albero of ricerca binaria
-arrayChiavi=visitaInOrdine(albero.getRoot())           # S(n)
+    ABR_insert(tree, z)                              # R(n)
+# Reordering keys in the array through In-Order Traversal
+# of the binary search tree
+arrayChiavi=visitaInOrdine(tree.getRoot())           # S(n)
 
 
 # Computational Cost
-# Dimensioni input: number elements/chiavi all'interno dell'array
+# Dimensions input: number elements/keys inside the array
 # Cost: T(n)=sommatoria_1_n(Θ(logi))+S(n)
 #        T(n)=Θ(log(n*(n+1)/2))+Θ(n)=Θ(log(n^2))+Θ(log(n))+Θ(n)
 #            =Θ(log(n))+Θ(n)=Θ(n)

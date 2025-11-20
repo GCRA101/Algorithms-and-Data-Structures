@@ -44,8 +44,8 @@ for the in range(0,len(nodi),1):
                 nodi[the].setRight(nodi[j])
                 break
          
-radice=nodi[0]
-albero=AlberoBinarioDiRicerca(radice)
+root=nodi[0]
+tree=AlberoBinarioDiRicerca(root)
 
 
 
@@ -56,8 +56,8 @@ OPERAZIONI ******************************************************************
 
 'RICERCA'
 
-# Given aa key k e a albero p in input, the function returns the nodo
-# dell'albero avente key with value uguale to k.
+# Given aa key k and a tree p in input, the function returns the nodo
+# dell'tree avente key with value uguale to k.
 
 def ABR_searchRic(p,k):                         # T(h)
     if (p==None or p.getKey()==k):              # Θ(1)
@@ -68,17 +68,17 @@ def ABR_searchRic(p,k):                         # T(h)
         return ABR_searchRic(p.getRight(),k)    # T(h-1)
 
 # Computational Cost
-# Dimensione dell'input: Altezza h dell'albero
-# Si esegue the function h volte with operazioni each volta of costo costante
-# Θ(1). Quindi the costo totale equivale to h volte Θ(1).
+# Dimension dell'input: Altezza h dell'tree
+# Si esegue the function h times with operazioni each time of cost constant
+# Θ(1). Therefore the cost totale equivale to h times Θ(1).
 # Cost: T(h)= T(h-1)+Θ(1) -> T(h)=Θ(h)
 
 
 
 'INSERIMENTO'
 
-# Given l'albero p e given the nodo z in input, the function returns l'albero with
-# the nodo aggiuntivo inserito nella posizione appropriata.
+# Given l'tree p and given the nodo z in input, the function returns l'tree with
+# the nodo aggiuntivo inserito in the position appropriata.
 
 def ABR_insert(p,z):                             # T(h)
     '1. INIZIALIZZAZIONE Puntatori ausiliari'
@@ -90,36 +90,36 @@ def ABR_insert(p,z):                             # T(h)
     while x!=None:                               # h*Θ(1)+Θ(1)
         # Aggiorna y eguagliandolo to x...
         y=x                                      # Θ(1)
-        # Aggiorna x facendolo scendere to dx/sx in base alla sua key...
+        # Aggiorna x facendolo scendere to dx/sx in base to the sua key...
         if z.getKey()<x.getKey():                # Θ(1)
             x=x.getLeft()                        # Θ(1)
         else:                                    # Θ(1)
             x=x.getRight()                       # Θ(1)
     '3. AGGIUNTA Nuovo Nodo'
-    # If l'Albero e' Nullo, usa Nuovo Nodo as Radice dell'Albero...
+    # If l'Tree is Nullo, usa Nuovo Nodo as Radice dell'Tree...
     if y==None:                                  # Θ(1)
         p=z                                      # Θ(1)
-    # If l'Albero not e' nullo, aggiungi the Nuovo Nodo to dx/sx dell'last...
+    # If l'Tree not is nullo, aggiungi the Nuovo Nodo to dx/sx dell'last...
     else:                                        # Θ(1)
         if z.getKey()<y.getKey():                # Θ(1)
             y.left=z                             # Θ(1)
         else:                                    # Θ(1)
             y.right=z                            # Θ(1)
-    # Aggiorna the campo Padre del nuovo nodo aggiunto all'albero...
+    # Aggiorna the campo Padre del nuovo nodo aggiunto all'tree...
     z.setParent(y)                               # Θ(1)
-    # Restituisci l'albero modificato...
+    # Restituisci l'tree modificato...
     return p                                     # Θ(1)
 
 # Computational Cost
-# Dimensione dell'input: Altezza h dell'albero
+# Dimension dell'input: Altezza h dell'tree
 # Cost: T(h)= Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
 
 'MINIMO'
 
-# returns the nodo avente key of value minimo all'interno 
-# dell'albero passato in input.
+# returns the nodo avente key of value minimo all'inner 
+# dell'tree passato in input.
 
 # Ricorsivo
 def minimoRecurs(p):                             # T(h)
@@ -130,7 +130,7 @@ def minimoRecurs(p):                             # T(h)
     return minimoRecurs(p.getLeft())             # T(h-1)
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Cost: T(h)=Θ(1)+T(h-1) -> T(h)=Θ(h)
 
 
@@ -143,15 +143,15 @@ def minimoIter(p):                               # T(h)
     return p                                     # Θ(1)
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Cost: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
 
 'MASSIMO'
 
-# returns the nodo avente key of value massimo all'interno 
-# dell'albero passato in input.
+# returns the nodo avente key of value massimo all'inner 
+# dell'tree passato in input.
 
 # Ricorsivo
 def massimoRecurs(p):                             # T(h)
@@ -162,7 +162,7 @@ def massimoRecurs(p):                             # T(h)
     return massimoRecurs(p.getRight())            # T(h-1)
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Cost: T(h)=Θ(1)+T(h-1) -> T(h)=Θ(h)
 
 
@@ -175,16 +175,16 @@ def massimoIter(p):                               # T(h)
     return p                                      # Θ(1)
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Cost: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
 
 'PREDECESSORE'
 
-# returns the nodo avente key the cui value sarebbe immediatamente 
-# precedente to that passato in input if the nodi dell'albero venissero ordinati
-# in ordine crescente in base al value della loro key.
+# returns the nodo avente key the which value sarebbe immediatamente 
+# precedente to that passato in input if the nodi dell'tree venissero ordinati
+# in ordine crescente in base al value of the loro key.
 
 # Iterativo
 def predecessoreIter(p,k):                        # T(h)
@@ -198,7 +198,7 @@ def predecessoreIter(p,k):                        # T(h)
     if nodo.getLeft()!=None:                      # Θ(1)
         predecessor=massimoIter(nodo.getLeft())   # Ω(1) o O(h)
     else:                                         # Θ(1)
-    # 4. If the nodo NON ha figlio Sx, risali l'albero     
+    # 4. If the nodo NON ha figlio Sx, risali l'tree     
     #    through ITERAZIONE    
         while(nodo.getParent()!=None and 
               nodo==nodo.getParent().getLeft()):  # Θ(1)
@@ -218,14 +218,14 @@ def predecessoreRecurs(p,k):                      # T(h)
     if nodo.getLeft()!=None:                      # Θ(1)
         predecessor=massimoRecurs(nodo.getLeft()) # Ω(1) o O(h)     
     else:                                         # Θ(1)
-    # 4. If the nodo NON ha figlio Sx, risali l'albero
+    # 4. If the nodo NON ha figlio Sx, risali l'tree
     #    through RICORSIONE
         return predecRecurs(nodo)                 # S(h)
     return predecessor                            # Θ(1)
 
 def predecRecurs(nodo):                           # S(h)
-    # 1. If the nodo not ha padre, esso e' the radice dell'albero...
-    #    quindi ritorna the radice.
+    # 1. If the nodo not ha padre, esso is the root dell'tree...
+    #    therefore ritorna the root.
     if nodo.getParent()==None:                    # Θ(1)
         return nodo                               # Θ(1)
     # 2. If the nodo not coincide with the figlio Sx of suo padre,
@@ -233,12 +233,12 @@ def predecRecurs(nodo):                           # S(h)
     if nodo!=nodo.getParent().getLeft():          # Θ(1)
         return nodo.getParent()                   # Θ(1)
     # 3. If the nodo coincide with the figlio Sx of suo padre, 
-    #    continua the risalita passando the nodo padre nella nuova 
+    #    continua the risalita passando the nodo padre in the nuova 
     #    chiamata ricorsiva.
     return predecRecurs(nodo.getParent())         # S(h-1)   
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Costo Iterativa: T(h)=Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
 # Costo Ricorsiva: T(h)=Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
 
@@ -246,9 +246,9 @@ def predecRecurs(nodo):                           # S(h)
 
 'SUCCESSORE'
 
-# returns the nodo avente key the cui value sarebbe immediatamente 
-# successivo to that passato in input if the nodi dell'albero venissero ordinati
-# in ordine crescente in base al value della loro key.
+# returns the nodo avente key the which value sarebbe immediatamente 
+# successivo to that passato in input if the nodi dell'tree venissero ordinati
+# in ordine crescente in base al value of the loro key.
 
 # Iterativo
 def successoreIter(p, k):                          # T(h)
@@ -262,7 +262,7 @@ def successoreIter(p, k):                          # T(h)
     if nodo.getRight()!=None:                      # Θ(1)
         successor=minimoIter(nodo.getRight())      # Ω(1) o O(h)
     else:        
-    # 4. If the nodo NON ha figlio Dx, risali l'albero     
+    # 4. If the nodo NON ha figlio Dx, risali l'tree     
     #    through ITERAZIONE
         while(nodo.getParent()!=None and 
               nodo==nodo.getParent().getRight()):  # Θ(1)
@@ -282,14 +282,14 @@ def successoreRecurs(p,k):                         # T(h)
     if nodo.getRight()!=None:                      # Θ(1)
         successor=minimoRecurs(nodo.getRight())    # Ω(1) o O(h)
     else:                                          # Θ(1)
-    # 4. If the nodo NON ha figlio Dx, risali l'albero
+    # 4. If the nodo NON ha figlio Dx, risali l'tree
     #    through RICORSIONE
         return succesRecurs(nodo)                  # S(h)
     return successor                               # Θ(1)
 
 def succesRecurs(nodo):                            # S(h)
-    # 1. If the nodo not ha padre, esso e' the radice dell'albero...
-    #    quindi ritorna the radice.
+    # 1. If the nodo not ha padre, esso is the root dell'tree...
+    #    therefore ritorna the root.
     if nodo.getParent()==None:                     # Θ(1)
         return nodo                                # Θ(1) 
     # 2. If the nodo not coincide with the figlio Dx of suo padre,
@@ -297,12 +297,12 @@ def succesRecurs(nodo):                            # S(h)
     if nodo!=nodo.getParent().getRight():          # Θ(1)
         return nodo.getParent()                    # Θ(1)
     # 3. If the nodo coincide with the figlio Dx of suo padre, 
-    #    continua the risalita passando the nodo padre nella nuova 
+    #    continua the risalita passando the nodo padre in the nuova 
     #    chiamata ricorsiva.
     return succesRecurs(nodo.getParent())          # S(h-1)     
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Costo Iterativa: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
 # Costo Ricorsiva: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
 
@@ -310,11 +310,11 @@ def succesRecurs(nodo):                            # S(h)
 
 'CANCELLAZIONE'
 
-# Elimina the nodo dell'albero avente the key del value passato in input.
+# Elimina the nodo dell'tree avente the key del value passato in input.
 # The nodo eliminato viene sostituito with the suo predecessore o successore (
-# one o l'altro e' the stesso..the risultato e' the medesimo) in modo from evitare
-# the disknnessione dell'albero in two sottoalberi separati.
-# For ottenere cio' ci are 3 cases different:
+# one o l'other is the same..the risultato is the medesimo) in a way from evitare
+# the disknnessione dell'tree in two sottoalberi separati.
+# For ottenere what' ci are 3 cases different:
 # Case 1) The nodo from eliminare NON HA FIGLI
 #           - Si assegna value nullo al campo figlio dx/sx corrispondente del
 #             nodo padre.
@@ -323,12 +323,12 @@ def succesRecurs(nodo):                            # S(h)
 #              indipendentemente that this sia destro o sinistro.
 # Case 3) The nodo from eliminare HA 2 FIGLI
 #            - Si sostituisce nel nodo from elimninare the key del suo 
-#              successore/predecessore e si cancella quindi questultimo.
+#              successore/predecessore and si cancella therefore questultimo.
 
 
 def cancellaFoglia(p,nodo):                                      # T(h)
     # Aggiorna the campo figlio (Dx/Sx) del padre 
-    # corrispondente alla foglia from cancellare.
+    # corrispondente to the foglia from cancellare.
     if (nodo==nodo.getParent().getLeft()):                       # Θ(1)
         nodo.getParent().setLeft(None)                           # Θ(1)
     else:                                                        # Θ(1)
@@ -351,7 +351,7 @@ def cancella(p,k):                                               # T(h)
        
     # CASO 2 - The Nodo HA 1 FIGLIO
     # Cortocircuita the padre with the figlio del nodo from eliminare
-    # If l'unico figlio e' that Sx...
+    # If l'unico figlio is that Sx...
     if (nodo.getLeft()!=None and nodo.getRight()==None):         # Θ(1)
         # Assegna the padre del nodo al figlio Sx
         nodo.getLeft().setParent(nodo.getParent())               # Θ(1)
@@ -360,7 +360,7 @@ def cancella(p,k):                                               # T(h)
             nodo.getParent().setLeft(nodo.getLeft())             # Θ(1)
         else:                                                    # Θ(1)
             nodo.getParent().setRight(nodo.getLeft())            # Θ(1)
-    # If l'unico figlio e' that Dx...
+    # If l'unico figlio is that Dx...
     if (nodo.getLeft()==None and nodo.getRight()!=None):         # Θ(1)
         # Assegna the padre del nodo al figlio Dx
         nodo.getRight().setParent(nodo.getParent())              # Θ(1)
@@ -375,10 +375,10 @@ def cancella(p,k):                                               # T(h)
     # copia the suo contained in the nodo from cancellare e, infine, 
     # cancella the nodo predecessore/successore.
     if (nodo.getLeft()!=None and nodo.getRight()!=None):         # Θ(1)
-        # Ricava the nodi predecessore e successore
+        # Ricava the nodi predecessore and successore
         pred=predecessoreIter(p,nodo.getKey())                   # Ω(1) o O(h) 
         succes=successoreRecurs(p,nodo.getKey())                 # Ω(1) o O(h) 
-        # Sostituisci key del nodo e cancella 
+        # Sostituisci key del nodo and cancella 
         # predecessore/successore
         if pred!=None:                                           # Θ(1)
             nodo.setKey(pred.getKey())                           # Θ(1)
@@ -388,7 +388,7 @@ def cancella(p,k):                                               # T(h)
             cancellaFoglia(p,succes)                             # Θ(1)
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Iterative cost: T_case1(h)=O(h)+Θ(1)=O(h)
 #                  T_case2(h)=O(h)+Θ(1)=O(h)
 #                  T_case3(h)=O(h)+O(h)+Θ(1)=O(h)
@@ -397,38 +397,38 @@ def cancella(p,k):                                               # T(h)
 
 # TESTS
 
-'Ricerca'
-nodoRicercato=ABR_searchRic(albero.getRoot(),22)
-print("RICERCA - The nodo ricercato e' : " + str(nodoRicercato))
+'Search'
+nodoRicercato=ABR_searchRic(tree.getRoot(),22)
+print("RICERCA - The nodo searched is : " + str(nodoRicercato))
 
 'Inserimento'
 z=Nodo(47)
 print("\nINSERIMENTO\nAlbero first dell'inserimento del nodo " + str(z))
-albero.visitaPreOrdine()
-ABR_insert(albero.getRoot(), z)
-print("\nAlbero dopo l'inserimento del nodo " + str(z))
-albero.visitaPreOrdine()
+tree.visitaPreOrdine()
+ABR_insert(tree.getRoot(), z)
+print("\nAlbero after l'inserimento del nodo " + str(z))
+tree.visitaPreOrdine()
 print()
 
 'Minimo'
-minRec=minimoRecurs(albero.getRoot())
-minIter=minimoIter(albero.getRoot())
-print("\nMINIMO\nChiave minima nell'albero [RICORSIONE]: " + str(minRec))
-print("Chiave minima nell'albero [ITERAZIONE]: " + str(minIter))
+minRec=minimoRecurs(tree.getRoot())
+minIter=minimoIter(tree.getRoot())
+print("\nMINIMO\nChiave minima nell'tree [RICORSIONE]: " + str(minRec))
+print("Key minima nell'tree [ITERAZIONE]: " + str(minIter))
 
 'Massimo'
-maxRec=massimoRecurs(albero.getRoot())
-maxIter=massimoIter(albero.getRoot())
-print("\nMASSIMO\nChiave massima nell'albero [RICORSIONE]: " + str(maxRec))
-print("Chiave massima nell'albero [ITERAZIONE]: " + str(maxIter))
+maxRec=massimoRecurs(tree.getRoot())
+maxIter=massimoIter(tree.getRoot())
+print("\nMASSIMO\nChiave massima nell'tree [RICORSIONE]: " + str(maxRec))
+print("Key massima nell'tree [ITERAZIONE]: " + str(maxIter))
 
 'Predecessore'
 k1=80
 k2=13
-predIter1=predecessoreIter(albero.getRoot(),k1)  # iterative -Case 1- Discesa
-predIter2=predecessoreIter(albero.getRoot(),k2)  # iterative -Case 2- Risalita
-predRec1=predecessoreRecurs(albero.getRoot(),k1) # recursive -Case 1- Discesa
-predRec2=predecessoreRecurs(albero.getRoot(),k2) # recursive -Case 2- Risalita
+predIter1=predecessoreIter(tree.getRoot(),k1)  # iterative -Case 1- Discesa
+predIter2=predecessoreIter(tree.getRoot(),k2)  # iterative -Case 2- Risalita
+predRec1=predecessoreRecurs(tree.getRoot(),k1) # recursive -Case 1- Discesa
+predRec2=predecessoreRecurs(tree.getRoot(),k2) # recursive -Case 2- Risalita
 print("\nPREDECESSORE\nPredecessore Nodo " + str(k1) 
       + " [ITERAZIONE]: " + str(predIter1))
 print("Predecessore Nodo " +  str(k2) + " [ITERAZIONE]: " + str(predIter2))
@@ -439,10 +439,10 @@ print("Predecessore Nodo " +  str(k2) + " [RICORSIONE]: " + str(predRec2))
 'Successore'
 k1=11
 k2=16
-succIter1=successoreIter(albero.getRoot(),k1)  # iterative -Case 1- Discesa
-succIter2=successoreIter(albero.getRoot(),k2)  # iterative -Case 2- Risalita
-succRec1=successoreRecurs(albero.getRoot(),k1) # recursive -Case 1- Discesa
-succRec2=successoreRecurs(albero.getRoot(),k2) # recursive -Case 2- Risalita
+succIter1=successoreIter(tree.getRoot(),k1)  # iterative -Case 1- Discesa
+succIter2=successoreIter(tree.getRoot(),k2)  # iterative -Case 2- Risalita
+succRec1=successoreRecurs(tree.getRoot(),k1) # recursive -Case 1- Discesa
+succRec2=successoreRecurs(tree.getRoot(),k2) # recursive -Case 2- Risalita
 print("\nSUCCESSORE\nSuccessore Nodo " + str(k1) 
       + " [ITERAZIONE]: " + str(succIter1))
 print("Successore Nodo " +  str(k2) + " [ITERAZIONE]: " + str(succIter2))
@@ -455,13 +455,13 @@ print("Successore Nodo " +  str(k2) + " [RICORSIONE]: " + str(succRec2))
 k_case1=7
 k_case3=33
 print("\nDELETION - Case 1 - key " + str(k_case1) + "\nBefore...")
-albero.visitaPerLivelli()
+tree.visitaPerLivelli()
 print("\nAfter...")
-cancella(albero.getRoot(), k_case1)
-albero.visitaPerLivelli()
+cancella(tree.getRoot(), k_case1)
+tree.visitaPerLivelli()
 print("\n\nDELETION - Case 3 - key " + str(k_case3) + "\nBefore...")
-albero.visitaPerLivelli()
+tree.visitaPerLivelli()
 print("\nAfter...")
-cancella(albero.getRoot(),k_case3)
-albero.visitaPerLivelli()
+cancella(tree.getRoot(),k_case3)
+tree.visitaPerLivelli()
 

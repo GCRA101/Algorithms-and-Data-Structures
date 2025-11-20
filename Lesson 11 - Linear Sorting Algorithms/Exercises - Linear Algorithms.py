@@ -22,7 +22,7 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Mostrare that the Counting Sort e' an algorithm for sorting stabile.
+Mostrare that the Counting Sort is an algorithm for sorting stabile.
 '''
 
 
@@ -32,14 +32,14 @@ Mostrare that the Counting Sort e' an algorithm for sorting stabile.
 
 '''
 Qual'e' the tempo of esecuzione del Bucket Sort nel worst case?
-Quale semplice modifica delthe algorithm consente of conservare tempo middle 
-lineare e costo Θ(nlogn) nel worst case?'
+Quale semplice modifica than the algorithm consente of conservare tempo middle 
+lineare and cost Θ(nlogn) nel worst case?'
 '''
 
 # Considerazioni
 '''
-Basta usare for the buckets, an algorithm for sorting avente costo 
-computazionale peggiore pari to O(nlogn): MergeSort/QuickSort/HeapSort'''
+Enough usare for the buckets, an algorithm for sorting avente cost 
+computazionale peggiore equal to O(nlogn): MergeSort/QuickSort/HeapSort'''
 
 ''' VEDI ANCHE CONSIDERAZIONI E PSEUDOCODICE SU CARTA '''
 
@@ -95,7 +95,7 @@ def heapSort(To):                            # T(n)
 'BUCKET SORT'
 
 def bucketSortHeap(To):                                     # T(n)
-    '1. Ricerca value intero massimo k'
+    '1. Search value intero massimo k'
     imax=0                                                 # Θ(1)
     for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
         if To[imax]<To[the]:                                   # Θ(1)
@@ -114,7 +114,7 @@ def bucketSortHeap(To):                                     # T(n)
     for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
         if len(B[the])>0:                      '(**)'        # Θ(1)
             heapSort(B[the])                                 # vlogv*Θ(1)+Θ(1)                               
-    '5. Concatenzazione liste B[the] nel vector To'    
+    '5. Concatenzazione lists B[the] nel vector To'    
     k=0                                                    # Θ(1)
     for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
        for j in range(0,len(B[the]),1):                      # v*Θ(1)+Θ(1)   
@@ -145,9 +145,9 @@ bucketSortHeap(Abest)
 # ESERCIZI0 3 ################################################################
 
 '''
-The Bucket Sort puo' essere modficato in mdo that l'sorting all'interno 
-delle liste sia eseguito through counting sort.
-Affinche' the costo delthe algorithm sia lineare also nel worst case, 
+The Bucket Sort puo' essere modficato in mdo that l'sorting all'inner 
+of the lists sia executed through counting sort.
+Affinche' the cost than the algorithm sia lineare also nel worst case, 
 quale ipotesi bisogna fare on k?
 '''
 
@@ -156,8 +156,8 @@ quale ipotesi bisogna fare on k?
 
 # Considerazioni
 '''
-Basta that k<n where k value massimo contenuto in the array from ordinare e n 
-number totale degli elements in esso contenuti'''
+Enough that k<n where k value massimo contenuto in the array to be sorted and n 
+number totale of the elements in esso contenuti'''
 
 ''' VEDI ANCHE CONSIDERAZIONI E PSEUDOCODICE SU CARTA '''
 
@@ -174,7 +174,7 @@ Abest=[1,5,6,31,44,53,98,101]
 'VERSIONE AVANZATA - Data Satellite'
 
 def countingSort(To):                                          # T(n)
-    '1. Ricerca value intero massimo k'
+    '1. Search value intero massimo k'
     imax=0                                                    # Θ(1)
     for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
         if To[imax]<To[the]:                                      # Θ(1)
@@ -202,7 +202,7 @@ def countingSort(To):                                          # T(n)
 'BUCKET SORT'
 
 def bucketSortCounting(To):                                 # T(n)
-    '1. Ricerca value intero massimo k'
+    '1. Search value intero massimo k'
     imax=0                                                 # Θ(1)
     for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
         if To[imax]<To[the]:                                   # Θ(1)
@@ -221,7 +221,7 @@ def bucketSortCounting(To):                                 # T(n)
     for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
         if len(B[the])>0:                      '(**)'        # Θ(1)
             countingSort(B[the])                             # v*Θ(1)+Θ(1)                               
-    '5. Concatenzazione liste B[the] nel vector To'    
+    '5. Concatenzazione lists B[the] nel vector To'    
     k=0                                                    # Θ(1)
     for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
        for j in range(0,len(B[the]),1):                      # v*Θ(1)+Θ(1)   

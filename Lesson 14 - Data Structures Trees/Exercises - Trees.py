@@ -26,35 +26,35 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Design an algorithm that, given to albero binario stored through vector
-dei padri, restituisca the vector relativo alla rappresentazione posizionale
-dello stesso albero. calculate the computational cost.
+Design an algorithm that, given to tree binario stored through vector
+dei padri, restituisca the vector relativo to the rappresentazione posizionale
+of the same tree. calculate the computational cost.
 '''
 
 # Considerazioni
-'''L'albero e' a struttura data nodale estremamente efficiente e versatile.
-The sua storazione as vector posizionale prevede the scrittura, all'interno
-of a array, of all the values dei suoi nodi dalla radice alle foglie e from 
-sinistra verso destra procedendo verso the basso to partire dalla radice.
+'''L'tree is a struttura data nodale estremamente efficiente and versatile.
+The sua storazione as vector posizionale prevede the scrittura, all'inner
+of a array, of all the values dei suoi nodi from the root to the leaves and from 
+sinistra verso destra procedendo verso the basso to partire from the root.
 The sua storazione through vector dei padri prevede the realizzazione of two
-vettori paralleli R e P. R containing all the values of all the nodi e P 
-containing l'index del padre of ciascun element corrispondente dell'albero.
+vectors paralleli R and P. R containing all the values of all the nodi and P 
+containing l'index del padre of ciascun element corrispondente dell'tree.
 ''' 
 
 
 
-'function AUSILIARIA for Ricerca indices'
+'function AUSILIARIA for Search indices'
 def trovaIndici(array,el):              # S(n)
-    indici=[]                           # Θ(1)
+    indices=[]                           # Θ(1)
     for the in range(0,len(array),1):     # n*Θ(1)+Θ(1)
         if array[the]==el:                # Θ(1)
-            indici.append(the)            # Θ(1)
-    if len(indici)==0:                  # Θ(1)
+            indices.append(the)            # Θ(1)
+    if len(indices)==0:                  # Θ(1)
         return None                     # Θ(1)
-    return indici                       # Θ(1)
+    return indices                       # Θ(1)
 
 # Computational Cost
-# Dimensione Input: number elements in the array
+# Dimension Input: number elements in the array
 # S(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
 
 
@@ -70,22 +70,22 @@ def convertiAPosizionale(R,P,Q=None,the=None,j=[0]):                #T(n)
         Q=[None]*maxLength                                        #Θ(1)
         
     'CASO BASE'
-    # If l'indice del node not e' contained in the vector dei padri,
-    # vuol dire that esso not ha figli ed e' quindi a foglia.
+    # If l'index del node not is contained in the vector dei padri,
+    # vuol dire that esso not ha figli ed is therefore a foglia.
     if P.count(the)==0:                                             #Θ(n)
         return Q                                                  #Θ(1)
     
     'CODICE PASSO'
-    # Si ricavano the indici dei figli nel Vector dei padri, li si 
-    # scorrono in a for loop e for ciascuno of essi si estrae the value del
-    # figlio from R, the si inserisce in Q e si richiama the function
+    # Si ricavano the indices dei figli nel Vector dei padri, li si 
+    # scorrono in a for loop and for ciascuno of essi si estrae the value del
+    # figlio from R, the si inserisce in Q and si richiama the function
     # ricorsivamente on of esso.
-    indici=trovaIndici(P,the)                                       #Θ(n)
-    for n in range(0,len(indici),1):                              #k*Θ(1)+Θ(1)
-        figlio=R[indici[n]]                                       #Θ(1)
+    indices=trovaIndici(P,the)                                       #Θ(n)
+    for n in range(0,len(indices),1):                              #k*Θ(1)+Θ(1)
+        figlio=R[indices[n]]                                       #Θ(1)
         Q[j[n]]=figlio                                            #Θ(1)
         'PASSO RICORSIVO'                                        
-        convertiAPosizionale(R,P,Q,indici[n],[2*j[n]+1,2*j[n]+2]) #T(n/2) 
+        convertiAPosizionale(R,P,Q,indices[n],[2*j[n]+1,2*j[n]+2]) #T(n/2) 
     return Q
 
 # Computational Cost
@@ -113,23 +113,23 @@ Q=convertiAPosizionale(R, P)
 # ESERCIZIO 2 ################################################################
 
 '''
-Design an algorithm that, given to albero binario stored through 
-rappresentazione posizionale, restituisca the vector dei padri dello stesso
-albero. calculate the computational cost.
+Design an algorithm that, given to tree binario stored through 
+rappresentazione posizionale, restituisca the vector dei padri of the same
+tree. calculate the computational cost.
 '''
 
 # Considerazioni
-'''L'albero e' a struttura data nodale estremamente efficiente e versatile.
-The sua storazione as vector posizionale prevede the scrittura, all'interno
-of a array, of all the values dei suoi nodi dalla radice alle foglie e from 
-sinistra verso destra procedendo verso the basso to partire dalla radice.
+'''L'tree is a struttura data nodale estremamente efficiente and versatile.
+The sua storazione as vector posizionale prevede the scrittura, all'inner
+of a array, of all the values dei suoi nodi from the root to the leaves and from 
+sinistra verso destra procedendo verso the basso to partire from the root.
 The sua storazione through vector dei padri prevede the realizzazione of two
-vettori paralleli R e P. R containing all the values of all the nodi e P 
-containing l'index del padre of ciascun element corrispondente dell'albero.
+vectors paralleli R and P. R containing all the values of all the nodi and P 
+containing l'index del padre of ciascun element corrispondente dell'tree.
 ''' 
 
 
-'function AUSILIARIA for Calcolo number Nodi'
+'AUXILIARY function for Calculating number of Nodes'
 def numeroNodi(array,nullValue=None):   # S(n)
     numNodi=0                           # Θ(1)
     for el in array:                    # n*Θ(1)+Θ(1)
@@ -138,35 +138,35 @@ def numeroNodi(array,nullValue=None):   # S(n)
     return numNodi                      # Θ(1)
 
 # Computational Cost
-# Dimensione Input: number elements in the array
+# Dimension Input: number elements in the array
 # S(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
 
 
 
-'function PRINCIPALE for conversione Vector Posizionale to Vector dei Padri'
+'MAIN function for converting Positional Vector to Parent Vector'
 def convertiAPadri(Q,R=None, P=None):                         #T(n)
     
-    # Inizializzatione del Vector dei Padri (vettori P e R)   
-    'Si scorre the vector posizionale e si contano the caselle aventi value' 
-    'not nullo. Tale number definira the dimensione del vector dei padri'                   
+    # Initialization of Parent Vector (vectors P and R)   
+    'Scan the positional vector and count the cells having non-null value' 
+    'This number will define the size of the parent vector'                   
     R=[None]*numeroNodi(Q,None)                               #Θ(n)
     P=[None]*len(R)                                           #Θ(1)
     
-    # Inizializzazione Vector of Supporto for Indici dei Padri
-    'Ha the stessa lunghezza del vector posizionale e immagazzina the indici'
+    # Inizializzazione Vector of Supporto for Indices dei Padri
+    'Ha the same lunghezza del vector posizionale and immagazzina the indices'
     'dei padri sia dei nodi presenti that dei nodi assenti.'
     Ptemp=[None]*len(Q)                                       #Θ(1)
     
     # Calcolo indices dei padri of ciascun element del vector posizionale
-    'Valendo the regola of 2*the+1 e 2*the+2, the sara uguale to floor((the-1)/2)'
+    'Valendo the rule of 2*the+1 and 2*the+2, the sara uguale to floor((the-1)/2)'
     for the in range(0,len(Q),1):                               #n*Θ(1)+Θ(1)
         j=math.floor((the-1)/2)                                 #Θ(1)
         Ptemp[the]=j                                            #Θ(1)
     
     # Costruzione Vector dei Padri
-    'Scorriamo the vector posizionale Q e where troviamo a element NON nullo'
-    'andiamo to inserire the suo value e lindice del padre corrispondente all'
-    'interno dei vettori R e P rispettivamente'
+    'Scorriamo the vector posizionale Q and where troviamo a element NON nullo'
+    'andiamo to inserire the suo value and lindice del padre corrispondente all'
+    'inner dei vectors R and P rispettivamente'
     j=0                                                       #Θ(1)
     for the in range(0,len(Q),1):                               #n*Θ(1)+Θ(1)
         if Q[the]!=None:                                        #Θ(1)

@@ -16,11 +16,11 @@ import matplotlib.pyplot as plt
 
 '''
 INSERTION SORT 
-The algorithm Insertion Sort e' one dethe algorithms piu' semplici for effettuare
-l'sorting to series/record of given along with SELECTION SORT e al 
+The algorithm Insertion Sort is one of the algorithms simplest for performing
+l'sorting to series/record of given along with SELECTION SORT and al 
 BUBBLE SORT'
 The algorithm INSERTION SORT has two different computational costs between case
-peggiore (given series sorted in reverse order) e best case (serie given
+peggiore (given series sorted in reverse order) and best case (serie given
 already' ordinata)
 - worst case: O(n^2)
 - best case: Ω(n)
@@ -42,7 +42,7 @@ def insertionSort(To):               # T(n)
     
 
 # Input size: number n of elements in array To
-# Best case e worst case variano depending on whether the array sia already' sorted
+# Best case and worst case variano depending on whether the array sia already' sorted
 # o, viceversa, sia ordinato in ordine inverso
 # Computational Cost: T(n)=O(n^2) - Worst case
 #                       T(n)=Ω(n)   - Best case

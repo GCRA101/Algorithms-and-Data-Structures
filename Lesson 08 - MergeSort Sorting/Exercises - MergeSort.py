@@ -21,7 +21,7 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Scrivere the versione iterative delthe algorithm of Merge Sort
+Scrivere the versione iterative than the algorithm of Merge Sort
 '''
 
 # algorithm
@@ -87,7 +87,7 @@ mergeSortIter(Abest,0,len(Abest)-1)
 # ESERCIZIO 2 ################################################################
 
 '''
-Scrivere the versione recursive delthe algorithm of Merge
+Scrivere the versione recursive than the algorithm of Merge
 '''
 # algorithm
 
@@ -144,10 +144,10 @@ mergeSortRecurs(Abest,0,len(Abest)-1)
 
 '''
 Si supponga of scrivere a variante del Merge Sort, chiamata 4_MergeSort that,
-invece of suddividere the vector from ordinare in 2 parti (e ordinarle 
+instead of dividing the vector to be sorted in 2 parti (e ordinarle 
 separatamente), the suddivide in 4 parti, the ordina ognuna riapplicando 
-4_MergeSort, e the riunifica usando a'opportuna variante 4_Merge of Merge (that
-fa the fusione on 4 sottovettori invece that on 2.
+4_MergeSort, and the riunifica usando a'opportuna variante 4_Merge of Merge (that
+does the merge on 4 sub-vectors instead of on 2.
 '''
 # algorithm
 

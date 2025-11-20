@@ -8,11 +8,11 @@ Created on Sat Jul 29 16:52:07 2023
 '''
 NODO for ALBERO BINARIO of RICERCA
 The Nodo dell'Binary Search Tree viene implementato as a record triplo
-that is a classe containing the value del nodo (key), the puntatore al 
-figlio sinistro, the puntatore al figlio destro e the puntatore al padre.
-Quest'last e' fondamentale for poter effettuare the salite through l'albero
-(for esempio for trovare the Nodi Predecessori e the Nodi Successori.'
-In a Albero Binario sorted, the figlio Sx viene first del figlio Dx.
+that is a classe containing the value del nodo (key), the pointer al 
+figlio sinistro, the pointer al figlio destro and the pointer al padre.
+Quest'last is fondamentale for poter effettuare the salite through l'tree
+(for esempio for trovare the Nodi Predecessori and the Nodi Successori.'
+In a Tree Binario sorted, the figlio Sx viene first del figlio Dx.
 '''
 
 
@@ -25,7 +25,7 @@ class Nodo:
     parent=None
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,key=None, parent=None, left=None, right=None):
         self.key=key
         self.parent=parent

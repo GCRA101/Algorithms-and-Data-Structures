@@ -14,7 +14,7 @@ from BubbleSortOptimized import bubbleSortOptimized
 from InsertionSort import insertionSort
 from SelectionSort import selectionSort
 
-'array of values all uguali e sorted'
+'array of values all uguali and sorted'
 To=[1]*10
 
 

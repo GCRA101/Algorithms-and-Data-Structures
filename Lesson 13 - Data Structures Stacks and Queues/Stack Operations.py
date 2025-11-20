@@ -14,7 +14,7 @@ import random
 
 # IMPORT PACKAGE CLASSES
 from SingleRecord import RecordSingolo
-from Stack import Pila
+from Stack import Stack
 
 
 'COSTRUZIONE ARRAY DI RECORDS SINGOLI'
@@ -26,7 +26,7 @@ for the in range(0,len(records)-1,1):
     records[the].setNext(records[the+1])
     
 'COSTRUZIONE PILA'
-stack = Pila()    
+stack = Stack()    
 
 'PUSH'
 for record in records:

@@ -7,12 +7,12 @@ Created on Sat Jul 29 16:52:07 2023
 
 '''
 RECORD DOPPIO with POINTER OBJECT
-In this implementazione del record/nodo singolo, the puntatore agli elementi
-successivo e precedente nella list are implementati as riferimenti
+In this implementazione del record/nodo singolo, the pointer agli elements
+successivo and precedente in the list are implementati as riferimenti
 agli oggetti.
-Invece of usare a stringa with l'id ipotetico dell'indirizzo of memoria, 
-usiamo direttamente the riferimento alla corrispondente variabile.
-A'implementazione piu' robusta e semplice from usare ed also piu' pratica.
+Instead of usare a stringa with l'id ipotetico dell'indirizzo of memoria, 
+usiamo direttamente the riferimento to the corrispondente variable.
+A'implementazione piu' robusta and semplice from usare ed also piu' pratica.
 '''
 
 
@@ -24,7 +24,7 @@ class RecordDoppio:
     _next=None
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,_data=None,_prev=None,_next=None):
         self._data=_data
         self._prev=_prev

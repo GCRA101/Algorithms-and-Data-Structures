@@ -52,16 +52,16 @@ for the in range(0,len(nodi),1):
                 nodi[the].setRight(nodi[j])
                 break
          
-radice=nodi[0]
-albero=AlberoBinarioDiRicerca(radice)
+root=nodi[0]
+tree=AlberoBinarioDiRicerca(root)
 
 
 '''
 function DI RICERCA
 '''
 
-# Given aa key k e a albero p in input, the function returns the nodo
-# dell'albero avente key with value uguale to k.
+# Given aa key k and a tree p in input, the function returns the nodo
+# dell'tree avente key with value uguale to k.
 
 def ABR_searchRic(p,k):                         # T(h)
     if (p==None or p.getKey()==k):              # Θ(1)
@@ -72,9 +72,9 @@ def ABR_searchRic(p,k):                         # T(h)
         return ABR_searchRic(p.getRight(),k)    # T(h-1)
 
 # Computational Cost
-# Dimensione dell'input: Altezza h dell'albero
-# Si esegue the function h volte with operazioni each volta of costo costante
-# Θ(1). Quindi the costo totale equivale to h volte Θ(1).
+# Dimension dell'input: Altezza h dell'tree
+# Si esegue the function h times with operazioni each time of cost constant
+# Θ(1). Therefore the cost totale equivale to h times Θ(1).
 # Cost: T(h)= T(h-1)+Θ(1) -> T(h)=Θ(h)
 
 
@@ -84,7 +84,7 @@ def ABR_searchRic(p,k):                         # T(h)
 # ESERCIZIO 1 ################################################################
 
 '''
-Scrivere the pseudocodice (sia iterative that recursive method) della function that 
+Scrivere the pseudocodice (sia iterative that recursive method) of the function that 
 calculates the MINIMO in a ABR.
 '''
 
@@ -97,7 +97,7 @@ def minimoRecurs(p):                             # T(h)
     return minimoRecurs(p.getLeft())             # T(h-1)
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Cost: T(h)=Θ(1)+T(h-1) -> T(h)=Θ(h)
 
 
@@ -110,14 +110,14 @@ def minimoIter(p):                               # T(h)
     return p                                     # Θ(1)
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Cost: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
 'TEST'
 # Risultato atteso: 7
-print("Minimo: " +str(minimoRecurs(albero.getRoot()))+ " [Ricorsivo]")
-print("Minimo: " + str(minimoIter(albero.getRoot())) + " [Iterativo]")
+print("Minimo: " +str(minimoRecurs(tree.getRoot()))+ " [Ricorsivo]")
+print("Minimo: " + str(minimoIter(tree.getRoot())) + " [Iterativo]")
 
 
 
@@ -126,7 +126,7 @@ print("Minimo: " + str(minimoIter(albero.getRoot())) + " [Iterativo]")
 # ESERCIZIO 2 ################################################################
 
 '''
-Scrivere the pseudocodice (sia iterative that recursive method) della function that
+Scrivere the pseudocodice (sia iterative that recursive method) of the function that
 calculates the massimo in a ABR.
 '''
 
@@ -139,7 +139,7 @@ def massimoRecurs(p):                             # T(h)
     return massimoRecurs(p.getRight())            # T(h-1)
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Cost: T(h)=Θ(1)+T(h-1) -> T(h)=Θ(h)
 
 
@@ -152,14 +152,14 @@ def massimoIter(p):                               # T(h)
     return p                                      # Θ(1)
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Cost: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
 'TEST'
 # Risultato atteso: 91
-print("Massimo: " +str(massimoRecurs(albero.getRoot()))+ " [Ricorsivo]")
-print("Massimo: " + str(massimoIter(albero.getRoot())) + " [Iterativo]")
+print("Massimo: " +str(massimoRecurs(tree.getRoot()))+ " [Ricorsivo]")
+print("Massimo: " + str(massimoIter(tree.getRoot())) + " [Iterativo]")
 
 
 
@@ -168,13 +168,13 @@ print("Massimo: " + str(massimoIter(albero.getRoot())) + " [Iterativo]")
 # ESERCIZIO 3 ################################################################
 
 '''
-Scrivere the pseudocodice (sia iterative sia recursive) della function that
+Scrivere the pseudocodice (sia iterative sia recursive) of the function that
 calculates the PREDECESSOR of to value given in a Binary Search Tree.
 '''
 
-# returns the nodo avente key the cui value sarebbe immediatamente 
-# precedente to that passato in input if the nodi dell'albero venissero ordinati
-# in ordine crescente in base al value della loro key.
+# returns the nodo avente key the which value sarebbe immediatamente 
+# precedente to that passato in input if the nodi dell'tree venissero ordinati
+# in ordine crescente in base al value of the loro key.
 
 # Iterativo
 def predecessoreIter(p,k):                        # T(h)
@@ -188,7 +188,7 @@ def predecessoreIter(p,k):                        # T(h)
     if nodo.getLeft()!=None:                      # Θ(1)
         predecessor=massimoIter(nodo.getLeft())   # Ω(1) o O(h)
     else:                                         # Θ(1)
-    # 4. If the nodo NON ha figlio Sx, risali l'albero     
+    # 4. If the nodo NON ha figlio Sx, risali l'tree     
     #    through ITERAZIONE    
         while(nodo.getParent()!=None and 
               nodo==nodo.getParent().getLeft()):  # Θ(1)
@@ -208,14 +208,14 @@ def predecessoreRecurs(p,k):                      # T(h)
     if nodo.getLeft()!=None:                      # Θ(1)
         predecessor=massimoRecurs(nodo.getLeft()) # Ω(1) o O(h)     
     else:                                         # Θ(1)
-    # 4. If the nodo NON ha figlio Sx, risali l'albero
+    # 4. If the nodo NON ha figlio Sx, risali l'tree
     #    through RICORSIONE
         return predecRecurs(nodo)                 # S(h)
     return predecessor                            # Θ(1)
 
 def predecRecurs(nodo):                           # S(h)
-    # 1. If the nodo not ha padre, esso e' the radice dell'albero...
-    #    quindi ritorna the radice.
+    # 1. If the nodo not ha padre, esso is the root dell'tree...
+    #    therefore ritorna the root.
     if nodo.getParent()==None:                    # Θ(1)
         return nodo                               # Θ(1)
     # 2. If the nodo not coincide with the figlio Sx of suo padre,
@@ -223,12 +223,12 @@ def predecRecurs(nodo):                           # S(h)
     if nodo!=nodo.getParent().getLeft():          # Θ(1)
         return nodo.getParent()                   # Θ(1)
     # 3. If the nodo coincide with the figlio Sx of suo padre, 
-    #    continua the risalita passando the nodo padre nella nuova 
+    #    continua the risalita passando the nodo padre in the nuova 
     #    chiamata ricorsiva.
     return predecRecurs(nodo.getParent())         # S(h-1)   
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Costo Iterativa: T(h)=Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
 # Costo Ricorsiva: T(h)=Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
 
@@ -236,10 +236,10 @@ def predecRecurs(nodo):                           # S(h)
 'TEST'
 k1=80
 k2=13
-predIter1=predecessoreIter(albero.getRoot(),k1)  # iterative -Case 1- Discesa
-predIter2=predecessoreIter(albero.getRoot(),k2)  # iterative -Case 2- Risalita
-predRec1=predecessoreRecurs(albero.getRoot(),k1) # recursive -Case 1- Discesa
-predRec2=predecessoreRecurs(albero.getRoot(),k2) # recursive -Case 2- Risalita
+predIter1=predecessoreIter(tree.getRoot(),k1)  # iterative -Case 1- Discesa
+predIter2=predecessoreIter(tree.getRoot(),k2)  # iterative -Case 2- Risalita
+predRec1=predecessoreRecurs(tree.getRoot(),k1) # recursive -Case 1- Discesa
+predRec2=predecessoreRecurs(tree.getRoot(),k2) # recursive -Case 2- Risalita
 print("\nPREDECESSORE\nPredecessore Nodo " + str(k1) 
       + " [ITERAZIONE]: " + str(predIter1))
 print("Predecessore Nodo " +  str(k2) + " [ITERAZIONE]: " + str(predIter2))
@@ -255,14 +255,14 @@ print("Predecessore Nodo " +  str(k2) + " [RICORSIONE]: " + str(predRec2))
 # ESERCIZIO 4 ################################################################
 
 '''
-Scrivere the pseudocodice (sia iterative sia recursive) della function that
+Scrivere the pseudocodice (sia iterative sia recursive) of the function that
 calculates the SUCCESSORE of to value given in a Binary Search Tree.
 '''
 
 
-# returns the nodo avente key the cui value sarebbe immediatamente 
-# successivo to that passato in input if the nodi dell'albero venissero ordinati
-# in ordine crescente in base al value della loro key.
+# returns the nodo avente key the which value sarebbe immediatamente 
+# successivo to that passato in input if the nodi dell'tree venissero ordinati
+# in ordine crescente in base al value of the loro key.
 
 # Iterativo
 def successoreIter(p, k):                          # T(h)
@@ -276,7 +276,7 @@ def successoreIter(p, k):                          # T(h)
     if nodo.getRight()!=None:                      # Θ(1)
         successor=minimoIter(nodo.getRight())      # Ω(1) o O(h)
     else:        
-    # 4. If the nodo NON ha figlio Dx, risali l'albero     
+    # 4. If the nodo NON ha figlio Dx, risali l'tree     
     #    through ITERAZIONE
         while(nodo.getParent()!=None and 
               nodo==nodo.getParent().getRight()):  # Θ(1)
@@ -296,14 +296,14 @@ def successoreRecurs(p,k):                         # T(h)
     if nodo.getRight()!=None:                      # Θ(1)
         successor=minimoRecurs(nodo.getRight())    # Ω(1) o O(h)
     else:                                          # Θ(1)
-    # 4. If the nodo NON ha figlio Dx, risali l'albero
+    # 4. If the nodo NON ha figlio Dx, risali l'tree
     #    through RICORSIONE
         return succesRecurs(nodo)                  # S(h)
     return successor                               # Θ(1)
 
 def succesRecurs(nodo):                            # S(h)
-    # 1. If the nodo not ha padre, esso e' the radice dell'albero...
-    #    quindi ritorna the radice.
+    # 1. If the nodo not ha padre, esso is the root dell'tree...
+    #    therefore ritorna the root.
     if nodo.getParent()==None:                     # Θ(1)
         return nodo                                # Θ(1) 
     # 2. If the nodo not coincide with the figlio Dx of suo padre,
@@ -311,12 +311,12 @@ def succesRecurs(nodo):                            # S(h)
     if nodo!=nodo.getParent().getRight():          # Θ(1)
         return nodo.getParent()                    # Θ(1)
     # 3. If the nodo coincide with the figlio Dx of suo padre, 
-    #    continua the risalita passando the nodo padre nella nuova 
+    #    continua the risalita passando the nodo padre in the nuova 
     #    chiamata ricorsiva.
     return succesRecurs(nodo.getParent())          # S(h-1)     
 
 # Computational Cost
-# Input size: altezza dell'albero h
+# Input size: altezza dell'tree h
 # Costo Iterativa: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
 # Costo Ricorsiva: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
 
@@ -324,10 +324,10 @@ def succesRecurs(nodo):                            # S(h)
 'TEST'
 k1=11
 k2=16
-succIter1=successoreIter(albero.getRoot(),k1)  # iterative -Case 1- Discesa
-succIter2=successoreIter(albero.getRoot(),k2)  # iterative -Case 2- Risalita
-succRec1=successoreRecurs(albero.getRoot(),k1) # recursive -Case 1- Discesa
-succRec2=successoreRecurs(albero.getRoot(),k2) # recursive -Case 2- Risalita
+succIter1=successoreIter(tree.getRoot(),k1)  # iterative -Case 1- Discesa
+succIter2=successoreIter(tree.getRoot(),k2)  # iterative -Case 2- Risalita
+succRec1=successoreRecurs(tree.getRoot(),k1) # recursive -Case 1- Discesa
+succRec2=successoreRecurs(tree.getRoot(),k2) # recursive -Case 2- Risalita
 print("\nSUCCESSORE\nSuccessore Nodo " + str(k1) 
       + " [ITERAZIONE]: " + str(succIter1))
 print("Successore Nodo " +  str(k2) + " [ITERAZIONE]: " + str(succIter2))

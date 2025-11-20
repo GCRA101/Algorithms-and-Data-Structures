@@ -7,10 +7,10 @@ Created on Sat Jul 29 16:52:07 2023
 
 '''
 NODO for ALBERO
-The Nodo dell'Albero Binario viene implementato as a record doppio, that is
-a classe containing the value del nodo, the puntatore al figlio sinistro e 
-the puntatore al figlio destro.
-In a Albero Binario sorted, the figlio Sx viene first del figlio Dx.
+The Nodo dell'Tree Binario viene implementato as a record doppio, that is
+a classe containing the value del nodo, the pointer al figlio sinistro and 
+the pointer al figlio destro.
+In a Tree Binario sorted, the figlio Sx viene first del figlio Dx.
 '''
 
 
@@ -22,7 +22,7 @@ class Nodo:
     figlioDx=None
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,value=None, figlioSx=None, figlioDx=None):
         self.value=value
         self.figlioSx=figlioSx

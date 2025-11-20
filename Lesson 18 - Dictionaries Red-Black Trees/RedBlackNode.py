@@ -9,9 +9,9 @@ Created on Sat Jul 29 16:52:07 2023
 NODO for ALBERO BINARIO of RICERCA ROSSO-NERO
 The Nodo dell'Binary Search Tree RossoNero viene implementato as a 
 record triplo, that is a classe containing the value del nodo (key), 
-the puntatore al figlio sinistro, the puntatore al figlio destro e the puntatore 
+the pointer al figlio sinistro, the pointer al figlio destro and the pointer 
 al padre. In aggiunta to these campi ne abbiamo one aggiuntivo, detto "of 
-bilanciamento" that contiene the colore assegnato al nodo e that puo' essere 
+bilanciamento" that contiene the colore assegnato al nodo and that puo' essere 
 solamente o ROSSO o NERO.
 '''
 
@@ -29,7 +29,7 @@ class Nodo:
     parent=None
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,key=None, color=None, 
                  parent=None, left=None, right=None):
         self.key=key

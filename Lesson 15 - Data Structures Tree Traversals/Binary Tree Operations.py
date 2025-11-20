@@ -34,8 +34,8 @@ for the in range(0,(len(nodi)-2)//2+1,1):
         nodi[the].setFiglioDx(nodi[2*the+2])
         
 'COSTRUZIONE ALBERO BINARIO'     
-radice=nodi[0]
-albero=AlberoBinario(radice)
+root=nodi[0]
+tree=AlberoBinario(root)
 
 
 
@@ -48,7 +48,7 @@ def calcola_n(p):
     if p!=None:
         num_l=calcola_n(p.getFiglioSx()) # Recursive Step 1 (SottoAlbero Sx)
         num_r=calcola_n(p.getFiglioDx()) # Recursive Step 2 (SottoAlbero Dx)
-        num=num_l+num_r+1                # Operazione sul Nodo
+        num=num_l+num_r+1                # Operazione on the Nodo
         return num
     return 0
 
@@ -56,7 +56,7 @@ def calcola_n(p):
 'RICERCA IN UN ALBERO'
 def cerca(p,k):
     if p!=None:
-      if p.getValore()==k:                 # Operazione sul Nodo
+      if p.getValore()==k:                 # Operazione on the Nodo
           return True
       elif cerca(p.getFiglioSx(),k)==True: # Recursive Step 1 (SottoAlbero Sx)
           return True
@@ -73,7 +73,7 @@ def calcola_h(p):
         return 0
     h=max(calcola_h(p.getFiglioSx()),      # Recursive Step 1 (SottoAlbero Sx)
           calcola_h(p.getFiglioDx()))      # Recursive Step 2 (SottoAlbero Dx)
-    return h+1                             # Operazione sul Nodo
+    return h+1                             # Operazione on the Nodo
 
 
 'CONTEGGIO NODI AL LIVELLO K'
@@ -84,12 +84,12 @@ def conta_k(p,k,the):
         return 1
     k_left=conta_k(p.getFiglioSx(),k,the+1)  # Recursive Step 1 (SottoAlbero Sx)
     k_right=conta_k(p.getFiglioDx(),k,the+1) # Recursive Step 2 (SottoAlbero Dx)
-    return k_left+k_right                  # Operazione sul Nodo
+    return k_left+k_right                  # Operazione on the Nodo
         
 
 
 'Test'
-numNodi=calcola_n(albero.getRoot())
-cercaNodo=cerca(albero.getRoot(), 8)
-altezza=calcola_h(albero.getRoot())
+numNodi=calcola_n(tree.getRoot())
+cercaNodo=cerca(tree.getRoot(), 8)
+altezza=calcola_h(tree.getRoot())
 

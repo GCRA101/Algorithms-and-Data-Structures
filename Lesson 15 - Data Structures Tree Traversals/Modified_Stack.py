@@ -17,27 +17,27 @@ from SingleRecord import RecordSingolo
 
 '''
 CLASSE PILA (STACK)
-Costruita servendosi della Struttura Data of LISTA PUNTATA SINGOLA e modificata
+Costruita servendosi of the Struttura Data of LISTA PUNTATA SINGOLA and modificata
 nel suo funzionamento for essere usata for the VISITA IN PREORDINE iterative 
 of a ALBERO BINARIO.
-The Pila si serve of Record Singoli mentre l'albero binario of Record Doppi. 
-The segreto consiste nell'immagazzinare the riferimento to ciascun nodo dell'albero
-nel campo Given e the riferimento al record singolo successivo nel campo Next.
-The Pila e' quindi costituita from a successione of record singoli that si puntano
-to vicenda in sequenza e in cui ciascuno of essi contiene the riferimento to 
-ciascun nodo corrispondente dell'Albero Binario.
-Quindi...
-    - Campo DATA : Riferimento to Nodo Albero Binario
-    - Campo NEXT : Riferimento to Record Singolo Successivo nella Pila
+The Stack si serve of Record Singoli while l'tree binario of Record Doppi. 
+The segreto consiste nell'immagazzinare the riferimento to ciascun nodo dell'tree
+nel campo Given and the riferimento al record singolo successivo nel campo Next.
+The Stack is therefore costituita from a successione of record singoli that si puntano
+to vicenda in sequenza and where ciascuno of essi contiene the riferimento to 
+ciascun nodo corrispondente dell'Tree Binario.
+Therefore...
+    - Campo DATA : Riferimento to Nodo Tree Binario
+    - Campo NEXT : Riferimento to Record Singolo Successivo in the Stack
 '''
 
-class Pila:
+class Stack:
     
     # ATTRIBUTES
     _top=None
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,_top=None):
         self._top=_top
         

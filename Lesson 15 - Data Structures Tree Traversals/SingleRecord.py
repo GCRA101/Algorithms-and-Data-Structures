@@ -14,7 +14,7 @@ class RecordSingolo:
     _next=None
 
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,_data=None,_next=None):
         self._data=_data
         self._next=_next

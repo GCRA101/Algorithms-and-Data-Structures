@@ -22,20 +22,20 @@ ESERCIZI SVOLTI SU CARTA '''
 
 '''
 Design an algorithm that, given as input a vector that rappresenta a heap,
-restituisca the value minimo. Fare the opportune considerazioni sul costo 
+restituisca the value minimo. Fare the opportune considerazioni on the cost 
 computazionale.
 '''
 
 # Considerazioni
 '''
-In a Heap the value minimo sara' always from ricercare between the foglie dell'albero
-(that is between the elementi/valori that not presentano figli). Quando l'albero e'
-completo the foglie saranno all concentrate all'last livello, mentre quando
-l'albero e' incompleto vi saranno also foglie al livello immediatamente 
-precedente l'last.
-Scorrendo the elements dell'Heap, l'index del first element the that presenti the 
-figlio destro e sinistro inesistenti (2i+1>=len(To) and 2i+2>=len(To)) sara' the
-first from cui partire nella ricerca del value minimo' 
+In a Heap the value minimo it will always be from ricercare between the leaves dell'tree
+(that is between the elements/valori that not presentano figli). Quando l'tree e'
+complete the leaves will all be concentrated at the last level, while when
+the tree is incomplete there will also be leaves at the level immediately 
+preceding the last.
+Scanning the elements of the Heap, the index of the first element that has 
+nonexistent right and left children (2i+1>=len(A) and 2i+2>=len(A)) will be the
+first from which to start in the search for the minimum value 
 '''
 
 ''' VEDI ANCHE CONSIDERAZIONI E PSEUDOCODICE SU CARTA '''
@@ -102,10 +102,10 @@ minAbest=heapMinimum(Abest)
 # ESERCIZI0 2 ################################################################
 
 '''
-A Heap minimo e' a albero binario completo o quasi completo with the proprieta' 
-that the key on each nodo e' minore o uguale alla key dei suoi figli. Si
-modifichi the algorithm of Heap Sort in modo that the struttura given of rirerimento 
-sia a heap minimo e not a heap.'
+A Heap minimo is a tree binario completo o quasi completo with the property' 
+that the key on each nodo is minore o uguale to the key dei suoi figli. Si
+modifichi the algorithm of Heap Sort in a way that the struttura given of rirerimento 
+sia a heap minimo and not a heap.'
 '''
 
 ''' VEDI ANCHE CONSIDERAZIONI E PSEUDOCODICE SU CARTA '''
@@ -163,8 +163,8 @@ def heapSortMin(To):                         # T(n)
 
 # Input size: number n of elements in array To
 # Best case and worst case coincide.
-# The costo computazionale dei 3 algoritmi Heapify, BuildHeap e HeapSort e' 
-# as segue:
+# The computational cost dei 3 algoritmi Heapify, BuildHeap and HeapSort is 
+# as follows:
 # - Heapify:   T(n)=T(2/3n)+Θ(1)  -> T(n)=O(logn)
 # - BuildHeap: T(n)=O(n)          -> T(n)=O(n)
 # - HeapSort:  T(n)=O(nlogn)      -> T(n)=O(nlogn)

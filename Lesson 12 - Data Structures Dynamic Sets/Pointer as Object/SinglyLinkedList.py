@@ -43,14 +43,14 @@ class ListaPuntataSingola:
     'LETTURA - READING'
     
     '''For definizione, the lettura (reading) consente of ottenere the value
-    of a element to partire dal suo index all'interno of a list'''
+    of a element to partire dal suo index all'inner of a list'''
     def read(self,index):                                # T(n)
         'Controllo input'
         if index<0:                                      # Θ(1)
             return None                                  # Θ(1)
         'Inizializzazione record corrente'
         p_corr=self._primoRecord                         # Θ(1)
-        'Ricerca record corrispondente to indice'
+        'Search record corrispondente to index'
         for the in range(0,index,1):                       # n*Θ(1)
             p_corr=p_corr.getNext()                      # Θ(1)
             if p_corr==None:                             # Θ(1)
@@ -59,14 +59,14 @@ class ListaPuntataSingola:
         return p_corr.getData()                          # Θ(1)
         
     # Computational Cost: 
-    # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -l'index e' maggiore del max'
-    # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -l'index e' zero'
+    # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -l'index is maggiore del max'
+    # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -l'index is zero'
 
 
     'RICERCA - SEARCH'
     
-    '''For definizione, the ricerca consente of ottenere l'index of a element
-     all'interno of a list to partire dal suo value'''
+    '''For definizione, the search consente of ottenere l'index of a element
+     all'inner of a list to partire dal suo value'''
     def search(self,key):                                # T(n)
         p_corr=self._primoRecord                         # Θ(1)
         the=0                                              # Θ(1)
@@ -79,14 +79,14 @@ class ListaPuntataSingola:
     
     # Computational Cost: 
     # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -the key not c'e' 
-    # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -the key e' in first posizione
+    # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -the key is in first position
     
     
     
     'INSERIMENTO - INSERTION'
     
-    '''For definizione, l'inserimento consente of aggiungere a element ad 
-    one specificato indice all'interno della lista'''
+    '''For definizione, l'inserimento consente of add a element ad 
+    one specificato index inside thela list'''
     
     def insert(self,index,given):                        # T(n)
     
@@ -124,7 +124,7 @@ class ListaPuntataSingola:
     'DELETION - DELETION'
     
     '''For definizione, the cancellazione consente of eliminare a element 
-    contenuto in a lista sulla base del suo indice'''
+    contenuto in a list on the base del suo index'''
     
     def delete (self,index):                              # T(n)
       'Controllo input'
@@ -149,5 +149,5 @@ class ListaPuntataSingola:
   
   # Computational Cost: 
   # T(n)=O(n) - Worst case (element from eliminare not esiste)
-  # T(n)=Ω(1) - Best case (element from eliminare e' the first della list)  
+  # T(n)=Ω(1) - Best case (element from eliminare is the first of the list)  
     

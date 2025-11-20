@@ -26,29 +26,29 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Scrivere the pseudocodice (e script python) delle funzioni Enqueue e Dequeue
-quando the coda sia implementata on a array
+Scrivere the pseudocodice (e script python) of the funzioni Enqueue and Dequeue
+when the queue sia implementata on a array
 '''
 
 # Considerazioni
-'''L'array e' a struttura data inerentemente statica. Cio' significa that
-the sua dimensione not puo' cambiare a volta that e' stato creato. 
-L'array on cui costruire the coda deve quindi avere a dimensione the piu' 
-grande possibile e the slittamento degli elementi dovuto alle operazioni of 
-enqueing e dequeuing dev'essere gestito in senso circolare.
-For essere certi that l'head e the tail not si invertano of ordine basta 
-verificare that l'array not sia pieno (first of each operazione of enqueueing)
+'''L'array is a struttura data inerentemente statica. Cio' significa that
+the sua dimension not puo' cambiare a time that is stato creato. 
+The array on which to build the queue must therefore have a dimension as 
+grande possibile and the slittamento of the elements dovuto to the operazioni of 
+enqueing and dequeuing dev'essere gestito in senso circolare.
+For essere certi that l'head and the tail not si invertano of ordine enough 
+verify that l'array not sia pieno (first of each operazione of enqueueing)
 o that not sia vuoto (first of each operazione of dequeueing).
-Each volta that the head o the tail raggiungono l'index last dell'array, 
-allo step successivo li si fanno ripartire dall'indice zero.'
+Each time that the head o the tail raggiungono l'index last dell'array, 
+to the step successivo li si fanno ripartire dall'index zero.'
 ''' 
 
 '''
 CLASSE CODA (QUEUE)
-Costruita servendosi della Struttura Data of ARRAY
+Costruita servendosi of the Struttura Data of ARRAY
 '''
 
-class Coda:
+class Queue:
     
     # ATTRIBUTES
     _head=0
@@ -57,7 +57,7 @@ class Coda:
     array=[]
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,maxDim):
         self.array=[None]*maxDim
         
@@ -68,14 +68,14 @@ class Coda:
         'If l''array e'' pieno, not si fa nulla'
         if self.nElem==len(self.array):
             return
-        'Incremento dell''indice of tail'
+        'Incremento dell''index of tail'
         if 0<=self._tail<len(self.array)-1:
             self._tail+=1
         else:
             self._tail=0
-        'Si aggiunge l''element nella nuova tail'
+        'Si aggiunge l''element in the nuova tail'
         self.array[self._tail]=el
-        'Si aggiorna the contatore degli elementi (cresce of a unita)'
+        'Si aggiorna the contatore of the elements (cresce of a unita)'
         self.nElem+=1
         return
     
@@ -88,12 +88,12 @@ class Coda:
         'Si rimuove l''element contained in thela head corrente'
         el=self.array[self._head]
         self.array[self._head]=None
-        'Incremento dell''indice of head'
+        'Incremento dell''index of head'
         if self._head<len(self.array)-1:
             self._head+=1
         else:
             self._head=0
-        'Si aggiorna the contatore degli elementi (decresce of a unita)'
+        'Si aggiorna the contatore of the elements (decresce of a unita)'
         self.nElem-=1
         return el
     
@@ -104,7 +104,7 @@ class Coda:
 
 'TEST'
 
-arrQueue=Coda(10)
+arrQueue=Queue(10)
 
 'Enqueuing'
 for the in range(3,40,2):
@@ -125,28 +125,28 @@ for the in range(3,40,2):
 # ESERCIZIO 2 ################################################################
 
 '''
-Scrivere the pseudocodice (e script python) delle funzioni Push e Pop
-quando the pila sia implementata on a array
+Scrivere the pseudocodice (e script python) of the funzioni Push and Pop
+when the stack sia implementata on a array
 '''
 
 # Considerazioni
-'''L'array e' a struttura data inerentemente statica. Cio' significa that
-the sua dimensione not puo' cambiare a volta that e' stato creato. 
-L'array on cui costruire the pila deve quindi avere a dimensione the piu' 
-grande possibile. A volta that l'array e' stato completamente riempito,
+'''L'array is a struttura data inerentemente statica. Cio' significa that
+the sua dimension not puo' cambiare a time that is stato creato. 
+The array on which to build the stack must therefore have a dimension as 
+grande possibile. A time that l'array is stato completamente riempito,
 indeed, not si potra' pushare alcun element.
-Analogamente a volta that l'array fosse vuoto, not si potra poppare alcun 
+Analogamente a time that l'array were vuoto, not si potra poppare alcun 
 element.
-For ottenere cio' bastera' tenere the conto degli elementi contained in thel'array
+For ottenere what' bastera' tenere the conto of the elements contained in thel'array
 through a opportuno contatore.'
 ''' 
 
 '''
 CLASSE PILA (STACK)
-Costruita servendosi della Struttura Data of ARRAY
+Costruita servendosi of the Struttura Data of ARRAY
 '''
 
-class Pila:
+class Stack:
     
     # ATTRIBUTES
     _top=-1
@@ -154,7 +154,7 @@ class Pila:
     array=[]
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,maxDim):
         self.array=[None]*maxDim
         
@@ -165,11 +165,11 @@ class Pila:
         'If l''array e'' pieno, not si fa nulla'
         if self.nElem==len(self.array):
             return
-        'Incremento dell''indice of top'
+        'Incremento dell''index of top'
         self._top+=1
         'Si aggiunge l''element in cima'
         self.array[self._top]=el
-        'Si aggiorna the contatore degli elementi (cresce of a unita)'
+        'Si aggiorna the contatore of the elements (cresce of a unita)'
         self.nElem+=1
         return
     
@@ -182,9 +182,9 @@ class Pila:
         'Si rimuove l''element in cima'
         el=self.array[self._top]
         self.array[self._top]=None
-        'Decremento dell''indice of top'
+        'Decremento dell''index of top'
         self._top-=1
-        'Si aggiorna the contatore degli elementi (decresce of a unita)'
+        'Si aggiorna the contatore of the elements (decresce of a unita)'
         self.nElem-=1
         return el
     
@@ -195,7 +195,7 @@ class Pila:
 
 'TEST'
 
-arrStack=Pila(10)
+arrStack=Stack(10)
 
 'Pushing'
 for the in range(3,40,2):

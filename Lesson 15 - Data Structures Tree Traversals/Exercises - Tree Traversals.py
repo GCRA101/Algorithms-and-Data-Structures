@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 
 
 # IMPORT PACKAGE CLASSES
-from Modified_Stack import Pila 
+from Modified_Stack import Stack 
 from BinaryNode import Nodo
 from BinaryTree import AlberoBinario
 
@@ -47,8 +47,8 @@ for the in range(0,(len(nodi)-2)//2+1,1):
 vettorePosizionale=nodi
         
 'COSTRUZIONE ALBERO BINARIO'     
-radice=nodi[0]
-albero=AlberoBinario(radice)
+root=nodi[0]
+tree=AlberoBinario(root)
 
 
 
@@ -57,24 +57,24 @@ albero=AlberoBinario(radice)
 # ESERCIZIO 1 ################################################################
 
 '''
-Scrivere the pseudocodice ITERATIVO della Visita in PREORDINE.
+Scrivere the pseudocodice ITERATIVO of the Visita in PREORDINE.
 '''
 
-# Considerazioni
-'''The Visita in PREORDINE e' INERENTEMENTE RICORSIVA.
-For renderla ITERATIVA, analogamente to quanto visto for the visite for livelli, 
-abbiamo bisogno of a Struttura Data of Appoggio (a'idea davvero geniale!) 
-that prenda e restituisca the riferimenti ai nodi dell'albero nell'ordine 
-desiderato.
+# Considerations
+'''The PREORDER Traversal is INHERENTLY RECURSIVE.
+To make it ITERATIVE, analogously to what was seen for level-order traversal, 
+we need a Supporting Data Structure (a truly brilliant idea!) 
+that takes and returns the references to the tree nodes in the desired 
+order.
 Utilizzeremo the PILA (QUEUE).
 ''' 
 
 # Risoluzione
 'function AUSILIARIA for Controllo RiempimentoPila'
-def isPilaVuota(pila):
-    if pila==None:
+def isPilaVuota(stack):
+    if stack==None:
         return None
-    if pila.length()==0: 
+    if stack.length()==0: 
         return True
     return False
 
@@ -84,31 +84,31 @@ def visitaInPreOrdineIter(p):                                     #T(n)
     # 1. Controllo Input
     if p==None:                                                   #Θ(1) 
         return                                                    #Θ(1) 
-    # 2. Inizializzazione pila of supporto
-    pila=Pila()                                                   #Θ(1) 
-    # 3. Impilamento della radice dell'albero
-    pila.push(p)                                                  #Θ(1) 
-    # 4. Impilamento/Spilamento nodi albero...
-    while(not isPilaVuota(pila)):                                 #n*Θ(1)+Θ(1)  
-        p=pila.pop()                                              #Θ(1) 
+    # 2. Inizializzazione stack of supporto
+    stack=Stack()                                                   #Θ(1) 
+    # 3. Impilamento of the root dell'tree
+    stack.push(p)                                                  #Θ(1) 
+    # 4. Impilamento/Spilamento nodi tree...
+    while(not isPilaVuota(stack)):                                 #n*Θ(1)+Θ(1)  
+        p=stack.pop()                                              #Θ(1) 
         print(p,end=" ")                                          #Θ(1) 
         psx=p.getFiglioSx()                                       #Θ(1) 
         pdx=p.getFiglioDx()                                       #Θ(1) 
         if pdx!=None:                                             #Θ(1)  
-            pila.push(pdx)                                        #Θ(1) 
+            stack.push(pdx)                                        #Θ(1) 
         if psx!=None:                                             #Θ(1) 
-            pila.push(psx)                                        #Θ(1) 
+            stack.push(psx)                                        #Θ(1) 
     return                                                        #Θ(1) 
 
 # Computational Cost
-# Dimensione Input: number dei nodi dell'albero (incognito to priori)
+# Dimension Input: number dei nodi dell'tree (incognito to priori)
 # T(n)=Θ(1)+n*Θ(1)+Θ(1)=Θ(n)
 
 
 'TEST 1'
 # Risultato atteso: [3,1,8,8,0,4,8,5,5,3,2] 
 print("Visita in PreOrdine Iterativa - Array ~ T(n)=Θ(n)")
-visitaInPreOrdineIter(albero.getRoot())
+visitaInPreOrdineIter(tree.getRoot())
 
 
 
@@ -117,22 +117,22 @@ visitaInPreOrdineIter(albero.getRoot())
 # ESERCIZIO 2 ################################################################
 
 '''
-calculate the computational cost delle visite quando l'albero venga 
+calculate the computational cost of the visite when l'tree venga 
 stored through rappresentazione POSIZIONALE (usare the function TrovaFigli)
 '''
 
 # Considerazioni
-'''L'albero e' a struttura data nodale estremamente efficiente e versatile.
-The sua storazione as vector posizionale prevede the scrittura, all'interno
-of a array, of all the values dei suoi nodi dalla radice alle foglie e from 
-sinistra verso destra procedendo verso the basso to partire dalla radice.
+'''L'tree is a struttura data nodale estremamente efficiente and versatile.
+The sua storazione as vector posizionale prevede the scrittura, all'inner
+of a array, of all the values dei suoi nodi from the root to the leaves and from 
+sinistra verso destra procedendo verso the basso to partire from the root.
 The sua storazione through vector dei padri prevede the realizzazione of two
-vettori paralleli R e P. R containing all the values of all the nodi e P 
-containing l'index del padre of ciascun element corrispondente dell'albero.
+vectors paralleli R and P. R containing all the values of all the nodi and P 
+containing l'index del padre of ciascun element corrispondente dell'tree.
 ''' 
 
 
-'function Ricerca Lineare'
+'function Search Lineare'
 def linearSearch(To,v):                   # S(n)
     the=0                                  # Θ(1)
     while((the<len(To))and(To[the]!=v)):       # n*Θ(1)+Θ(1)
@@ -190,17 +190,17 @@ visitaInPreOrdineRecurs(Q,Q[0])
 # ESERCIZIO 3 ################################################################
 
 '''
-Nell'esercizio precedente, if usassimo a auxiliary vector in cui storare
+Nell'esercizio precedente, if usassimo a auxiliary vector where storare
 in fase of pre-processing, the figli of ciascun nodo as diventerebbe the
-pseudocodice? Ed the costo computazionale?
+pseudocodice? Ed the computational cost?
 '''
 
-# Considerazioni
+# Considerations
 '''In this case we will use, as auxiliary vector, a Hash Table
-Ovvero a struttura data costituita from a serie of buckets, one for ciascun
-nodo, contenenti the lista dei figli del nodo corrispondente.
-L'accesso ai buckets e' immediato e ha costo computazionale costante Θ(1).
-In Python, the struttura data concreta that rappresenta the struttura data
+That is, a data structure consisting of a series of buckets, one for each
+node, containing the list of children of the corresponding node.
+Access to buckets is immediate and has constant computational cost Θ(1).
+In Python, the concrete data structure that represents the data structure
 astratta HashTable prende the nome of dict (Dizionario)
 ''' 
 

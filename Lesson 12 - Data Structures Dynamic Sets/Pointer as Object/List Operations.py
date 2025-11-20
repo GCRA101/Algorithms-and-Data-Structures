@@ -24,7 +24,7 @@ from DoublyLinkedList import ListaPuntataDoppia
 '''
 LISTE PUNTATE  
 - Lettura                       - Cost: O(n)
-- Ricerca                       - Cost: O(n)
+- Search                       - Cost: O(n)
 - Inserimento (in testa)        - Cost: Θ(1)
 - Inserimento (in mezzo)        - Cost: Θ(1)
 - Eliminazione                  - Cost: O(n)
@@ -45,10 +45,10 @@ for the in range(0,len(keys),1):
     records.append(RecordSingolo(keys[the]))
 for the in range(0,len(records)-1,1):
     records[the].setNext(records[the+1])
-# Creazione lista puntata (contiene the riferimento al record of testa)
+# Creazione list puntata (contiene the riferimento al record of testa)
 listaPuntataSing=ListaPuntataSingola(records[0])
 
-# Creazione lista puntata (contiene the riferimento al record of testa)
+# Creazione list puntata (contiene the riferimento al record of testa)
 listaPuntataSing=ListaPuntataSingola(records[0])
 
     
@@ -112,7 +112,7 @@ for the in range(0,len(records),1):
     if the<len(records)-1:
         records[the].setNext(records[the+1])
     
-# Creazione lista puntata (contiene the riferimento al record of testa)
+# Creazione list puntata (contiene the riferimento al record of testa)
 listaPuntataDopp=ListaPuntataDoppia(records[0])
 
 

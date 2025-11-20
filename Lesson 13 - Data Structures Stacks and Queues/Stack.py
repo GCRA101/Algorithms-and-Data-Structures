@@ -17,16 +17,16 @@ from SingleRecord import RecordSingolo
 
 '''
 CLASSE PILA (STACK)
-Costruita servendosi della Struttura Data of LISTA PUNTATA SINGOLA
+Costruita servendosi of the Struttura Data of LISTA PUNTATA SINGOLA
 '''
 
-class Pila:
+class Stack:
     
     # ATTRIBUTES
     _top=None
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,_top=None):
         self._top=_top
         

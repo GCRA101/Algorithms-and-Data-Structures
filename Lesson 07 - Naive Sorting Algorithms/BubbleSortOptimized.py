@@ -16,8 +16,8 @@ import matplotlib.pyplot as plt
 
 '''
 BUBBLE SORT 
-The algorithm bubble Sort e' one dethe algorithms piu' semplici for effettuare
-l'sorting to series/record of given along with INSERTION SORT e al 
+The algorithm bubble Sort is one of the algorithms simplest for performing
+l'sorting to series/record of given along with INSERTION SORT and al 
 bubble SORT'
 The algorithm BUBBLE SORT, SE OTTIMIZZATO CON UN PARAMETRO DI CONTROLLO CHE NE
 BLOCCHI L'ESECUZIONE NEL CASO IN CUI IL VETTORE SIA sorted, presenta 

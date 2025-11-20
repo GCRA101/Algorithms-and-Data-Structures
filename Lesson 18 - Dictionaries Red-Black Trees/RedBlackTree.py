@@ -13,28 +13,28 @@ import random
 
 
 # IMPORT PACKAGE CLASSES
-'Nodo with 3 puntatori: Padre (parent), FiglioSx (left) e FiglioDx (right) e '
-'e 2 campi: Chiave (key) e Colore (color).'
+'Nodo with 3 puntatori: Padre (parent), FiglioSx (left) and FiglioDx (right) and '
+'e 2 campi: Key (key) and Colore (color).'
 from RedBlackNode import Nodo
-'Colore Enumeration'
+'Color Enumeration'
 from Color import Colore
-'Coda Modificata for ospitare the nodi dellalbero nel campo value dei'
-'suoi record singoli.'
-from Modified_Queue import Coda
+'Modified Queue to host the tree nodes in the value field of its'
+'single records.'
+from Modified_Queue import Queue
 
 '''
 CLASSE ALBERO BINARIO DI RICERCA ROSSONERO (TREE)
 
-Costruita servendosi of Record e Puntatori
-Since ciascun nodo e' rappresentato in memoria through a record,
-ciascun nodo dell'albero e' sparso nella memoria del computer e puo' essere 
-acceduto through the puntatori destro, sinistro e padre of ciascun nodo to partire
-dalla radice dell'albero.'
-The classe albero, quindi deve only contenere the record della radice.
+Costruita servendosi of Record and Puntatori
+Since ciascun nodo is rappresentato in memoria through a record,
+ciascun nodo dell'tree is sparso in the memoria del computer and puo' essere 
+acceduto through the puntatori destro, sinistro and padre of ciascun nodo to partire
+from the root dell'tree.'
+The classe tree, therefore deve only contenere the record of the root.
 
-A Albero RossoNero e' a sottotipo specifico of Binary Search Tree that,
-for consentire the riaggiustamento della sua struttura to seguito of a'
-operazione of modifica (e.g. Inserimento e Cancellazione), si serve of a campo
+A Tree RossoNero is a sottotipo specifico of Binary Search Tree that,
+for consentire the riaggiustamento of the sua struttura to seguito of a'
+operazione of modifica (e.g. Inserimento and Cancellazione), si serve of a campo
 aggiuntivo of nome "Colore" assegnato ai suoi nodi.
 This campo puo' assumere only two values: Rosso o Nero.'
 '''
@@ -48,7 +48,7 @@ class AlberoRossoNero:
     
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,root=None):
         self.root=root
         
@@ -84,14 +84,14 @@ class AlberoRossoNero:
         'CASO BASE'
         return                                       # Θ(1)
 
-    # function Pubblica Wrapper of lancio della function recursive
+    # function Pubblica Wrapper launch of the function recursive
     def visitaPreOrdine(self):                       # T(n)
         p=self.root                                  # Θ(1)
         self._visitaPreOrdine(p)                     # S(n)
         return                                       # Θ(1)
 
     # Computational Cost
-    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Dimensions input: number nodi dell'tree (incognito to priori)
     # Cost: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
 
@@ -112,13 +112,13 @@ class AlberoRossoNero:
         'CASO BASE'
         return                                       # Θ(1)
 
-    # function Pubblica Wrapper of lancio della function recursive
+    # function Pubblica Wrapper launch of the function recursive
     def visitaInOrdine(self):                        # T(n)
         p=self.root                                  # Θ(1)
         self._visitaInOrdine(p)                      # S(n)
 
     # Computational Cost
-    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Dimensions input: number nodi dell'tree (incognito to priori)
     # Cost: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
 
@@ -139,13 +139,13 @@ class AlberoRossoNero:
         'CASO BASE'
         return                                       # Θ(1)
 
-    # function Publica Wrapper of lancio della function recursive
+    # function Publica Wrapper launch of the function recursive
     def visitaPostOrdine(self):                      # T(n)
         p=self.root                                  # Θ(1)
         self._visitaPostOrdine(p)                    # S(n)
 
     # Computational Cost
-    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Dimensions input: number nodi dell'tree (incognito to priori)
     # Cost: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
 
@@ -153,9 +153,9 @@ class AlberoRossoNero:
 
     'VISITA PER LIVELLI'
 
-    'Controllo Riempimento Coda'
-    def _codaVuota(self,coda):                     # T(n)
-        if coda.size()==0:                         # Θ(1)
+    'Controllo Riempimento Queue'
+    def _codaVuota(self,queue):                     # T(n)
+        if queue.size()==0:                         # Θ(1)
             return True                            # Θ(1)
         return False                               # Θ(1)
 
@@ -165,30 +165,30 @@ class AlberoRossoNero:
     'Visita For Livelli'
 
     def visitaPerLivelli(self):                    # T(n)
-        # Inizializzazione alla radice dell'albero
+        # Inizializzazione to the root dell'tree
         p=self.root                                # Θ(1)
-        # Controllo esistenza albero
+        # Controllo esistenza tree
         if p==None:                                # Θ(1)
             return                                 # Θ(1)
-        # Inizializzazione coda of supporto
-        coda=Coda()                                # Θ(1)                                                     
-        # Incodamento radice albero nella coda
-        coda.enqueue(p)                            # Θ(1)                           
-        # Scorrimento nodi albero through coda
-        while(not self._codaVuota(coda)):          # n*Θ(1)+Θ(1) 
-            # 1. Scoda e prints nodo
-            p=coda.dequeue()                       # Θ(1)
+        # Inizializzazione queue of supporto
+        queue=Queue()                                # Θ(1)                                                     
+        # Incodamento root tree in the queue
+        queue.enqueue(p)                            # Θ(1)                           
+        # Scorrimento nodi tree through queue
+        while(not self._codaVuota(queue)):          # n*Θ(1)+Θ(1) 
+            # 1. Scoda and prints nodo
+            p=queue.dequeue()                       # Θ(1)
             print(str(p),end=" ")                  # Θ(1)         
             # Incoda Left
             if p.getLeft()!=None:                  # Θ(1)
-                coda.enqueue(p.getLeft())          # Θ(1)
+                queue.enqueue(p.getLeft())          # Θ(1)
             # Incoda figlio Dx
             if p.getRight()!=None:                 # Θ(1)
-                coda.enqueue(p.getRight())         # Θ(1)
+                queue.enqueue(p.getRight())         # Θ(1)
         return                                     # Θ(1)
         
     # Computational Cost
-    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Dimensions input: number nodi dell'tree (incognito to priori)
     # Cost: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
 
      
@@ -202,18 +202,18 @@ class AlberoRossoNero:
             num_l=self._calcola_n(p.getLeft())       # S(k)
             # 2. Recursive Step SottoAlbero Dx
             num_r=self._calcola_n(p.getRight())      # S(n-k-1)
-            # 3. Operazione sul Nodo
+            # 3. Operazione on the Nodo
             num=num_l+num_r+1                        # Θ(1)     
             return num                               # Θ(1)  
         return 0                                     # Θ(1)  
     
-    # function Pubblica Wrapper of lancio della function recursive
+    # function Pubblica Wrapper launch of the function recursive
     def calcola_n(self):                             # T(n)
         p=self.root                                  # Θ(1)
         return self._calcola_n(p)                    # S(n)
     
     # Computational Cost
-    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Dimension Input: number nodi dell'tree (incognito to priori)
     # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   
     
@@ -227,19 +227,19 @@ class AlberoRossoNero:
             return -1                                        # Θ(1)
         if p.getLeft()==None and p.getRight()==None:         # Θ(1)
             return 0                                         # Θ(1)
-        # 1. 2. Recursive Step SottoAlbero Sx e Dx
+        # 1. 2. Recursive Step SottoAlbero Sx and Dx
         h=max(self._calcola_h(p.getLeft()),                  # S(k)
               self._calcola_h(p.getRight()))                 # S(n-k-1)
-        # 3. Operazione sul Nodo
+        # 3. Operazione on the Nodo
         return h+1                                           # Θ(1)                       
 
-    # function Pubblica Wrapper for the lancio della function recursive
+    # function Pubblica Wrapper for the lancio of the function recursive
     def calcola_h(self):                                     # T(n)
         p=self.root                                          # Θ(1)
         return self._calcola_h(p)                            # S(n)
 
     # Computational Cost
-    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Dimension Input: number nodi dell'tree (incognito to priori)
     # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)
 
@@ -257,16 +257,16 @@ class AlberoRossoNero:
         k_left=self._conta_k(k,the+1,p.getLeft())              # S(k)
         # 2. Recursive Step SottoAlbero Dx
         k_right=self._conta_k(k,the+1,p.getRight())            # S(n-k-1)
-        # 3. Operazione sul Nodo
+        # 3. Operazione on the Nodo
         return k_left+k_right                                # Θ(1)
 
-    # function Pubblica Wrapper for the lancio della function recursive
+    # function Pubblica Wrapper for the lancio of the function recursive
     def conta_k(self,k):                                     # T(n)
         p=self.root                                          # Θ(1)
         return self._conta_k(k, 0, p)                        # S(n)
 
     # Computational Cost
-    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Dimension Input: number nodi dell'tree (incognito to priori)
     # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   
 
@@ -279,7 +279,7 @@ class AlberoRossoNero:
         if (p==None or p.getKey()==k):              # Θ(1)
             return p                                # Θ(1)
         # Verifica specifica for Alberi RossoNeri 
-        # value key foglie fittizie
+        # value key leaves fittizie
         if (p.getKey()==None):                      # Θ(1)
             return None                             # Θ(1)
         if (k<p.getKey()):                          # Θ(1)
@@ -287,15 +287,15 @@ class AlberoRossoNero:
         else:                                       # Θ(1)
             return self._cerca(p.getRight(),k)      # S(h-1)
         
-    # function Pubblica Wrapper for the lancio della function recursive
+    # function Pubblica Wrapper for the lancio of the function recursive
     def cerca(self,k):                              # T(h)
         p=self.getRoot()                            # Θ(1)
         return self._cerca(p,k)                     # Θ(h)
     
     # Computational Cost
-    # Dimensione dell'input: Altezza h dell'albero
-    # Si esegue the function h volte with operazioni each volta of costo costante
-    # Θ(1). Quindi the costo totale equivale to h volte Θ(1).
+    # Dimension dell'input: Altezza h dell'tree
+    # Si esegue the function h times with operazioni each time of cost constant
+    # Θ(1). Therefore the cost totale equivale to h times Θ(1).
     # Cost: T(h)= Θ(1)+Θ(h) -> T(h)=Θ(h)
 
 
@@ -315,7 +315,7 @@ class AlberoRossoNero:
         'PASSO RICORSIVO'
         return self._minimoRecurs(p.getLeft())       # S(h-1)
     
-    # function Pubblica Wrapper for the lancio della function recursive
+    # function Pubblica Wrapper for the lancio of the function recursive
     def minimoRecurs(self):                          # T(h)
         'Inizializzazione Nodo of partenza'
         p=self.getRoot()                             # Θ(1)
@@ -323,7 +323,7 @@ class AlberoRossoNero:
         return self._minimoRecurs(p)                 # S(h)
     
     # Computational Cost
-    # Input size: altezza dell'albero h
+    # Input size: altezza dell'tree h
     # Cost: T(h)=Θ(1)+S(h)=Θ(1)+Θ(h) -> T(h)=Θ(h)
     
     
@@ -339,7 +339,7 @@ class AlberoRossoNero:
             p=p.getLeft()                            # Θ(1)
         return p                                     # Θ(1)
     
-    # function Pubblica Wrapper for the lancio della function recursive
+    # function Pubblica Wrapper for the lancio of the function recursive
     def minimoIter(self):                            # T(h)
         'Inizializzazione Nodo of partenza'
         p=self.getRoot()                             # Θ(1)                            
@@ -347,7 +347,7 @@ class AlberoRossoNero:
         return self._minimoIter(p)                   # Θ(h)
     
     # Computational Cost
-    # Input size: altezza dell'albero h
+    # Input size: altezza dell'tree h
     # Cost: T(h)=Θ(1)+S(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
     
     
@@ -367,7 +367,7 @@ class AlberoRossoNero:
         'PASSO RICORSIVO'
         return self._massimoRecurs(p.getRight())      # S(h-1)
     
-    # function Pubblica Wrapper for the lancio della function recursive
+    # function Pubblica Wrapper for the lancio of the function recursive
     def massimoRecurs(self):                          # T(h)
         'Inizializzazione Nodo of partenza'
         p=self.getRoot()                              # Θ(1) 
@@ -375,7 +375,7 @@ class AlberoRossoNero:
         return self._massimoRecurs(p)                 # Θ(h) 
     
     # Computational Cost
-    # Input size: altezza dell'albero h
+    # Input size: altezza dell'tree h
     # Cost: T(h)=Θ(1)+S(h)=Θ(1)+Θ(h) -> T(h)=Θ(h)
     
     
@@ -391,7 +391,7 @@ class AlberoRossoNero:
             p=p.getRight()                            # Θ(1)
         return p                                      # Θ(1)
     
-    # function Pubblica Wrapper for the lancio della function recursive
+    # function Pubblica Wrapper for the lancio of the function recursive
     def massimoIter(self):                            # T(h)
         'Inizializzazione Nodo of partenza'
         p=self.getRoot()                              # Θ(1)
@@ -399,7 +399,7 @@ class AlberoRossoNero:
         return self._massimoIter(p)                   # Θ(h) 
     
     # Computational Cost
-    # Input size: altezza dell'albero h
+    # Input size: altezza dell'tree h
     # Cost: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
@@ -419,7 +419,7 @@ class AlberoRossoNero:
         if nodo.getLeft().getKey()!=None:             # Θ(1)
             predecessor=self._massimoIter(nodo.getLeft())   # Ω(1) o O(h)
         else:                                         # Θ(1)
-        # 4. If the nodo NON ha figlio Sx, risali l'albero     
+        # 4. If the nodo NON ha figlio Sx, risali l'tree     
         #    through ITERAZIONE    
             while(nodo.getParent()!=None and 
                   nodo==nodo.getParent().getLeft()):  # Θ(1)
@@ -431,8 +431,8 @@ class AlberoRossoNero:
     
     # function Privata recursive
     def _predecRecurs(self,nodo):                     # S(h)
-        # 1. If the nodo not ha padre, esso e' the radice dell'albero...
-        #    quindi ritorna the radice.
+        # 1. If the nodo not ha padre, esso is the root dell'tree...
+        #    therefore ritorna the root.
         if nodo.getParent()==None:                    # Θ(1)
             return nodo                               # Θ(1)
         # 2. If the nodo not coincide with the figlio Sx of suo padre,
@@ -440,11 +440,11 @@ class AlberoRossoNero:
         if nodo!=nodo.getParent().getLeft():          # Θ(1)
             return nodo.getParent()                   # Θ(1)
         # 3. If the nodo coincide with the figlio Sx of suo padre, 
-        #    continua the risalita passando the nodo padre nella nuova 
+        #    continua the risalita passando the nodo padre in the nuova 
         #    chiamata ricorsiva.
         return self._predecRecurs(nodo.getParent())   # S(h-1)   
     
-    # function Pubblica Wrapper for the lancio della function recursive
+    # function Pubblica Wrapper for the lancio of the function recursive
     def predecessoreRecurs(self,k):                   # T(h)
         # 1. Ricava the nodo avente key uguale to k    
         nodo=self.cerca(k)                            # Θ(h)
@@ -456,13 +456,13 @@ class AlberoRossoNero:
         if nodo.getLeft().getKey()!=None:             # Θ(1)
             predecessor=self._massimoRecurs(nodo.getLeft()) # Ω(1) o O(h)     
         else:                                         # Θ(1)
-        # 4. If the nodo NON ha figlio Sx, risali l'albero
+        # 4. If the nodo NON ha figlio Sx, risali l'tree
         #    through RICORSIONE
             return self._predecRecurs(nodo)           # S(h)
         return predecessor                            # Θ(1)
     
     # Computational Cost
-    # Input size: altezza dell'albero h
+    # Input size: altezza dell'tree h
     # Costo Iterativa: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) -> T(h)=Ω(1) o O(h)  
     # Costo Ricorsiva: T(h)=Θ(h) + Ω(1) o O(h) + S(h) -> T(h)=Ω(1) o O(h)  
     
@@ -483,7 +483,7 @@ class AlberoRossoNero:
         if nodo.getRight().getKey()!=None:              # Θ(1)
             successor=self._minimoIter(nodo.getRight()) # Ω(1) o O(h)
         else:        
-        # 4. If the nodo NON ha figlio Dx, risali l'albero     
+        # 4. If the nodo NON ha figlio Dx, risali l'tree     
         #    through ITERAZIONE
             while(nodo.getParent()!=None and 
                   nodo==nodo.getParent().getRight()):  # Θ(1)
@@ -495,8 +495,8 @@ class AlberoRossoNero:
     
     # function Privata recursive
     def _succesRecurs(self,nodo):                      # S(h)
-        # 1. If the nodo not ha padre, esso e' the radice dell'albero...
-        #    quindi ritorna the radice.
+        # 1. If the nodo not ha padre, esso is the root dell'tree...
+        #    therefore ritorna the root.
         if nodo.getParent()==None:                     # Θ(1)
             return nodo                                # Θ(1) 
         # 2. If the nodo not coincide with the figlio Dx of suo padre,
@@ -504,11 +504,11 @@ class AlberoRossoNero:
         if nodo!=nodo.getParent().getRight():          # Θ(1)
             return nodo.getParent()                    # Θ(1)
         # 3. If the nodo coincide with the figlio Dx of suo padre, 
-        #    continua the risalita passando the nodo padre nella nuova 
+        #    continua the risalita passando the nodo padre in the nuova 
         #    chiamata ricorsiva.
         return self._succesRecurs(nodo.getParent())    # S(h-1)   
     
-    # function Pubblica Wrapper for the lancio della function recursive
+    # function Pubblica Wrapper for the lancio of the function recursive
     def successoreRecurs(self,k):                      # T(h)
         # 1. Ricava the nodo avente key uguale to k    
         nodo=self.cerca(k)                             # Θ(h)
@@ -520,13 +520,13 @@ class AlberoRossoNero:
         if nodo.getRight().getKey()!=None:             # Θ(1)
             successor=self._minimoRecurs(nodo.getRight()) # Ω(1) o O(h)
         else:                                          # Θ(1)
-        # 4. If the nodo NON ha figlio Dx, risali l'albero
+        # 4. If the nodo NON ha figlio Dx, risali l'tree
         #    through RICORSIONE
             return self._succesRecurs(nodo)            # S(h)
         return successor                               # Θ(1)
 
     # Computational Cost
-    # Input size: altezza dell'albero h
+    # Input size: altezza dell'tree h
     # Costo Iterativa: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) ->T(h)=Ω(1) o O(h)  
     # Costo Ricorsiva: T(h)=Θ(h) + Θ(1) + Ω(1) o O(h) + S(h) ->T(h)=Ω(1) o O(h) 
     
@@ -537,7 +537,7 @@ class AlberoRossoNero:
     # Rotazione SX
     def rotazioneSx(self,pivot):                        # T(n)
         'INIZIALIZZAZIONE NODI DI RIFERIMENTO'
-        # 1.1 Estrai radice dell'albero
+        # 1.1 Estrai root dell'tree
         p=self.getRoot()                                # Θ(1)
         # 1.2 Inizializza the puntatori ausiliari
         to=pivot                                         # Θ(1)
@@ -553,11 +553,11 @@ class AlberoRossoNero:
         b.setLeft(to)                                    # Θ(1)
         # 3.2 Aggiornamento padre of b (from "to" to padre of "to")
         b.setParent(to.getParent())                      # Θ(1)
-        # 3.3 If to e' the radice dell'albero (padre nullo) aggiorna
-        #     the radice dell'albero assegnandogli "b"
+        # 3.3 If to is the root dell'tree (padre nullo) aggiorna
+        #     the root dell'tree assegnandogli "b"
         if to.getParent()==None:                         # Θ(1)
             self.root=b                                 # Θ(1)
-        # ... If "to" e' the figlio Sx of suo padre, aggiorna the campo
+        # ... If "to" is the figlio Sx of suo padre, aggiorna the campo
         #     figlio Sx del padre with the nodo "b"
         elif to==to.getParent().getLeft():                # Θ(1)
             to.getParent().setLeft(b)                    # Θ(1)
@@ -568,13 +568,13 @@ class AlberoRossoNero:
         to.setParent(b)                                  # Θ(1)
 
         # Computational Cost
-        # Input size: altezza dell'albero h
+        # Input size: altezza dell'tree h
         # Computational Cost: T(h)=Θ(1)
         
     # Rotazione DX
     def rotazioneDx(self,pivot):                        # T(n)
         'INIZIALIZZAZIONE NODI DI RIFERIMENTO'
-        # 1.1 Estrai radice dell'albero
+        # 1.1 Estrai root dell'tree
         p=self.getRoot()                                # Θ(1)
         # 1.2 Inizializza the puntatori ausiliari
         to=pivot                                         # Θ(1)
@@ -590,11 +590,11 @@ class AlberoRossoNero:
         b.setRight(to)                                   # Θ(1)
         # 3.2 Aggiornamento padre of b (from "to" to padre of "to")
         b.setParent(to.getParent())                      # Θ(1)
-        # 3.3 If to e' the radice dell'albero (padre nullo) aggiorna
-        #     the radice dell'albero assegnandogli "b"
+        # 3.3 If to is the root dell'tree (padre nullo) aggiorna
+        #     the root dell'tree assegnandogli "b"
         if to.getParent()==None:                         # Θ(1)
             self.root=b                                 # Θ(1)
-        # ... If "to" e' the figlio Sx of suo padre, aggiorna the campo
+        # ... If "to" is the figlio Sx of suo padre, aggiorna the campo
         #     figlio Sx del padre with the nodo "b"
         elif to==to.getParent().getLeft():                # Θ(1)
             to.getParent().setLeft(b)                    # Θ(1)
@@ -605,7 +605,7 @@ class AlberoRossoNero:
         to.setParent(b)                                  # Θ(1)
         
         # Computational Cost
-        # Input size: altezza dell'albero h
+        # Input size: altezza dell'tree h
         # Computational Cost: T(h)=Θ(1)
     
     
@@ -625,25 +625,25 @@ class AlberoRossoNero:
         while x.getKey()!=None:                         # h*Θ(1)+Θ(1)
             # Aggiorna y eguagliandolo to x...
             y=x                                         # Θ(1)
-            # Aggiorna x facendolo scendere to dx/sx in base alla sua key..
+            # Aggiorna x facendolo scendere to dx/sx in base to the sua key..
             if z.getKey()<x.getKey():                   # Θ(1)
                 x=x.getLeft()                           # Θ(1)
             else:                                       # Θ(1)
                 x=x.getRight()                          # Θ(1)
         '3. AGGIUNTA Nuovo Nodo'
-        # If l'Albero e' Nullo, usa Nuovo Nodo as Radice dell'Albero...
+        # If l'Tree is Nullo, usa Nuovo Nodo as Radice dell'Tree...
         if y==None:                                     # Θ(1)
             p=z                                         # Θ(1)
-        # If l'Albero not e' nullo, aggiungi the Nuovo Nodo to dx/sx dell'last...
+        # If l'Tree not is nullo, aggiungi the Nuovo Nodo to dx/sx dell'last...
         else:                                           # Θ(1)
             if z.getKey()<y.getKey():                   # Θ(1)
                 y.left=z                                # Θ(1)
             else:                                       # Θ(1)
                 y.right=z                               # Θ(1)
-        # Aggiorna the campo Padre del nuovo nodo aggiunto all'albero...
+        # Aggiorna the campo Padre del nuovo nodo aggiunto all'tree...
         z.setParent(y)                                  # Θ(1)
         '4. AGGIUNTA Figli Fittizi'
-        # Si aggiungono two foglie fittizie nere as figli del nodo inserito..
+        # Si aggiungono two leaves fittizie nere as figli del nodo inserito..
         z.setLeft(Nodo(None,Colore.NERO))               # Θ(1)               
         z.getLeft().setParent(z)                        # Θ(1)
         z.setRight(Nodo(None,Colore.NERO))              # Θ(1)
@@ -653,7 +653,7 @@ class AlberoRossoNero:
         return z                                        # Θ(1)
 
         # Computational Cost
-        # Input size: altezza dell'albero h
+        # Input size: altezza dell'tree h
         # Computational Cost: T(h)=Θ(h)+Θ(1)=Θ(h)
 
 
@@ -664,30 +664,30 @@ class AlberoRossoNero:
     def __passoDiAggiustamento(self,p,z):                        # S(h)
     
         '** CASO BASE **'
-        # If the nodo coincide with the radice dell'albero, basta cambiare
-        # the suo colore from ROSSO to NERO e l'aggiustamento dell'albero e'
+        # If the nodo coincide with the root dell'tree, enough cambiare
+        # the suo colore from ROSSO to NERO and l'aggiustamento dell'tree e'
         # finalmente concluso.
-        # This implica also that l'albero avra' adesso a b-altezza
+        # This implica also that l'tree avra' adesso a b-altezza
         # of a'unita' superiore rispetto to that that aveva first dell'
         # inserimento.
         if z==p:                                                 # Θ(1)                                    
             'CASO 0'
-            # If the nodo inserito e' the radice, cambia the 
+            # If the nodo inserito is the root, cambia the 
             # colore from ROSSO to NERO.
             p.setColor(Colore.NERO)                              # Θ(1)
             return  
 
         '** CASI SPECIFICI **'
-        # If the nodo NON coincide with the radice dell'albero, the manovre of 
-        # aggiustamento dell'albero saranno necessarie only if esso viola
-        # the regola for cui each nodo ROSSO puo' avere only figli NERI.
-        # Quindi si procede with the seguenti operazioni of aggiustamento 
+        # If the nodo NON coincide with the root dell'tree, the manovre of 
+        # aggiustamento dell'tree saranno necessarie only if esso viola
+        # the rule for which each nodo ROSSO puo' avere only figli NERI.
+        # Therefore si procede with the seguenti operazioni of aggiustamento 
         # SOLO SE IL NODO E' ROSSO E SUO PADRE E' ANCH'ESSO ROSSO!
         if z.getColor()==Colore.ROSSO and \
             z.getParent().getColor()==Colore.ROSSO:              # Θ(1)                   
             
             'PREPARATIVI'
-            'Estrazione Nodi PADRE, ZIO e NONNO del nodo inserito'
+            'Estrazione Nodi PADRE, ZIO and NONNO del nodo inserito'
             # Nodo PADRE
             parent=z.getParent()                                 # Θ(1)
             # Nodo NONNO
@@ -703,15 +703,15 @@ class AlberoRossoNero:
             'CASI DI AGGIUSTAMENTO'
             # CASO 1 #####################################################
             if  uncle.getColor()==Colore.ROSSO:                  # Θ(1)
-                    # If the nodo inserito ha zio ROSSO e padre ROSSO,   
-                    # cambia the colori dei seguenti nodi nel modo seguente:
-                    #   - Padre e Zio -> Colore NERO
+                    # If the nodo inserito ha zio ROSSO and padre ROSSO,   
+                    # cambia the colori dei seguenti nodi nel way seguente:
+                    #   - Padre and Zio -> Colore NERO
                     #   - Nonno       -> Colore ROSSO
                     parent.setColor(Colore.NERO)                 # Θ(1)
                     uncle.setColor(Colore.NERO)                  # Θ(1)
                     grandParent.setColor(Colore.ROSSO)           # Θ(1)
-                    # ...e vai to controllare that the violazione dell'albero
-                    # RossoNero not si sia spostata sul nodo NONNO.
+                    # ...e vai to controllare that the violazione dell'tree
+                    # RossoNero not si sia spostata on the nodo NONNO.
                     # In that case, esegui l'aggiustamento on of esso 
                     # applicando ricorsivamente the Case 1,2 or 3.
                     '** PASSO RICORSIVO **'
@@ -720,13 +720,13 @@ class AlberoRossoNero:
             # CASO 2 #####################################################
             elif uncle.getColor()==Colore.NERO and \
                 z==parent.getRight():                            # Θ(1)
-                    # If the nodo inserito ha zio NERO ed e' figlio DX
+                    # If the nodo inserito ha zio NERO ed is figlio DX
                     # of a nodo ROSSO, si effettuano the seguenti operazioni:
                     #   1. Rotazione SX with PERNO SUL PADRE del nodo inserito
                     #   2. Aggiustamento on Nodo Padre (sappiamo for certo
-                    #      from teoria that the padre violera' l'albero RossoNero
-                    #      second the Case 3 e that this portera' alla 
-                    #      risoluzione definitiva della violazione)
+                    #      from teoria that the padre violera' l'tree RossoNero
+                    #      second the Case 3 and that this portera' to the 
+                    #      risoluzione definitiva of the violazione)
                     self.rotazioneSx(parent)                     # Θ(1)
                     '** PASSO RICORSIVO **'
                     self.__passoDiAggiustamento(p,parent)        # S(h-1)
@@ -734,14 +734,14 @@ class AlberoRossoNero:
             # CASO 3 #####################################################
             elif uncle.getColor()==Colore.NERO and \
                 z==parent.getLeft():                             # Θ(1)
-                    # If the nodo inserito ha zio NERO ed e' figlio SX of
+                    # If the nodo inserito ha zio NERO ed is figlio SX of
                     # a nodo ROSSO, si effettuano the seguenti operazioni:
                     #   1. Cambiamento Colori as of seguito:
                     #       - Padre -> Colore NERO
                     #       - Nonno -> Colore ROSSO
                     #   2. Rotazione with PERNO SUL PADRE del nodo inserito
                     # Nessun bisogno of effettuare ulteriori aggiustamenti
-                    # sui livelli piu' alti dell'albero. As from teoria,
+                    # sui livelli piu' alti dell'tree. As from teoria,
                     # indeed, the Case 3 risolve always the violazione.
                     parent.setColor(Colore.NERO)                 # Θ(1)
                     grandParent.setColor(Colore.ROSSO)           # Θ(1)
@@ -749,19 +749,19 @@ class AlberoRossoNero:
         return
             
         # Computational Cost
-        # Input size: altezza dell'albero h
+        # Input size: altezza dell'tree h
         # Computational Cost: S(h)=Θ(1)+S(h-1)=Ω(1) o O(h)=O(logn)      
         
     
-    # function Pubblica Wrapper for the lancio della function privata ricors
+    # function Pubblica Wrapper for the lancio of the function privata ricors
     def _passoDiAggiustamento(self,z):               # T(h)
-        # Estrai Radice dell'Albero RossoNero
+        # Estrai Radice dell'Tree RossoNero
         p=self.getRoot()                             # Θ(1)
         # Chiama function Privata recursive
         self.__passoDiAggiustamento(p,z)             # S(h)
     
         # Computational Cost
-        # Input size: altezza dell'albero h
+        # Input size: altezza dell'tree h
         # Computational Cost: T(h)=O(h)=O(logn)     
     
      # INSERIMENTO
@@ -771,7 +771,7 @@ class AlberoRossoNero:
         self._passoDiAggiustamento(zz)               # O(h) 
     
         # Computational Cost
-        # Input size: altezza dell'albero h
+        # Input size: altezza dell'tree h
         # Computational Cost: T(h)=O(h)=O(logn)           
   
     
@@ -782,7 +782,7 @@ class AlberoRossoNero:
     # function Ausiliaria for the cancellazione of a singola foglia
     def cancellaFoglia(self,p,nodo):                                 # T(h)
         # Aggiorna the campo figlio (Dx/Sx) del padre 
-        # corrispondente alla foglia from cancellare.
+        # corrispondente to the foglia from cancellare.
         if (nodo==nodo.getParent().getLeft()):                       # Θ(1)
             nodo.getParent().setLeft(None)                           # Θ(1)
         else:                                                        # Θ(1)
@@ -803,7 +803,7 @@ class AlberoRossoNero:
            self.cancellaFoglia(self.getRoot(),nodo)                  # Θ(1)
         # CASO 2 - The Nodo HA 1 FIGLIO
         # Cortocircuita the padre with the figlio del nodo from eliminare
-        # If l'unico figlio e' that Sx...
+        # If l'unico figlio is that Sx...
         if (nodo.getLeft()!=None and nodo.getRight()==None):         # Θ(1)
             # Assegna the padre del nodo al figlio Sx
             nodo.getLeft().setParent(nodo.getParent())               # Θ(1)
@@ -812,7 +812,7 @@ class AlberoRossoNero:
                 nodo.getParent().setLeft(nodo.getLeft())             # Θ(1)
             else:                                                    # Θ(1)
                 nodo.getParent().setRight(nodo.getLeft())            # Θ(1)
-        # If l'unico figlio e' that Dx...
+        # If l'unico figlio is that Dx...
         if (nodo.getLeft()==None and nodo.getRight()!=None):         # Θ(1)
             # Assegna the padre del nodo al figlio Dx
             nodo.getRight().setParent(nodo.getParent())              # Θ(1)
@@ -827,10 +827,10 @@ class AlberoRossoNero:
         # copia the suo contained in the nodo from cancellare e, infine, 
         # cancella the nodo predecessore/successore.
         if (nodo.getLeft()!=None and nodo.getRight()!=None):         # Θ(1)
-            # Ricava the nodi predecessore e successore
+            # Ricava the nodi predecessore and successore
             pred=self.predecessoreIter(nodo.getKey())       # Ω(1) o O(h) 
             succes=self.successoreRecurs(nodo.getKey())     # Ω(1) o O(h) 
-            # Sostituisci key del nodo e cancella 
+            # Sostituisci key del nodo and cancella 
             # predecessore/successore
             if pred!=None:                                           # Θ(1)
                 nodo.setKey(pred.getKey())                           # Θ(1)
@@ -840,7 +840,7 @@ class AlberoRossoNero:
                 self.cancellaFoglia(self.getRoot(),succes)           # Θ(1)
 
         # Computational Cost
-        # Input size: altezza dell'albero h
+        # Input size: altezza dell'tree h
         # Iterative cost: T_case1(h)=O(h)+Θ(1)=O(h)
         #                  T_case2(h)=O(h)+Θ(1)=O(h)
         #                  T_case3(h)=O(h)+O(h)+Θ(1)=O(h)
@@ -893,63 +893,63 @@ for the in range(0,len(nodi),1):
                 nodi[the].setRight(nodi[j])
                 break
          
-radice=nodi[0]
-albero=AlberoRossoNero(radice)
+root=nodi[0]
+tree=AlberoRossoNero(root)
 
 
 # 2. TEST METODI
 
 'GetRoot'
-print("\nGetRoot(): " + str(albero.getRoot()))
+print("\nGetRoot(): " + str(tree.getRoot()))
 
 'Visita in Preordine'  
 print("Visita in Preordine:")
-albero.visitaPreOrdine()
+tree.visitaPreOrdine()
 
 'Visita in Inordine' 
 print("\nVisita in Inordine:")
-albero.visitaInOrdine()
+tree.visitaInOrdine()
 
 'Visita in Postordine'   
 print("\nVisita in Postordine:")
-albero.visitaPostOrdine()
+tree.visitaPostOrdine()
 
 'Visita For Livelli'
 print("\nVisita for Livelli:")
-albero.visitaPerLivelli()
+tree.visitaPerLivelli()
 
 'Conteggio number nodi'
-print("\nConteggio number Nodi: " + str(albero.calcola_n()))
+print("\nConteggio number Nodi: " + str(tree.calcola_n()))
 
 'Calcolo Altezza'
-print("Calcolo Altezza dell'albero: " + str(albero.calcola_h()))
+print("Calcolo Altezza dell'tree: " + str(tree.calcola_h()))
 
-'Conteggio Nodi al Livello k'
-print("Conteggio number nodi al livello 4: " + str(albero.conta_k(4)))
+'Conteggio Nodi al Level k'
+print("Conteggio number nodi al level 4: " + str(tree.conta_k(4)))
 
-'Ricerca'
-nodoRicercato=albero.cerca(22)
-print("\nRICERCA\nIl nodo ricercato e' : " + str(nodoRicercato))
+'Search'
+nodoRicercato=tree.cerca(22)
+print("\nRICERCA\nIl nodo searched is : " + str(nodoRicercato))
 
 'Minimo'
-minRec=albero.minimoRecurs()
-minIter=albero.minimoIter()
-print("\nMINIMO\nChiave minima nell'albero [RICORSIONE]: " + str(minRec))
-print("Chiave minima nell'albero [ITERAZIONE]: " + str(minIter))
+minRec=tree.minimoRecurs()
+minIter=tree.minimoIter()
+print("\nMINIMO\nChiave minima nell'tree [RICORSIONE]: " + str(minRec))
+print("Key minima nell'tree [ITERAZIONE]: " + str(minIter))
 
 'Massimo'
-maxRec=albero.massimoRecurs()
-maxIter=albero.massimoIter()
-print("\nMASSIMO\nChiave massima nell'albero [RICORSIONE]: " + str(maxRec))
-print("Chiave massima nell'albero [ITERAZIONE]: " + str(maxIter))
+maxRec=tree.massimoRecurs()
+maxIter=tree.massimoIter()
+print("\nMASSIMO\nChiave massima nell'tree [RICORSIONE]: " + str(maxRec))
+print("Key massima nell'tree [ITERAZIONE]: " + str(maxIter))
 
 'Predecessore'
 k1=80
 k2=13
-predIter1=albero.predecessoreIter(k1)      # iterative -Case 1- Discesa
-predIter2=albero.predecessoreIter(k2)      # iterative -Case 2- Risalita
-predRec1=albero.predecessoreRecurs(k1)     # recursive -Case 1- Discesa
-predRec2=albero.predecessoreRecurs(k2)     # recursive -Case 2- Risalita
+predIter1=tree.predecessoreIter(k1)      # iterative -Case 1- Discesa
+predIter2=tree.predecessoreIter(k2)      # iterative -Case 2- Risalita
+predRec1=tree.predecessoreRecurs(k1)     # recursive -Case 1- Discesa
+predRec2=tree.predecessoreRecurs(k2)     # recursive -Case 2- Risalita
 print("\nPREDECESSORE\nPredecessore Nodo " + str(k1) 
       + " [ITERAZIONE]: " + str(predIter1))
 print("Predecessore Nodo " +  str(k2) + " [ITERAZIONE]: " + str(predIter2))
@@ -960,10 +960,10 @@ print("Predecessore Nodo " +  str(k2) + " [RICORSIONE]: " + str(predRec2))
 'Successore'
 k1=11
 k2=16
-succIter1=albero.successoreIter(k1)     # iterative -Case 1- Discesa
-succIter2=albero.successoreIter(k2)     # iterative -Case 2- Risalita
-succRec1=albero.successoreRecurs(k1)    # recursive -Case 1- Discesa
-succRec2=albero.successoreRecurs(k2)    # recursive -Case 2- Risalita
+succIter1=tree.successoreIter(k1)     # iterative -Case 1- Discesa
+succIter2=tree.successoreIter(k2)     # iterative -Case 2- Risalita
+succRec1=tree.successoreRecurs(k1)    # recursive -Case 1- Discesa
+succRec2=tree.successoreRecurs(k2)    # recursive -Case 2- Risalita
 print("\nSUCCESSORE\nSuccessore Nodo " + str(k1) 
       + " [ITERAZIONE]: " + str(succIter1))
 print("Successore Nodo " +  str(k2) + " [ITERAZIONE]: " + str(succIter2))
@@ -975,10 +975,10 @@ print("Successore Nodo " +  str(k2) + " [RICORSIONE]: " + str(succRec2))
 'Inserimento'
 z=Nodo(keyNodoAggiuntivo,Colore.ROSSO)
 print("\nINSERIMENTO\nAlbero first dell'inserimento del nodo " + str(z))
-albero.visitaPerLivelli()
-albero.inserisci(z)
-print("\nAlbero dopo l'inserimento del nodo " + str(z))
-albero.visitaPerLivelli()
+tree.visitaPerLivelli()
+tree.inserisci(z)
+print("\nAlbero after l'inserimento del nodo " + str(z))
+tree.visitaPerLivelli()
 print()
 
 '''
@@ -987,14 +987,14 @@ print()
 k_case1=7
 k_case3=33
 print("\nDELETION - Case 1 - key " + str(k_case1) + "\nBefore...")
-albero.visitaPerLivelli()
+tree.visitaPerLivelli()
 print("\nAfter...")
-albero.cancella(k_case1)
-albero.visitaPerLivelli()
+tree.cancella(k_case1)
+tree.visitaPerLivelli()
 print("\n\nDELETION - Case 3 - key " + str(k_case3) + "\nBefore...")
-albero.visitaPerLivelli()
+tree.visitaPerLivelli()
 print("\nAfter...")
-albero.cancella(k_case3)
-albero.visitaPerLivelli()
+tree.cancella(k_case3)
+tree.visitaPerLivelli()
 
 '''

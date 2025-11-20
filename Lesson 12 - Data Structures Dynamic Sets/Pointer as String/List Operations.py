@@ -20,14 +20,14 @@ from SingleRecord import RecordSingolo
 
 '''
 LISTE SEMPLICI 
-- Ricerca                       - Cost: O(n)
+- Search                       - Cost: O(n)
 - Inserimento (in testa)        - Cost: Θ(1)
 - Inserimento (in mezzo)        - Cost: Θ(1)
 - Eliminazione                  - Cost: O(n)
 '''
 
 
-'Creazione lista with istanze della user-defined class Record.py'
+'Creazione list with istanze of the user-defined class Record.py'
 
 keys=[1,32,54,2,5,3,7,6,4,11,23,26]
 pointers=[118612,198612,210618,211668,225432,238112,
@@ -43,7 +43,7 @@ listA.append(RecordSingolo(keys[k+1],None,pointers[k+1]))
 addRecord=RecordSingolo(15,None,544312)
 
 
-'Ricerca'
+'Search'
 
 def search(p,k):                             # T(n)
     p_corr=p                                 # Θ(1)
@@ -57,7 +57,7 @@ def search(p,k):                             # T(n)
 
 # Computational Cost: 
 # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -the key not c'e' 
-# Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=O(1) -the key e' in first posizione
+# Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=O(1) -the key is in first position
 
 pSearch=search(118612,3)
 
@@ -72,7 +72,7 @@ def insertHead(p,k):                  # T(n)
     return p                          # Θ(1)
 
 # Computational Cost: 
-# T(n)=Θ(1) (for best case e for worst case)
+# T(n)=Θ(1) (for best case and for worst case)
 
 pInsertHead=insertHead(118612,addRecord)
 
@@ -88,7 +88,7 @@ def insertInside(p,k,d):              # T(n)
         return None                   # Θ(1)
 
 # Computational Cost: 
-# T(n)=Θ(1) (for best case e for worst case)
+# T(n)=Θ(1) (for best case and for worst case)
 
 pInsertInside=insertInside(544312,listA[5],addRecord)
 
@@ -112,7 +112,7 @@ def delete (p,k):                                      # T(n)
 
 # Computational Cost: 
 # T(n)=O(n) - Worst case (element from eliminare not esiste)
-# T(n)=Ω(1) - Best case (element from eliminare e' the first della list)
+# T(n)=Ω(1) - Best case (element from eliminare is the first of the list)
 
 pDelete=delete(544312,366332)
 

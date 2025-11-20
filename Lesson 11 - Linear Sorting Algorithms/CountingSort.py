@@ -19,25 +19,25 @@ import random
 '''
 COUNTING SORT 
 
-The algorithm Counting Sort e' a classico esempio of algorithm of sorting
-lineare, diversamente dagli sorting algorithms basati sul comparison visti
+The algorithm Counting Sort is a classico esempio of algorithm of sorting
+lineare, diversamente dagli sorting algorithms basati on the comparison visti
 fino ad ora (Insertion Sort, Selection Sort, Bubble Sort, Merge Sort, Quick
-Sort e Heap Sort). The fatto that si basi on a approccio diverso, the consente
-of aver a computational cost ancora piu' basso rispetto al limite inferiore
-valido for the algorithms basati sul comparison. Esso, indeed, ha costo Θ(n) 
+Sort and Heap Sort). The fatto that si basi on a approccio diverso, the consente
+of having an even lower computational cost compared to the lower bound
+valido for the algorithms basati on the comparison. Esso, indeed, ha cost Θ(n) 
 anziche' Θ(nlogn).'
 
 * Caratteristiche Principali *
-The caratteristiche principali delthe algorithm COUNTING SORT are the following:
+The caratteristiche principali than the algorithm COUNTING SORT are the following:
     - ITERATIVE Algorithm (NON RICORSIVO!!)
-    - Presenta 2 formulazioni leggermente different to second that sia o meno
-      accettabile that the elementi del vector from ordinare siano sovrascritti
+    - Presenta 2 formulazioni leggermente different to second that sia o less
+      accettabile that the elements del vector to be sorted siano sovrascritti
       (presenza of data satellite/metadata)
-    - Processo of sorting IN LOCO (versione Classica) e NON IN LOCO 
+    - Processo of sorting IN LOCO (versione Classica) and NON IN LOCO 
       (versione Avanzata)
     - Funziona only for valori interi positivi 
         - if not siano interi e/o positivi, it is necessary to make them 
-          such first of eseguire the algorithm e poi ritrasformarli nel loro
+          such first of eseguire the algorithm and poi ritrasformarli nel loro
           value originale'
     
 - Computational Cost: Θ(n)
@@ -48,7 +48,7 @@ The caratteristiche principali delthe algorithm COUNTING SORT are the following:
 'VERSIONE CLASSICA - No Data Satellite'
 
 def countingSortv1(To):                                        # T(n)
-    '1. Ricerca value intero massimo k'
+    '1. Search value intero massimo k'
     imax=0                                                    # Θ(1)
     for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
         if To[imax]<To[the]:                                      # Θ(1)
@@ -72,7 +72,7 @@ def countingSortv1(To):                                        # T(n)
 'VERSIONE AVANZATA - Data Satellite'
 
 def countingSortv2(To):                                        # T(n)
-    '1. Ricerca value intero massimo k'
+    '1. Search value intero massimo k'
     imax=0                                                    # Θ(1)
     for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
         if To[imax]<To[the]:                                      # Θ(1)

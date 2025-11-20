@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 '''
 CALCOLO number DI FIBONACCI
-The calcolo del number of Fibonacci e' a problema prettamente recursive method.
+The calculation of the number of Fibonacci is a problema inherently recursive.
 E' possibile, pero', risolverlo also with a processo iterativo. 
 Confrontiamo the two algoritmi'''
 
@@ -57,7 +57,7 @@ n=13
 fibIt=fibIterativo(n)
 fibRic=fibRicorsivo(n)
 
-print("For n=",n," the number of Fibonacci e' pari to ",
+print("For n=",n," the number of Fibonacci is equal to ",
       "\nIterative Algorithm: ", fibIt,"\nRecursive Algorithm: ", fibRic)
 
 
@@ -80,7 +80,7 @@ print('Recursive Algorithm : ',fibRicTime,' [nanosecs]')
 
 # comparison algorithm recursive/iterative
 '''
-The algorithm recursive e' molto meno efficiente delthe algorithm
+The algorithm recursive is much less efficient than the algorithm
 ITERATIVO. Sia in termini of TIME that of SPACE COMPLEXITY!!
 '''
 

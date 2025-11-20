@@ -29,8 +29,8 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Given in input a list through the puntatore al first element, restituire the 
-puntatore all'last element.
+Given in input a list through the pointer al first element, restituire the 
+pointer all'last element.
 '''
 
 
@@ -39,8 +39,8 @@ puntatore all'last element.
 # ESERCIZIO 2 ################################################################
 
 '''
-Given in input a list through the puntatore al first element, restituire the 
-puntatore al penultimo element.
+Given in input a list through the pointer al first element, restituire the 
+pointer al penultimo element.
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -49,8 +49,8 @@ puntatore al penultimo element.
 # ESERCIZIO 3 ################################################################
 
 '''
-Given in input a list through the puntatore al first element, restituire the 
-puntatore alla stessa list from cui sia stato eliminato l'last element.
+Given in input a list through the pointer al first element, restituire the 
+pointer to the same list from which the last element has been removed.
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -59,10 +59,10 @@ puntatore alla stessa list from cui sia stato eliminato l'last element.
 # ESERCIZIO 4 ################################################################
 
 '''
-Given in input a list through the puntatore al first element, restituire the 
-puntatore of a lista that contenga the stessi record della lista of partenza
+Given in input a list through the pointer al first element, restituire the 
+pointer of a list that contenga the stessi record of the list of partenza
 ma in ordine inverso (N.B. not deve essere creato alcun record, ma bisogna 
-smontare e rimontare opportunamente the record iniziali)
+smontare and rimontare opportunamente the record iniziali)
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -71,9 +71,9 @@ smontare e rimontare opportunamente the record iniziali)
 # ESERCIZIO 5 ################################################################
 
 '''
-Given in input a list through the puntatore al first element, restituire the 
-puntatori to two liste, a with the elementi of posto pari nella lista of 
-partenza, ed a with the elementi of posto dispari (also qui, not bisogna 
+Given in input a list through the pointer al first element, restituire the 
+puntatori to two lists, a with the elements of posto pari in the list of 
+partenza, ed a with the elements of posto dispari (also qui, not bisogna 
 creare nuovi record)
 '''
 
@@ -83,8 +83,8 @@ creare nuovi record)
 # ESERCIZIO 6 ################################################################
 
 '''
-Given in input a list of interi through the puntatore al first element, 
-print all the values that compaiono almeno two volte nella list.
+Given in input a list of interi through the pointer al first element, 
+print all the values that compaiono almeno two times in the list.
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -93,9 +93,9 @@ print all the values that compaiono almeno two volte nella list.
 # ESERCIZIO 7 ################################################################
 
 '''
-Given in input a list sorted of interi through the puntatore al first 
-element, ed a element from inserire, aggiungere tale element alla list in
-modo from rispettare l'sorting.
+Given in input a list sorted of interi through the pointer al first 
+element, ed a element from inserire, add tale element to the list in
+way from rispettare l'sorting.
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -104,8 +104,8 @@ modo from rispettare l'sorting.
 # ESERCIZIO 8 ################################################################
 
 '''
-Given in input a list of interi through the puntatore al first element, 
-restituire the lista ordinata (senza creare nuovi record).
+Given in input a list of interi through the pointer al first element, 
+restituire the list ordinata (senza creare nuovi record).
 '''
 
 
@@ -123,21 +123,21 @@ for the in range(0,len(records),1):
     if the<len(records)-1:
         records[the].setNext(records[the+1])
     
-# Creazione lista puntata (contiene the riferimento al record of testa)
+# Creazione list puntata (contiene the riferimento al record of testa)
 listaPuntataDopp=ListaPuntataDoppia(records[0])
 
 
-def ordinaListaDoppia(lista):
+def ordinaListaDoppia(list):
     
     'Inizializzazione Records of supporto'
     p_corr,p_prev=RecordDoppio(),RecordDoppio()
     p_next,p_forward=RecordDoppio(),RecordDoppio()
-    'Salva second record della lista in p_corr'
-    p_corr=lista.getPrimoRecord().getNext()
-    'Salva first record della lista in p_prev'
-    p_prev=lista.getPrimoRecord()
+    'Salva second record of the list in p_corr'
+    p_corr=list.getPrimoRecord().getNext()
+    'Salva first record of the list in p_prev'
+    p_prev=list.getPrimoRecord()
     
-    'Fino to that not si raggiunge the fine della lista...'
+    'Fino to that not si raggiunge the fine of the list...'
     while p_corr!=None:
         'If p_corr punta to a record, stora quel record in p_forward'
         if p_corr.getNext()!=None:
@@ -145,12 +145,12 @@ def ordinaListaDoppia(lista):
         else: 
             p_forward=None
         
-        'Fino to that not si raggiunge l''inizio della lista...'
+        'Fino to that not si raggiunge l''inizio of the list...'
         while p_corr.getPrev()!=None:
             'Aggiorna the record precedente p_corr'
             p_prev=p_corr.getPrev()
-            '''If the key of p_corr e' minore of that of p_prev...scambia 
-            'the two record of posizione...'''
+            '''If the key of p_corr is minore of that of p_prev...scambia 
+            'the two record of position...'''
             if p_corr.getData()<p_prev.getData():
                'Memorizza the record successivo in p_next, if esso esiste...'
                if p_corr.getNext()!=None:
@@ -159,27 +159,27 @@ def ordinaListaDoppia(lista):
                     p_next=None    
                'Aggiorna the record precedente p_corr'
                p_prev=p_corr.getPrev()
-               'Scambia the puntatori dei records p_next e (p_prev->prev)'
+               'Scambia the puntatori dei records p_next and (p_prev->prev)'
                if (p_prev.getPrev()!=None):
                     p_prev.getPrev().setNext(p_corr)
                if (p_next!=None):
                     p_next.setPrev(p_prev)
                     
-               'Memorizza campi next e prev of p_corr e p_prev '
-               'in variabili supporto.'
+               'Memorizza campi next and prev of p_corr and p_prev '
+               'in variables supporto.'
                p1=p_prev.getPrev()
                p2=p_prev.getNext()
                p3=p_corr.getPrev()
                p4=p_corr.getNext()
                 
-               'Scambio campi next e prev of p_corr e p_prev'
+               'Scambio campi next and prev of p_corr and p_prev'
                p_corr.setPrev(p1)
                p_corr.setNext(p3)
                p_prev.setPrev(p2)
                p_prev.setNext(p4)
             else:
                 break
-        'Aggiorna p_corr spostandolo of a posizione in avanti nella lista.'
+        'Aggiorna p_corr spostandolo of a position in avanti in the list.'
         p_corr=p_forward
         'Aggiorna p_prev.'
         if p_corr!=None:

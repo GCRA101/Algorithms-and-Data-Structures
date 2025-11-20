@@ -19,27 +19,27 @@ import random
 '''
 BUCKET SORT 
 
-The algorithm Bucking Sort e' a classico esempio of algorithm of sorting
-lineare, diversamente dagli sorting algorithms basati sul comparison visti
+The algorithm Bucking Sort is a classico esempio of algorithm of sorting
+lineare, diversamente dagli sorting algorithms basati on the comparison visti
 fino ad ora (Insertion Sort, Selection Sort, Bubble Sort, Merge Sort, Quick
-Sort e Heap Sort). The fatto that si basi on a approccio diverso, the consente
-of aver a computational cost ancora piu' basso rispetto al limite inferiore
-valido for the algorithms basati sul comparison. Esso, indeed, ha costo Θ(n) 
+Sort and Heap Sort). The fatto that si basi on a approccio diverso, the consente
+of having an even lower computational cost compared to the lower bound
+valido for the algorithms basati on the comparison. Esso, indeed, ha cost Θ(n) 
 anziche' Θ(nlogn).
 The vantaggio that ha rispetto al suo simile algorithm of COUNTING SORT sta nel 
-fatto that esso not ha bisogno of alcun limite/condizione sul value of k (
+fatto that esso not ha bisogno of alcun limite/condizione on the value of k (
 that is, the value massimo contained in the vector not deve essere minore del 
 number of elements contained in the vector medesimo)
 
 * Caratteristiche Principali *
-The caratteristiche principali delthe algorithm BUCKET SORT are the following:
+The caratteristiche principali than the algorithm BUCKET SORT are the following:
     - ITERATIVE Algorithm (NON RICORSIVO!!)
     - NOT IN-PLACE sorting process
     - Funziona only for valori interi positivi 
         - if not siano interi e/o positivi, it is necessary to make them 
-          such first of eseguire the algorithm e poi ritrasformarli nel loro
+          such first of eseguire the algorithm and poi ritrasformarli nel loro
           value originale'
-    - I values nel vector in input devono essere distribuiti in modo 
+    - I values nel vector in input devono essere distribuiti in a way 
       uniforme
     
 - Computational Cost: Θ(n)   (Best case - values unif distribuiti)
@@ -64,7 +64,7 @@ def insertionSort(To):               # T(n)
 'BUCKET SORT'
 
 def bucketSort(To):                                         # T(n)
-    '1. Ricerca value intero massimo k'
+    '1. Search value intero massimo k'
     imax=0                                                 # Θ(1)
     for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
         if To[imax]<To[the]:                                   # Θ(1)
@@ -82,7 +82,7 @@ def bucketSort(To):                                         # T(n)
     '4. sorting elements buckets usando selection sort'
     for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
         B[the]=insertionSort(B[the])                           # v*Θ(1)+Θ(1)                               
-    '5. Concatenzazione liste B[the] nel vector To'    
+    '5. Concatenzazione lists B[the] nel vector To'    
     k=0                                                    # Θ(1)
     for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
        for j in range(0,len(B[the]),1):                      # v*Θ(1)+Θ(1)   
@@ -92,11 +92,11 @@ def bucketSort(To):                                         # T(n)
 
 
 # Input size: number n of elements in array To
-# Best case e worst case differiscono.
+# Best case and worst case differiscono.
 # Best case-> values uniformemente distribuiti - Θ(n)
-# Worst case-> values all DIVERSI ma molto vicini such
-#                 from finire all nello stesso bucket, sorted 
-#                 in ORDINE INVERSO e facendo uso dell'INSERTION SORT - Θ(n^2)
+# Worst case-> values all DIVERSI ma very vicini such
+#                 end up all in the same bucket, sorted 
+#                 in ORDINE INVERSO and facendo uso dell'INSERTION SORT - Θ(n^2)
 # Computational Cost: T(n)=+Θ(1)+n*Θ(1)+k//delta*Θ(1)+n*Θ(1)+n*Θ(1)+n*Θ(1)
 # T(n)=Θ(n)
 

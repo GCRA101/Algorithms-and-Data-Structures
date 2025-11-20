@@ -45,10 +45,10 @@ public class MergeIterativo
             k++;
         }
 
-        // finché the first sottovettore not is terminato
+        // finché the first sub-vector not is terminato
         while(the <= ind_medio)
         {
-            // if c'is più of a element
+            // if c'is more of a element
             // mettili in ordine
             if (the+1 <= ind_medio && To[the] > To[the + 1])
             {
@@ -61,10 +61,10 @@ public class MergeIterativo
             k++;
         }
 
-        // finché the second sottovettore not is terminato
+        // finché the second sub-vector not is terminato
         while(j <= ind_ultimo)
         {
-            // if c'is più of a element
+            // if c'is more of a element
             // mettili in ordine
             if (j+1 <= ind_ultimo && To[j] > To[j + 1])
             {
@@ -97,12 +97,12 @@ public class MergeIterativo
 
         System.out.println("array pari first dell'sorting:");
         m.print(arrayPari);
-        System.out.println("array pari dopo l'sorting:");
+        System.out.println("array pari after l'sorting:");
         m.print(m.merge(arrayPari, 0, arrayPari.length-1));
 
         System.out.println("array dispari first dell'sorting:");
         m.print(arrayDispari);
-        System.out.println("array dispari dopo l'sorting:");
+        System.out.println("array dispari after l'sorting:");
         m.print(m.merge(arrayDispari, 0, arrayDispari.length-1));
     }
 }

@@ -17,13 +17,13 @@ import matplotlib.pyplot as plt
 # ESERCIZIO 1 ################################################################
 
 '''
-Given as input two integers n e k, calculate the k-th power of n through 
+Given as input two integers n and k, calculate the k-th power of n through 
 algorithm recursive method
 '''
 
 # Considerazioni
 ''' 
-n^k=n*n*n*n*n... k volte
+n^k=n*n*n*n*n... k times
 Case base: for k=1->n=n
 '''
 
@@ -36,8 +36,8 @@ def es1(n,k):                     # T(k)
 # Input size: value del coefficiente intero k
 # The worst case and the best case coincidono. Indeed, also if for k=0,
 # the computational cost would be = Θ(1), the asymptotic notation is calculated
-# only for valori grandi dell'input (the.e. k->∞) for cui the costo computazionale
-# is greater than Θ(1) e cresce as the value of ... grows k.
+# only for valori grandi dell'input (the.e. k->∞) for which the computational cost
+# is greater than Θ(1) and cresce as the value of ... grows k.
 # Computational Cost: T(k)=Θ(1)+T(k-1) -> Recurrence Equations
 
 
@@ -54,7 +54,7 @@ through an algorithm recursive method
 # Considerazioni
 '''
 The action to be performed repeatedly consists of adding the current number
-alla somma dei precedenti. 
+to the sum dei precedenti. 
 The base case that stops the recursion occurs when reaching l'index
 dell'last element
 '''
@@ -75,10 +75,10 @@ def es2a(To,sum=0,the=0):             # T(n)
 
 '''
 ATTENZIONE!!!
-The algorithm sopra NON E' PROPRIAMENTE recursive since the total value
+The algorithm above NON E' PROPRIAMENTE recursive since the total value
 of the sum is returned exactly once the base case is reached 
-(the==len(To)-1)...while it should be returned dalla chiusura of chiamata
-della first function of the recursive chain...
+(the==len(To)-1)...while it should be returned from the chiusura of chiamata
+of the first function of the recursive chain...
 Let's see how to rewrite the recursive function correctly.
 '''
 
@@ -140,15 +140,15 @@ minVal=es3(To)
 # ESERCIZIO 4 ################################################################
     
 '''
-Given as input an array of n integers, verificare if e' palindromo.'''
+Given as input an array of n integers, verify if it is a palindrome.'''
 
 # Considerazioni
 '''
 The algorithm deve ritornare a output of tipo boolean depending on whether the array in 
-input sia palindromo o meno.
-Cases base: 1) differenza indici estremi subArray <=1 
+input sia palindrome o less.
+Cases base: 1) differenza indices estremi subArray <=1 
            2) values at the extreme indices are different
-Passo recursive method: confronto valori indici estremi for indici that si avvicinano
+Recursive step: confronto valori indices estremi for indices that si avvicinano
                  verso the punto medio dell'array'''
 
 'Best Case'
@@ -166,10 +166,10 @@ bool=es4(To)
 # Input size: number n of values contained in array To
 
 # Computational Cost
-# The best case e' the case in cui already the two extreme values of the array are
-# different (in that case, e' possibile uscire dalla ricorsione already' alla first
+# The best case is the case where already the two extreme values of the array are
+# different (in that case, it is possible uscire from the ricorsione already' to the first
 # iterazione).
-# The worst case e' the case in cui l'array e' palindromo.
+# The worst case is the case where l'array is a palindrome.
 # best case: T(n)=Θ(1)
 # worst case: T(n)=Θ(1)+T(n-2) -> Recurrence Equations
 
@@ -186,10 +186,10 @@ first, ossia nell'ordine: V[n-1] V[n-2] V[n-3] V[n-4]...V[1] V[0]'''
 # Considerazioni
 '''
 The algorithm deve arrivare to print l'last element in the base case and then
-print all the restanti fino al first nella sequenza of chiusura delle 
+print all the restanti fino al first in the sequenza of chiusura of the 
 chiamate of function.
 Case base: 1) index element = index finale
-Passo recursive method: prints element V[n] in console'''
+Recursive step: prints element V[n] in console'''
 
 'Best/Worst Case'
 To=[12,51,22,61,32,81,9,43,78,101,2] 
@@ -214,7 +214,7 @@ es5b(To)
 
 # Computational Cost
 # For values grandi of n, the best case and the worst case coincidono.
-# Infatti the algorithm deve always e comunque scorrere all the elements dell'
+# In fact the algorithm deve always and comunque scorrere all the elements dell'
 # array.
 # best case/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
@@ -224,16 +224,16 @@ es5b(To)
 # ESERCIZIO 6 ################################################################
     
 '''
-Given as input an array of n integers, print the chiavi dalla first all'
+Given as input an array of n integers, print the keys from the first all'
 last, ossia nell'ordine: V[0] V[1] V[2]...V[n-2] V[n-1]'''
 
 # Considerazioni
 '''
 The algorithm deve arrivare to print the first element in the base case and then
-print all the restanti fino all'last nella sequenza of chiusura delle 
+print all the restanti fino all'last in the sequenza of chiusura of the 
 chiamate of function.
-Case base: 1) index element = index iniziale
-Passo recursive method: prints element V[n] in console'''
+Case base: 1) index element = index initial
+Recursive step: prints element V[n] in console'''
 
 'Best/Worst Case'
 To=[12,51,22,61,32,81,9,43,78,101,2] 
@@ -259,7 +259,7 @@ es6b(To)
 
 # Computational Cost
 # For values grandi of n, the best case and the worst case coincidono.
-# Infatti the algorithm deve always e comunque scorrere all the elements dell'
+# In fact the algorithm deve always and comunque scorrere all the elements dell'
 # array.
 # best case/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
@@ -276,12 +276,12 @@ VEDI IL FOLDER TORRE HANOI '''
 # ESERCIZI for CASA ##########################################################
 
 'Esercizio B'
-'''Design an algorithm recursive method that, given two numbers interi x e y, x>y>0,
+'''Design an algorithm recursive method that, given two numbers interi x and y, x>y>0,
 ne calcoli the massimo comun divisore utilizzando the seguente procedimento (of
 Euclide): 
     - if y=0 allora MCD(x,y)=x
     - altrimenti MCD(x,y)=MCD(y,x%y)
-        - where x%y rappresenta the resto della divisione between x e y '''
+        - where x%y rappresenta the resto of the divisione between x and y '''
         
 def MCD(x,y):
     if y==0: 
@@ -290,12 +290,12 @@ def MCD(x,y):
 
 x=73
 y=41
-print("\n\nMCD of ",x," e ",y, " e' ",MCD(x,y))
+print("\n\nGCD of ",x," and ",y, " is ",MCD(x,y))
 
 # Input size: number n of values contained in array To
 
 # Computational Cost
 # For values grandi of n, the best case and the worst case coincidono.
-# Infatti the algorithm deve always e comunque scorrere all the elements dell'
+# In fact the algorithm deve always and comunque scorrere all the elements dell'
 # array.
 # best case/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations

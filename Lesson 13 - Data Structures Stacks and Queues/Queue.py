@@ -17,17 +17,17 @@ from SingleRecord import RecordSingolo
 
 '''
 CLASSE CODA (QUEUE)
-Costruita servendosi della Struttura Data of LISTA PUNTATA SINGOLA
+Costruita servendosi of the Struttura Data of LISTA PUNTATA SINGOLA
 '''
 
-class Coda:
+class Queue:
     
     # ATTRIBUTES
     _head=None
     _tail=None
     
     # CONSTRUCTOR
-    'Default e Overloaded'
+    'Default and Overloaded'
     def __init__(self,_head=None,_tail=None):
         self._head=_head
         self._tail=_tail
@@ -54,7 +54,7 @@ class Coda:
             self._head=self._head.getNext()     # Θ(1)
         if self._head==None:                    # Θ(1)
             self._tail=None                     # Θ(1)
-        return e                                # Θ(1)
+        return and                                # Θ(1)
     
     'ToString'
     def __str__(self):

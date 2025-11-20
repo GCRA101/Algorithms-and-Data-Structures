@@ -19,9 +19,9 @@ import random
 '''
 HEAP SORT 
 
-The algorithm Heap Sort e' an algorithm for sorting piu' avanzato e complesso
+The algorithm Heap Sort is an algorithm for sorting piu' avanzato and complesso
 rispetto agli algoritmi naif studiati finora (Insertion Sort, Selection Sort e
-Bubble Sort) e consente of ottenere the miglior costo computazionale possibile
+Bubble Sort) and consente of ottenere the miglior computational cost possibile
 for an algorithm for sorting based on comparisons: O(nlogn) sia nel case 
 peggiore sia nel best case. Inoltre consente l'sorting in loco (al 
 contrario del MergeSort). 
@@ -29,9 +29,9 @@ Unico limite consiste nel fatto that esso puo' lavorare only with strutture data
 of tipo Heap.'
 
 * Caratteristiche Principali *
-The caratteristiche principali delthe algorithm HEAP SORT are the following:
+The caratteristiche principali than the algorithm HEAP SORT are the following:
     - RECURSIVE Algorithm
-    - Si serve of two funzioni ausiliarie: Heapify e BuildHeap
+    - Si serve of two funzioni ausiliarie: Heapify and BuildHeap
     - Recurrence Equation solvable through the Master Method (Teorema
       Master)
     - Processo of sorting IN LOCO
@@ -90,30 +90,30 @@ def heapSort(To):                            # T(n)
 
     
 '''
-Note Importanti
-(To): Passare the parametro variabile n nella function heapify e' cio' that
-     consente of considerare a porzione of vector To always piu' piccola (
-     1 element less at each cycle nella function heapSort) without having to 
-     passare the corrispondente sotto-vector of To. To rimane always della stessa 
-     lunghezza cosi from poter essere modificato e sorted in loco mentre the 
-     porzione of esso that si va via via to considerare e' compresa between 0 e n.
-(B): left=2*the e right=2*the+1 sarebbero corretti only if the first indice dell'array
-     fosse 1! Since the first index e' always =0, dobbiamo aggiungere a 1
-     alle espressioni sopra in modo that, quando the=0 -> left=1 e right=2.
-     Abbiamo quindi left=2*the+1 e right=2*the+2!
-(C): Chiamiamo the function heapify sul vector To, with dimensione costante m
-     e element of index variabile the dalla mezzeria del vector alla posizione
-     iniziale (indice 0)
-(D): Richiamiamo the function heapify passandole always the stesso vector To,
-     the stesso index of radice 0 ma with index massimo that si riduce of 1 
-     ad each ciclo.
+Important Notes
+(A): Passing the variable parameter n to the heapify function is what
+     allows considering a progressively smaller portion of vector A (
+     1 element less at each cycle in the heapSort function) without having to 
+     pass the corresponding sub-vector of A. A always remains the same 
+     length so that it can be modified and sorted in place while the 
+     portion of it to be considered is comprised between 0 and n.
+(B): left=2*i and right=2*i+1 would be correct only if the first index of the array
+     were 1! Since the first index is always =0, we must add 1
+     to the above expressions so that, when i=0 -> left=1 and right=2.
+     We therefore have left=2*i+1 and right=2*i+2!
+(C): We call the heapify function on vector A, with constant dimension m
+     and element of variable index i from the middle of the vector to the initial
+     position (index 0)
+(D): We call the heapify function passing it always the same vector A,
+     the same root index 0 but with maximum index that decreases by 1 
+     at each cycle.
 
 '''
 
-# Input size: number n of elements in array To
+# Input size: number n of elements in array A
 # Best case and worst case coincide.
-# The costo computazionale dei 3 algoritmi Heapify, BuildHeap e HeapSort e' 
-# as segue:
+# The computational cost of the 3 algorithms Heapify, BuildHeap and HeapSort is 
+# as follows:
 # - Heapify:   T(n)=T(2/3n)+Θ(1)  -> T(n)=O(logn)
 # - BuildHeap: T(n)=O(n)          -> T(n)=O(n)
 # - HeapSort:  T(n)=O(nlogn)      -> T(n)=O(nlogn)
