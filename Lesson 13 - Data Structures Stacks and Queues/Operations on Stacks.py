@@ -14,7 +14,7 @@ import random
 
 # IMPORT CLASSI DEL PACKAGE
 from SingleRecord import RecordSingolo
-from Pila import Pila
+from Stack import Pila
 
 
 'COSTRUZIONE ARRAY DI RECORDS SINGOLI'

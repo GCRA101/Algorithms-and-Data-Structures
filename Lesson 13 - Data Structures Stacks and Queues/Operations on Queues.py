@@ -14,7 +14,7 @@ import random
 
 # IMPORT CLASSI DEL PACKAGE
 from SingleRecord import RecordSingolo
-from Coda import Coda
+from Queue import Coda
 
 
 'COSTRUZIONE ARRAY DI RECORDS SINGOLI'
