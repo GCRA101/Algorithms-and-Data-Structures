@@ -15,7 +15,7 @@ import random
 # IMPORT CLASSI DEL PACKAGE
 from BinaryNode import Nodo
 from BinaryTree import AlberoBinario
-from Coda_Modificata import Coda
+from ModifiedQueue import Coda
 
 '''
 PREPARAZIONE ALBERO

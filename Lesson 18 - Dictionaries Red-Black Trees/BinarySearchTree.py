@@ -17,7 +17,7 @@ import random
 from BinarySearchNode import Nodo
 'Coda Modificata per ospitare i nodi dellalbero nel campo valore dei'
 'suoi record singoli.'
-from Coda_Modificata import Coda
+from ModifiedQueue import Coda
 
 '''
 CLASSE ALBERO (TREE)

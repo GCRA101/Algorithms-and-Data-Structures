@@ -14,7 +14,7 @@ import random
 
 # IMPORT CLASSI DEL PACKAGE
 from BinaryNode import Nodo
-from Coda_Modificata import Coda
+from ModifiedQueue import Coda
 
 '''
 CLASSE ALBERO (TREE)
