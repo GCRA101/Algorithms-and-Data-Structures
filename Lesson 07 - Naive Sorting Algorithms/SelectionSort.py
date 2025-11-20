@@ -12,46 +12,46 @@ import matplotlib.pyplot as plt
 
 
 
-# ALGORITMI DI ORDINAMENTO - SELECTION SORT
+# SORTING ALGORITHMS - SELECTION SORT
 
 '''
 SELECTION SORT 
-L'algoritmo Selection Sort e' uno degli algoritmi piu' semplici per effettuare
-l'ordinamento di una serie/record di dati insieme al INSERTION SORT e al 
+The algorithm Selection Sort e' one dethe algorithms piu' semplici for effettuare
+l'sorting to series/record of given along with INSERTION SORT e al 
 BUBBLE SORT'
-L'algoritmo SELECTION SORT presenta lo stesso costo computazionale per il caso
-peggiore (serie dati ordinata in ordine inverso) e il caso migliore (serie dati
-gia' ordinata)
+The algorithm SELECTION SORT has the same computational cost for the case
+peggiore (given series sorted in reverse order) and the best case (serie given
+already' ordinata)
 - Computational Cost: Θ(n^2)
 '''
 
-A=[1,5,3,7,8,11,1,56,2,4]
+To=[1,5,3,7,8,11,1,56,2,4]
 Aworst=[87,31,25,23,21,11,8,5,3,1]
 Abest=[1,5,6,31,44,53,98,101]
 
-def selectionSort(A):                 # T(n)
-    for i in range(0,len(A)):         # n*Θ(1)+Θ(1)
-        #min=A[i]                      # Θ(1)
-        jmin=i
-        for j in range(i+1,len(A)):   # tjΘ(1)+Θ(1) dove tj=(n-1) sempre
-            #if A[j]<min:
-             if A[j]<A[jmin]:
-                #min=A[j]              # Θ(1)
+def selectionSort(To):                 # T(n)
+    for the in range(0,len(To)):         # n*Θ(1)+Θ(1)
+        #min=To[the]                      # Θ(1)
+        jmin=the
+        for j in range(the+1,len(To)):   # tjΘ(1)+Θ(1) where tj=(n-1) always
+            #if To[j]<min:
+             if To[j]<To[jmin]:
+                #min=To[j]              # Θ(1)
                 jmin=j
-        #A.pop(jmin)
-        A.insert(i,A.pop(jmin))               # Θ(1)
+        #To.pop(jmin)
+        To.insert(the,To.pop(jmin))               # Θ(1)
         
-    return A
+    return To
     
 
-# Input size: numero n di elementi nell'array A
-# Best case and worst case coincide for any large value di n 
-# dato che il ciclo for interno passsera' in rassegna sempre tutti gli elementi
-# per trovare i minimi parziali
-# Computational Cost: T(n)=Θ(n^2) - Caso peggiore/migliore
+# Input size: number n of elements in array To
+# Best case and worst case coincide for any large value of n 
+# since the internal for loop will always scan all elements
+# for trovare the minimi parziali
+# Computational Cost: T(n)=Θ(n^2) - Worst case/migliore
 
 
-Asorted1=selectionSort(A)
+Asorted1=selectionSort(To)
 Asorted2=selectionSort(Aworst)
 Asorted3=selectionSort(Abest)
 
@@ -67,16 +67,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -89,28 +89,28 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(5,100,1):
-    A=list(range(0,i,1))
+for the in range(5,100,1):
+    To=list(range(0,the,1))
     tic=time.perf_counter_ns()
-    selectionSort(A)
+    selectionSort(To)
     toc=time.perf_counter_ns()
     stepsA.append(abs(round(toc-tic,8)))
 
 
 stepsB=[]
-for i in range(100,5,-1):
-    B=list(range(i,0,-1))
+for the in range(100,5,-1):
+    B=list(range(the,0,-1))
     tic=time.perf_counter_ns()
     selectionSort(B)
     toc=time.perf_counter_ns()
     stepsB.append(abs(round(toc-tic,8)))
 
     
-rappresentazioneGrafica(range(5,100,1),stepsA,1,"Algoritmi di Ordinamento "  
-                        "- Selection Sort","Caso Migliore")
+rappresentazioneGrafica(range(5,100,1),stepsA,1,"Sorting Algorithms "  
+                        "- Selection Sort","best case")
 
-rappresentazioneGrafica(range(5,100,1),stepsB,1,"Algoritmi di Ordinamento "  
-                        "- Selection Sort","Caso Peggiore")
+rappresentazioneGrafica(range(5,100,1),stepsB,1,"Sorting Algorithms "  
+                        "- Selection Sort","worst case")
 
 
 

@@ -17,18 +17,18 @@ from SingleRecord import RecordSingolo
 
 '''
 CLASSE PILA (STACK)
-Costruita servendosi della Struttura Dati di LISTA PUNTATA SINGOLA e modificata
-nel suo funzionamento per essere usata per la VISITA IN PREORDINE ITERATIVA 
-di un ALBERO BINARIO.
-La Pila si serve di Record Singoli mentre l'albero binario di Record Doppi. 
-Il segreto consiste nell'immagazzinare il riferimento a ciascun nodo dell'albero
-nel campo Data e il riferimento al record singolo successivo nel campo Next.
-La Pila e' quindi costituita da una successione di record singoli che si puntano
-a vicenda in sequenza e in cui ciascuno di essi contiene il riferimento a 
+Costruita servendosi della Struttura Data of LISTA PUNTATA SINGOLA e modificata
+nel suo funzionamento for essere usata for the VISITA IN PREORDINE iterative 
+of a ALBERO BINARIO.
+The Pila si serve of Record Singoli mentre l'albero binario of Record Doppi. 
+The segreto consiste nell'immagazzinare the riferimento to ciascun nodo dell'albero
+nel campo Given e the riferimento al record singolo successivo nel campo Next.
+The Pila e' quindi costituita from a successione of record singoli that si puntano
+to vicenda in sequenza e in cui ciascuno of essi contiene the riferimento to 
 ciascun nodo corrispondente dell'Albero Binario.
 Quindi...
-    - Campo DATA : Riferimento a Nodo Albero Binario
-    - Campo NEXT : Riferimento a Record Singolo Successivo nella Pila
+    - Campo DATA : Riferimento to Nodo Albero Binario
+    - Campo NEXT : Riferimento to Record Singolo Successivo nella Pila
 '''
 
 class Pila:
@@ -62,11 +62,11 @@ class Pila:
     'LENGTH'
     def length(self):                           # T(n)
         refRecord=self._top                     # Θ(1)
-        i=0                                     # Θ(1)
+        the=0                                     # Θ(1)
         while refRecord!=None:                  # n*Θ(1)+Θ(1)
-            i+=1                                # Θ(1)
+            the+=1                                # Θ(1)
             refRecord=refRecord.getNext()       # Θ(1)
-        return i                                # Θ(1)
+        return the                                # Θ(1)
     
     'ToString'
     def __str__(self):

@@ -21,19 +21,19 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Sia dato un vettore di lunghezza n contenente solo valori 0 e 2. Si progetti
-un algoritmo con costo computazionale lineare che modifichi il vettore in modo
-che tutte le occorrenze di 0 si trovino piu' a sinistra di tutte le occorrenze
-di 2.
+Sia given to vector of length n containing only values 0 e 2. Design
+an algorithm with computational cost lineare that modifichi the vector in modo
+that all the occorrenze of 0 si trovino piu' to sinistra of all the occorrenze
+of 2.
 '''
 
 # Considerazioni
 '''
-Per risolvere il problema basta usare l'algoritmo di Partizione del QuickSort
-considerando, come pivot, il valore 1.
+For risolvere the problema basta usare the algorithm of Partizione del QuickSort
+considerando, as pivot, the value 1.
 '''
 
-# Algoritmo
+# algorithm
 
 
 A1=[2,2,0,0,2,0,2,0,0,0,2,0,2,2,0,2,2,2,0,0]
@@ -42,25 +42,25 @@ A3=[0,0,0,0,0,0,2,2,2,2,2,]
 
 
 
-def partition(A,indStart,indEnd):         # T(n)
+def partition(To,indStart,indEnd):         # T(n)
     pivot=1                               # Θ(1)
-    i=indStart                            # Θ(1)
+    the=indStart                            # Θ(1)
     j=indEnd                              # Θ(1)
     while True:                           # Θ(1)
-        while A[i]<pivot:                 # (n-k)*Θ(1)+Θ(1)
-            i+=1                          # Θ(1)
-        while A[j]>pivot:                 # k*Θ(1)+Θ(1)
+        while To[the]<pivot:                 # (n-k)*Θ(1)+Θ(1)
+            the+=1                          # Θ(1)
+        while To[j]>pivot:                 # k*Θ(1)+Θ(1)
             j-=1                          # Θ(1)
-        if i<j:                           # Θ(1)
-            temp=A[j]                     # Θ(1)
-            A[j]=A[i]                     # Θ(1)
-            A[i]=temp                     # Θ(1)
-            i,j=i+1,j-1                   # Θ(1)
+        if the<j:                           # Θ(1)
+            temp=To[j]                     # Θ(1)
+            To[j]=To[the]                     # Θ(1)
+            To[the]=temp                     # Θ(1)
+            the,j=the+1,j-1                   # Θ(1)
         else:                             # Θ(1)
             return                        # Θ(1)
 
 
-# Input size: numero n di elementi nell'array A
+# Input size: number n of elements in array To
 # Computational Cost: T(n)=(n-k)*Θ(n)+k*Θ(1)+Θ(1)=Θ(n)
 
 partition(A1,0,len(A1)-1)
@@ -80,12 +80,12 @@ partition(A3,0,len(A3)-1)
 # ESERCIZI0 4 ################################################################
 
 '''
-Si progetti un algoritmo il piu' efficiente possibile per il seguente problema.
-  - Data una matrice mxn, si vogliono rimescolare i suoi elementi in modo che 
-    tutti i vettori riga e tutti i vettori colonna siano ordinati in senso 
-    non decrescente.'
+Design an algorithm the piu' efficiente possibile for the seguente problema.
+  - Given aa matrice mxn, si vogliono rimescolare the suoi elementi in modo that 
+    all the vettori riga e all the vettori colonna siano sorted in senso 
+    not decrescente.'
 '''
-# Algoritmo
+# algorithm
 
 
 ''' VEDI ANCHE CONSIDERAZIONI E PSEUDOCODICE SU CARTA '''
@@ -93,29 +93,29 @@ Si progetti un algoritmo il piu' efficiente possibile per il seguente problema.
 
 # QuickSort Algorithm
 
-def partition(A,indStart,indEnd):                  # S(n)
-    pivot=A[indStart]                              # Θ(1)
-    i=indStart                                     # Θ(1)
+def partition(To,indStart,indEnd):                  # S(n)
+    pivot=To[indStart]                              # Θ(1)
+    the=indStart                                     # Θ(1)
     j=indEnd                                       # Θ(1)
     while True:                                    # n*Θ(1)+Θ(1) 
-        while A[i]<pivot:                          # Θ(1)
-            i=i+1                                  # Θ(1)
-        while A[j]>pivot:                          # Θ(1)
+        while To[the]<pivot:                          # Θ(1)
+            the=the+1                                  # Θ(1)
+        while To[j]>pivot:                          # Θ(1)
             j=j-1                                  # Θ(1)
-        if i<j:                                    # Θ(1)
-            temp=A[i]                              # Θ(1)
-            A[i]=A[j]                              # Θ(1)
-            A[j]=temp                              # Θ(1)
-            i,j=i+1,j-1                            # Θ(1) 
+        if the<j:                                    # Θ(1)
+            temp=To[the]                              # Θ(1)
+            To[the]=To[j]                              # Θ(1)
+            To[j]=temp                              # Θ(1)
+            the,j=the+1,j-1                            # Θ(1) 
         else:                                      # Θ(1)
             return j                               # Θ(1)
 
 
-def quickSort(A,indStart,indEnd):                  # T(n)
+def quickSort(To,indStart,indEnd):                  # T(n)
     if (indStart<indEnd):                          # Θ(1)
-        indMid=partition(A,indStart,indEnd)        # S(n)
-        quickSort(A,indStart,indMid)               # T(n/2)
-        quickSort(A,indMid+1,indEnd)               # T(n/2)
+        indMid=partition(To,indStart,indEnd)        # S(n)
+        quickSort(To,indStart,indMid)               # T(n/2)
+        quickSort(To,indMid+1,indEnd)               # T(n/2)
     return 
 
 
@@ -124,12 +124,12 @@ def quickSort(A,indStart,indEnd):                  # T(n)
 def sortMatrix(M):
     m=len(M)                        # Θ(1)
     n=len(M[0,:])                   # Θ(1)
-    for i in range(0,m,1):          # m*Θ(1)+Θ(1)
-        quickSort(M[i,:],0,n-1)     # Θ(n*logn)
+    for the in range(0,m,1):          # m*Θ(1)+Θ(1)
+        quickSort(M[the,:],0,n-1)     # Θ(n*logn)
     for j in range(0,n,1):          # n*Θ(1)+Θ(1)
         quickSort(M[:,j],0,m-1)     # Θ(m*logm)
         
-# Input size: n,m ovvero numero righe/colonne matrice M
+# Input size: n,m that is number righe/colonne matrice M
 # Computational Cost:
 # T(n,m)=Θ(1)+m*Θ(n*logn)+n*Θ(m*logm)=Θ(n*m*logn)+Θ(m*n*logm)
 # Assumendo n==m avremo... T(n)=Θ((n^2)*logn)

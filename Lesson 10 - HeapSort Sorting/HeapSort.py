@@ -14,28 +14,28 @@ import random
 
 
 
-# ALGORITMI DI ORDINAMENTO - HEAP SORT
+# SORTING ALGORITHMS - HEAP SORT
 
 '''
 HEAP SORT 
 
-L'algoritmo Heap Sort e' un algoritmo di ordinamento piu' avanzato e complesso
+The algorithm Heap Sort e' an algorithm for sorting piu' avanzato e complesso
 rispetto agli algoritmi naif studiati finora (Insertion Sort, Selection Sort e
-Bubble Sort) e consente di ottenere il miglior costo computazionale possibile
-per un algoritmo di ordinamento basato su confronti: O(nlogn) sia nel caso 
-peggiore sia nel caso migliore. Inoltre consente l'ordinamento in loco (al 
+Bubble Sort) e consente of ottenere the miglior costo computazionale possibile
+for an algorithm for sorting based on comparisons: O(nlogn) sia nel case 
+peggiore sia nel best case. Inoltre consente l'sorting in loco (al 
 contrario del MergeSort). 
-Unico limite consiste nel fatto che esso puo' lavorare solo con strutture dati
-di tipo Heap.'
+Unico limite consiste nel fatto that esso puo' lavorare only with strutture data
+of tipo Heap.'
 
 * Caratteristiche Principali *
-Le caratteristiche principali dell'algoritmo HEAP SORT sono le seguenti:
+The caratteristiche principali delthe algorithm HEAP SORT are the following:
     - RECURSIVE Algorithm
-    - Si serve di due funzioni ausiliarie: Heapify e BuildHeap
-    - Equazione di Ricorrenza risolubile tramite Metodo Principale (Teorema
+    - Si serve of two funzioni ausiliarie: Heapify e BuildHeap
+    - Recurrence Equation solvable through the Master Method (Teorema
       Master)
-    - Processo di ordinamento IN LOCO
-    - Lavora solo con strutture dati di tipo Heap
+    - Processo of sorting IN LOCO
+    - Lavora only with strutture data of tipo Heap
     
 - Computational Cost: Θ(nlogn)
 
@@ -52,68 +52,68 @@ Abest=[1,5,6,31,44,53,98,101]
 
 # HEAPIFY Function
 
-def heapify(A,n,i):                             # T(n)               '--(A)--'
-    left=2*i+1                                  # Θ(1)               '--(B)--'
-    right=2*i+2                                 # Θ(1)
-    if (left<n)and(A[left]>A[i]):               # Θ(1)
+def heapify(To,n,the):                             # T(n)               '--(To)--'
+    left=2*the+1                                  # Θ(1)               '--(B)--'
+    right=2*the+2                                 # Θ(1)
+    if (left<n)and(To[left]>To[the]):               # Θ(1)
         iMax=left                               # Θ(1)
     else:                                       # Θ(1)
-        iMax=i                                  # Θ(1)
-    if (right<n)and(A[right]>A[iMax]):          # Θ(1)
+        iMax=the                                  # Θ(1)
+    if (right<n)and(To[right]>To[iMax]):          # Θ(1)
         iMax=right                              # Θ(1)
-    if iMax!=i:                                 # Θ(1)
-        temp=A[i]                               # Θ(1)
-        A[i]=A[iMax]                            # Θ(1)
-        A[iMax]=temp                            # Θ(1)
-        heapify(A,n,iMax)                       # T(2/3n)
+    if iMax!=the:                                 # Θ(1)
+        temp=To[the]                               # Θ(1)
+        To[the]=To[iMax]                            # Θ(1)
+        To[iMax]=temp                            # Θ(1)
+        heapify(To,n,iMax)                       # T(2/3n)
     return
     
 # BUILDHEAP Function
 
-def buildHeap(A):                               # T(n)
-    m=len(A)                                    # Θ(1)               '--(C)--'
-    for i in range(m//2-1,-1,-1):               # n/2*O(logn)+Θ(1)
-        heapify(A,m,i)                            
+def buildHeap(To):                               # T(n)
+    m=len(To)                                    # Θ(1)               '--(C)--'
+    for the in range(m//2-1,-1,-1):               # n/2*O(logn)+Θ(1)
+        heapify(To,m,the)                            
     return                                      # Θ(1)
     
 
-' FUNZIONE HEAPSORT'
+' function HEAPSORT'
 
-def heapSort(A):                            # T(n)
-    buildHeap(A)                            # O(n)
-    for heapSize in range(len(A)-1,-1,-1):   # (n-1) + Θ(1)        
-        temp=A[heapSize]                    # Θ(1)
-        A[heapSize]=A[0]                    # Θ(1)
-        A[0]=temp                           # Θ(1)
-        heapify(A,heapSize,0)               # O(logn)                '--(D)--'
+def heapSort(To):                            # T(n)
+    buildHeap(To)                            # O(n)
+    for heapSize in range(len(To)-1,-1,-1):   # (n-1) + Θ(1)        
+        temp=To[heapSize]                    # Θ(1)
+        To[heapSize]=To[0]                    # Θ(1)
+        To[0]=temp                           # Θ(1)
+        heapify(To,heapSize,0)               # O(logn)                '--(D)--'
     return                                  # Θ(1)
 
     
 '''
 Note Importanti
-(A): Passare il parametro variabile n nella funzione heapify e' cio' che
-     consente di considerare una porzione di vettore A sempre piu' piccola (
-     1 elemento in meno ad ogni ciclo nella funzione heapSort) senza dover 
-     passare il corrispondente sotto-vettore di A. A rimane sempre della stessa 
-     lunghezza cosi da poter essere modificato e ordinato in loco mentre la 
-     porzione di esso che si va via via a considerare e' compresa tra 0 e n.
-(B): left=2*i e right=2*i+1 sarebbero corretti solo se il primo indice dell'array
-     fosse 1! Dato che il primo indice e' sempre =0, dobbiamo aggiungere un 1
-     alle espressioni sopra in modo che, quando i=0 -> left=1 e right=2.
-     Abbiamo quindi left=2*i+1 e right=2*i+2!
-(C): Chiamiamo la funzione heapify sul vettore A, con dimensione costante m
-     e elemento di indice variabile i dalla mezzeria del vettore alla posizione
+(To): Passare the parametro variabile n nella function heapify e' cio' that
+     consente of considerare a porzione of vector To always piu' piccola (
+     1 element less at each cycle nella function heapSort) without having to 
+     passare the corrispondente sotto-vector of To. To rimane always della stessa 
+     lunghezza cosi from poter essere modificato e sorted in loco mentre the 
+     porzione of esso that si va via via to considerare e' compresa between 0 e n.
+(B): left=2*the e right=2*the+1 sarebbero corretti only if the first indice dell'array
+     fosse 1! Since the first index e' always =0, dobbiamo aggiungere a 1
+     alle espressioni sopra in modo that, quando the=0 -> left=1 e right=2.
+     Abbiamo quindi left=2*the+1 e right=2*the+2!
+(C): Chiamiamo the function heapify sul vector To, with dimensione costante m
+     e element of index variabile the dalla mezzeria del vector alla posizione
      iniziale (indice 0)
-(D): Richiamiamo la funzione heapify passandole sempre lo stesso vettore A,
-     lo stesso indice di radice 0 ma con indice massimo che si riduce di 1 
-     ad ogni ciclo.
+(D): Richiamiamo the function heapify passandole always the stesso vector To,
+     the stesso index of radice 0 ma with index massimo that si riduce of 1 
+     ad each ciclo.
 
 '''
 
-# Input size: numero n di elementi nell'array A
+# Input size: number n of elements in array To
 # Best case and worst case coincide.
-# Il costo computazionale dei 3 algoritmi Heapify, BuildHeap e HeapSort e' 
-# come segue:
+# The costo computazionale dei 3 algoritmi Heapify, BuildHeap e HeapSort e' 
+# as segue:
 # - Heapify:   T(n)=T(2/3n)+Θ(1)  -> T(n)=O(logn)
 # - BuildHeap: T(n)=O(n)          -> T(n)=O(n)
 # - HeapSort:  T(n)=O(nlogn)      -> T(n)=O(nlogn)
@@ -139,16 +139,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -161,8 +161,8 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(5,100,1):
-    Alist=list(range(0,i,1))    # DATI  IN INPUT ORDINATI
+for the in range(5,100,1):
+    Alist=list(range(0,the,1))    # DATI  IN INPUT ORDINATI
     tic=time.perf_counter_ns()
     heapSort(Alist)
     toc=time.perf_counter_ns()
@@ -170,8 +170,8 @@ for i in range(5,100,1):
 
 
 stepsB=[]
-for i in range(5,100,1):
-    Blist=list(range(0,i,1))
+for the in range(5,100,1):
+    Blist=list(range(0,the,1))
     'RANDOMIZZAZIONE DATI IN INPUT!'
     random.shuffle(Blist)       # DATI IN INPUT DISORDINATI
     tic=time.perf_counter_ns()
@@ -180,9 +180,9 @@ for i in range(5,100,1):
     stepsB.append(abs(round(toc-tic,8)))
 
     
-rappresentazioneGrafica(range(5,100,1),stepsA,1,"Algoritmi di Ordinamento "  
-                        "- Heap Sort","Caso Peggiore")
+rappresentazioneGrafica(range(5,100,1),stepsA,1,"Sorting Algorithms "  
+                        "- Heap Sort","worst case")
 
-rappresentazioneGrafica(range(5,100,1),stepsB,1,"Algoritmi di Ordinamento "  
-                        "- Heap Sort","Caso Migliore")
+rappresentazioneGrafica(range(5,100,1),stepsB,1,"Sorting Algorithms "  
+                        "- Heap Sort","best case")
 

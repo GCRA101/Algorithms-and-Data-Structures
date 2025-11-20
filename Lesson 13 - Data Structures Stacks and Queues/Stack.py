@@ -17,7 +17,7 @@ from SingleRecord import RecordSingolo
 
 '''
 CLASSE PILA (STACK)
-Costruita servendosi della Struttura Dati di LISTA PUNTATA SINGOLA
+Costruita servendosi della Struttura Data of LISTA PUNTATA SINGOLA
 '''
 
 class Pila:

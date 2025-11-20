@@ -6,12 +6,12 @@ Created on Sat Jul 29 16:52:07 2023
 """
 
 '''
-NODO per ALBERO BINARIO di RICERCA ROSSO-NERO
-Il Nodo dell'Albero Binario di Ricerca RossoNero viene implementato come un 
-record triplo, ovvero una classe contenente il valore del nodo (chiave), 
-il puntatore al figlio sinistro, il puntatore al figlio destro e il puntatore 
-al padre. In aggiunta a questi campi ne abbiamo uno aggiuntivo, detto "di 
-bilanciamento" che contiene il colore assegnato al nodo e che puo' essere 
+NODO for ALBERO BINARIO of RICERCA ROSSO-NERO
+The Nodo dell'Binary Search Tree RossoNero viene implementato as a 
+record triplo, that is a classe containing the value del nodo (key), 
+the puntatore al figlio sinistro, the puntatore al figlio destro e the puntatore 
+al padre. In aggiunta to these campi ne abbiamo one aggiuntivo, detto "of 
+bilanciamento" that contiene the colore assegnato al nodo e that puo' essere 
 solamente o ROSSO o NERO.
 '''
 

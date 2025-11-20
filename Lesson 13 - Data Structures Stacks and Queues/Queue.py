@@ -17,7 +17,7 @@ from SingleRecord import RecordSingolo
 
 '''
 CLASSE CODA (QUEUE)
-Costruita servendosi della Struttura Dati di LISTA PUNTATA SINGOLA
+Costruita servendosi della Struttura Data of LISTA PUNTATA SINGOLA
 '''
 
 class Coda:

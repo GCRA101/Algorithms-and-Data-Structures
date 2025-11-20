@@ -21,10 +21,10 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Scrivere la versione iterativa dell'algoritmo di Merge Sort
+Scrivere the versione iterative delthe algorithm of Merge Sort
 '''
 
-# Algoritmo
+# algorithm
 
 
 A1=[56,1,5,3,7,8,2,32]
@@ -35,43 +35,43 @@ Abest=[1,5,6,31,44,53,98,101]
 
 
 
-def merge(A,indStart,indMid,indEnd):               # S(n)
+def merge(To,indStart,indMid,indEnd):               # S(n)
     B=[None]*(indEnd+1-indStart)                   # Θ(1)
-    i=indStart                                     # Θ(1)
+    the=indStart                                     # Θ(1)
     j=indMid+1                                     # Θ(1)
     k=0                                            # Θ(1)
-    while ((i<=indMid) and (j<=indEnd)):           # tij*Θ(1)+Θ(1) 
-        if (A[i]<A[j]):                            # Θ(1)
-            B[k]=A[i]                              # Θ(1)
-            i+=1                                   # Θ(1)
+    while ((the<=indMid) and (j<=indEnd)):           # tij*Θ(1)+Θ(1) 
+        if (To[the]<To[j]):                            # Θ(1)
+            B[k]=To[the]                              # Θ(1)
+            the+=1                                   # Θ(1)
         else:                                      # Θ(1)
-            B[k]=A[j]                              # Θ(1)
+            B[k]=To[j]                              # Θ(1)
             j+=1                                   # Θ(1)
         k+=1                                       # Θ(1)
-    while(i<=indMid):                              # si*Θ(1)+Θ(1)
-        B[k]=A[i]                                  # Θ(1)
-        i,k=i+1,k+1                                # Θ(1)
+    while(the<=indMid):                              # si*Θ(1)+Θ(1)
+        B[k]=To[the]                                  # Θ(1)
+        the,k=the+1,k+1                                # Θ(1)
     while(j<=indEnd):                              # vj*Θ(1)+Θ(1)
-        B[k]=A[j]                                  # Θ(1)
+        B[k]=To[j]                                  # Θ(1)
         j,k=j+1,k+1                                # Θ(1)
-    A[indStart:indEnd+1]=B                         # Θ(1)
+    To[indStart:indEnd+1]=B                         # Θ(1)
 
 
         
-def mergeSortIter(A,indStart,indEnd):          # T(n)
+def mergeSortIter(To,indStart,indEnd):          # T(n)
     length=1                                   # Θ(1)
-    while(length<=len(A)):                     # logn*Θ(1)+Θ(1)
-        i=0                                    # Θ(1)
-        while i<len(A)-length:                 # tij*Θ(1)+Θ(1) tij=n/2 oppure 1
-            indS=i                             # Θ(1)
-            indE=min(i+2*length-1,len(A)-1)    # Θ(1)
-            indM=i+length-1                    # Θ(1)
-            merge(A,indS,indM,indE)            # Θ(n)
-            i+=2*length                        # Θ(1)
+    while(length<=len(To)):                     # logn*Θ(1)+Θ(1)
+        the=0                                    # Θ(1)
+        while the<len(To)-length:                 # tij*Θ(1)+Θ(1) tij=n/2 or 1
+            indS=the                             # Θ(1)
+            indE=min(the+2*length-1,len(To)-1)    # Θ(1)
+            indM=the+length-1                    # Θ(1)
+            merge(To,indS,indM,indE)            # Θ(n)
+            the+=2*length                        # Θ(1)
         length=2*length                        # Θ(1)
 
 
-# Input size: numero n di elementi nell'array A
+# Input size: number n of elements in array To
 # Computational Cost: T(n)=Θ(n*log(n))
 
 
@@ -87,9 +87,9 @@ mergeSortIter(Abest,0,len(Abest)-1)
 # ESERCIZIO 2 ################################################################
 
 '''
-Scrivere la versione ricorsiva dell'algoritmo di Merge
+Scrivere the versione recursive delthe algorithm of Merge
 '''
-# Algoritmo
+# algorithm
 
 
 A1=[56,1,5,3,7,8,2,32]
@@ -100,34 +100,34 @@ Abest=[1,5,6,31,44,53,98,101]
 
 
 
-def mergeRecurs(A,indStart,indMid,indEnd):
+def mergeRecurs(To,indStart,indMid,indEnd):
     B=[None]*(indEnd-indStart+1)
-    i=indStart
+    the=indStart
     j=indMid+1
     k=0
-    A[indStart:indEnd+1]=mergeRecursInner(A,B,i,j,k,indMid,indEnd)
+    To[indStart:indEnd+1]=mergeRecursInner(To,B,the,j,k,indMid,indEnd)
     
-def mergeRecursInner(A,B,i,j,k,indMid,indEnd):
-	if (i > indMid) and (j > indEnd):
+def mergeRecursInner(To,B,the,j,k,indMid,indEnd):
+	if (the > indMid) and (j > indEnd):
 		return B
-	if (j > indEnd) or ((i <= indMid) and (A[i] <= A[j])):
-		B[k] = A[i]
-		return mergeRecursInner(A, B, i+1, j, k+1, indMid, indEnd)
+	if (j > indEnd) or ((the <= indMid) and (To[the] <= To[j])):
+		B[k] = To[the]
+		return mergeRecursInner(To, B, the+1, j, k+1, indMid, indEnd)
 	else:
-		B[k] = A[j]
-		return mergeRecursInner(A, B, i, j+1, k+1, indMid, indEnd)
+		B[k] = To[j]
+		return mergeRecursInner(To, B, the, j+1, k+1, indMid, indEnd)
 
 
-def mergeSortRecurs(A,indStart,indEnd):            # T(n)
+def mergeSortRecurs(To,indStart,indEnd):            # T(n)
     if (indStart<indEnd):                          # Θ(1)
         indMid=(indStart+indEnd)//2                # Θ(1)
-        mergeSortRecurs(A,indStart,indMid)         # T(n/2)
-        mergeSortRecurs(A,indMid+1,indEnd)         # T(n/2)
-        mergeRecurs(A,indStart,indMid,indEnd)      # S(n)
+        mergeSortRecurs(To,indStart,indMid)         # T(n/2)
+        mergeSortRecurs(To,indMid+1,indEnd)         # T(n/2)
+        mergeRecurs(To,indStart,indMid,indEnd)      # S(n)
     return 
 
 
-# Input size: numero n di elementi nell'array A
+# Input size: number n of elements in array To
 #  T(n)=Θ(nlogn)
 
 
@@ -143,13 +143,13 @@ mergeSortRecurs(Abest,0,len(Abest)-1)
 # ESERCIZI 3,4,5 ##############################################################
 
 '''
-Si supponga di scrivere una variante del Merge Sort, chiamata 4_MergeSort che,
-invece di suddividere il vettore da ordinare in 2 parti (e ordinarle 
-separatamente), lo suddivide in 4 parti, le ordina ognuna riapplicando 
-4_MergeSort, e le riunifica usando un'opportuna variante 4_Merge di Merge (che
-fa la fusione su 4 sottovettori invece che su 2.
+Si supponga of scrivere a variante del Merge Sort, chiamata 4_MergeSort that,
+invece of suddividere the vector from ordinare in 2 parti (e ordinarle 
+separatamente), the suddivide in 4 parti, the ordina ognuna riapplicando 
+4_MergeSort, e the riunifica usando a'opportuna variante 4_Merge of Merge (that
+fa the fusione on 4 sottovettori invece that on 2.
 '''
-# Algoritmo
+# algorithm
 
 
 ''' VEDI RISOLUZIONE SU CARTA - SOLO LO PSEUCODICE E' RICHIESTO PER 

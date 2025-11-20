@@ -42,60 +42,60 @@ class ListaPuntataSingola:
 
     'LETTURA - READING'
     
-    '''Per definizione, la lettura (reading) consente di ottenere il valore
-    di un elemento a partire dal suo indice all'interno di una lista'''
+    '''For definizione, the lettura (reading) consente of ottenere the value
+    of a element to partire dal suo index all'interno of a list'''
     def read(self,index):                                # T(n)
         'Controllo input'
         if index<0:                                      # Θ(1)
             return None                                  # Θ(1)
         'Inizializzazione record corrente'
         p_corr=self._primoRecord                         # Θ(1)
-        'Ricerca record corrispondente a indice'
-        for i in range(0,index,1):                       # n*Θ(1)
+        'Ricerca record corrispondente to indice'
+        for the in range(0,index,1):                       # n*Θ(1)
             p_corr=p_corr.getNext()                      # Θ(1)
             if p_corr==None:                             # Θ(1)
                 return None                              # Θ(1)
-        'Restituzione valore contenuto nel Record'
+        'Restituzione value contained in the Record'
         return p_corr.getData()                          # Θ(1)
         
     # Computational Cost: 
-    # Caso peggiore - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -l'index e' maggiore del max'
-    # Caso migliore - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -l'index e' zero'
+    # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -l'index e' maggiore del max'
+    # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -l'index e' zero'
 
 
     'RICERCA - SEARCH'
     
-    '''Per definizione, la ricerca consente di ottenere l'indice di un elemento
-     all'interno di una lista a partire dal suo valore'''
+    '''For definizione, the ricerca consente of ottenere l'index of a element
+     all'interno of a list to partire dal suo value'''
     def search(self,key):                                # T(n)
         p_corr=self._primoRecord                         # Θ(1)
-        i=0                                              # Θ(1)
+        the=0                                              # Θ(1)
         while p_corr!=None and p_corr.getData()!=key:    # n*Θ(1)+Θ(1)
             p_corr=p_corr.getNext()                      # Θ(1)
-            i+=1                                         # Θ(1)
+            the+=1                                         # Θ(1)
         if p_corr!=None:                                 # Θ(1)
-            return i                                     # Θ(1)
+            return the                                     # Θ(1)
         return None                                      # Θ(1)
     
     # Computational Cost: 
-    # Caso peggiore - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -la key non c'e' 
-    # Caso migliore - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -la key e' in prima posizione
+    # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -the key not c'e' 
+    # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -the key e' in first posizione
     
     
     
     'INSERIMENTO - INSERTION'
     
-    '''Per definizione, l'inserimento consente di aggiungere un elemento ad 
-    uno specificato indice all'interno della lista'''
+    '''For definizione, l'inserimento consente of aggiungere a element ad 
+    one specificato indice all'interno della lista'''
     
-    def insert(self,index,data):                        # T(n)
+    def insert(self,index,given):                        # T(n)
     
         'PREPARATIVI'
         'Controllo input'
         if index<0:                                     # Θ(1)
             return                                      # Θ(1)
         'Creazione nuovo record'
-        record=RecordSingolo(data)                      # Θ(1)
+        record=RecordSingolo(given)                      # Θ(1)
         
         'INSERIMENTO IN TESTA'
         if index==0:                                    # Θ(1)
@@ -105,7 +105,7 @@ class ListaPuntataSingola:
         
         'INSERIMENTO IN MEZZO'    
         p_corr=self._primoRecord                        # Θ(1)
-        for i in range(0,index-1,1):                    # k*Θ(1)+Θ(1)
+        for the in range(0,index-1,1):                    # k*Θ(1)+Θ(1)
             p_corr=p_corr.getNext()                     # Θ(1)
             if p_corr==None:                            # Θ(1)
                 return                                  # Θ(1)
@@ -116,15 +116,15 @@ class ListaPuntataSingola:
             
         
     # Computational Cost: 
-    # T(n)=Θ(1)+n*Θ(1)=O(n) (per caso peggiore - index>indexMax)
-    # T(n)=Θ(1)+1*Θ(1)=Ω(1) (per caso migliore - index<=0)
+    # T(n)=Θ(1)+n*Θ(1)=O(n) (for worst case - index>indexMax)
+    # T(n)=Θ(1)+1*Θ(1)=Ω(1) (for best case - index<=0)
     
     
     
-    'CANCELLAZIONE - DELETION'
+    'DELETION - DELETION'
     
-    '''Per definizione, la cancellazione consente di eliminare un elemento 
-    contenuto in una lista sulla base del suo indice'''
+    '''For definizione, the cancellazione consente of eliminare a element 
+    contenuto in a lista sulla base del suo indice'''
     
     def delete (self,index):                              # T(n)
       'Controllo input'
@@ -133,12 +133,12 @@ class ListaPuntataSingola:
       'Inizializzazione Record corrente'
       p_corr=self._primoRecord                            # Θ(1)
       
-      'Cancellazione Primo Elemento'
+      'Cancellazione first element'
       if index==0:                                        # Θ(1)
           self.setPrimoRecord(p_corr.getNext())           # Θ(1)
       
-      'Cancellazione elemento Intermedio'
-      for i in range(0,index-1,1):                        # k*Θ(1)+Θ(1)
+      'Cancellazione element Intermedio'
+      for the in range(0,index-1,1):                        # k*Θ(1)+Θ(1)
           p_corr=p_corr.getNext()                         # Θ(1)
           if p_corr==None:                                # Θ(1)
               return                                      # Θ(1)
@@ -148,6 +148,6 @@ class ListaPuntataSingola:
         
   
   # Computational Cost: 
-  # T(n)=O(n) - Caso peggiore (elemento da eliminare non esiste)
-  # T(n)=Ω(1) - Caso migliore (elemento da eliminare e' il primo della lista)  
+  # T(n)=O(n) - Worst case (element from eliminare not esiste)
+  # T(n)=Ω(1) - Best case (element from eliminare e' the first della list)  
     

@@ -2,88 +2,88 @@ import java.util.Arrays;
 
 public class MergeIterativo
 {
-    public int[] merge(int A[], int ind_primo, int ind_ultimo)
+    public int[] merge(int To[], int ind_primo, int ind_ultimo)
     {
-        // se il vettore ha elementi in numero dispari
-        if (A.length % 2 != 0)
+        // if the vector ha elements in number dispari
+        if (To.length % 2 != 0)
         {
-            for (int a = 0; a <= A.length/2; a++)
+            for (int to = 0; to <= To.length/2; to++)
             {
-                A = fondi(A, ind_primo, (ind_primo + ind_ultimo) / 2-1, ind_ultimo);
-                A = fondi(A, ind_primo, (ind_primo + ind_ultimo) / 2, ind_ultimo);
+                To = fondi(To, ind_primo, (ind_primo + ind_ultimo) / 2-1, ind_ultimo);
+                To = fondi(To, ind_primo, (ind_primo + ind_ultimo) / 2, ind_ultimo);
             }
         }
         else
         {
-            for (int a = 0; a <= A.length; a++)
+            for (int to = 0; to <= To.length; to++)
             {
-                A = fondi(A, ind_primo, (ind_primo + ind_ultimo) / 2, ind_ultimo);
+                To = fondi(To, ind_primo, (ind_primo + ind_ultimo) / 2, ind_ultimo);
             }
         }
-        return A;
+        return To;
     }
 
-    public int[] fondi(int[] A, int ind_primo, int ind_medio, int ind_ultimo)
+    public int[] fondi(int[] To, int ind_primo, int ind_medio, int ind_ultimo)
     {
-        int i = ind_primo;
+        int the = ind_primo;
         int j = ind_medio+1;
         int k = 0;
-        int[] B = new int[A.length];
+        int[] B = new int[To.length];
 
-        while((i <= ind_medio) && (j <= ind_ultimo))
+        while((the <= ind_medio) && (j <= ind_ultimo))
         {
-            if (A[i] < A[j])
+            if (To[the] < To[j])
             {
-                B[k] = A[i];
-                i++;
+                B[k] = To[the];
+                the++;
             }
             else
             {
-                B[k] = A[j];
+                B[k] = To[j];
                 j++;
             }
             k++;
         }
 
-        // finché il primo sottovettore non è terminato
-        while(i <= ind_medio)
+        // finché the first sottovettore not is terminato
+        while(the <= ind_medio)
         {
-            // se c'è più di un elemento
+            // if c'is più of a element
             // mettili in ordine
-            if (i+1 <= ind_medio && A[i] > A[i + 1])
+            if (the+1 <= ind_medio && To[the] > To[the + 1])
             {
-                int temp = A[i];
-                A[i] = A[i+1];
-                A[i+1] = temp;
+                int temp = To[the];
+                To[the] = To[the+1];
+                To[the+1] = temp;
             }
-            B[k] = A[i];
-            i++;
+            B[k] = To[the];
+            the++;
             k++;
         }
 
-        // finché il secondo sottovettore non è terminato
+        // finché the second sottovettore not is terminato
         while(j <= ind_ultimo)
         {
-            // se c'è più di un elemento
+            // if c'is più of a element
             // mettili in ordine
-            if (j+1 <= ind_ultimo && A[j] > A[j + 1])
+            if (j+1 <= ind_ultimo && To[j] > To[j + 1])
             {
-                int temp = A[j];
-                A[j] = A[j+1];
-                A[j+1] = temp;
+                int temp = To[j];
+                To[j] = To[j+1];
+                To[j+1] = temp;
             }
-            B[k] = A[j];
+            B[k] = To[j];
             j++;
             k++;
         }
-        for (int a = 0; a < A.length; a++)
+        for (int to = 0; to < To.length; to++)
         {
-            A[a] = B[a];
+            To[to] = B[to];
         }
-        return A;
+        return To;
     }
 
-    // stampa
+    // prints
     public void print(int[] array)
     {
         System.out.println(Arrays.toString(array));
@@ -95,14 +95,14 @@ public class MergeIterativo
         int[] arrayDispari = { 6, 1, 9, 0, 3, 8, 5 };
         MergeIterativo m = new MergeIterativo();
 
-        System.out.println("Array pari prima dell'ordinamento:");
+        System.out.println("array pari first dell'sorting:");
         m.print(arrayPari);
-        System.out.println("Array pari dopo l'ordinamento:");
+        System.out.println("array pari dopo l'sorting:");
         m.print(m.merge(arrayPari, 0, arrayPari.length-1));
 
-        System.out.println("Array dispari prima dell'ordinamento:");
+        System.out.println("array dispari first dell'sorting:");
         m.print(arrayDispari);
-        System.out.println("Array dispari dopo l'ordinamento:");
+        System.out.println("array dispari dopo l'sorting:");
         m.print(m.merge(arrayDispari, 0, arrayDispari.length-1));
     }
 }

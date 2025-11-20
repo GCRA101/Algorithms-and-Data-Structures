@@ -13,20 +13,20 @@ import random
 
 
 # IMPORT PACKAGE CLASSES
-'Nodo con 3 puntatori: Padre (parent), FiglioSx (left) e FiglioDx (right)'
+'Nodo with 3 puntatori: Padre (parent), FiglioSx (left) e FiglioDx (right)'
 from BinarySearchNode import Nodo
-'Coda Modificata per ospitare i nodi dellalbero nel campo valore dei'
+'Coda Modificata for ospitare the nodi dellalbero nel campo value dei'
 'suoi record singoli.'
 from Modified_Queue import Coda
 
 '''
 CLASSE ALBERO (TREE)
-Costruita servendosi di Record e Puntatori
-Dato che ciascun nodo e' rappresentato in memoria tramite un record,
+Costruita servendosi of Record e Puntatori
+Since ciascun nodo e' rappresentato in memoria through a record,
 ciascun nodo dell'albero e' sparso nella memoria del computer e puo' essere 
-acceduto tramite i puntatori destro, sinistro e padre di ciascun nodo a partire
+acceduto through the puntatori destro, sinistro e padre of ciascun nodo to partire
 dalla radice dell'albero.'
-La classe albero, quindi deve solo contenere il record della radice.
+The classe albero, quindi deve only contenere the record della radice.
 '''
 
 
@@ -55,7 +55,7 @@ class AlberoBinarioDiRicerca:
 
     'VISITA IN PREORDINE'
     
-    # Funzione Privata Ricorsiva    
+    # function Privata recursive    
     def _visitaPreOrdine(self,p):                    # S(n)
         if p!=None:                                  # Θ(1)
             'OPERAZIONE SUL NODO'
@@ -67,22 +67,22 @@ class AlberoBinarioDiRicerca:
         'CASO BASE'
         return                                       # Θ(1)
 
-    # Funzione Pubblica Wrapper di lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper of lancio della function recursive
     def visitaPreOrdine(self):                       # T(n)
         p=self.root                                  # Θ(1)
         self._visitaPreOrdine(p)                     # S(n)
         return                                       # Θ(1)
 
     # Computational Cost
-    # Dimensioni input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
+    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
 
 
 
     'VISITA IN INORDINE'
     
-    # Funzione Privata Ricorsiva 
+    # function Privata recursive 
     def _visitaInOrdine(self,p):                     # S(n)
         if p!=None:                                  # Θ(1)
             'PASSI RICORSIVO 1 (SX)'
@@ -94,21 +94,21 @@ class AlberoBinarioDiRicerca:
         'CASO BASE'
         return                                       # Θ(1)
 
-    # Funzione Pubblica Wrapper di lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper of lancio della function recursive
     def visitaInOrdine(self):                        # T(n)
         p=self.root                                  # Θ(1)
         self._visitaInOrdine(p)                      # S(n)
 
     # Computational Cost
-    # Dimensioni input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
+    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
 
 
 
     'VISITA IN POSTORDINE'
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _visitaPostOrdine(self,p):                   # S(n)
         if p!=None:                                  # Θ(1)
             'PASSI RICORSIVO 1 (SX)'
@@ -120,14 +120,14 @@ class AlberoBinarioDiRicerca:
         'CASO BASE'
         return                                       # Θ(1)
 
-    # Funzione Publica Wrapper di lancio della Funzione Ricorsiva
+    # function Publica Wrapper of lancio della function recursive
     def visitaPostOrdine(self):                      # T(n)
         p=self.root                                  # Θ(1)
         self._visitaPostOrdine(p)                    # S(n)
 
     # Computational Cost
-    # Dimensioni input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
+    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
 
 
@@ -140,10 +140,10 @@ class AlberoBinarioDiRicerca:
             return True                            # Θ(1)
         return False                               # Θ(1)
 
-    # Costo: T(n)=Θ(1)
+    # Cost: T(n)=Θ(1)
 
 
-    'Visita Per Livelli'
+    'Visita For Livelli'
 
     def visitaPerLivelli(self):                    # T(n)
         # Inizializzazione alla radice dell'albero
@@ -151,13 +151,13 @@ class AlberoBinarioDiRicerca:
         # Controllo esistenza albero
         if p==None:                                # Θ(1)
             return                                 # Θ(1)
-        # Inizializzazione coda di supporto
+        # Inizializzazione coda of supporto
         coda=Coda()                                # Θ(1)                                                     
         # Incodamento radice albero nella coda
         coda.enqueue(p)                            # Θ(1)                           
-        # Scorrimento nodi albero tramite coda
+        # Scorrimento nodi albero through coda
         while(not self._codaVuota(coda)):          # n*Θ(1)+Θ(1) 
-            # 1. Scoda e stampa nodo
+            # 1. Scoda e prints nodo
             p=coda.dequeue()                       # Θ(1)
             print(str(p),end=" ")                  # Θ(1)         
             # Incoda Left
@@ -169,14 +169,14 @@ class AlberoBinarioDiRicerca:
         return                                     # Θ(1)
         
     # Computational Cost
-    # Dimensioni input: numero nodi dell'albero (incognito a priori)
-    # Costo: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
+    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Cost: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
 
      
 
-    'CONTEGGIO NUMERO NODI'
+    'CONTEGGIO number NODI'
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _calcola_n(self,p):                          # S(n)
         if p!=None:                                  # Θ(1)
             # 1. Recursive Step SottoAlbero Sx
@@ -188,21 +188,21 @@ class AlberoBinarioDiRicerca:
             return num                               # Θ(1)  
         return 0                                     # Θ(1)  
     
-    # Funzione Pubblica Wrapper di lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper of lancio della function recursive
     def calcola_n(self):                             # T(n)
         p=self.root                                  # Θ(1)
         return self._calcola_n(p)                    # S(n)
     
     # Computational Cost
-    # Dimensione Input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
+    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   
     
 
 
     'CALCOLO ALTEZZA'
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _calcola_h(self,p):                                  # S(n)
         if p==None:                                          # Θ(1) 
             return -1                                        # Θ(1)
@@ -214,48 +214,48 @@ class AlberoBinarioDiRicerca:
         # 3. Operazione sul Nodo
         return h+1                                           # Θ(1)                       
 
-    # Funzione Pubblica Wrapper per il lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def calcola_h(self):                                     # T(n)
         p=self.root                                          # Θ(1)
         return self._calcola_h(p)                            # S(n)
 
     # Computational Cost
-    # Dimensione Input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
+    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)
 
 
 
     'CONTEGGIO NODI al LIVELLO K'
     
-    # Funzione Privata Ricorsiva
-    def _conta_k(self,k,i,p):                                # S(n)
+    # function Privata recursive
+    def _conta_k(self,k,the,p):                                # S(n)
         if p==None:                                          # Θ(1)
             return 0                                         # Θ(1)
-        if k==i:                                             # Θ(1)
+        if k==the:                                             # Θ(1)
             return 1                                         # Θ(1)
         # 1. Recursive Step SottoAlbero Sx
-        k_left=self._conta_k(k,i+1,p.getLeft())              # S(k)
+        k_left=self._conta_k(k,the+1,p.getLeft())              # S(k)
         # 2. Recursive Step SottoAlbero Dx
-        k_right=self._conta_k(k,i+1,p.getRight())            # S(n-k-1)
+        k_right=self._conta_k(k,the+1,p.getRight())            # S(n-k-1)
         # 3. Operazione sul Nodo
         return k_left+k_right                                # Θ(1)
 
-    # Funzione Pubblica Wrapper per il lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def conta_k(self,k):                                     # T(n)
         p=self.root                                          # Θ(1)
         return self._conta_k(k, 0, p)                        # S(n)
 
     # Computational Cost
-    # Dimensione Input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)
+    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   
 
 
 
     'RICERCA'
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _cerca(self,p,k):                           # S(h)
         if (p==None or p.getKey()==k):              # Θ(1)
             return p                                # Θ(1)
@@ -264,16 +264,16 @@ class AlberoBinarioDiRicerca:
         else:                                       # Θ(1)
             return self._cerca(p.getRight(),k)      # S(h-1)
         
-    # Funzione Pubblica Wrapper per il lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def cerca(self,k):                              # T(h)
         p=self.getRoot()                            # Θ(1)
         return self._cerca(p,k)                     # Θ(h)
     
     # Computational Cost
     # Dimensione dell'input: Altezza h dell'albero
-    # Si esegue la funzione h volte con operazioni ogni volta di costo costante
-    # Θ(1). Quindi il costo totale equivale a h volte Θ(1).
-    # Costo: T(h)= Θ(1)+Θ(h) -> T(h)=Θ(h)
+    # Si esegue the function h volte with operazioni each volta of costo costante
+    # Θ(1). Quindi the costo totale equivale to h volte Θ(1).
+    # Cost: T(h)= Θ(1)+Θ(h) -> T(h)=Θ(h)
 
 
 
@@ -286,33 +286,33 @@ class AlberoBinarioDiRicerca:
         # Nodo corrente
         p=self.getRoot()                             # Θ(1)
         x=p                                          # Θ(1)
-        '2. DISCESA fino a Nodo con Figlio Nullo'
+        '2. DISCESA fino to Nodo with Figlio Nullo'
         while x!=None:                               # h*Θ(1)+Θ(1)
-            # Aggiorna y eguagliandolo a x...
+            # Aggiorna y eguagliandolo to x...
             y=x                                      # Θ(1)
-            # Aggiorna x facendolo scendere a dx/sx in base alla sua chiave...
+            # Aggiorna x facendolo scendere to dx/sx in base alla sua key...
             if z.getKey()<x.getKey():                # Θ(1)
                 x=x.getLeft()                        # Θ(1)
             else:                                    # Θ(1)
                 x=x.getRight()                       # Θ(1)
         '3. AGGIUNTA Nuovo Nodo'
-        # Se l'Albero e' Nullo, usa Nuovo Nodo come Radice dell'Albero...
+        # If l'Albero e' Nullo, usa Nuovo Nodo as Radice dell'Albero...
         if y==None:                                  # Θ(1)
             p=z                                      # Θ(1)
-        # Se l'Albero non e' nullo, aggiungi il Nuovo Nodo a dx/sx dell'ultimo...
+        # If l'Albero not e' nullo, aggiungi the Nuovo Nodo to dx/sx dell'last...
         else:                                        # Θ(1)
             if z.getKey()<y.getKey():                # Θ(1)
                 y.left=z                             # Θ(1)
             else:                                    # Θ(1)
                 y.right=z                            # Θ(1)
-        # Aggiorna il campo Padre del nuovo nodo aggiunto all'albero...
+        # Aggiorna the campo Padre del nuovo nodo aggiunto all'albero...
         z.setParent(y)                               # Θ(1)
         # Restituisci l'albero modificato...
         return p                                     # Θ(1)
     
     # Computational Cost
     # Dimensione dell'input: Altezza h dell'albero
-    # Costo: T(h)= Θ(1)+h*Θ(1) -> T(h)=Θ(h)
+    # Cost: T(h)= Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
 
@@ -320,7 +320,7 @@ class AlberoBinarioDiRicerca:
     
     # RICORSIVO
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _minimoRecurs(self,p):                       # S(h)
         'Controllo Input'
         if p==None:                                  # Θ(1)
@@ -331,21 +331,21 @@ class AlberoBinarioDiRicerca:
         'PASSO RICORSIVO'
         return self._minimoRecurs(p.getLeft())       # S(h-1)
     
-    # Funzione Pubblica Wrapper per il lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def minimoRecurs(self):                          # T(h)
-        'Inizializzazione Nodo di partenza'
+        'Inizializzazione Nodo of partenza'
         p=self.getRoot()                             # Θ(1)
-        'Chiamata a funzione ricorsiva privata'
+        'Chiamata to function recursive privata'
         return self._minimoRecurs(p)                 # S(h)
     
     # Computational Cost
     # Input size: altezza dell'albero h
-    # Costo: T(h)=Θ(1)+S(h)=Θ(1)+Θ(h) -> T(h)=Θ(h)
+    # Cost: T(h)=Θ(1)+S(h)=Θ(1)+Θ(h) -> T(h)=Θ(h)
     
     
     # ITERATIVO
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _minimoIter(self,p):                         # S(h)
         'Controllo Input'
         if p==None:                                  # Θ(1)
@@ -355,16 +355,16 @@ class AlberoBinarioDiRicerca:
             p=p.getLeft()                            # Θ(1)
         return p                                     # Θ(1)
     
-    # Funzione Pubblica Wrapper per il lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def minimoIter(self):                            # T(h)
-        'Inizializzazione Nodo di partenza'
+        'Inizializzazione Nodo of partenza'
         p=self.getRoot()                             # Θ(1)                            
-        'Chiamata a funzione iterativa privata'
+        'Chiamata to function iterative privata'
         return self._minimoIter(p)                   # Θ(h)
     
     # Computational Cost
     # Input size: altezza dell'albero h
-    # Costo: T(h)=Θ(1)+S(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
+    # Cost: T(h)=Θ(1)+S(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
     
     
     
@@ -372,7 +372,7 @@ class AlberoBinarioDiRicerca:
     
     # RICORSIVO
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _massimoRecurs(self,p):                       # S(h)
         'Controllo Input'
         if p==None:                                   # Θ(1)
@@ -383,21 +383,21 @@ class AlberoBinarioDiRicerca:
         'PASSO RICORSIVO'
         return self._massimoRecurs(p.getRight())      # S(h-1)
     
-    # Funzione Pubblica Wrapper per il lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def massimoRecurs(self):                          # T(h)
-        'Inizializzazione Nodo di partenza'
+        'Inizializzazione Nodo of partenza'
         p=self.getRoot()                              # Θ(1) 
-        'Chiamata a funzione ricorsiva privata'
+        'Chiamata to function recursive privata'
         return self._massimoRecurs(p)                 # Θ(h) 
     
     # Computational Cost
     # Input size: altezza dell'albero h
-    # Costo: T(h)=Θ(1)+S(h)=Θ(1)+Θ(h) -> T(h)=Θ(h)
+    # Cost: T(h)=Θ(1)+S(h)=Θ(1)+Θ(h) -> T(h)=Θ(h)
     
     
     # ITERATIVO
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _massimoIter(self,p):                         # T(h)
         'Controllo Input'
         if p==None:                                   # Θ(1)
@@ -407,16 +407,16 @@ class AlberoBinarioDiRicerca:
             p=p.getRight()                            # Θ(1)
         return p                                      # Θ(1)
     
-    # Funzione Pubblica Wrapper per il lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def massimoIter(self):                            # T(h)
-        'Inizializzazione Nodo di partenza'
+        'Inizializzazione Nodo of partenza'
         p=self.getRoot()                              # Θ(1)
-        'Chiamata a funzione iterativa privata'
+        'Chiamata to function iterative privata'
         return self._massimoIter(p)                   # Θ(h) 
     
     # Computational Cost
     # Input size: altezza dell'albero h
-    # Costo: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
+    # Cost: T(h)=Θ(1)+h*Θ(1) -> T(h)=Θ(h)
 
 
 
@@ -425,18 +425,18 @@ class AlberoBinarioDiRicerca:
     # ITERATIVO
     
     def predecessoreIter(self,k):                     # T(h)
-        # 1. Ricava il nodo avente chiave uguale a k
+        # 1. Ricava the nodo avente key uguale to k
         nodo=self.cerca(k)                            # Θ(h)
-        # 2. Se il nodo non esiste, restituisci valore nullo
+        # 2. If the nodo not esiste, restituisci value nullo
         if nodo==None:                                # Θ(1)
             return None                               # Θ(1)
-        # 3. Se il nodo ha figlio Sx cerca il massimo nel
+        # 3. If the nodo ha figlio Sx cerca the massimo nel
         #    suo sottoalbero Sx
         if nodo.getLeft()!=None:                      # Θ(1)
             predecessor=self._massimoIter(nodo.getLeft())   # Ω(1) o O(h)
         else:                                         # Θ(1)
-        # 4. Se il nodo NON ha figlio Sx, risali l'albero     
-        #    tramite ITERAZIONE    
+        # 4. If the nodo NON ha figlio Sx, risali l'albero     
+        #    through ITERAZIONE    
             while(nodo.getParent()!=None and 
                   nodo==nodo.getParent().getLeft()):  # Θ(1)
                 nodo=nodo.getParent()                 # Θ(1)
@@ -445,35 +445,35 @@ class AlberoBinarioDiRicerca:
     
     # RICORSIVO
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _predecRecurs(self,nodo):                     # S(h)
-        # 1. Se il nodo non ha padre, esso e' la radice dell'albero...
-        #    quindi ritorna la radice.
+        # 1. If the nodo not ha padre, esso e' the radice dell'albero...
+        #    quindi ritorna the radice.
         if nodo.getParent()==None:                    # Θ(1)
             return nodo                               # Θ(1)
-        # 2. Se il nodo non coincide con il figlio Sx di suo padre,
-        #    restituisci il nodo...
+        # 2. If the nodo not coincide with the figlio Sx of suo padre,
+        #    restituisci the nodo...
         if nodo!=nodo.getParent().getLeft():          # Θ(1)
             return nodo.getParent()                   # Θ(1)
-        # 3. Se il nodo coincide con il figlio Sx di suo padre, 
-        #    continua la risalita passando il nodo padre nella nuova 
+        # 3. If the nodo coincide with the figlio Sx of suo padre, 
+        #    continua the risalita passando the nodo padre nella nuova 
         #    chiamata ricorsiva.
         return self._predecRecurs(nodo.getParent())   # S(h-1)   
     
-    # Funzione Pubblica Wrapper per il lancio della funzione ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def predecessoreRecurs(self,k):                   # T(h)
-        # 1. Ricava il nodo avente chiave uguale a k    
+        # 1. Ricava the nodo avente key uguale to k    
         nodo=self.cerca(k)                            # Θ(h)
-        # 2. Se il nodo non esiste, restituisci valore nullo
+        # 2. If the nodo not esiste, restituisci value nullo
         if nodo==None:                                # Θ(1)
             return None                               # Θ(1)
-        # 3. Se il nodo ha figlio Sx cerca il massimo nel
+        # 3. If the nodo ha figlio Sx cerca the massimo nel
         #    suo sottoalbero Sx
         if nodo.getLeft()!=None:                      # Θ(1)
             predecessor=self._massimoRecurs(nodo.getLeft()) # Ω(1) o O(h)     
         else:                                         # Θ(1)
-        # 4. Se il nodo NON ha figlio Sx, risali l'albero
-        #    tramite RICORSIONE
+        # 4. If the nodo NON ha figlio Sx, risali l'albero
+        #    through RICORSIONE
             return self._predecRecurs(nodo)           # S(h)
         return predecessor                            # Θ(1)
     
@@ -489,18 +489,18 @@ class AlberoBinarioDiRicerca:
     # ITERATIVO
     
     def successoreIter(self, k):                       # T(h)
-        # 1. Ricava il nodo avente chiave uguale a k
+        # 1. Ricava the nodo avente key uguale to k
         nodo=self.cerca(k)                             # Θ(h)
-        # 2. Se il nodo non esiste, restituisci valore nullo
+        # 2. If the nodo not esiste, restituisci value nullo
         if nodo==None:                                 # Θ(1)
             return None                                # Θ(1)
-        # 3. Se il nodo ha figlio Dx cerca il minimo nel
+        # 3. If the nodo ha figlio Dx cerca the minimo nel
         #    suo sottoalbero Dx
         if nodo.getRight()!=None:                      # Θ(1)
             successor=self._minimoIter(nodo.getRight()) # Ω(1) o O(h)
         else:        
-        # 4. Se il nodo NON ha figlio Dx, risali l'albero     
-        #    tramite ITERAZIONE
+        # 4. If the nodo NON ha figlio Dx, risali l'albero     
+        #    through ITERAZIONE
             while(nodo.getParent()!=None and 
                   nodo==nodo.getParent().getRight()):  # Θ(1)
                 nodo=nodo.getParent()                  # Θ(1)
@@ -509,35 +509,35 @@ class AlberoBinarioDiRicerca:
     
     # RICORSIVO
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def _succesRecurs(self,nodo):                      # S(h)
-        # 1. Se il nodo non ha padre, esso e' la radice dell'albero...
-        #    quindi ritorna la radice.
+        # 1. If the nodo not ha padre, esso e' the radice dell'albero...
+        #    quindi ritorna the radice.
         if nodo.getParent()==None:                     # Θ(1)
             return nodo                                # Θ(1) 
-        # 2. Se il nodo non coincide con il figlio Dx di suo padre,
-        #    restituisci il nodo...
+        # 2. If the nodo not coincide with the figlio Dx of suo padre,
+        #    restituisci the nodo...
         if nodo!=nodo.getParent().getRight():          # Θ(1)
             return nodo.getParent()                    # Θ(1)
-        # 3. Se il nodo coincide con il figlio Dx di suo padre, 
-        #    continua la risalita passando il nodo padre nella nuova 
+        # 3. If the nodo coincide with the figlio Dx of suo padre, 
+        #    continua the risalita passando the nodo padre nella nuova 
         #    chiamata ricorsiva.
         return self._succesRecurs(nodo.getParent())    # S(h-1)   
     
-    # Funzione Pubblica Wrapper per il lancio della funzione ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def successoreRecurs(self,k):                      # T(h)
-        # 1. Ricava il nodo avente chiave uguale a k    
+        # 1. Ricava the nodo avente key uguale to k    
         nodo=self.cerca(k)                             # Θ(h)
-        # 2. Se il nodo non esiste, restituisci valore nullo
+        # 2. If the nodo not esiste, restituisci value nullo
         if nodo==None:                                 # Θ(1)
             return None                                # Θ(1)
-        # 3. Se il nodo ha figlio Dx cerca il massimo nel
+        # 3. If the nodo ha figlio Dx cerca the massimo nel
         #    suo sottoalbero Dx
         if nodo.getRight()!=None:                      # Θ(1)
             successor=self._minimoRecurs(nodo.getRight()) # Ω(1) o O(h)
         else:                                          # Θ(1)
-        # 4. Se il nodo NON ha figlio Dx, risali l'albero
-        #    tramite RICORSIONE
+        # 4. If the nodo NON ha figlio Dx, risali l'albero
+        #    through RICORSIONE
             return self._succesRecurs(nodo)            # S(h)
         return successor                               # Θ(1)
 
@@ -550,10 +550,10 @@ class AlberoBinarioDiRicerca:
     
     'CANCELLAZIONE'
 
-    # Funzione Ausiliaria per la cancellazione di una singola foglia
+    # function Ausiliaria for the cancellazione of a singola foglia
     def cancellaFoglia(self,p,nodo):                                 # T(h)
-        # Aggiorna il campo figlio (Dx/Sx) del padre 
-        # corrispondente alla foglia da cancellare.
+        # Aggiorna the campo figlio (Dx/Sx) del padre 
+        # corrispondente alla foglia from cancellare.
         if (nodo==nodo.getParent().getLeft()):                       # Θ(1)
             nodo.getParent().setLeft(None)                           # Θ(1)
         else:                                                        # Θ(1)
@@ -563,46 +563,46 @@ class AlberoBinarioDiRicerca:
 
 
     def cancella(self,k):                                            # T(h)
-        # Estrai nodo avente valore chiave uguale a k
+        # Estrai nodo avente value key uguale to k
         nodo=self.cerca(k)                                    # Ω(1) o O(h)
-        # Se il nodo non esiste chiudi la funzione
+        # If the nodo not esiste chiudi the function
         if nodo==None:                                               # Θ(1)
             return                                                   # Θ(1)
-        # CASO 1 - Il Nodo NON HA FIGLI
-        # Cancella il nodo aggiornando il corrispondente campo figlio
+        # CASO 1 - The Nodo NON HA FIGLI
+        # Cancella the nodo aggiornando the corrispondente campo figlio
         # del nodo padre.
         if (nodo.getLeft()==None and nodo.getRight()==None):         # Θ(1)
            self.cancellaFoglia(self.getRoot(),nodo)                  # Θ(1)
-        # CASO 2 - Il Nodo HA 1 FIGLIO
-        # Cortocircuita il padre con il figlio del nodo da eliminare
-        # Se l'unico figlio e' quello Sx...
+        # CASO 2 - The Nodo HA 1 FIGLIO
+        # Cortocircuita the padre with the figlio del nodo from eliminare
+        # If l'unico figlio e' that Sx...
         if (nodo.getLeft()!=None and nodo.getRight()==None):         # Θ(1)
-            # Assegna il padre del nodo al figlio Sx
+            # Assegna the padre del nodo al figlio Sx
             nodo.getLeft().setParent(nodo.getParent())               # Θ(1)
-            # Assegna il figlio Sx al padre del nodo
+            # Assegna the figlio Sx al padre del nodo
             if (nodo==nodo.getParent().getLeft()):                   # Θ(1)
                 nodo.getParent().setLeft(nodo.getLeft())             # Θ(1)
             else:                                                    # Θ(1)
                 nodo.getParent().setRight(nodo.getLeft())            # Θ(1)
-        # Se l'unico figlio e' quello Dx...
+        # If l'unico figlio e' that Dx...
         if (nodo.getLeft()==None and nodo.getRight()!=None):         # Θ(1)
-            # Assegna il padre del nodo al figlio Dx
+            # Assegna the padre del nodo al figlio Dx
             nodo.getRight().setParent(nodo.getParent())              # Θ(1)
-            # Assegna il figlio Dx al padre del nodo
+            # Assegna the figlio Dx al padre del nodo
             if (nodo==nodo.getParent().getLeft()):                   # Θ(1)
                 nodo.getParent().setLeft(nodo.getRight())            # Θ(1)
             else:                                                    # Θ(1)
                 nodo.getParent().setRight(nodo.getRight())           # Θ(1)
         
-        # CASO 3 - Il Nodo HA 2 FIGLI
-        # Trova il predecessore/successore del nodo da cancellare, 
-        # copia il suo contenuto nel nodo da cancellare e, infine, 
-        # cancella il nodo predecessore/successore.
+        # CASO 3 - The Nodo HA 2 FIGLI
+        # Trova the predecessore/successore del nodo from cancellare, 
+        # copia the suo contained in the nodo from cancellare e, infine, 
+        # cancella the nodo predecessore/successore.
         if (nodo.getLeft()!=None and nodo.getRight()!=None):         # Θ(1)
-            # Ricava i nodi predecessore e successore
+            # Ricava the nodi predecessore e successore
             pred=self.predecessoreIter(nodo.getKey())       # Ω(1) o O(h) 
             succes=self.successoreRecurs(nodo.getKey())     # Ω(1) o O(h) 
-            # Sostituisci chiave del nodo e cancella 
+            # Sostituisci key del nodo e cancella 
             # predecessore/successore
             if pred!=None:                                           # Θ(1)
                 nodo.setKey(pred.getKey())                           # Θ(1)
@@ -613,10 +613,10 @@ class AlberoBinarioDiRicerca:
 
         # Computational Cost
         # Input size: altezza dell'albero h
-        # Costo Iterativa: T_caso1(h)=O(h)+Θ(1)=O(h)
-        #                  T_caso2(h)=O(h)+Θ(1)=O(h)
-        #                  T_caso3(h)=O(h)+O(h)+Θ(1)=O(h)
-        # Costo: T(h)=max{T_caso1;T_caso2;T_caso3}=O(h)
+        # Iterative cost: T_case1(h)=O(h)+Θ(1)=O(h)
+        #                  T_case2(h)=O(h)+Θ(1)=O(h)
+        #                  T_case3(h)=O(h)+O(h)+Θ(1)=O(h)
+        # Cost: T(h)=max{T_case1;T_case2;T_case3}=O(h)
 
 
 '''
@@ -630,22 +630,22 @@ indiciPadri=[None,0,0,1,1,2,2,4,4,6,6,9,9]
 nodi=[]
 vettorePosizionale=[]
 
-for i in range(0,len(valoriNodi),1):
-    nodi.append(Nodo(valoriNodi[i])) 
+for the in range(0,len(valoriNodi),1):
+    nodi.append(Nodo(valoriNodi[the])) 
     
-for i in range(0,len(nodi),1):
-    if indiciPadri[i]==None:
-        nodi[i].setParent(None)
+for the in range(0,len(nodi),1):
+    if indiciPadri[the]==None:
+        nodi[the].setParent(None)
     else:
-        nodi[i].setParent(nodi[indiciPadri[i]])
+        nodi[the].setParent(nodi[indiciPadri[the]])
     k=0
     for j in range(0,len(indiciPadri),1):
-        if indiciPadri[j]==i:
+        if indiciPadri[j]==the:
             if k==0:
-                nodi[i].setLeft(nodi[j])
+                nodi[the].setLeft(nodi[j])
                 k+=1
             else:
-                nodi[i].setRight(nodi[j])
+                nodi[the].setRight(nodi[j])
                 break
          
 radice=nodi[0]
@@ -669,18 +669,18 @@ albero.visitaInOrdine()
 print("\nVisita in Postordine:")
 albero.visitaPostOrdine()
 
-'Visita Per Livelli'
-print("\nVisita per Livelli:")
+'Visita For Livelli'
+print("\nVisita for Livelli:")
 albero.visitaPerLivelli()
 
-'Conteggio numero nodi'
-print("\nConteggio Numero Nodi: " + str(albero.calcola_n()))
+'Conteggio number nodi'
+print("\nConteggio number Nodi: " + str(albero.calcola_n()))
 
 'Calcolo Altezza'
 print("Calcolo Altezza dell'albero: " + str(albero.calcola_h()))
 
 'Conteggio Nodi al Livello k'
-print("Conteggio numero nodi al livello 2: " + str(albero.conta_k(2)))
+print("Conteggio number nodi al livello 2: " + str(albero.conta_k(2)))
 
 'Ricerca'
 nodoRicercato=albero.cerca(22)
@@ -688,7 +688,7 @@ print("\nRICERCA\nIl nodo ricercato e' : " + str(nodoRicercato))
 
 'Inserimento'
 z=Nodo(47)
-print("\nINSERIMENTO\nAlbero prima dell'inserimento del nodo " + str(z))
+print("\nINSERIMENTO\nAlbero first dell'inserimento del nodo " + str(z))
 albero.visitaPerLivelli()
 albero.inserisci(z)
 print("\nAlbero dopo l'inserimento del nodo " + str(z))
@@ -710,10 +710,10 @@ print("Chiave massima nell'albero [ITERAZIONE]: " + str(maxIter))
 'Predecessore'
 k1=80
 k2=13
-predIter1=albero.predecessoreIter(k1)      # Iterativo -Caso 1- Discesa
-predIter2=albero.predecessoreIter(k2)      # Iterativo -Caso 2- Risalita
-predRec1=albero.predecessoreRecurs(k1)     # Ricorsivo -Caso 1- Discesa
-predRec2=albero.predecessoreRecurs(k2)     # Ricorsivo -Caso 2- Risalita
+predIter1=albero.predecessoreIter(k1)      # iterative -Case 1- Discesa
+predIter2=albero.predecessoreIter(k2)      # iterative -Case 2- Risalita
+predRec1=albero.predecessoreRecurs(k1)     # recursive -Case 1- Discesa
+predRec2=albero.predecessoreRecurs(k2)     # recursive -Case 2- Risalita
 print("\nPREDECESSORE\nPredecessore Nodo " + str(k1) 
       + " [ITERAZIONE]: " + str(predIter1))
 print("Predecessore Nodo " +  str(k2) + " [ITERAZIONE]: " + str(predIter2))
@@ -724,10 +724,10 @@ print("Predecessore Nodo " +  str(k2) + " [RICORSIONE]: " + str(predRec2))
 'Successore'
 k1=11
 k2=16
-succIter1=albero.successoreIter(k1)     # Iterativo -Caso 1- Discesa
-succIter2=albero.successoreIter(k2)     # Iterativo -Caso 2- Risalita
-succRec1=albero.successoreRecurs(k1)    # Ricorsivo -Caso 1- Discesa
-succRec2=albero.successoreRecurs(k2)    # Ricorsivo -Caso 2- Risalita
+succIter1=albero.successoreIter(k1)     # iterative -Case 1- Discesa
+succIter2=albero.successoreIter(k2)     # iterative -Case 2- Risalita
+succRec1=albero.successoreRecurs(k1)    # recursive -Case 1- Discesa
+succRec2=albero.successoreRecurs(k2)    # recursive -Case 2- Risalita
 print("\nSUCCESSORE\nSuccessore Nodo " + str(k1) 
       + " [ITERAZIONE]: " + str(succIter1))
 print("Successore Nodo " +  str(k2) + " [ITERAZIONE]: " + str(succIter2))
@@ -736,17 +736,17 @@ print("\nSUCCESSORE\nSuccessore Nodo " +
 print("Successore Nodo " +  str(k2) + " [RICORSIONE]: " + str(succRec2))
 
 'Cancellazione'
-k_caso1=7
-k_caso3=33
-print("\nCANCELLAZIONE - Caso 1 - chiave " + str(k_caso1) + "\nPrima...")
+k_case1=7
+k_case3=33
+print("\nDELETION - Case 1 - key " + str(k_case1) + "\nBefore...")
 albero.visitaPerLivelli()
-print("\nDopo...")
-albero.cancella(k_caso1)
+print("\nAfter...")
+albero.cancella(k_case1)
 albero.visitaPerLivelli()
-print("\n\nCANCELLAZIONE - Caso 3 - chiave " + str(k_caso3) + "\nPrima...")
+print("\n\nDELETION - Case 3 - key " + str(k_case3) + "\nBefore...")
 albero.visitaPerLivelli()
-print("\nDopo...")
-albero.cancella(k_caso3)
+print("\nAfter...")
+albero.cancella(k_case3)
 albero.visitaPerLivelli()
 
 '''

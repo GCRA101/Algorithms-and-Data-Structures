@@ -20,14 +20,14 @@ from SingleRecord import RecordSingolo
 
 '''
 LISTE SEMPLICI 
-- Ricerca                       - Costo: O(n)
-- Inserimento (in testa)        - Costo: Θ(1)
-- Inserimento (in mezzo)        - Costo: Θ(1)
-- Eliminazione                  - Costo: O(n)
+- Ricerca                       - Cost: O(n)
+- Inserimento (in testa)        - Cost: Θ(1)
+- Inserimento (in mezzo)        - Cost: Θ(1)
+- Eliminazione                  - Cost: O(n)
 '''
 
 
-'Creazione lista con istanze della user-defined class Record.py'
+'Creazione lista with istanze della user-defined class Record.py'
 
 keys=[1,32,54,2,5,3,7,6,4,11,23,26]
 pointers=[118612,198612,210618,211668,225432,238112,
@@ -48,16 +48,16 @@ addRecord=RecordSingolo(15,None,544312)
 def search(p,k):                             # T(n)
     p_corr=p                                 # Θ(1)
     p_corr_key=listA[0].getKey()             # Θ(1)
-    i=0                                      # Θ(1)
+    the=0                                      # Θ(1)
     while p_corr!=None and p_corr_key!=k:    # n*Θ(1)+Θ(1)
-        p_corr=listA[i].getPointer()         # Θ(1)
-        p_corr_key=listA[i].getKey()         # Θ(1)
-        i+=1                                 # Θ(1)
+        p_corr=listA[the].getPointer()         # Θ(1)
+        p_corr_key=listA[the].getKey()         # Θ(1)
+        the+=1                                 # Θ(1)
     return p_corr                            # Θ(1)
 
 # Computational Cost: 
-# Caso peggiore - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -la key non c'e' 
-# Caso migliore - T(n)=Θ(1)+1*Θ(1)+Θ(1)=O(1) -la key e' in prima posizione
+# Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -the key not c'e' 
+# Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=O(1) -the key e' in first posizione
 
 pSearch=search(118612,3)
 
@@ -72,7 +72,7 @@ def insertHead(p,k):                  # T(n)
     return p                          # Θ(1)
 
 # Computational Cost: 
-# T(n)=Θ(1) (per caso migliore e per caso peggiore)
+# T(n)=Θ(1) (for best case e for worst case)
 
 pInsertHead=insertHead(118612,addRecord)
 
@@ -88,7 +88,7 @@ def insertInside(p,k,d):              # T(n)
         return None                   # Θ(1)
 
 # Computational Cost: 
-# T(n)=Θ(1) (per caso migliore e per caso peggiore)
+# T(n)=Θ(1) (for best case e for worst case)
 
 pInsertInside=insertInside(544312,listA[5],addRecord)
 
@@ -102,17 +102,17 @@ def delete (p,k):                                      # T(n)
             listA[0].delete()                          # Θ(1)
             return p                                   # Θ(1)
         p_corr=p                                       # Θ(1)
-        i=0                                            # Θ(1)
-        while listA[i].getNext()!=k:                   # n*Θ(1)+Θ(1)
-            p_corr=listA[i].getNext()                  # Θ(1)
-            i+=1                                       # Θ(1)
-        listA[i-1].setNext(listA[i+1].getPointer())    # Θ(1)
-        listA[i].delete()                              # Θ(1)
+        the=0                                            # Θ(1)
+        while listA[the].getNext()!=k:                   # n*Θ(1)+Θ(1)
+            p_corr=listA[the].getNext()                  # Θ(1)
+            the+=1                                       # Θ(1)
+        listA[the-1].setNext(listA[the+1].getPointer())    # Θ(1)
+        listA[the].delete()                              # Θ(1)
     return p                                           # Θ(1)
 
 # Computational Cost: 
-# T(n)=O(n) - Caso peggiore (elemento da eliminare non esiste)
-# T(n)=Ω(1) - Caso migliore (elemento da eliminare e' il primo della lista)
+# T(n)=O(n) - Worst case (element from eliminare not esiste)
+# T(n)=Ω(1) - Best case (element from eliminare e' the first della list)
 
 pDelete=delete(544312,366332)
 

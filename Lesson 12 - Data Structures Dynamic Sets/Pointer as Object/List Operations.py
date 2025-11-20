@@ -23,11 +23,11 @@ from DoublyLinkedList import ListaPuntataDoppia
 
 '''
 LISTE PUNTATE  
-- Lettura                       - Costo: O(n)
-- Ricerca                       - Costo: O(n)
-- Inserimento (in testa)        - Costo: Θ(1)
-- Inserimento (in mezzo)        - Costo: Θ(1)
-- Eliminazione                  - Costo: O(n)
+- Lettura                       - Cost: O(n)
+- Ricerca                       - Cost: O(n)
+- Inserimento (in testa)        - Cost: Θ(1)
+- Inserimento (in mezzo)        - Cost: Θ(1)
+- Eliminazione                  - Cost: O(n)
 '''
 
 
@@ -41,14 +41,14 @@ LISTE PUNTATE
 keys=[1,32,54,2,5,3,7,6,4,11,23,26]
 records=[]
 # Concatenamento dei Records
-for i in range(0,len(keys),1):
-    records.append(RecordSingolo(keys[i]))
-for i in range(0,len(records)-1,1):
-    records[i].setNext(records[i+1])
-# Creazione lista puntata (contiene il riferimento al record di testa)
+for the in range(0,len(keys),1):
+    records.append(RecordSingolo(keys[the]))
+for the in range(0,len(records)-1,1):
+    records[the].setNext(records[the+1])
+# Creazione lista puntata (contiene the riferimento al record of testa)
 listaPuntataSing=ListaPuntataSingola(records[0])
 
-# Creazione lista puntata (contiene il riferimento al record di testa)
+# Creazione lista puntata (contiene the riferimento al record of testa)
 listaPuntataSing=ListaPuntataSingola(records[0])
 
     
@@ -104,15 +104,15 @@ print(str(listaPuntataSing) + "\n")
 keys=[1,32,54,2,5,3,7,6,4,11,23,26]
 records=[]
 # Concatenamento dei Records
-for i in range(0,len(keys),1):
-    records.append(RecordDoppio(keys[i]))
-for i in range(0,len(records),1):
-    if i>0:
-        records[i].setPrev(records[i-1])
-    if i<len(records)-1:
-        records[i].setNext(records[i+1])
+for the in range(0,len(keys),1):
+    records.append(RecordDoppio(keys[the]))
+for the in range(0,len(records),1):
+    if the>0:
+        records[the].setPrev(records[the-1])
+    if the<len(records)-1:
+        records[the].setNext(records[the+1])
     
-# Creazione lista puntata (contiene il riferimento al record di testa)
+# Creazione lista puntata (contiene the riferimento al record of testa)
 listaPuntataDopp=ListaPuntataDoppia(records[0])
 
 

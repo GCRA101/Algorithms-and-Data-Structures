@@ -18,17 +18,17 @@ import matplotlib.pyplot as plt
 '''
 FACTORIAL CALCULATION
 The factorial calculation can be performed using an ITERATIVE algorithm
-but also using a RECURSIVE algorithm'''
+but also using to RECURSIVE algorithm'''
 
 # ITERATIVE Algorithm
 
 def fattorialeIterativo(n):
     fatt=1                      #Θ(1)
-    for i in range(1,n+1):      #n*Θ(1)+Θ(1)
-        fatt=fatt*i             #Θ(1)
+    for the in range(1,n+1):      #n*Θ(1)+Θ(1)
+        fatt=fatt*the             #Θ(1)
     return fatt                 #Θ(1)
 
-# Input size: valore intero n
+# Input size: integer value n
 # Best case and worst case coincide for any large value
 # of n since the algorithm always iterates through all values from 1 to n.
 # Computational Cost: T(n)=Θ(1)+Θ(n)+Θ(1)=Θ(n)
@@ -41,7 +41,7 @@ def fattorialeRicorsivo(n):
     else:                                 #Θ(1)
         return n*fattorialeRicorsivo(n-1) # T(n-1)  'Recursive Step'
 
-# Input size: valore intero n
+# Input size: integer value n
 # Computational Cost: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
@@ -73,16 +73,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -96,26 +96,26 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(5,2000):
+for the in range(5,2000):
     tic=time.perf_counter()
-    fattorialeIterativo(i)
+    fattorialeIterativo(the)
     toc=time.perf_counter()
     stepsA.append(round(abs(toc-tic),12))
 
 
 stepsB=[]
-for i in range(5,2000):
+for the in range(5,2000):
     tic=time.perf_counter()
-    fattorialeRicorsivo(i)
+    fattorialeRicorsivo(the)
     toc=time.perf_counter()
     stepsB.append(round(abs(toc-tic),12))
 
     
-rappresentazioneGrafica(range(5,2000),stepsA,0.0001,"Algoritmi di Calcolo "  
-                        "del Fattoriale Iterat/Ricors","Iterativo")
+rappresentazioneGrafica(range(5,2000),stepsA,0.0001,"Factorial Calculation "  
+                        "Algorithms Iterat/Recurs","Iterativo")
 
-rappresentazioneGrafica(range(5,2000),stepsB,0.0001,"Algoritmi di Calcolo " 
-                       "del Fattoriale Iterat/Ricors","Ricorsivo")
+rappresentazioneGrafica(range(5,2000),stepsB,0.0001,"Factorial Calculation " 
+                       "Algorithms Iterat/Recurs","Ricorsivo")
 
 
 

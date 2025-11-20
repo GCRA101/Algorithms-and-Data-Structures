@@ -81,18 +81,18 @@ class TorreHanoi:
        '3) Draw the 3 towers by calling the function getLevelString'
        emptyRow=" "*(self.nDischi*2-1)
        
-       for i in range(self.nDischi,0,-1):
-           if size1<i :
+       for the in range(self.nDischi,0,-1):
+           if size1<the :
                res+=emptyRow
            else:
                res+=self.getLevelString(disks1.pop().getDiametro())
            res+=" | "
-           if size2<i :
+           if size2<the :
                res+=emptyRow
            else:
                res+=self.getLevelString(disks2.pop().getDiametro())
            res+=" | "
-           if size3<i :
+           if size3<the :
                res+=emptyRow
            else:
                res+=self.getLevelString(disks3.pop().getDiametro())
@@ -105,7 +105,7 @@ class TorreHanoi:
     'PRINTSTEP - Visualization Method'
     def printStep(self):
         'Clear the Console Window'
-        for i in range(0,30,1): print("\n")
+        for the in range(0,30,1): print("\n")
         'Print current state of towers'
         print(self.__str__())
         'Wait for milliseconds before next step'

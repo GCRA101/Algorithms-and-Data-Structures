@@ -26,12 +26,12 @@ valoriNodi=[3,1,5,8,4,3,2,8,0,8,5]
 nodi=[]
 vettorePosizionale=[]
 
-for i in range(0,len(valoriNodi),1):
-    nodi.append(Nodo(valoriNodi[i])) 
+for the in range(0,len(valoriNodi),1):
+    nodi.append(Nodo(valoriNodi[the])) 
     
-for i in range(0,(len(nodi)-2)//2+1,1):
-        nodi[i].setFiglioSx(nodi[2*i+1])
-        nodi[i].setFiglioDx(nodi[2*i+2])
+for the in range(0,(len(nodi)-2)//2+1,1):
+        nodi[the].setFiglioSx(nodi[2*the+1])
+        nodi[the].setFiglioDx(nodi[2*the+2])
         
 'COSTRUZIONE ALBERO BINARIO'     
 radice=nodi[0]
@@ -44,7 +44,7 @@ VISITE *********************************************************************
 '''
 
 'VISITA in PREORDINE'
-# Ciascun nodo viene visitato prima di visitare i suoi sottoalberi destro e 
+# Ciascun nodo viene visitato first of visitare the suoi sottoalberi destro e 
 # sinistro.
 
 def visitaPreordine(p):                    # T(n)
@@ -59,7 +59,7 @@ def visitaPreordine(p):                    # T(n)
     return                                 # Θ(1)
 
 # Computational Cost
-# Dimensioni input: numero nodi dell'albero (incognito a priori)
+# Dimensioni input: number nodi dell'albero (incognito to priori)
 # Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
 'Test'
@@ -69,8 +69,8 @@ visitaPreordine(albero.getRoot())
 
 
 'VISITA in INORDINE'
-# Ciascun nodo viene visitato dopo aver visitato il suo sottoalbero sinistro
-# ma prima di visitare il suo sottoalbero destro.
+# Ciascun nodo viene visitato dopo aver visitato the suo sottoalbero sinistro
+# ma first of visitare the suo sottoalbero destro.
 
 def visitaInordine(p):                      # T(n)
     if p!=None:                             # Θ(1)
@@ -84,7 +84,7 @@ def visitaInordine(p):                      # T(n)
     return                                  # Θ(1)
 
 # Computational Cost
-# Dimensioni input: numero nodi dell'albero (incognito a priori)
+# Dimensioni input: number nodi dell'albero (incognito to priori)
 # Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
 'Test'
@@ -95,7 +95,7 @@ visitaInordine(albero.getRoot())
 
 
 'VISITA in POSTORDINE'
-# Ciascun nodo viene visitato solo dopo aver visitato entrambi i suoi sotto
+# Ciascun nodo viene visitato only dopo aver visitato entrambi the suoi sotto
 # alberi destro e sinistro
 
 def visitaPostordine(p):                    # T(n)
@@ -110,7 +110,7 @@ def visitaPostordine(p):                    # T(n)
     return                                  # Θ(1)
 
 # Computational Cost
-# Dimensioni input: numero nodi dell'albero (incognito a priori)
+# Dimensioni input: number nodi dell'albero (incognito to priori)
 # Cost: T(n)=T(k)+T(n-k-1)+Θ(1)  -> T(n)=Θ(n) [METODO DI SOSTITUZIONE]
 
 'Test'
@@ -120,41 +120,41 @@ print("VISITA in POSTORDINE")
 visitaPostordine(albero.getRoot())
 
 
-'VISITA per LIVELLI'
-# Per visitare un albero per livelli, l'approccio recursive method non puo' funzionare
-# La soluzione e' usare un approccio iterativo che faccia uso di una coda di 
-# appoggio per scorrere tutti i nodi un livello dopo l'altro.
+'VISITA for LIVELLI'
+# For visitare a albero for livelli, l'approccio recursive method not puo' funzionare
+# The soluzione e' usare a approccio iterativo that faccia uso of a coda of 
+# appoggio for scorrere all the nodi a livello dopo l'altro.
 # IMPORTANTE!
-# 1.Volendo salvare tutti i nodi in un array mano a mano che li si visitano, 
-#   otteniamo esattamente il VETTORE POSIZIONALE dell'albero A MENO DEGLI SPAZI
-#   VUOTI per i nodi mancanti.
-# 2.La Coda, per poter funzionare, deve essere implementata in modo diverso 
-#   dal metodo classico. Ciascuno dei Record Singoli da cui e' costituita, 
-#   dovra' contenere come VALORE il riferimento al nodo corrispondente dell'
-#   albero e come PUNTATORE il riferimento al Record Singolo successivo della
-#   Coda (che conterra', come VALORE, il riferimento al nodo successivo dell'
+# 1.Volendo salvare all the nodi in a array mano to mano that li si visitano, 
+#   otteniamo esattamente the VETTORE POSIZIONALE dell'albero To MENO DEGLI SPAZI
+#   VUOTI for the nodi mancanti.
+# 2.The Coda, for poter funzionare, deve essere implementata in modo diverso 
+#   dal metodo classico. Ciascuno dei Record Singoli from cui e' costituita, 
+#   dovra' contenere as value the riferimento al nodo corrispondente dell'
+#   albero e as PUNTATORE the riferimento al Record Singolo successivo della
+#   Coda (that conterra', as value, the riferimento al nodo successivo dell'
 #   albero binario).
 # >>>> VEDI CODICE PYTHON "Coda_Modificata.py" <<<<<
 
 
-'Funzione Ausiliaria Controllo Riempimento Coda'
+'function Ausiliaria Controllo Riempimento Coda'
 def codaVuota(coda):
     if coda.size()==0:
         return True
     return False
 
-'FUNZIONE ITERATIVA per Visita per Livelli'
+'function iterative for Visita for Livelli'
 def visitaPerLivelli(p):                       # T(n)
     # Controllo esistenza albero in input
     if p==None:                                # Θ(1)
         return                                 # Θ(1)
-    # Inizializzazione coda di supporto
+    # Inizializzazione coda of supporto
     coda=Coda()                                # Θ(1)                                                     
     # Incodamento radice albero nella coda
     coda.enqueue(p)                            # Θ(1)                           
-    # Scorrimento nodi albero tramite coda
+    # Scorrimento nodi albero through coda
     while(not codaVuota(coda)):                # n*Θ(1)+Θ(1) 
-        # 1. Scoda e stampa nodo
+        # 1. Scoda e prints nodo
         p=coda.dequeue()                       # Θ(1)
         print(str(p),end=" ")                  # Θ(1)         
         # Incoda figlioSx
@@ -167,10 +167,10 @@ def visitaPerLivelli(p):                       # T(n)
     
 
 # Computational Cost
-# Dimensioni input: numero nodi dell'albero (incognito a priori)
+# Dimensioni input: number nodi dell'albero (incognito to priori)
 # Cost: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
 
 'Test'
 # Risultato atteso: [3,1,5,8,4,3,2,8,0,8,5]
-print("VISITA per LIVELLI")
+print("VISITA for LIVELLI")
 visitaPerLivelli(albero.getRoot())

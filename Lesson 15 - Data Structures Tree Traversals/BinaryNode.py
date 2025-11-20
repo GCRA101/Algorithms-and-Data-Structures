@@ -6,25 +6,25 @@ Created on Sat Jul 29 16:52:07 2023
 """
 
 '''
-NODO per ALBERO
-Il Nodo dell'Albero Binario viene implementato come un record doppio, ovvero
-una classe contenente il valore del nodo, il puntatore al figlio sinistro e 
-il puntatore al figlio destro.
-In un Albero Binario Ordinato, il figlio Sx viene prima del figlio Dx.
+NODO for ALBERO
+The Nodo dell'Albero Binario viene implementato as a record doppio, that is
+a classe containing the value del nodo, the puntatore al figlio sinistro e 
+the puntatore al figlio destro.
+In a Albero Binario sorted, the figlio Sx viene first del figlio Dx.
 '''
 
 
 class Nodo:
     
     # ATTRIBUTES
-    valore=None
+    value=None
     figlioSx=None
     figlioDx=None
     
     # CONSTRUCTOR
     'Default e Overloaded'
-    def __init__(self,valore=None, figlioSx=None, figlioDx=None):
-        self.valore=valore
+    def __init__(self,value=None, figlioSx=None, figlioDx=None):
+        self.value=value
         self.figlioSx=figlioSx
         self.figlioDx=figlioDx
         
@@ -32,8 +32,8 @@ class Nodo:
     # METHODS
     
     'Setters'
-    def setValore(self, valore):
-        self.valore=valore
+    def setValore(self, value):
+        self.value=value
     def setFiglioSx(self, figlioSx):
         self.figlioSx=figlioSx
     def setFiglioDx(self, figlioDx):
@@ -41,7 +41,7 @@ class Nodo:
     
     'Getters'
     def getValore(self):
-        return self.valore
+        return self.value
     def getFiglioSx(self):
         return self.figlioSx
     def getFiglioDx(self):
@@ -49,5 +49,5 @@ class Nodo:
     
     'Overridden ToString()'
     def __str__(self):
-        return (str(self.valore))
+        return (str(self.value))
     

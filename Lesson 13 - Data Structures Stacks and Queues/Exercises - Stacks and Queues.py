@@ -26,26 +26,26 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Scrivere lo pseudocodice (e script python) delle funzioni Enqueue e Dequeue
-quando la coda sia implementata su un array
+Scrivere the pseudocodice (e script python) delle funzioni Enqueue e Dequeue
+quando the coda sia implementata on a array
 '''
 
 # Considerazioni
-'''L'array e' una struttura dati inerentemente statica. Cio' significa che
-la sua dimensione non puo' cambiare una volta che e' stato creato. 
-L'array su cui costruire la coda deve quindi avere una dimensione la piu' 
-grande possibile e lo slittamento degli elementi dovuto alle operazioni di 
+'''L'array e' a struttura data inerentemente statica. Cio' significa that
+the sua dimensione not puo' cambiare a volta that e' stato creato. 
+L'array on cui costruire the coda deve quindi avere a dimensione the piu' 
+grande possibile e the slittamento degli elementi dovuto alle operazioni of 
 enqueing e dequeuing dev'essere gestito in senso circolare.
-Per essere certi che l'head e la tail non si invertano di ordine basta 
-verificare che l'array non sia pieno (prima di ogni operazione di enqueueing)
-o che non sia vuoto (prima di ogni operazione di dequeueing).
-Ogni volta che la head o la tail raggiungono l'indice ultimo dell'array, 
+For essere certi that l'head e the tail not si invertano of ordine basta 
+verificare that l'array not sia pieno (first of each operazione of enqueueing)
+o that not sia vuoto (first of each operazione of dequeueing).
+Each volta that the head o the tail raggiungono l'index last dell'array, 
 allo step successivo li si fanno ripartire dall'indice zero.'
 ''' 
 
 '''
 CLASSE CODA (QUEUE)
-Costruita servendosi della Struttura Dati di ARRAY
+Costruita servendosi della Struttura Data of ARRAY
 '''
 
 class Coda:
@@ -65,35 +65,35 @@ class Coda:
 
     'ENQUEUE'
     def enqueue(self,el):                       # T(n)
-        'Se l''array e'' pieno, non si fa nulla'
+        'If l''array e'' pieno, not si fa nulla'
         if self.nElem==len(self.array):
             return
-        'Incremento dell''indice di tail'
+        'Incremento dell''indice of tail'
         if 0<=self._tail<len(self.array)-1:
             self._tail+=1
         else:
             self._tail=0
-        'Si aggiunge l''elemento nella nuova tail'
+        'Si aggiunge l''element nella nuova tail'
         self.array[self._tail]=el
-        'Si aggiorna il contatore degli elementi (cresce di un unita)'
+        'Si aggiorna the contatore degli elementi (cresce of a unita)'
         self.nElem+=1
         return
     
 
     'DEQUEUE'    
     def dequeue(self):
-        'Se l''array e'' vuoto, non si fa nulla'
+        'If l''array e'' vuoto, not si fa nulla'
         if self.nElem==0:
             return
-        'Si rimuove l''elemento contenuto nella head corrente'
+        'Si rimuove l''element contained in thela head corrente'
         el=self.array[self._head]
         self.array[self._head]=None
-        'Incremento dell''indice di head'
+        'Incremento dell''indice of head'
         if self._head<len(self.array)-1:
             self._head+=1
         else:
             self._head=0
-        'Si aggiorna il contatore degli elementi (decresce di un unita)'
+        'Si aggiorna the contatore degli elementi (decresce of a unita)'
         self.nElem-=1
         return el
     
@@ -107,16 +107,16 @@ class Coda:
 arrQueue=Coda(10)
 
 'Enqueuing'
-for i in range(3,40,2):
-    arrQueue.enqueue(i)   
+for the in range(3,40,2):
+    arrQueue.enqueue(the)   
     print(arrQueue)
 'Dequeuing'
-for i in range(0,12,1):
+for the in range(0,12,1):
     n=arrQueue.dequeue()
     print(arrQueue)
 'Enqueing again'
-for i in range(3,40,2):
-    arrQueue.enqueue(i)   
+for the in range(3,40,2):
+    arrQueue.enqueue(the)   
     print(arrQueue)
     
     
@@ -125,25 +125,25 @@ for i in range(3,40,2):
 # ESERCIZIO 2 ################################################################
 
 '''
-Scrivere lo pseudocodice (e script python) delle funzioni Push e Pop
-quando la pila sia implementata su un array
+Scrivere the pseudocodice (e script python) delle funzioni Push e Pop
+quando the pila sia implementata on a array
 '''
 
 # Considerazioni
-'''L'array e' una struttura dati inerentemente statica. Cio' significa che
-la sua dimensione non puo' cambiare una volta che e' stato creato. 
-L'array su cui costruire la pila deve quindi avere una dimensione la piu' 
-grande possibile. Una volta che l'array e' stato completamente riempito,
-infatti, non si potra' pushare alcun elemento.
-Analogamente una volta che l'array fosse vuoto, non si potra poppare alcun 
-elemento.
-Per ottenere cio' bastera' tenere il conto degli elementi contenuti nell'array
-tramite un opportuno contatore.'
+'''L'array e' a struttura data inerentemente statica. Cio' significa that
+the sua dimensione not puo' cambiare a volta that e' stato creato. 
+L'array on cui costruire the pila deve quindi avere a dimensione the piu' 
+grande possibile. A volta that l'array e' stato completamente riempito,
+indeed, not si potra' pushare alcun element.
+Analogamente a volta that l'array fosse vuoto, not si potra poppare alcun 
+element.
+For ottenere cio' bastera' tenere the conto degli elementi contained in thel'array
+through a opportuno contatore.'
 ''' 
 
 '''
 CLASSE PILA (STACK)
-Costruita servendosi della Struttura Dati di ARRAY
+Costruita servendosi della Struttura Data of ARRAY
 '''
 
 class Pila:
@@ -162,29 +162,29 @@ class Pila:
 
     'PUSH'
     def push(self,el):                       # T(n)
-        'Se l''array e'' pieno, non si fa nulla'
+        'If l''array e'' pieno, not si fa nulla'
         if self.nElem==len(self.array):
             return
-        'Incremento dell''indice di top'
+        'Incremento dell''indice of top'
         self._top+=1
-        'Si aggiunge l''elemento in cima'
+        'Si aggiunge l''element in cima'
         self.array[self._top]=el
-        'Si aggiorna il contatore degli elementi (cresce di un unita)'
+        'Si aggiorna the contatore degli elementi (cresce of a unita)'
         self.nElem+=1
         return
     
 
     'POP'    
     def pop(self):
-        'Se l''array e'' vuoto, non si fa nulla'
+        'If l''array e'' vuoto, not si fa nulla'
         if self.nElem==0:
             return
-        'Si rimuove l''elemento in cima'
+        'Si rimuove l''element in cima'
         el=self.array[self._top]
         self.array[self._top]=None
-        'Decremento dell''indice di top'
+        'Decremento dell''indice of top'
         self._top-=1
-        'Si aggiorna il contatore degli elementi (decresce di un unita)'
+        'Si aggiorna the contatore degli elementi (decresce of a unita)'
         self.nElem-=1
         return el
     
@@ -198,14 +198,14 @@ class Pila:
 arrStack=Pila(10)
 
 'Pushing'
-for i in range(3,40,2):
-    arrStack.push(i)   
+for the in range(3,40,2):
+    arrStack.push(the)   
     print(arrStack)
 'Popping'
-for i in range(0,12,1):
+for the in range(0,12,1):
     n=arrStack.pop()
     print(arrStack)
 'Pushing again'
-for i in range(3,40,2):
-    arrStack.push(i)   
+for the in range(3,40,2):
+    arrStack.push(the)   
     print(arrStack)

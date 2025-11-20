@@ -14,39 +14,39 @@ import random
 
 
 
-# ALGORITMI DI ORDINAMENTO - QUICK SORT
+# SORTING ALGORITHMS - QUICK SORT
 
 '''
 QUICK SORT 
-L'algoritmo Quick Sort e' un algoritmo di ordinamento piu' avanzato e complesso
+The algorithm Quick Sort e' an algorithm for sorting piu' avanzato e complesso
 rispetto agli algoritmi naif studiati finora (Insertion Sort, Selection Sort e
-Bubble Sort) e consente di ottenere il miglior costo computazionale possibile
-per un algoritmo di ordinamento basato su confronti: O(nlogn).
+Bubble Sort) e consente of ottenere the miglior costo computazionale possibile
+for an algorithm for sorting based on comparisons: O(nlogn).
 
-* Confronto con MergeSort *
-Esso si differenzia rispetto all'algoritmo di MergeSort nei seguenti punti:
-    - Vantaggio: Riordinamento IN LOCO
-            - Gli elementi del vettore vengono riordinati IN LOCO e cio'
-              consente di aver una MIGLIORE COMPLESSITA' SPAZIALE
-    - Svantaggio: Alto Computational Cost nel Caso Peggiore
-            - Nel Caso Peggiore, il costo computazionale e' O(n^2) anziche' 
-              O(nlogn). Il Caso Peggiore, in ogni caso, puo' essere facilmente
-              evitato andando a RANDOMIZZARE/DISORDINARE i dati in input'
-Conclusione: il QuickSort e' MEGLIO del MergeSort
-Infatti, il QuickSort e' l'algoritmo di Ordinamento che viene in genere usato
-nelle funzioni dei principali linguaggi di programmazione.
+* Confronto with MergeSort *
+Esso si differenzia rispetto althe algorithm of MergeSort nei seguenti punti:
+    - Advantage: IN-PLACE reordering
+            - The elementi del vector vengono riordinati IN LOCO e cio'
+              consente of aver a MIGLIORE complexity' SPAZIALE
+    - Sadvantage: Alto Computational Cost nel worst case
+            - Nel worst case, the computational cost e' O(n^2) anziche' 
+              O(nlogn). The worst case, in any case, can be easily
+              evitato andando to RANDOMIZZARE/DISORDINARE the given as input'
+Conclusione: the QuickSort e' MEGLIO del MergeSort
+Indeed, the QuickSort e' the algorithm of sorting that viene in genere usato
+nelle funzioni dei principali linguaggi of programmazione.
 
 * Caratteristiche Principali *
-Le caratteristiche principali dell'algoritmo MERGE SORT sono le seguenti:
+The caratteristiche principali delthe algorithm MERGE SORT are the following:
     - RECURSIVE Algorithm
     - Tecnica Algoritmica del DIVIDE ET IMPERA
-    - Equazione di Ricorrenza risolubile tramite Metodo Principale (Teorema
+    - Recurrence Equation solvable through the Master Method (Teorema
       Master)
-    - Processo di ordinamento IN LOCO
-    - Lavora meglio con sequenze di dati DISORDINATE
+    - Processo of sorting IN LOCO
+    - Lavora meglio with sequenze of data DISORDINATE
     
-- Computational Cost: O(n^2)   (Caso Peggiore)
-                        Ω(nlogn) (Caso Migliore)                    
+- Computational Cost: O(n^2)   (worst case)
+                        Ω(nlogn) (best case)                    
 '''
 
 A1=[56,1,5,3,7,8,2,11,32]
@@ -56,42 +56,42 @@ Aworst=[87,1,25,5,21,8,11,23,3,31]
 Abest=[1,5,6,31,44,53,98,101]
 
 
-def partition(A,indStart,indEnd):                  # S(n)
-    pivot=A[indStart]                              # Θ(1)
-    i=indStart                                     # Θ(1)
+def partition(To,indStart,indEnd):                  # S(n)
+    pivot=To[indStart]                              # Θ(1)
+    the=indStart                                     # Θ(1)
     j=indEnd                                       # Θ(1)
     while True:                                    # n*Θ(1)+Θ(1) 
-        while A[i]<pivot:                          # Θ(1)
-            i=i+1                                  # Θ(1)
-        while A[j]>pivot:                          # Θ(1)
+        while To[the]<pivot:                          # Θ(1)
+            the=the+1                                  # Θ(1)
+        while To[j]>pivot:                          # Θ(1)
             j=j-1                                  # Θ(1)
-        if i<j:                                    # Θ(1)
-            temp=A[i]                              # Θ(1)
-            A[i]=A[j]                              # Θ(1)
-            A[j]=temp                              # Θ(1)
-            i,j=i+1,j-1                            # Θ(1) 
+        if the<j:                                    # Θ(1)
+            temp=To[the]                              # Θ(1)
+            To[the]=To[j]                              # Θ(1)
+            To[j]=temp                              # Θ(1)
+            the,j=the+1,j-1                            # Θ(1) 
         else:                                      # Θ(1)
             return j                               # Θ(1)
 
 
-def quickSort(A,indStart,indEnd):                  # T(n)
+def quickSort(To,indStart,indEnd):                  # T(n)
     if (indStart<indEnd):                          # Θ(1)
-        indMid=partition(A,indStart,indEnd)        # S(n)
-        quickSort(A,indStart,indMid)               # T(n/2)
-        quickSort(A,indMid+1,indEnd)               # T(n/2)
+        indMid=partition(To,indStart,indEnd)        # S(n)
+        quickSort(To,indStart,indMid)               # T(n/2)
+        quickSort(To,indMid+1,indEnd)               # T(n/2)
     return 
 
 
-# Input size: numero n di elementi nell'array A
-# Caso migliore e caso peggiore differiscono in base al livello di disordine
-# dei dati in input.
-# Se i dati in input sono gia' abbastanza ordinati, il pivot, se scelto sempre
-# come il primo elemento del subarray, risultera' essere sovente lontano dalla
+# Input size: number n of elements in array To
+# Best case e worst case differiscono in base al livello of disordine
+# dei given as input.
+# If the given as input are already' abbastanza sorted, the pivot, if scelto always
+# as the first element del subarray, risultera' essere sovente lontano dalla
 # mezzeria. Al contrario sara' sovente in prossimita' della mezzeria.
-# Le equazioni di ricorrenza corrispondenti ai casi peggiore e migliore sopra
-# illustrati sono come segue:
-# - Caso Migliore: T(n)=2*T(n/2)+Θ(n)   -> T(n)=Ω(nlogn)
-# - Caso Peggiore: T(n)=T(n-1)+Θ(n)     -> T(n)=O(n^2)
+# The equazioni of ricorrenza corrispondenti ai cases peggiore e migliore sopra
+# illustrati are as segue:
+# - best case: T(n)=2*T(n/2)+Θ(n)   -> T(n)=Ω(nlogn)
+# - worst case: T(n)=T(n-1)+Θ(n)     -> T(n)=O(n^2)
 #
 
 
@@ -115,16 +115,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -137,8 +137,8 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(5,100,1):
-    Alist=list(range(0,i,1))    # DATI  IN INPUT ORDINATI
+for the in range(5,100,1):
+    Alist=list(range(0,the,1))    # DATI  IN INPUT ORDINATI
     tic=time.perf_counter_ns()
     quickSort(Alist,0,len(Alist)-1)
     toc=time.perf_counter_ns()
@@ -146,8 +146,8 @@ for i in range(5,100,1):
 
 
 stepsB=[]
-for i in range(5,100,1):
-    Blist=list(range(0,i,1))
+for the in range(5,100,1):
+    Blist=list(range(0,the,1))
     'RANDOMIZZAZIONE DATI IN INPUT!'
     random.shuffle(Blist)       # DATI IN INPUT DISORDINATI
     tic=time.perf_counter_ns()
@@ -156,9 +156,9 @@ for i in range(5,100,1):
     stepsB.append(abs(round(toc-tic,8)))
 
     
-rappresentazioneGrafica(range(5,100,1),stepsA,1,"Algoritmi di Ordinamento "  
-                        "- Quick Sort","Caso Peggiore")
+rappresentazioneGrafica(range(5,100,1),stepsA,1,"Sorting Algorithms "  
+                        "- Quick Sort","worst case")
 
-rappresentazioneGrafica(range(5,100,1),stepsB,1,"Algoritmi di Ordinamento "  
-                        "- Quick Sort","Caso Migliore")
+rappresentazioneGrafica(range(5,100,1),stepsB,1,"Sorting Algorithms "  
+                        "- Quick Sort","best case")
 

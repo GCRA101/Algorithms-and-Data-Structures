@@ -12,43 +12,43 @@ import matplotlib.pyplot as plt
 
 
 
-# ALGORITMI DI ORDINAMENTO - INSERTION SORT
+# SORTING ALGORITHMS - INSERTION SORT
 
 '''
 INSERTION SORT 
-L'algoritmo Insertion Sort e' uno degli algoritmi piu' semplici per effettuare
-l'ordinamento di una serie/record di dati insieme al SELECTION SORT e al 
+The algorithm Insertion Sort e' one dethe algorithms piu' semplici for effettuare
+l'sorting to series/record of given along with SELECTION SORT e al 
 BUBBLE SORT'
-L'algoritmo INSERTION SORT presenta due costi computazionali diversi tra caso
-peggiore (serie dati ordinata in ordine inverso) e caso migliore (serie dati
-gia' ordinata)
-- Caso Peggiore: O(n^2)
-- Caso Migliore: Ω(n)
+The algorithm INSERTION SORT has two different computational costs between case
+peggiore (given series sorted in reverse order) e best case (serie given
+already' ordinata)
+- worst case: O(n^2)
+- best case: Ω(n)
 '''
 
-A=[1,5,3,7,8,11,56,2,4]
+To=[1,5,3,7,8,11,56,2,4]
 Aworst=[87,31,25,23,21,11,8,5,3,1]
 Abest=[1,5,6,31,44,53,98,101]
 
-def insertionSort(A):               # T(n)
-    for j in range(1,len(A)):       # (n-1)Θ(1)+Θ(1)
-        x=A[j]                      # Θ(1)
-        i=j-1                       # Θ(1)
-        while (i>=0)and(A[i]>x):    # tjΘ(1)+Θ(1) dove tj=(n-1) oppure 1
-            A[i+1]=A[i]             # Θ(1)
-            i-=1                    # Θ(1)
-        A[i+1]=x                    # Θ(1)
-    return A
+def insertionSort(To):               # T(n)
+    for j in range(1,len(To)):       # (n-1)Θ(1)+Θ(1)
+        x=To[j]                      # Θ(1)
+        the=j-1                       # Θ(1)
+        while (the>=0)and(To[the]>x):    # tjΘ(1)+Θ(1) where tj=(n-1) or 1
+            To[the+1]=To[the]             # Θ(1)
+            the-=1                    # Θ(1)
+        To[the+1]=x                    # Θ(1)
+    return To
     
 
-# Input size: numero n di elementi nell'array A
-# Caso migliore e caso peggiore variano a seconda che l'array sia gia' ordinato
+# Input size: number n of elements in array To
+# Best case e worst case variano depending on whether the array sia already' sorted
 # o, viceversa, sia ordinato in ordine inverso
-# Computational Cost: T(n)=O(n^2) - Caso peggiore
-#                       T(n)=Ω(n)   - Caso migliore
+# Computational Cost: T(n)=O(n^2) - Worst case
+#                       T(n)=Ω(n)   - Best case
 
 
-Asorted1=insertionSort(A)
+Asorted1=insertionSort(To)
 Asorted2=insertionSort(Aworst)
 Asorted3=insertionSort(Abest)
 
@@ -64,16 +64,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -86,28 +86,28 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(5,1000,1):
-    A=list(range(0,i,1))
+for the in range(5,1000,1):
+    To=list(range(0,the,1))
     tic=time.perf_counter_ns()
-    insertionSort(A)
+    insertionSort(To)
     toc=time.perf_counter_ns()
     stepsA.append(abs(round(toc-tic,6)))
 
 
 stepsB=[]
-for i in range(1000,5,-1):
-    B=list(range(i,0,-1))
+for the in range(1000,5,-1):
+    B=list(range(the,0,-1))
     tic=time.perf_counter_ns()
     insertionSort(B)
     toc=time.perf_counter_ns()
     stepsB.append(abs(round(toc-tic,6)))
 
     
-rappresentazioneGrafica(range(5,1000,1),stepsA,1,"Algoritmi di Ordinamento "  
-                        "- Insertion Sort","Caso Migliore")
+rappresentazioneGrafica(range(5,1000,1),stepsA,1,"Sorting Algorithms "  
+                        "- Insertion Sort","best case")
 
-rappresentazioneGrafica(range(5,1000,1),stepsB,1,"Algoritmi di Ordinamento "  
-                        "- Insertion Sort","Caso Peggiore")
+rappresentazioneGrafica(range(5,1000,1),stepsB,1,"Sorting Algorithms "  
+                        "- Insertion Sort","worst case")
 
 
 

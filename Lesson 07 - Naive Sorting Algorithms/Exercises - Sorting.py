@@ -20,36 +20,36 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 4 ################################################################
 
 '''
-Scrivere una funzione che, dato un vettore di n elementi ed un indice j, trovi
-il minimo del sottovettore A[j..n]. Riscrivere il SelectionSort sfruttando 
-questa funzione.
+Write to function that, given to vector of n elements ed a index j, trovi
+the minimo del sottovettore To[j..n]. Riscrivere the SelectionSort sfruttando 
+this function.
 '''
 
-# Algoritmo
+# algorithm
 
-def ricercaMinimo(A,j):                 # T(n)
-    min=A[j]                            # Θ(1)
-    for i in range(j,len(A),1):         # tj*Θ(1)+Θ(1) con tj=n oppure tj=1
-        if A[i]<min: min=A[i]           # Θ(1)
+def ricercaMinimo(To,j):                 # T(n)
+    min=To[j]                            # Θ(1)
+    for the in range(j,len(To),1):         # tj*Θ(1)+Θ(1) with tj=n or tj=1
+        if To[the]<min: min=To[the]           # Θ(1)
     return min                          # Θ(1)
 
 # Computational Cost: T(n)=O(n) o Ω(1)     
 
-def selectionSort(A):                     # T(n)
-    for i in range(0,len(A),1):           # n*Θ(1)+Θ(1)
-        min=ricercaMinimo(A,i)            # (n-i)*Θ(1)+Θ(1)             
-        A.remove(min)                     # Θ(1)
-        A.insert(i,min)                   # Θ(1)
-    return A
+def selectionSort(To):                     # T(n)
+    for the in range(0,len(To),1):           # n*Θ(1)+Θ(1)
+        min=ricercaMinimo(To,the)            # (n-the)*Θ(1)+Θ(1)             
+        To.remove(min)                     # Θ(1)
+        To.insert(the,min)                   # Θ(1)
+    return To
 
 # Computational Cost: T(n)=Θ(n^2)     
         
 
-A=[23,41,1,5,2,9,7,8,4,3,51,34,25,11,78]
+To=[23,41,1,5,2,9,7,8,4,3,51,34,25,11,78]
 
 
 ticSs=time.perf_counter_ns()
-selectionSort(A)
+selectionSort(To)
 tocSs=time.perf_counter_ns()
 SsTime=tocSs-ticSs
 
@@ -58,25 +58,25 @@ SsTime=tocSs-ticSs
 # ESERCIZIO 5 ################################################################
 
 '''
-Dato un vettore di n elementi, si progetti un algoritmo che verifichi se ci
-sono occorrenze ripetute di uno stesso valore (e, ad esempio, restituisca 1 se
-ve ne sono e 0 altrimenti)
+Given to vector of n elements, design an algorithm that verifichi if ci
+are occorrenze ripetute of one stesso value (e, ad esempio, restituisca 1 if
+ve ne are e 0 altrimenti)
 '''
 
-def trovaValoriUnici(A):                 # T(n)
-    for i in range(0,len(A)-1,1):        # n*Θ(1)+Θ(1)
-         for j in range(i+1,len(A),1):   # tj*Θ(1)+Θ(1) con tj=1 oppure n-1
-            if A[i]==A[j]: return 1
+def trovaValoriUnici(To):                 # T(n)
+    for the in range(0,len(To)-1,1):        # n*Θ(1)+Θ(1)
+         for j in range(the+1,len(To),1):   # tj*Θ(1)+Θ(1) with tj=1 or n-1
+            if To[the]==To[j]: return 1
     return 0
 
-# Caso peggiore: Non ci sono valori identici -> tj=n-1
-# Caso migliore: I primi due valori sono identici -> tj=1
+# Worst case: Not ci are values identici -> tj=n-1
+# Best case: I primi two values are identici -> tj=1
 # Computational cost: O(n), Ω(1)'
 
 
-A=[3,26,34,73,44,77,11,2,3,4]
+To=[3,26,34,73,44,77,11,2,3,4]
 B=[1,2,3,4]
 
-n1=trovaValoriUnici(A)
+n1=trovaValoriUnici(To)
 n2=trovaValoriUnici(B)
 

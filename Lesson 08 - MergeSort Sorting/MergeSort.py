@@ -13,69 +13,69 @@ import matplotlib.pyplot as plt
 
 
 
-# ALGORITMI DI ORDINAMENTO - MERGE SORT
+# SORTING ALGORITHMS - MERGE SORT
 
 '''
 MERGE SORT 
-L'algoritmo Merge Sort e' un algoritmo di ordinamento piu' avanzato e complesso
-rispetto agli algoritmi naif studiati finora (Insertion Sort, Selection Sort e
-Bubble Sort) e consente di ottenere il miglior costo computazionale possibile
-per un algoritmo di ordinamento basato su confronti: O(nlogn).
-Le caratteristiche principali dell'algoritmo MERGE SORT sono le seguenti:
+The Merge Sort algorithm is to more advanced and complex sorting algorithm
+compared to the naive algorithms studied so far (Insertion Sort, Selection Sort and
+Bubble Sort) and allows achieving the best possible computational cost
+for to comparison-based sorting algorithm: O(nlogn).
+The main characteristics of the MERGE SORT algorithm are the following:
     - RECURSIVE Algorithm
-    - Tecnica Algoritmica del DIVIDE ET IMPERA
-    - Equazione di Ricorrenza risolubile tramite Metodo Principale (Teorema
-      Master)
-    - Processo di ordinamento NON IN LOCO
+    - DIVIDE AND CONQUER Algorithmic Technique
+    - Recurrence Equation solvable through the Master Method (Master
+      Theorem)
+    - NOT IN-PLACE sorting process
     
 - Computational Cost: Θ(nlogn)
 '''
 
-A=[56,1,5,3,7,8,2,11,32]
+To=[56,1,5,3,7,8,2,11,32]
 Aworst=[87,31,25,23,21,11,8,5,3,1]
 Abest=[1,5,6,31,44,53,98,101]
 
 
-def merge(A,indStart,indMid,indEnd):               # S(n)
+def merge(To,indStart,indMid,indEnd):               # S(n)
     B=[None]*(indEnd+1-indStart)                   # Θ(1)
-    i=indStart                                     # Θ(1)
+    the=indStart                                     # Θ(1)
     j=indMid+1                                     # Θ(1)
     k=0                                            # Θ(1)
-    while ((i<=indMid) and (j<=indEnd)):           # tij*Θ(1)+Θ(1) 
-        if (A[i]<A[j]):                            # Θ(1)
-            B[k]=A[i]                              # Θ(1)
-            i+=1                                   # Θ(1)
+    while ((the<=indMid) and (j<=indEnd)):           # tij*Θ(1)+Θ(1) 
+        if (To[the]<To[j]):                            # Θ(1)
+            B[k]=To[the]                              # Θ(1)
+            the+=1                                   # Θ(1)
         else:                                      # Θ(1)
-            B[k]=A[j]                              # Θ(1)
+            B[k]=To[j]                              # Θ(1)
             j+=1                                   # Θ(1)
         k+=1                                       # Θ(1)
-    while(i<=indMid):                              # si*Θ(1)+Θ(1)
-        B[k]=A[i]                                  # Θ(1)
-        i,k=i+1,k+1                                # Θ(1)
+    while(the<=indMid):                              # si*Θ(1)+Θ(1)
+        B[k]=To[the]                                  # Θ(1)
+        the,k=the+1,k+1                                # Θ(1)
     while(j<=indEnd):                              # vj*Θ(1)+Θ(1)
-        B[k]=A[j]                                  # Θ(1)
+        B[k]=To[j]                                  # Θ(1)
         j,k=j+1,k+1                                # Θ(1)
-    A[indStart:indEnd+1]=B                         # Θ(1)
+    To[indStart:indEnd+1]=B                         # Θ(1)
 
 
-def mergeSort(A,indStart,indEnd):                  # T(n)
+def mergeSort(To,indStart,indEnd):                  # T(n)
     if (indStart<indEnd):                          # Θ(1)
         indMid=(indStart+indEnd)//2                # Θ(1)
-        mergeSort(A,indStart,indMid)               # T(n/2)
-        mergeSort(A,indMid+1,indEnd)               # T(n/2)
-        merge(A,indStart,indMid,indEnd)            # S(n)
+        mergeSort(To,indStart,indMid)               # T(n/2)
+        mergeSort(To,indMid+1,indEnd)               # T(n/2)
+        merge(To,indStart,indMid,indEnd)            # S(n)
     return 
 
 
-# Input size: numero n di elementi nell'array A
-# Best case and worst case coincide for any large value di n 
+# Input size: number n of elements in array To
+# Best case and worst case coincide for any large value of n 
 # Computational Cost
 #   - merge function
 #       - S(n)=Θ(1)+tij*Θ(1)+Θ(1)+si*Θ(1)+Θ(1)+vj*Θ(1)+Θ(1)+Θ(1)
 #           - where tij_max=n and tij_min=n/2
 #                    si_max=n/2 and si_min=0
 #                    vj_max=n/2 and vj_min=0
-#       - S(n)=n*Θ(1)+Θ(1) oppure n/2*Θ(1)+n/2*Θ(1) -> S(n)=Θ(n)
+#       - S(n)=n*Θ(1)+Θ(1) or n/2*Θ(1)+n/2*Θ(1) -> S(n)=Θ(n)
 #   - merge Sort
 #       -T(n)=Θ(1)+2*T(n/2)+Θ(n)
 #       -T(n)=2*T(n/2)+Θ(n) -> Θ(nlogn)
@@ -84,7 +84,7 @@ def mergeSort(A,indStart,indEnd):                  # T(n)
 #  T(n)=Θ(nlogn)
 
 
-mergeSort(A,0,len(A)-1)    
+mergeSort(To,0,len(To)-1)    
 mergeSort(Aworst,0,len(Aworst)-1)
 mergeSort(Abest,0,len(Abest)-1)
 
@@ -102,16 +102,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -124,8 +124,8 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(5,100,1):
-    Alist=list(range(0,i,1))
+for the in range(5,100,1):
+    Alist=list(range(0,the,1))
     tic=time.perf_counter_ns()
     mergeSort(Alist,0,len(Alist)-1)
     toc=time.perf_counter_ns()
@@ -133,17 +133,17 @@ for i in range(5,100,1):
 
 
 stepsB=[]
-for i in range(100,5,-1):
-    Blist=list(range(i,0,-1))
+for the in range(100,5,-1):
+    Blist=list(range(the,0,-1))
     tic=time.perf_counter_ns()
     mergeSort(Blist,0,len(Blist)-1)
     toc=time.perf_counter_ns()
     stepsB.append(abs(round(toc-tic,8)))
 
     
-rappresentazioneGrafica(range(5,100,1),stepsA,1,"Algoritmi di Ordinamento "  
-                        "- Merge Sort","Caso Migliore")
+rappresentazioneGrafica(range(5,100,1),stepsA,1,"Sorting Algorithms "  
+                        "- Merge Sort","Best Case")
 
-rappresentazioneGrafica(range(5,100,1),stepsB,1,"Algoritmi di Ordinamento "  
-                        "- Merge Sort","Caso Peggiore")
+rappresentazioneGrafica(range(5,100,1),stepsB,1,"Sorting Algorithms "  
+                        "- Merge Sort","Worst Case")
 

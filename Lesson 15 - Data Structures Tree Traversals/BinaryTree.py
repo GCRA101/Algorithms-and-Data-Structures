@@ -18,12 +18,12 @@ from Modified_Queue import Coda
 
 '''
 CLASSE ALBERO (TREE)
-Costruita servendosi di Record e Puntatori
-Dato che ciascun nodo e' rappresentato in memoria tramite un record doppio,
+Costruita servendosi of Record e Puntatori
+Since ciascun nodo e' rappresentato in memoria through a record doppio,
 ciascun nodo dell'albero e' sparso nella memoria del computer e puo' essere 
-acceduto solo tramite i puntatori destro e sinistro di ciascun record a partire
+acceduto only through the puntatori destro e sinistro of ciascun record to partire
 dal nodo radice dell'albero.
-La classe albero, quindi deve solo contenere il record della radice.
+The classe albero, quindi deve only contenere the record della radice.
 '''
 
 class AlberoBinario:
@@ -48,7 +48,7 @@ class AlberoBinario:
 
     'Visita in Preordine'
     
-    # Funzione Privata Ricorsiva    
+    # function Privata recursive    
     def __visitaPreOrdine(self,p):                   # S(n)
         if p!=None:                                  # Θ(1)
             'OPERAZIONE SUL NODO'
@@ -60,22 +60,22 @@ class AlberoBinario:
         'CASO BASE'
         return                                       # Θ(1)
 
-    # Funzione Pubblica Wrapper di lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper of lancio della function recursive
     def visitaPreOrdine(self):                       # T(n)
         p=self.root                                  # Θ(1)
         self.__visitaPreOrdine(p)                    # S(n)
         return
 
     # Computational Cost
-    # Dimensioni input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
+    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
 
 
 
     'Visita in Inordine'
     
-    # Funzione Privata Ricorsiva 
+    # function Privata recursive 
     def __visitaInOrdine(self,p):                    # S(n)
         if p!=None:                                  # Θ(1)
             'PASSI RICORSIVO 1 (SX)'
@@ -87,21 +87,21 @@ class AlberoBinario:
         'CASO BASE'
         return                                       # Θ(1)
 
-    # Funzione Pubblica Wrapper di lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper of lancio della function recursive
     def visitaInOrdine(self):                        # T(n)
         p=self.root                                  # Θ(1)
         self.__visitaInOrdine(p)                     # S(n)
 
     # Computational Cost
-    # Dimensioni input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
+    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
 
 
 
     'Visita in Postordine'
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def __visitaPostOrdine(self,p):                  # S(n)
         if p!=None:                                  # Θ(1)
             'PASSI RICORSIVO 1 (SX)'
@@ -113,14 +113,14 @@ class AlberoBinario:
         'CASO BASE'
         return                                       # Θ(1)
 
-    # Funzione Publica Wrapper di lancio della Funzione Ricorsiva
+    # function Publica Wrapper of lancio della function recursive
     def visitaPostOrdine(self):                      # T(n)
         p=self.root                                  # Θ(1)
         self.__visitaPostOrdine(p)                   # S(n)
 
     # Computational Cost
-    # Dimensioni input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
+    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1)  -> S(n)=Θ(n) [METODO DI SOSTITUZIONE]
     #        T(n)=Θ(1)+S(n)=Θ(1)+Θ(n) -> T(n)=Θ(n)
 
 
@@ -131,10 +131,10 @@ class AlberoBinario:
             return True                            # Θ(1)
         return False                               # Θ(1)
 
-    # Costo: T(n)=Θ(1)
+    # Cost: T(n)=Θ(1)
 
 
-    'Visita Per Livelli'
+    'Visita For Livelli'
 
     def visitaPerLivelli(self):                    # T(n)
         # Inizializzazione alla radice dell'albero
@@ -142,13 +142,13 @@ class AlberoBinario:
         # Controllo esistenza albero
         if p==None:                                # Θ(1)
             return                                 # Θ(1)
-        # Inizializzazione coda di supporto
+        # Inizializzazione coda of supporto
         coda=Coda()                                # Θ(1)                                                     
         # Incodamento radice albero nella coda
         coda.enqueue(p)                            # Θ(1)                           
-        # Scorrimento nodi albero tramite coda
+        # Scorrimento nodi albero through coda
         while(not self.codaVuota(coda)):           # n*Θ(1)+Θ(1) 
-            # 1. Scoda e stampa nodo
+            # 1. Scoda e prints nodo
             p=coda.dequeue()                       # Θ(1)
             print(str(p),end=" ")                  # Θ(1)         
             # Incoda figlioSx
@@ -160,14 +160,14 @@ class AlberoBinario:
         return                                     # Θ(1)
         
     # Computational Cost
-    # Dimensioni input: numero nodi dell'albero (incognito a priori)
-    # Costo: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
+    # Dimensioni input: number nodi dell'albero (incognito to priori)
+    # Cost: T(n)=Θ(1)+Θ(n)+Θ(1)  -> T(n)=Θ(n) 
 
      
 
-    'Conteggio numero nodi'
+    'Conteggio number nodi'
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def __calcola_n(self,p):                         # S(n)
         if p!=None:                                  # Θ(1)
             # 1. Recursive Step SottoAlbero Sx
@@ -179,21 +179,21 @@ class AlberoBinario:
             return num                               # Θ(1)  
         return 0                                     # Θ(1)  
     
-    # Funzione Pubblica Wrapper di lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper of lancio della function recursive
     def calcola_n(self):                             # T(n)
         p=self.root                                  # Θ(1)
         return self.__calcola_n(p)                   # S(n)
     
     # Computational Cost
-    # Dimensione Input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
+    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   
 
 
 
     'Ricerca Nodo'
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def __cerca(self,k,p):                               # S(n)
         if p!=None:                                      # Θ(1) 
           # 1. Operazione sul Nodo
@@ -207,21 +207,21 @@ class AlberoBinario:
               return self.__cerca(k,p.getFiglioDx())     # S(n-k-1)
         return False                                     # Θ(1) 
     
-    # Funzione Pubblica Wrapper di lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper of lancio della function recursive
     def cerca(self,k):                                   # T(n)
         p=self.root                                      # Θ(1) 
         return self.__cerca(k, p)                        # S(n)
     
     # Computational Cost
-    # Dimensione Input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
+    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)
     
 
 
     'Calcolo Altezza'
     
-    # Funzione Privata Ricorsiva
+    # function Privata recursive
     def __calcola_h(self,p):                                 # S(n)
         if p==None:                                          # Θ(1) 
             return -1                                        # Θ(1)
@@ -233,41 +233,41 @@ class AlberoBinario:
         # 3. Operazione sul Nodo
         return h+1                                           # Θ(1)                       
 
-    # Funzione Pubblica Wrapper per il lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def calcola_h(self):                                     # T(n)
         p=self.root                                          # Θ(1)
         return self.__calcola_h(p)                           # S(n)
 
     # Computational Cost
-    # Dimensione Input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
+    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)   
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)
 
 
 
     'Conteggio Nodi al Livello k'
     
-    # Funzione Privata Ricorsiva
-    def __conta_k(self,k,i,p):                               # S(n)
+    # function Privata recursive
+    def __conta_k(self,k,the,p):                               # S(n)
         if p==None:                                          # Θ(1)
             return 0                                         # Θ(1)
-        if k==i:                                             # Θ(1)
+        if k==the:                                             # Θ(1)
             return 1                                         # Θ(1)
         # 1. Recursive Step SottoAlbero Sx
-        k_left=self.__conta_k(k,i+1,p.getFiglioSx())         # S(k)
+        k_left=self.__conta_k(k,the+1,p.getFiglioSx())         # S(k)
         # 2. Recursive Step SottoAlbero Dx
-        k_right=self.__conta_k(k,i+1,p.getFiglioDx())        # S(n-k-1)
+        k_right=self.__conta_k(k,the+1,p.getFiglioDx())        # S(n-k-1)
         # 3. Operazione sul Nodo
         return k_left+k_right                                # Θ(1)
 
-    # Funzione Pubblica Wrapper per il lancio della Funzione Ricorsiva
+    # function Pubblica Wrapper for the lancio della function recursive
     def conta_k(self,k):                                     # T(n)
         p=self.root                                          # Θ(1)
         return self.__conta_k(k, 0, p)                       # S(n)
 
     # Computational Cost
-    # Dimensione Input: numero nodi dell'albero (incognito a priori)
-    # Costo: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)
+    # Dimensione Input: number nodi dell'albero (incognito to priori)
+    # Cost: S(n)=S(k)+S(n-k-1)+Θ(1) -> S(n)=Θ(n)
     #        T(n)=Θ(1)+S(n)          -> T(n)=Θ(n)   
 
 
@@ -280,12 +280,12 @@ valoriNodi=[3,1,5,8,4,3,2,8,0,8,5]
 nodi=[]
 vettorePosizionale=[]
 
-for i in range(0,len(valoriNodi),1):
-    nodi.append(Nodo(valoriNodi[i])) 
+for the in range(0,len(valoriNodi),1):
+    nodi.append(Nodo(valoriNodi[the])) 
     
-for i in range(0,(len(nodi)-2)//2+1,1):
-        nodi[i].setFiglioSx(nodi[2*i+1])
-        nodi[i].setFiglioDx(nodi[2*i+2])
+for the in range(0,(len(nodi)-2)//2+1,1):
+        nodi[the].setFiglioSx(nodi[2*the+1])
+        nodi[the].setFiglioDx(nodi[2*the+2])
         
 radice=nodi[0]
 albero=AlberoBinario(radice)
@@ -308,12 +308,12 @@ albero.visitaInOrdine()
 print("\nVisita in Postordine:")
 albero.visitaPostOrdine()
 
-'Visita Per Livelli'
-print("\nVisita per Livelli:")
+'Visita For Livelli'
+print("\nVisita for Livelli:")
 albero.visitaPerLivelli()
 
-'Conteggio numero nodi'
-print("\nConteggio Numero Nodi: " + str(albero.calcola_n()))
+'Conteggio number nodi'
+print("\nConteggio number Nodi: " + str(albero.calcola_n()))
 
 'Ricerca Nodo'
 k=nodi[3]
@@ -323,4 +323,4 @@ print("Ricerca Nodo " + str(k) + " : " + str(albero.cerca(k)))
 print("Calcolo Altezza dell'albero: " + str(albero.calcola_h()))
 
 'Conteggio Nodi al Livello k'
-print("Conteggio numero nodi al livello 2: " + str(albero.conta_k(2)))
+print("Conteggio number nodi al livello 2: " + str(albero.conta_k(2)))

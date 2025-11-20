@@ -7,12 +7,12 @@ Created on Sun Jul 23 16:44:46 2023
 
 
 '''
-RECORD SINGOLO con POINTER OBJECT
-In questa implementazione del record/nodo singolo, il puntatore all'elemento
-successivo nella lista e' implementato come un riferimento all'oggetto.
-Invece di usare una stringa con l'id ipotetico dell'indirizzo di memoria, 
-usiamo direttamente il riferimento alla corrispondente variabile.
-Un'implementazione piu' robusta e semplice da usare ed anche piu' pratica.
+RECORD SINGOLO with POINTER OBJECT
+In this implementazione del record/nodo singolo, the puntatore all'element
+successivo nella lista e' implementato as a riferimento all'oggetto.
+Invece of usare a stringa with l'id ipotetico dell'indirizzo of memoria, 
+usiamo direttamente the riferimento alla corrispondente variabile.
+A'implementazione piu' robusta e semplice from usare ed also piu' pratica.
 '''
 
 class RecordSingolo:

@@ -16,48 +16,48 @@ import matplotlib.pyplot as plt
 # RECURSION
 
 '''
-CALCOLO NUMERO DI FIBONACCI
-Il calcolo del numero di Fibonacci e' un problema prettamente recursive method.
-E' possibile, pero', risolverlo anche con un processo iterativo. 
-Confrontiamo i due algoritmi'''
+CALCOLO number DI FIBONACCI
+The calcolo del number of Fibonacci e' a problema prettamente recursive method.
+E' possibile, pero', risolverlo also with a processo iterativo. 
+Confrontiamo the two algoritmi'''
 
-# RECURSIVE Algorithm di FIBONACCI
+# RECURSIVE Algorithm of FIBONACCI
 
 def fibRicorsivo(n):
-    if n==0 or n==1:                                # Θ(1) 'Casi Base
+    if n==0 or n==1:                                # Θ(1) 'Cases Base
         return n                                    # Θ(1)
     else:                                           # Θ(1) 'Recursive Step
         return fibRicorsivo(n-1)+fibRicorsivo(n-2)  # T(n-1)+T(n-2)
 
 
-# Input size: valore del numero n
-# Best case and worst case coincide per valori grandi di n (gli unici
-# validi per il calcolo di notazione asintotica).
+# Input size: value del number n
+# Best case and worst case coincide for valori grandi of n (the unici
+# validi for the calcolo of notazione asintotica).
 # Computational Cost: T(n)=Θ(1)+T(n-1)+T(n-2) -> Recurrence Equations
 
 
 
-# ITERATIVE Algorithm di FIBONACCI
+# ITERATIVE Algorithm of FIBONACCI
 
 def fibIterativo(n):
     if n<=1:                             # Θ(1)
         return n                         # Θ(1)
     fib0,fib1,fib=0,1,0                  # Θ(1)
-    for i in range(2,n+1):               # n*Θ(1)+Θ(1)
+    for the in range(2,n+1):               # n*Θ(1)+Θ(1)
         fib=fib0+fib1                    # Θ(1)
         fib0,fib1=fib1,fib               # Θ(1)
     return fib                           # Θ(1)
 
-# Input size: valore del numero n
-# Best case and worst case coincide per valori grandi di n (gli unici
-# validi per il calcolo di notazione asintotica).
+# Input size: value del number n
+# Best case and worst case coincide for valori grandi of n (the unici
+# validi for the calcolo of notazione asintotica).
 # Computational Cost: T(n)=Θ(1)+n*Θ(1)+Θ(1)=Θ(n)    
 
 n=13
 fibIt=fibIterativo(n)
 fibRic=fibRicorsivo(n)
 
-print("Per n=",n," il numero di Fibonacci e' pari a ",
+print("For n=",n," the number of Fibonacci e' pari to ",
       "\nIterative Algorithm: ", fibIt,"\nRecursive Algorithm: ", fibRic)
 
 
@@ -78,10 +78,10 @@ print('Recursive Algorithm : ',fibRicTime,' [nanosecs]')
 
 
 
-# CONFRONTO ALGORITMO RICORSIVO/ITERATIVO
+# comparison algorithm recursive/iterative
 '''
-L'algoritmo RICORSIVO e' molto meno efficiente dell'algoritmo
-ITERATIVO. Sia in termini di TIME che di SPACE COMPLEXITY!!
+The algorithm recursive e' molto meno efficiente delthe algorithm
+ITERATIVO. Sia in termini of TIME that of SPACE COMPLEXITY!!
 '''
 
 
@@ -95,16 +95,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -117,26 +117,26 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(1,15):
+for the in range(1,15):
     tic=time.perf_counter_ns()
-    fibIt=fibIterativo(i)
+    fibIt=fibIterativo(the)
     toc=time.perf_counter_ns()
     stepsA.append(round(toc-tic,6))
 
 
 stepsB=[]
-for i in range(1,15):
+for the in range(1,15):
     tic=time.perf_counter_ns()
-    fibRic=fibRicorsivo(i)
+    fibRic=fibRicorsivo(the)
     toc=time.perf_counter_ns()
     stepsB.append(round(toc-tic,6))
 
     
-rappresentazioneGrafica(range(1,15),stepsA,10000,"Algoritmi di Calcolo "  
-                        "del numero di Fibonacci Iter/Ricors","Iterativo")
+rappresentazioneGrafica(range(1,15),stepsA,10000,"Algoritmi of Calcolo "  
+                        "del number of Fibonacci Iter/Ricors","iterative")
 
-rappresentazioneGrafica(range(1,15),stepsB,10000,"Algoritmi di Calcolo "  
-                        "del numero di Fibonacci Iter/Ricors","Ricorsivo")
+rappresentazioneGrafica(range(1,15),stepsB,10000,"Algoritmi of Calcolo "  
+                        "del number of Fibonacci Iter/Ricors","recursive")
 
 
 

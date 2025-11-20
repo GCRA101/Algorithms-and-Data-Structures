@@ -16,88 +16,88 @@ import matplotlib.pyplot as plt
 # RECURSION
 
 '''
-ALGORITMI di RICERCA RICORSIVA
-Sia la ricerca SEQUENZIALE sia la ricerca BINARIA possono essere definite
-tramite algoritmi RICORSIVI'''
+ALGORITMI of RICERCA RICORSIVA
+Sia the ricerca SEQUENZIALE sia the ricerca BINARIA possono essere definite
+through algorithms RICORSIVI'''
 
-# RECURSIVE Algorithm di RICERCA SEQUENZIALE
+# RECURSIVE Algorithm of RICERCA SEQUENZIALE
 
-def ricercaSequenzialeRicorsiva(A,v,i):
-    if A[i]==v:                                    # Θ(1)   'Base Case 1
-        return i                                   # Θ(1) 
-    elif i>=len(A):                                # Θ(1)   'Base Case 2 
+def ricercaSequenzialeRicorsiva(To,v,the):
+    if To[the]==v:                                    # Θ(1)   'Base Case 1
+        return the                                   # Θ(1) 
+    elif the>=len(To):                                # Θ(1)   'Base Case 2 
         return -1                                  # Θ(1) 
     else:                                          # Θ(1) 
-        i+=1                                       # Θ(1) 
-        return ricercaSequenzialeRicorsiva(A,v,i)  # T(n-1) 'Recursive Step
+        the+=1                                       # Θ(1) 
+        return ricercaSequenzialeRicorsiva(To,v,the)  # T(n-1) 'Recursive Step
     
 
-# Input size: numero n di elementi nell'array A
-# Caso migliore e caso peggiore variano a seconda che l'elemento cercato v
-# si trovi nella prima cella dell'array A o non esista affatto.
+# Input size: number n of elements in array To
+# Best case e worst case variano to second that l'element cercato v
+# si trovi nella first cella dell'array To o not esista affatto.
 # Computational Cost: T(n)=Θ(1)+T(n-1)
 
 
-# Alternativamente...si possono utilizzare due funzioni, una interna all'altra
-# di cui solo quella interna e' ricorsiva
+# Alternativamente...si possono utilizzare two funzioni, a interna all'altra
+# of cui only that interna e' recursive
 
-def ricercaSequenziale(A,v):
-    'Chiamata di lancio della Ricorsione'
-    return ricercaSequenzialeRicorsiva(A,v,len(A)-1) #T(n)
+def ricercaSequenziale(To,v):
+    'Chiamata of lancio della Ricorsione'
+    return ricercaSequenzialeRicorsiva(To,v,len(To)-1) #T(n)
     
-def ricercaSequenzialeRicorsiva(A,v,n):
-    if A[n]==v:                                     # Θ(1)   'Base Case 1
+def ricercaSequenzialeRicorsiva(To,v,n):
+    if To[n]==v:                                     # Θ(1)   'Base Case 1
         return True                                 # Θ(1) 
     elif n==0:                                      # Θ(1)   'Base Case 2 
         return False                                # Θ(1) 
     else:                                           # Θ(1) 
-        return ricercaSequenzialeRicorsiva(A,v,n-1) # T(n-1) 'Recursive Step
+        return ricercaSequenzialeRicorsiva(To,v,n-1) # T(n-1) 'Recursive Step
 
 
 
 
 
-# RECURSIVE Algorithm di RICERCA BINARIA
+# RECURSIVE Algorithm of RICERCA BINARIA
 
-def ricercaBinaria(A,v):
-    a,b=0,len(A)-1                                   # Θ(1)
-    return ricercaBinariaRicorsiva(A,v,a,b)          # T(n)
+def ricercaBinaria(To,v):
+    to,b=0,len(To)-1                                   # Θ(1)
+    return ricercaBinariaRicorsiva(To,v,to,b)          # T(n)
     
-def ricercaBinariaRicorsiva(A,v,a,b):
-    m=(a+b)//2                                       # Θ(1)
-    if a>b:                                          # Θ(1)   'Base Case 1
+def ricercaBinariaRicorsiva(To,v,to,b):
+    m=(to+b)//2                                       # Θ(1)
+    if to>b:                                          # Θ(1)   'Base Case 1
         return False                                 # Θ(1)
-    if A[m]==v:                                      # Θ(1)   'Base Case 2
+    if To[m]==v:                                      # Θ(1)   'Base Case 2
         return True                                  # Θ(1)
-    if A[m]<v:                                       # Θ(1)
-        return ricercaBinariaRicorsiva(A, v, m+1, b) # T(n/2) 'Recursive Step
-    if A[m]>v:                                       # Θ(1)
-        return ricercaBinariaRicorsiva(A, v, a, m-1) # T(n/2)
+    if To[m]<v:                                       # Θ(1)
+        return ricercaBinariaRicorsiva(To, v, m+1, b) # T(n/2) 'Recursive Step
+    if To[m]>v:                                       # Θ(1)
+        return ricercaBinariaRicorsiva(To, v, to, m-1) # T(n/2)
 
 
-# Input size: numero n di elementi nell'array A
-# Caso migliore e caso peggiore variano a seconda che il valore cercato
-# sia a meta' dell'array ordinato A (Ω(1)) o non sia affatto presente
-# all'interno dell'array A (O(logn))
+# Input size: number n of elements in array To
+# Best case e worst case variano to second that the value cercato
+# sia to meta' dell'array ordinato To (Ω(1)) o not sia affatto presente
+# all'interno dell'array To (O(logn))
 # Computational Cost: T(n)=Θ(1)+T(n/2) -> Recurrence Equations
 
 
 
 v=1
-A=range(1,1000)
+To=range(1,1000)
 
 tic=time.perf_counter_ns()
-found=ricercaSequenziale(A,v)
+found=ricercaSequenziale(To,v)
 toc=time.perf_counter_ns()
 seqRicTime=round(toc-tic,6)
 
 tic=time.perf_counter_ns()
-found=ricercaBinaria(A,v)
+found=ricercaBinaria(To,v)
 toc=time.perf_counter_ns()
 binRicTime=round(toc-tic,6)
 
-print('Algoritmo di Ricerca Sequenziale Ricorsivo : ',seqRicTime,' [nanosecs]')
-print('Algoritmo di Ricerca Binaria Ricorsivo : ',binRicTime,' [nanosecs]')
+print('algorithm of Ricerca Sequenziale recursive : ',seqRicTime,' [nanosecs]')
+print('algorithm of Ricerca Binaria recursive : ',binRicTime,' [nanosecs]')
 
 
 
@@ -111,16 +111,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -133,29 +133,29 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(5,1000):
-    A=list(range(1,i))
-    v=i
+for the in range(5,1000):
+    To=list(range(1,the))
+    v=the
     tic=time.perf_counter_ns()
-    found=ricercaSequenziale(A,v)
+    found=ricercaSequenziale(To,v)
     toc=time.perf_counter_ns()
     stepsA.append(round(toc-tic,6))
 
 
 stepsB=[]
-for i in range(5,1000):
-    B=list(range(1,i))
-    v=i
+for the in range(5,1000):
+    B=list(range(1,the))
+    v=the
     tic=time.perf_counter_ns()
     found=ricercaBinaria(B,v)
     toc=time.perf_counter_ns()
     stepsB.append(round(toc-tic,6))
 
     
-rappresentazioneGrafica(range(5,1000),stepsA,1000,"Algoritmi di Ricerca "  
+rappresentazioneGrafica(range(5,1000),stepsA,1000,"Algoritmi of Ricerca "  
                         "Sequenziale/Binaria Ricorsiva","Sequenziale")
 
-rappresentazioneGrafica(range(5,1000),stepsB,1000,"Algoritmi di Ricerca "  
+rappresentazioneGrafica(range(5,1000),stepsB,1000,"Algoritmi of Ricerca "  
                         "Sequenziale/Binaria Ricorsiva","Binaria")
 
 

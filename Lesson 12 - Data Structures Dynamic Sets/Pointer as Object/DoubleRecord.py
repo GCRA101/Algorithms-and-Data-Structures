@@ -6,13 +6,13 @@ Created on Sat Jul 29 16:52:07 2023
 """
 
 '''
-RECORD DOPPIO con POINTER OBJECT
-In questa implementazione del record/nodo singolo, i puntatore agli elementi
-successivo e precedente nella lista sono implementati come riferimenti
+RECORD DOPPIO with POINTER OBJECT
+In this implementazione del record/nodo singolo, the puntatore agli elementi
+successivo e precedente nella list are implementati as riferimenti
 agli oggetti.
-Invece di usare una stringa con l'id ipotetico dell'indirizzo di memoria, 
-usiamo direttamente il riferimento alla corrispondente variabile.
-Un'implementazione piu' robusta e semplice da usare ed anche piu' pratica.
+Invece of usare a stringa with l'id ipotetico dell'indirizzo of memoria, 
+usiamo direttamente the riferimento alla corrispondente variabile.
+A'implementazione piu' robusta e semplice from usare ed also piu' pratica.
 '''
 
 

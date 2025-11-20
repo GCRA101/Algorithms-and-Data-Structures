@@ -16,7 +16,7 @@ class Disco:
     
     # METHODS
     
-    # Metodo di Utilita
+    # Metodo of Utilita
     def minoreDi(self,disk):
         return self.diametro<disk.diametro
     # Metodo Getter

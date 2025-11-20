@@ -17,27 +17,27 @@ import matplotlib.pyplot as plt
 # ESERCIZIO 1 ################################################################
 
 '''
-Dati in input due interi n e k, calcolare la potenza k-esima di n tramite 
-algoritmo recursive method
+Given as input two integers n e k, calculate the k-th power of n through 
+algorithm recursive method
 '''
 
 # Considerazioni
 ''' 
 n^k=n*n*n*n*n... k volte
-Caso base: per k=1->n=n
+Case base: for k=1->n=n
 '''
 
-# Algoritmo
+# algorithm
 
 def es1(n,k):                     # T(k)
     if k==1: return n             # Θ(1)      ' Base Case
     return n*es1(n,k-1)           # T(k-1)    ' Recursive Step
 
-# Input size: valore del coefficiente intero k
-# Il caso peggiore e il caso migliore coincidono. Infatti, anche se per k=0,
-# il costo computazionale sarebbe = Θ(1), la notazione asintotica si calcola
-# solo per valori grandi dell'input (i.e. k->∞) per cui il costo computazionale
-# e' maggiore di Θ(1) e cresce al crescere del valore di k.
+# Input size: value del coefficiente intero k
+# The worst case and the best case coincidono. Indeed, also if for k=0,
+# the computational cost would be = Θ(1), the asymptotic notation is calculated
+# only for valori grandi dell'input (the.e. k->∞) for cui the costo computazionale
+# is greater than Θ(1) e cresce as the value of ... grows k.
 # Computational Cost: T(k)=Θ(1)+T(k-1) -> Recurrence Equations
 
 
@@ -47,58 +47,58 @@ def es1(n,k):                     # T(k)
 # ESERCIZIO 2 ################################################################
 
 '''
-Dato in input un array di n interi, calcolare la somma dei suoi elementi
-tramite un algoritmo recursive method
+Given as input an array of n integers, calculate the sum of its elements
+through an algorithm recursive method
 '''
 
 # Considerazioni
 '''
-L'azione da eseguire ripetutamente consiste nel sommare il numero corrente
+The action to be performed repeatedly consists of adding the current number
 alla somma dei precedenti. 
-Il caso base che interrompe la ricorsione si ha quando si raggiunge l'indice
-dell'ultimo elemento
+The base case that stops the recursion occurs when reaching l'index
+dell'last element
 '''
 
 
-# Algoritmo SBAGLIATO
+# algorithm SBAGLIATO
 
-def es2a(A,sum=0,i=0):             # T(n)
-    if i==len(A) : return sum      # Θ(1)
-    sum+=A[i]                      # Θ(1)
-    return es2a(A,sum,i+1)         # T(n-1)
+def es2a(To,sum=0,the=0):             # T(n)
+    if the==len(To) : return sum      # Θ(1)
+    sum+=To[the]                      # Θ(1)
+    return es2a(To,sum,the+1)         # T(n-1)
 
-# Input size: numero n di valori contenuti nell'array A
-# Il caso peggiore e il caso migliore coincidono. Infatti, per qualunque valore
-# GRANDE di n, l'algoritmo scorrera' sempre tutti gli elementi dell'array A
-# dal primo all'ultimo.
+# Input size: number n of values contained in array To
+# The worst case and the best case coincidono. Indeed, for any value
+# GRANDE of n, the algorithm scorrera' always all the elements dell'array To
+# dal first all'last.
 # Computational Cost: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 '''
 ATTENZIONE!!!
-L'algoritmo sopra NON E' PROPRIAMENTE RICORSIVO in quanto il valore totale
-della somma viene ritornato proprio una volta raggiunto il caso base 
-(i==len(A)-1)...mentre dovrebbe essere ritornato dalla chiusura di chiamata
-della prima funzione della catena ricorsiva...
-Vediamo come riscrivere la funzione ricorsiva in modo corretto.
+The algorithm sopra NON E' PROPRIAMENTE recursive since the total value
+of the sum is returned exactly once the base case is reached 
+(the==len(To)-1)...while it should be returned dalla chiusura of chiamata
+della first function of the recursive chain...
+Let's see how to rewrite the recursive function correctly.
 '''
 
 
-# Algoritmo CORRETTO
+# algorithm CORRETTO
 
-def es2b(A,i=0):                   # T(n)
-    if i==len(A)-1: return A[i]    # Θ(1)      ' Base Case 
-    return (A[i]+es2b(A,i+1))      # T(n-1)    ' Recursive Step
+def es2b(To,the=0):                   # T(n)
+    if the==len(To)-1: return To[the]    # Θ(1)      ' Base Case 
+    return (To[the]+es2b(To,the+1))      # T(n-1)    ' Recursive Step
 
-# Input size: numero n di valori contenuti nell'array A
-# Il caso peggiore e il caso migliore coincidono. Infatti, per qualunque valore
-# GRANDE di n, l'algoritmo scorrera' sempre tutti gli elementi dell'array A
-# dal primo all'ultimo.
+# Input size: number n of values contained in array To
+# The worst case and the best case coincidono. Indeed, for any value
+# GRANDE of n, the algorithm scorrera' always all the elements dell'array To
+# dal first all'last.
 # Computational Cost: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
-A=[1,2,3,4,5,6,7,8,9,10]
-sommaAlgA=es2a(A)
-sommaAlgB=es2b(A)
+To=[1,2,3,4,5,6,7,8,9,10]
+sommaAlgA=es2a(To)
+sommaAlgB=es2b(To)
 
 
 
@@ -107,30 +107,30 @@ sommaAlgB=es2b(A)
 # ESERCIZIO 3 ################################################################
 
 '''
-Dato in input un array di n interi, trovare il minimo.
+Given as input an array of n integers, trovare the minimo.
 '''
 
 # Considerazioni
 '''
-Assumendo che l'array non sia un array ordinato, l'algoritmo dovra' scorrere
-tutti gli elementi dell'array dal primo all'ultimo per trovare il minimo.
-l'operazione che viene ripetuta e' il confronto tra due elementi consecutivi.
-Il caso base si ha quando si raggiunge l'ultimo elemento nell'array'''
+Assuming that the array is not to sorted array, the algorithm dovra' scorrere
+all the elements dell'array dal first all'last for trovare the minimo.
+the operation that is repeated is the comparison between two consecutive elements.
+The base case occurs when reaching l'last element in the array'''
 
-# Algoritmo
+# algorithm
 
-A=[31,22,7,83,101,71,27,52,3,21,15,98,88,17]
+To=[31,22,7,83,101,71,27,52,3,21,15,98,88,17]
 
-def es3(A,i=len(A)-1):                   # T(n)
-    if i==0: return A[i]                 # Θ(1)      ' Base Case 
-    return min(A[i],es3(A,i-1))          # T(n-1)    ' Recursive Step
+def es3(To,the=len(To)-1):                   # T(n)
+    if the==0: return To[the]                 # Θ(1)      ' Base Case 
+    return min(To[the],es3(To,the-1))          # T(n-1)    ' Recursive Step
     
-minVal=es3(A)
+minVal=es3(To)
 
-# Input size: numero n di valori contenuti nell'array A
-# Il caso peggiore e il caso migliore coincidono. Infatti, per qualunque valore
-# GRANDE di n, l'algoritmo scorrera' sempre tutti gli elementi dell'array A
-# dal primo all'ultimo.
+# Input size: number n of values contained in array To
+# The worst case and the best case coincidono. Indeed, for any value
+# GRANDE of n, the algorithm scorrera' always all the elements dell'array To
+# dal first all'last.
 # Computational Cost: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
@@ -140,38 +140,38 @@ minVal=es3(A)
 # ESERCIZIO 4 ################################################################
     
 '''
-Dato in input un array di n interi, verificare se e' palindromo.'''
+Given as input an array of n integers, verificare if e' palindromo.'''
 
 # Considerazioni
 '''
-L'algoritmo deve ritornare un output di tipo boolean a seconda che l'array in 
+The algorithm deve ritornare a output of tipo boolean depending on whether the array in 
 input sia palindromo o meno.
-Casi base: 1) differenza indici estremi subArray <=1 
-           2) valori negli indici estremi sono differenti
-Passo recursive method: confronto valori indici estremi per indici che si avvicinano
-                 verso il punto medio dell'array'''
+Cases base: 1) differenza indici estremi subArray <=1 
+           2) values at the extreme indices are different
+Passo recursive method: confronto valori indici estremi for indici that si avvicinano
+                 verso the punto medio dell'array'''
 
 'Best Case'
-# A=[31,22,7,83,101,71,27,52,3,21,15,98,88,17]
+# To=[31,22,7,83,101,71,27,52,3,21,15,98,88,17]
 'Worst Case'
-A=[38,12,71,4,22,9,32,9,22,4,71,12,38] 
+To=[38,12,71,4,22,9,32,9,22,4,71,12,38] 
                  
-def es4(A,i=0,j=len(A)-1):        # T(n)
-    if i>=j: return True          # Θ(1)    ' Base Case
-    if A[i]!=A[j]: return False   # Θ(1)    ' Base Case
-    return es4(A,i+1,j-1)         # T(n-2)  ' Recursive Step
+def es4(To,the=0,j=len(To)-1):        # T(n)
+    if the>=j: return True          # Θ(1)    ' Base Case
+    if To[the]!=To[j]: return False   # Θ(1)    ' Base Case
+    return es4(To,the+1,j-1)         # T(n-2)  ' Recursive Step
 
-bool=es4(A)
+bool=es4(To)
 
-# Input size: numero n di valori contenuti nell'array A
+# Input size: number n of values contained in array To
 
 # Computational Cost
-# Il caso migliore e' il caso in cui gia' i due valori estremi dell'array sono
-# differenti (in tal caso, e' possibile uscire dalla ricorsione gia' alla prima
+# The best case e' the case in cui already the two extreme values of the array are
+# different (in that case, e' possibile uscire dalla ricorsione already' alla first
 # iterazione).
-# Il caso peggiore e' il caso in cui l'array e' palindromo.
-# Caso Migliore: T(n)=Θ(1)
-# Caso Peggiore: T(n)=Θ(1)+T(n-2) -> Recurrence Equations
+# The worst case e' the case in cui l'array e' palindromo.
+# best case: T(n)=Θ(1)
+# worst case: T(n)=Θ(1)+T(n-2) -> Recurrence Equations
 
 
 
@@ -180,43 +180,43 @@ bool=es4(A)
 # ESERCIZIO 5 ################################################################
     
 '''
-Dato in input un array di n interi, stampare le chiavi dall'ultima alla 
-prima, ossia nell'ordine: V[n-1] V[n-2] V[n-3] V[n-4]...V[1] V[0]'''
+Given as input an array of n integers, print the keys from the last to 
+first, ossia nell'ordine: V[n-1] V[n-2] V[n-3] V[n-4]...V[1] V[0]'''
 
 # Considerazioni
 '''
-L'algoritmo deve arrivare a stampare l'ultimo elemento nel caso base e poi
-stampare tutti i restanti fino al primo nella sequenza di chiusura delle 
-chiamate di funzione.
-Caso base: 1) indice elemento = indice finale
-Passo recursive method: stampa elemento V[n] in console'''
+The algorithm deve arrivare to print l'last element in the base case and then
+print all the restanti fino al first nella sequenza of chiusura delle 
+chiamate of function.
+Case base: 1) index element = index finale
+Passo recursive method: prints element V[n] in console'''
 
 'Best/Worst Case'
-A=[12,51,22,61,32,81,9,43,78,101,2] 
+To=[12,51,22,61,32,81,9,43,78,101,2] 
                  
-def es5a(A,i=0):                                    # T(n)
-    if (i==len(A)-1):                               # Θ(1)
-        return A[i]                                 # Θ(1)
-    return str(es5a(A,i+1)) + " " + str(A[i])+ " "  # T(n-1)
+def es5a(To,the=0):                                    # T(n)
+    if (the==len(To)-1):                               # Θ(1)
+        return To[the]                                 # Θ(1)
+    return str(es5a(To,the+1)) + " " + str(To[the])+ " "  # T(n-1)
 
 print("Soluzione Mia")
-print(es5a(A))
+print(es5a(To))
 
-def es5b(A,i=len(A)-1):
-    print(A[i], end= "  ")
-    if i>0:
-        return es5b(A,i-1)
+def es5b(To,the=len(To)-1):
+    print(To[the], end= "  ")
+    if the>0:
+        return es5b(To,the-1)
 
 print("Soluzione Prof")
-es5b(A)
+es5b(To)
 
-# Input size: numero n di valori contenuti nell'array A
+# Input size: number n of values contained in array To
 
 # Computational Cost
-# Per valori grandi di n, il caso migliore e il caso peggiore coincidono.
-# Infatti l'algoritmo deve sempre e comunque scorrere tutti gli elementi dell'
+# For values grandi of n, the best case and the worst case coincidono.
+# Infatti the algorithm deve always e comunque scorrere all the elements dell'
 # array.
-# Caso Migliore/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
+# best case/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
 
@@ -224,44 +224,44 @@ es5b(A)
 # ESERCIZIO 6 ################################################################
     
 '''
-Dato in input un array di n interi, stampare le chiavi dalla prima all'
-ultima, ossia nell'ordine: V[0] V[1] V[2]...V[n-2] V[n-1]'''
+Given as input an array of n integers, print the chiavi dalla first all'
+last, ossia nell'ordine: V[0] V[1] V[2]...V[n-2] V[n-1]'''
 
 # Considerazioni
 '''
-L'algoritmo deve arrivare a stampare il primo elemento nel caso base e poi
-stampare tutti i restanti fino all'ultimo nella sequenza di chiusura delle 
-chiamate di funzione.
-Caso base: 1) indice elemento = indice iniziale
-Passo recursive method: stampa elemento V[n] in console'''
+The algorithm deve arrivare to print the first element in the base case and then
+print all the restanti fino all'last nella sequenza of chiusura delle 
+chiamate of function.
+Case base: 1) index element = index iniziale
+Passo recursive method: prints element V[n] in console'''
 
 'Best/Worst Case'
-A=[12,51,22,61,32,81,9,43,78,101,2] 
+To=[12,51,22,61,32,81,9,43,78,101,2] 
                  
-def es6a(A,i=len(A)-1):                             # T(n)
-    if (i==0):                                      # Θ(1)
-        return A[i]                                 # Θ(1)
-    return str(es6a(A,i-1)) + " " + str(A[i])+ " "  # T(n-1)
+def es6a(To,the=len(To)-1):                             # T(n)
+    if (the==0):                                      # Θ(1)
+        return To[the]                                 # Θ(1)
+    return str(es6a(To,the-1)) + " " + str(To[the])+ " "  # T(n-1)
 
 print("")
 print("Soluzione Mia")
-print(es6a(A))
+print(es6a(To))
 
-def es6b(A,i=0):
-    print(A[i], end= "  ")
-    if i<len(A)-1:
-        return es6b(A,i+1)
+def es6b(To,the=0):
+    print(To[the], end= "  ")
+    if the<len(To)-1:
+        return es6b(To,the+1)
 
 print("Soluzione Prof")
-es6b(A)
+es6b(To)
 
-# Input size: numero n di valori contenuti nell'array A
+# Input size: number n of values contained in array To
 
 # Computational Cost
-# Per valori grandi di n, il caso migliore e il caso peggiore coincidono.
-# Infatti l'algoritmo deve sempre e comunque scorrere tutti gli elementi dell'
+# For values grandi of n, the best case and the worst case coincidono.
+# Infatti the algorithm deve always e comunque scorrere all the elements dell'
 # array.
-# Caso Migliore/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
+# best case/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
 
 
 
@@ -273,15 +273,15 @@ VEDI IL FOLDER TORRE HANOI '''
 
 
 
-# ESERCIZI per CASA ##########################################################
+# ESERCIZI for CASA ##########################################################
 
 'Esercizio B'
-'''Progettare un algoritmo recursive method che, dati due numeri interi x e y, x>y>0,
-ne calcoli il massimo comun divisore utilizzando il seguente procedimento (di
+'''Design an algorithm recursive method that, given two numbers interi x e y, x>y>0,
+ne calcoli the massimo comun divisore utilizzando the seguente procedimento (of
 Euclide): 
-    - se y=0 allora MCD(x,y)=x
+    - if y=0 allora MCD(x,y)=x
     - altrimenti MCD(x,y)=MCD(y,x%y)
-        - dove x%y rappresenta il resto della divisione tra x e y '''
+        - where x%y rappresenta the resto della divisione between x e y '''
         
 def MCD(x,y):
     if y==0: 
@@ -290,12 +290,12 @@ def MCD(x,y):
 
 x=73
 y=41
-print("\n\nMCD di ",x," e ",y, " e' ",MCD(x,y))
+print("\n\nMCD of ",x," e ",y, " e' ",MCD(x,y))
 
-# Input size: numero n di valori contenuti nell'array A
+# Input size: number n of values contained in array To
 
 # Computational Cost
-# Per valori grandi di n, il caso migliore e il caso peggiore coincidono.
-# Infatti l'algoritmo deve sempre e comunque scorrere tutti gli elementi dell'
+# For values grandi of n, the best case and the worst case coincidono.
+# Infatti the algorithm deve always e comunque scorrere all the elements dell'
 # array.
-# Caso Migliore/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations
+# best case/Peggiore: T(n)=Θ(1)+T(n-1) -> Recurrence Equations

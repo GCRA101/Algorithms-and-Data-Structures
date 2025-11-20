@@ -14,91 +14,91 @@ import random
 
 
 
-# ALGORITMI DI ORDINAMENTO - COUNTING SORT
+# SORTING ALGORITHMS - COUNTING SORT
 
 '''
 COUNTING SORT 
 
-L'algoritmo Counting Sort e' un classico esempio di algoritmo di ordinamento
-lineare, diversamente dagli algoritmi di ordinamento basati sul confronto visti
+The algorithm Counting Sort e' a classico esempio of algorithm of sorting
+lineare, diversamente dagli sorting algorithms basati sul comparison visti
 fino ad ora (Insertion Sort, Selection Sort, Bubble Sort, Merge Sort, Quick
-Sort e Heap Sort). Il fatto che si basi su un approccio diverso, gli consente
-di aver un costo computazionale ancora piu' basso rispetto al limite inferiore
-valido per gli algoritmi basati sul confronto. Esso, infatti, ha costo Θ(n) 
+Sort e Heap Sort). The fatto that si basi on a approccio diverso, the consente
+of aver a computational cost ancora piu' basso rispetto al limite inferiore
+valido for the algorithms basati sul comparison. Esso, indeed, ha costo Θ(n) 
 anziche' Θ(nlogn).'
 
 * Caratteristiche Principali *
-Le caratteristiche principali dell'algoritmo COUNTING SORT sono le seguenti:
+The caratteristiche principali delthe algorithm COUNTING SORT are the following:
     - ITERATIVE Algorithm (NON RICORSIVO!!)
-    - Presenta 2 formulazioni leggermente differenti a seconda che sia o meno
-      accettabile che gli elementi del vettore da ordinare siano sovrascritti
-      (presenza di dati satellite/metadata)
-    - Processo di ordinamento IN LOCO (versione Classica) e NON IN LOCO 
+    - Presenta 2 formulazioni leggermente different to second that sia o meno
+      accettabile that the elementi del vector from ordinare siano sovrascritti
+      (presenza of data satellite/metadata)
+    - Processo of sorting IN LOCO (versione Classica) e NON IN LOCO 
       (versione Avanzata)
-    - Funziona solo per valori interi positivi 
-        - in caso non siano interi e/o positivi, e' necessario renderli 
-          tali prima di eseguire l'algoritmo e poi ritrasformarli nel loro
-          valore originale'
+    - Funziona only for valori interi positivi 
+        - if not siano interi e/o positivi, it is necessary to make them 
+          such first of eseguire the algorithm e poi ritrasformarli nel loro
+          value originale'
     
 - Computational Cost: Θ(n)
 
 '''
 
 
-'VERSIONE CLASSICA - No Dati Satellite'
+'VERSIONE CLASSICA - No Data Satellite'
 
-def countingSortv1(A):                                        # T(n)
-    '1. Ricerca valore intero massimo k'
+def countingSortv1(To):                                        # T(n)
+    '1. Ricerca value intero massimo k'
     imax=0                                                    # Θ(1)
-    for i in range(0,len(A),1):                               # n*Θ(1)+Θ(1)
-        if A[imax]<A[i]:                                      # Θ(1)
-            imax=i                                            # Θ(1)
-    k=A[imax]                                                 # Θ(1)
-    '2. Inizializzazione vettore ausiliario C'
+    for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
+        if To[imax]<To[the]:                                      # Θ(1)
+            imax=the                                            # Θ(1)
+    k=To[imax]                                                 # Θ(1)
+    '2. Inizializzazione auxiliary vector C'
     C=[0]*(k+1)                                               # Θ(1)
-    '3. Conteggio istanze valori uguali presenti in A'
-    for i in range(0,len(A),1):                               # n*Θ(1)+Θ(1)
-        C[A[i]]=C[A[i]]+1                                     # Θ(1)
-    '4. Sostituzione valori ordinati nel vettore A'
+    '3. Conteggio istanze valori uguali presenti in To'
+    for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
+        C[To[the]]=C[To[the]]+1                                     # Θ(1)
+    '4. Sostituzione valori ordinati nel vector To'
     j=0                                                       # Θ(1)
-    for i in range(0,len(C),1):                               # k*Θ(1)+Θ(1)
-        while C[i]>0:                                         # tk**Θ(1)+Θ(1)
-            A[j]=i                                            # Θ(1)
+    for the in range(0,len(C),1):                               # k*Θ(1)+Θ(1)
+        while C[the]>0:                                         # tk**Θ(1)+Θ(1)
+            To[j]=the                                            # Θ(1)
             j+=1                                              # Θ(1)
-            C[i]-=1                                           # Θ(1)
+            C[the]-=1                                           # Θ(1)
     return                                                    # Θ(1)
 
 
-'VERSIONE AVANZATA - Dati Satellite'
+'VERSIONE AVANZATA - Data Satellite'
 
-def countingSortv2(A):                                        # T(n)
-    '1. Ricerca valore intero massimo k'
+def countingSortv2(To):                                        # T(n)
+    '1. Ricerca value intero massimo k'
     imax=0                                                    # Θ(1)
-    for i in range(0,len(A),1):                               # n*Θ(1)+Θ(1)
-        if A[imax]<A[i]:                                      # Θ(1)
-            imax=i                                            # Θ(1)
-    k=A[imax]                                                 # Θ(1)
-    '2. Inizializzazione vettore ausiliario C'
+    for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
+        if To[imax]<To[the]:                                      # Θ(1)
+            imax=the                                            # Θ(1)
+    k=To[imax]                                                 # Θ(1)
+    '2. Inizializzazione auxiliary vector C'
     C=[0]*(k+1)                                               # Θ(1)
-    '3. Conteggio istanze valori uguali presenti in A'
-    for i in range(0,len(A),1):                               # n*Θ(1)+Θ(1)
-        C[A[i]]=C[A[i]]+1                                     # Θ(1)
-    '4. Conteggio numero valori minori o uguali a i'    
-    for i in range(1,len(C),1):                               # k*Θ(1)+Θ(1)
-        C[i]=C[i]+C[i-1]                                      # Θ(1) 
-    '5. Sostituzione valori ordinati nel vettore B'
-    B=[0]*len(A)                                              # Θ(1)
-    for i in range(0,len(A),1):                               # n*Θ(1)+Θ(1)
-        B[C[A[i]]-1]=A[i]                                     # Θ(1)
-        C[A[i]]-=1                                            # Θ(1)
-    '6. Copia valori vettore B in vettore A'
-    for i in range (0,len(A),1):                              # n*Θ(1)+Θ(1)
-        A[i]=B[i]                                             # Θ(1) 
+    '3. Conteggio istanze valori uguali presenti in To'
+    for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
+        C[To[the]]=C[To[the]]+1                                     # Θ(1)
+    '4. Conteggio number values minori o uguali to the'    
+    for the in range(1,len(C),1):                               # k*Θ(1)+Θ(1)
+        C[the]=C[the]+C[the-1]                                      # Θ(1) 
+    '5. Sostituzione valori ordinati nel vector B'
+    B=[0]*len(To)                                              # Θ(1)
+    for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
+        B[C[To[the]]-1]=To[the]                                     # Θ(1)
+        C[To[the]]-=1                                            # Θ(1)
+    '6. Copia valori vector B in vector To'
+    for the in range (0,len(To),1):                              # n*Θ(1)+Θ(1)
+        To[the]=B[the]                                             # Θ(1) 
     return                                                    # Θ(1)    
 
 
 
-# Input size: numero n di elementi nell'array A
+# Input size: number n of elements in array To
 # Best case and worst case coincide.
 # Computational Cost: T(n)=+Θ(1)+n*Θ(1)+n*Θ(1)+k*Θ(1)+n*Θ(1)+n*Θ(1)+Θ(1)
 # T(n)=Θ(5n)=Θ(n)
@@ -145,16 +145,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -167,8 +167,8 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(5,100,1):
-    Alist=list(range(0,i,1))    # DATI  IN INPUT ORDINATI
+for the in range(5,100,1):
+    Alist=list(range(0,the,1))    # DATI  IN INPUT ORDINATI
     tic=time.perf_counter_ns()
     countingSortv1(Alist)
     toc=time.perf_counter_ns()
@@ -176,8 +176,8 @@ for i in range(5,100,1):
 
 
 stepsB=[]
-for i in range(5,100,1):
-    Blist=list(range(0,i,1))
+for the in range(5,100,1):
+    Blist=list(range(0,the,1))
     'RANDOMIZZAZIONE DATI IN INPUT!'
     random.shuffle(Blist)       # DATI IN INPUT DISORDINATI
     tic=time.perf_counter_ns()
@@ -186,9 +186,9 @@ for i in range(5,100,1):
     stepsB.append(abs(round(toc-tic,8)))
 
     
-rappresentazioneGrafica(range(5,100,1),stepsA,1,"Algoritmi di Ordinamento "  
-                        "- Counting Sort","Caso Peggiore")
+rappresentazioneGrafica(range(5,100,1),stepsA,1,"Sorting Algorithms "  
+                        "- Counting Sort","worst case")
 
-rappresentazioneGrafica(range(5,100,1),stepsB,1,"Algoritmi di Ordinamento "  
-                        "- Counting Sort","Caso Migliore")
+rappresentazioneGrafica(range(5,100,1),stepsB,1,"Sorting Algorithms "  
+                        "- Counting Sort","best case")
 

@@ -27,8 +27,8 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Data in input una lista tramite il puntatore al primo elemento, restituire il 
-puntatore all'ultimo elemento.
+Given in input a list through the puntatore al first element, restituire the 
+puntatore all'last element.
 '''
 
 
@@ -37,8 +37,8 @@ puntatore all'ultimo elemento.
 # ESERCIZIO 2 ################################################################
 
 '''
-Data in input una lista tramite il puntatore al primo elemento, restituire il 
-puntatore al penultimo elemento.
+Given in input a list through the puntatore al first element, restituire the 
+puntatore al penultimo element.
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -47,8 +47,8 @@ puntatore al penultimo elemento.
 # ESERCIZIO 3 ################################################################
 
 '''
-Data in input una lista tramite il puntatore al primo elemento, restituire il 
-puntatore alla stessa lista da cui sia stato eliminato l'ultimo elemento.
+Given in input a list through the puntatore al first element, restituire the 
+puntatore alla stessa list from cui sia stato eliminato l'last element.
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -57,10 +57,10 @@ puntatore alla stessa lista da cui sia stato eliminato l'ultimo elemento.
 # ESERCIZIO 4 ################################################################
 
 '''
-Data in input una lista tramite il puntatore al primo elemento, restituire il 
-puntatore di una lista che contenga gli stessi record della lista di partenza
-ma in ordine inverso (N.B. non deve essere creato alcun record, ma bisogna 
-smontare e rimontare opportunamente i record iniziali)
+Given in input a list through the puntatore al first element, restituire the 
+puntatore of a lista that contenga the stessi record della lista of partenza
+ma in ordine inverso (N.B. not deve essere creato alcun record, ma bisogna 
+smontare e rimontare opportunamente the record iniziali)
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -69,9 +69,9 @@ smontare e rimontare opportunamente i record iniziali)
 # ESERCIZIO 5 ################################################################
 
 '''
-Data in input una lista tramite il puntatore al primo elemento, restituire i 
-puntatori a due liste, una con gli elementi di posto pari nella lista di 
-partenza, ed una con gli elementi di posto dispari (anche qui, non bisogna 
+Given in input a list through the puntatore al first element, restituire the 
+puntatori to two liste, a with the elementi of posto pari nella lista of 
+partenza, ed a with the elementi of posto dispari (also qui, not bisogna 
 creare nuovi record)
 '''
 
@@ -81,8 +81,8 @@ creare nuovi record)
 # ESERCIZIO 6 ################################################################
 
 '''
-Data in input una lista di interi tramite il puntatore al primo elemento, 
-stampare tutti i valori che compaiono almeno due volte nella lista.
+Given in input a list of interi through the puntatore al first element, 
+print all the values that compaiono almeno two volte nella list.
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -91,9 +91,9 @@ stampare tutti i valori che compaiono almeno due volte nella lista.
 # ESERCIZIO 7 ################################################################
 
 '''
-Data in input una lista ordinata di interi tramite il puntatore al primo 
-elemento, ed un elemento da inserire, aggiungere tale elemento alla lista in
-modo da rispettare l'ordinamento.
+Given in input a list sorted of interi through the puntatore al first 
+element, ed a element from inserire, aggiungere tale element alla list in
+modo from rispettare l'sorting.
 '''
 
 ' VEDI RISOLUZIONE SU CARTA '
@@ -102,12 +102,12 @@ modo da rispettare l'ordinamento.
 # ESERCIZIO 8 ################################################################
 
 '''
-Data in input una lista di interi tramite il puntatore al primo elemento, 
-restituire la lista ordinata (senza creare nuovi record).
+Given in input a list of interi through the puntatore al first element, 
+restituire the lista ordinata (senza creare nuovi record).
 '''
 
 
-'Creazione lista con istanze della user-defined class RecordDoppio.py'
+'Creazione lista with istanze della user-defined class RecordDoppio.py'
 
 keys=[1,32,54,2,5,3,7,6,4,11,23,26]
 pointers=['010','101','202','303','404','505','606',
@@ -124,7 +124,7 @@ for k in range(1,len(keys)-1,1):
 records.append(RecordDoppio(keys[k+1],pointers[k],None,pointers[k+1]))  
 
 
-'Creazione Dizionario che associa a ciascun pointer il record corrispondente'
+'Creazione Dizionario that associa to ciascun pointer the record corrispondente'
 listaDoppia={}
 
 for record in records:
@@ -133,57 +133,57 @@ for record in records:
 
 def ordinaListaDoppia(lista,p):
     
-    'Inizializzazione Records di supporto'
+    'Inizializzazione Records of supporto'
     p_corr,p_prev=RecordDoppio(),RecordDoppio()
     p_next,p_forward=RecordDoppio(),RecordDoppio()
-    'Salva secondo record della lista in p_corr'
+    'Salva second record della lista in p_corr'
     p_corr=lista[lista[p].getNext()]
-    'Salva primo record della lista in p_prev'
+    'Salva first record della lista in p_prev'
     p_prev=lista[p]
     
-    'Fino a che non si raggiunge la fine della lista...'
+    'Fino to that not si raggiunge the fine della lista...'
     while p_corr!=None:
-        'Se p_corr punta a un record, memorizza quel record in p_forward'
+        'If p_corr punta to a record, stora quel record in p_forward'
         if p_corr.getNext()!=None:
             p_forward=lista[p_corr.getNext()]
         else: 
             p_forward=None
         
-        'Fino a che non si raggiunge l''inizio della lista...'
+        'Fino to that not si raggiunge l''inizio della lista...'
         while p_corr.getPrev()!=None:
-            'Aggiorna il record precedente p_corr'
+            'Aggiorna the record precedente p_corr'
             p_prev=lista[p_corr.getPrev()]
-            'Se la key di p_corr e'' minore di quella di p_prev...scambia 
-            'i due record di posizione...'
+            'If the key of p_corr e'' minore of that of p_prev...scambia 
+            'the two record of posizione...'
             if p_corr.getKey()<p_prev.getKey():
-               'Memorizza il record successivo in p_next, se esso esiste...'
+               'Memorizza the record successivo in p_next, if esso esiste...'
                 if p_corr.getNext()!=None:
                     p_next=lista[p_corr.getNext()]
                 else: 
                     p_next=None    
-               'Aggiorna il record precedente p_corr'
+               'Aggiorna the record precedente p_corr'
                 p_prev=lista[p_corr.getPrev()]
-                'Scambia i puntatori dei records p_next e (p_prev->prev)'
+                'Scambia the puntatori dei records p_next e (p_prev->prev)'
                 if (p_prev.getPrev()!=None):
                     lista[p_prev.getPrev()].setNext(p_corr.getPointer())
                 if (p_next!=None):
                     p_next.setPrev(p_prev.getPointer())
                 
-                'Memorizza campi next e prev di p_corr e p_prev 
+                'Memorizza campi next e prev of p_corr e p_prev 
                 'in variabili supporto.'
                 p1=p_prev.getPrev()
                 p2=p_prev.getNext()
                 p3=p_corr.getPrev()
                 p4=p_corr.getNext()
                 
-                'Scambio campi next e prev di p_corr e p_prev'
+                'Scambio campi next e prev of p_corr e p_prev'
                 p_corr.setPrev(p1)
                 p_corr.setNext(p3)
                 p_prev.setPrev(p2)
                 p_prev.setNext(p4)
             else:
                 break
-        'Aggiorna p_corr spostandolo di una posizione in avanti nella lista.'
+        'Aggiorna p_corr spostandolo of a posizione in avanti nella lista.'
         p_corr=p_forward
         'Aggiorna p_prev.'
         if p_corr!=None:
@@ -194,16 +194,16 @@ def ordinaListaDoppia(lista,p):
 p=records[0].getPointer()
 
 print("\n\nLista DISORDINATA\n")
-for i in range(0,len(listaDoppia),1):
-    print("Key: " + list(listaDoppia.keys())[i] + 
-          "  -Value: " + str(list(listaDoppia.values())[i]))
+for the in range(0,len(listaDoppia),1):
+    print("Key: " + list(listaDoppia.keys())[the] + 
+          "  -Value: " + str(list(listaDoppia.values())[the]))
     
 
 ordinaListaDoppia(listaDoppia,p)
 
 
 print("\n\nLista ORDINATA\n")
-for i in range(0,len(listaDoppia),1):
-    print("Key: " + list(listaDoppia.keys())[i] + 
-          "  -Value: " + str(list(listaDoppia.values())[i]))
+for the in range(0,len(listaDoppia),1):
+    print("Key: " + list(listaDoppia.keys())[the] + 
+          "  -Value: " + str(list(listaDoppia.values())[the]))
 

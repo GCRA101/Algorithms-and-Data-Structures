@@ -14,88 +14,88 @@ import random
 
 
 
-# ALGORITMI DI ORDINAMENTO - BUCKET SORT
+# SORTING ALGORITHMS - BUCKET SORT
 
 '''
 BUCKET SORT 
 
-L'algoritmo Bucking Sort e' un classico esempio di algoritmo di ordinamento
-lineare, diversamente dagli algoritmi di ordinamento basati sul confronto visti
+The algorithm Bucking Sort e' a classico esempio of algorithm of sorting
+lineare, diversamente dagli sorting algorithms basati sul comparison visti
 fino ad ora (Insertion Sort, Selection Sort, Bubble Sort, Merge Sort, Quick
-Sort e Heap Sort). Il fatto che si basi su un approccio diverso, gli consente
-di aver un costo computazionale ancora piu' basso rispetto al limite inferiore
-valido per gli algoritmi basati sul confronto. Esso, infatti, ha costo Θ(n) 
+Sort e Heap Sort). The fatto that si basi on a approccio diverso, the consente
+of aver a computational cost ancora piu' basso rispetto al limite inferiore
+valido for the algorithms basati sul comparison. Esso, indeed, ha costo Θ(n) 
 anziche' Θ(nlogn).
-Il vantaggio che ha rispetto al suo simile algoritmo di COUNTING SORT sta nel 
-fatto che esso non ha bisogno di alcun limite/condizione sul valore di k (
-ovvero, il valore massimo contenuto nel vettore non deve essere minore del 
-numero di elementi contenuti nel vettore medesimo)
+The vantaggio that ha rispetto al suo simile algorithm of COUNTING SORT sta nel 
+fatto that esso not ha bisogno of alcun limite/condizione sul value of k (
+that is, the value massimo contained in the vector not deve essere minore del 
+number of elements contained in the vector medesimo)
 
 * Caratteristiche Principali *
-Le caratteristiche principali dell'algoritmo BUCKET SORT sono le seguenti:
+The caratteristiche principali delthe algorithm BUCKET SORT are the following:
     - ITERATIVE Algorithm (NON RICORSIVO!!)
-    - Processo di ordinamento NON IN LOCO
-    - Funziona solo per valori interi positivi 
-        - in caso non siano interi e/o positivi, e' necessario renderli 
-          tali prima di eseguire l'algoritmo e poi ritrasformarli nel loro
-          valore originale'
-    - I valori nel vettore in input devono essere distribuiti in modo 
+    - NOT IN-PLACE sorting process
+    - Funziona only for valori interi positivi 
+        - if not siano interi e/o positivi, it is necessary to make them 
+          such first of eseguire the algorithm e poi ritrasformarli nel loro
+          value originale'
+    - I values nel vector in input devono essere distribuiti in modo 
       uniforme
     
-- Computational Cost: Θ(n)   (Caso migliore - valori unif distribuiti)
-                        Θ(n^2) (Caso peggiore - valori tutti uguali)
+- Computational Cost: Θ(n)   (Best case - values unif distribuiti)
+                        Θ(n^2) (Worst case - values all uguali)
 
 '''
 
 
-'Funzione Insertion Sort'
+'function Insertion Sort'
 
-def insertionSort(A):               # T(n)
-    for j in range(1,len(A)):       # (n-1)Θ(1)+Θ(1)
-        x=A[j]                      # Θ(1)
-        i=j-1                       # Θ(1)
-        while (i>=0)and(A[i]>x):    # tjΘ(1)+Θ(1) dove tj=(n-1) oppure 1
-            A[i+1]=A[i]             # Θ(1)
-            i-=1                    # Θ(1)
-        A[i+1]=x                    # Θ(1)
-    return A
+def insertionSort(To):               # T(n)
+    for j in range(1,len(To)):       # (n-1)Θ(1)+Θ(1)
+        x=To[j]                      # Θ(1)
+        the=j-1                       # Θ(1)
+        while (the>=0)and(To[the]>x):    # tjΘ(1)+Θ(1) where tj=(n-1) or 1
+            To[the+1]=To[the]             # Θ(1)
+            the-=1                    # Θ(1)
+        To[the+1]=x                    # Θ(1)
+    return To
 
 
 'BUCKET SORT'
 
-def bucketSort(A):                                         # T(n)
-    '1. Ricerca valore intero massimo k'
+def bucketSort(To):                                         # T(n)
+    '1. Ricerca value intero massimo k'
     imax=0                                                 # Θ(1)
-    for i in range(0,len(A),1):                            # n*Θ(1)+Θ(1)
-        if A[imax]<A[i]:                                   # Θ(1)
-            imax=i                                         # Θ(1)
-    k=A[imax]                                              # Θ(1)
-    '2. Inizializzazione vettore multidimensionale ausiliario B'
-    n=len(A)                                               # Θ(1)
+    for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
+        if To[imax]<To[the]:                                   # Θ(1)
+            imax=the                                         # Θ(1)
+    k=To[imax]                                              # Θ(1)
+    '2. Inizializzazione vector multidimensionale ausiliario B'
+    n=len(To)                                               # Θ(1)
     delta=k//n                                             # Θ(1)
     B=[0]*(k//delta)                                       # Θ(1)
-    for i in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
-        B[i]=[]                                            # Θ(1)
-    '3. Copia valori di A in corrispondenti buckets in B'
-    for i in range(0,len(A),1):                            # n*Θ(1)+Θ(1)
-        B[A[i]//(delta+1)].append(A[i])                    # Θ(1)
-    '4. Ordinamento elementi buckets usando selection sort'
-    for i in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
-        B[i]=insertionSort(B[i])                           # v*Θ(1)+Θ(1)                               
-    '5. Concatenzazione liste B[i] nel vettore A'    
+    for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
+        B[the]=[]                                            # Θ(1)
+    '3. Copia valori of To in corrispondenti buckets in B'
+    for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
+        B[To[the]//(delta+1)].append(To[the])                    # Θ(1)
+    '4. sorting elements buckets usando selection sort'
+    for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
+        B[the]=insertionSort(B[the])                           # v*Θ(1)+Θ(1)                               
+    '5. Concatenzazione liste B[the] nel vector To'    
     k=0                                                    # Θ(1)
-    for i in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
-       for j in range(0,len(B[i]),1):                      # v*Θ(1)+Θ(1)   
-           A[k]=B[i][j]                                    # Θ(1)
+    for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
+       for j in range(0,len(B[the]),1):                      # v*Θ(1)+Θ(1)   
+           To[k]=B[the][j]                                    # Θ(1)
            k+=1                                            # Θ(1)
     return                                                 # Θ(1)
 
 
-# Input size: numero n di elementi nell'array A
-# Caso migliore e caso peggiore differiscono.
-# Caso migliore-> valori uniformemente distribuiti - Θ(n)
-# Caso peggiore-> valori tutti DIVERSI ma molto vicini tali
-#                 da finire tutti nello stesso bucket, ordinati 
+# Input size: number n of elements in array To
+# Best case e worst case differiscono.
+# Best case-> values uniformemente distribuiti - Θ(n)
+# Worst case-> values all DIVERSI ma molto vicini such
+#                 from finire all nello stesso bucket, sorted 
 #                 in ORDINE INVERSO e facendo uso dell'INSERTION SORT - Θ(n^2)
 # Computational Cost: T(n)=+Θ(1)+n*Θ(1)+k//delta*Θ(1)+n*Θ(1)+n*Θ(1)+n*Θ(1)
 # T(n)=Θ(n)
@@ -128,16 +128,16 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
     data_cor = [] # corrected array
     data_cor.append(data_y[0])   # we append two first points
     data_cor.append(data_y[1])
-    i=0
+    the=0
     
-    for i in range(0,len(data_x)-2): # two first points are allready appended
-        i += 2
-        delta_i = data_y[i] - data_y[i-1]
+    for the in range(0,len(data_x)-2): # two first points are allready appended
+        the += 2
+        delta_i = data_y[the] - data_y[the-1]
         if np.abs(delta_i) > delta_max:
-            delta += (delta_i - (data_cor[i-1] - data_cor[i-2]))
-            data_cor.append(data_y[i]-delta)
+            delta += (delta_i - (data_cor[the-1] - data_cor[the-2]))
+            data_cor.append(data_y[the]-delta)
         else:
-            data_cor.append(data_y[i]-delta)
+            data_cor.append(data_y[the]-delta)
     
     
     plt.plot(data_x, data_cor,label=legendLabel)
@@ -150,8 +150,8 @@ def rappresentazioneGrafica(data_x,data_y,tolerance,title,legendLabel):
 
 
 stepsA=[]
-for i in range(5,100,1):
-    Alist=list(range(0,i,1))    # DATI  IN INPUT ORDINATI
+for the in range(5,100,1):
+    Alist=list(range(0,the,1))    # DATI  IN INPUT ORDINATI
     tic=time.perf_counter_ns()
     bucketSort(Alist)
     toc=time.perf_counter_ns()
@@ -159,8 +159,8 @@ for i in range(5,100,1):
 
 
 stepsB=[]
-for i in range(5,100,1):
-    Blist=list(range(0,i,1))
+for the in range(5,100,1):
+    Blist=list(range(0,the,1))
     'RANDOMIZZAZIONE DATI IN INPUT!'
     random.shuffle(Blist)       # DATI IN INPUT DISORDINATI
     tic=time.perf_counter_ns()
@@ -169,9 +169,9 @@ for i in range(5,100,1):
     stepsB.append(abs(round(toc-tic,8)))
 
     
-rappresentazioneGrafica(range(5,100,1),stepsA,1,"Algoritmi di Ordinamento "  
-                        "- Bucket Sort","Caso Peggiore")
+rappresentazioneGrafica(range(5,100,1),stepsA,1,"Sorting Algorithms "  
+                        "- Bucket Sort","worst case")
 
-rappresentazioneGrafica(range(5,100,1),stepsB,1,"Algoritmi di Ordinamento "  
-                        "- Bucket Sort","Caso Migliore")
+rappresentazioneGrafica(range(5,100,1),stepsB,1,"Sorting Algorithms "  
+                        "- Bucket Sort","best case")
 

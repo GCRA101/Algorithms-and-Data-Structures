@@ -20,10 +20,10 @@ from Stack import Pila
 'COSTRUZIONE ARRAY DI RECORDS SINGOLI'
 keys=[3,1,613,34,6,13,7,45,78]
 records=[]
-for i in range(0,len(keys),1):
-    records.append(RecordSingolo(keys[i]))    
-for i in range(0,len(records)-1,1):
-    records[i].setNext(records[i+1])
+for the in range(0,len(keys),1):
+    records.append(RecordSingolo(keys[the]))    
+for the in range(0,len(records)-1,1):
+    records[the].setNext(records[the+1])
     
 'COSTRUZIONE PILA'
 stack = Pila()    

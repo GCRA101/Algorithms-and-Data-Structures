@@ -26,12 +26,12 @@ valoriNodi=[3,1,5,8,4,3,2,8,0,8,5]
 nodi=[]
 vettorePosizionale=[]
 
-for i in range(0,len(valoriNodi),1):
-    nodi.append(Nodo(valoriNodi[i])) 
+for the in range(0,len(valoriNodi),1):
+    nodi.append(Nodo(valoriNodi[the])) 
     
-for i in range(0,(len(nodi)-2)//2+1,1):
-        nodi[i].setFiglioSx(nodi[2*i+1])
-        nodi[i].setFiglioDx(nodi[2*i+2])
+for the in range(0,(len(nodi)-2)//2+1,1):
+        nodi[the].setFiglioSx(nodi[2*the+1])
+        nodi[the].setFiglioDx(nodi[2*the+2])
         
 'COSTRUZIONE ALBERO BINARIO'     
 radice=nodi[0]
@@ -43,7 +43,7 @@ albero=AlberoBinario(radice)
 OPERAZIONI ******************************************************************
 '''
 
-'CONTEGGIO DEL NUMERO DEI NODI'
+'CONTEGGIO DEL number DEI NODI'
 def calcola_n(p):
     if p!=None:
         num_l=calcola_n(p.getFiglioSx()) # Recursive Step 1 (SottoAlbero Sx)
@@ -77,13 +77,13 @@ def calcola_h(p):
 
 
 'CONTEGGIO NODI AL LIVELLO K'
-def conta_k(p,k,i):
+def conta_k(p,k,the):
     if p==None:
         return 0
-    if k==i:
+    if k==the:
         return 1
-    k_left=conta_k(p.getFiglioSx(),k,i+1)  # Recursive Step 1 (SottoAlbero Sx)
-    k_right=conta_k(p.getFiglioDx(),k,i+1) # Recursive Step 2 (SottoAlbero Dx)
+    k_left=conta_k(p.getFiglioSx(),k,the+1)  # Recursive Step 1 (SottoAlbero Sx)
+    k_right=conta_k(p.getFiglioDx(),k,the+1) # Recursive Step 2 (SottoAlbero Dx)
     return k_left+k_right                  # Operazione sul Nodo
         
 

@@ -14,16 +14,16 @@ import time
 
 # LINEAR SEARCH
 
-# Input size: number of elements contained in array A
+# Input size: number of elements contained in array To
 
-# WORST CASE: The searched element v is not present in array A
+# WORST CASE: The searched element v is not present in array To
 
-def linearSearch(A,v):
-    i=0                              # Θ(1)
-    while((i<len(A))and(A[i]!=v)):   # n*Θ(1)+Θ(1)
-        i+=1                         # Θ(1)
-    if (i<len(A)):                   # Θ(1)
-        return i
+def linearSearch(To,v):
+    the=0                              # Θ(1)
+    while((the<len(To))and(To[the]!=v)):   # n*Θ(1)+Θ(1)
+        the+=1                         # Θ(1)
+    if (the<len(To)):                   # Θ(1)
+        return the
     else:                            # Θ(1)
         return -1                    # Θ(1)
         
@@ -38,19 +38,19 @@ def linearSearch(A,v):
         
         
         
-# BEST CASE: L'elemento ricercato v e' presente nella prima 
-# cella dell'array A   
+# BEST CASE: L'element ricercato v e' presente nella first 
+# cella dell'array To   
 
-def linearSearch(A,v):
-    i=0                              # Θ(1)
-    while((i<len(A))and(A[i]!=v)):   # Θ(1)
-        i+=1
-    if (i<len(A)):                   # Θ(1)
-        return i                     # Θ(1)
+def linearSearch(To,v):
+    the=0                              # Θ(1)
+    while((the<len(To))and(To[the]!=v)):   # Θ(1)
+        the+=1
+    if (the<len(To)):                   # Θ(1)
+        return the                     # Θ(1)
     else:       
         return -1                    # Θ(1)
 
-# (*): La condizione del ciclo while non si verifica mai!        
+# (*): The condizione del ciclo while not si verifica never!        
         
 # Computational cost
 # T(n)=Θ(1)
@@ -58,29 +58,29 @@ def linearSearch(A,v):
         
     
 # CONCLUSION
-# The algorithm is O(n) e un Ω(1)
+# The algorithm is O(n) e a Ω(1)
 
 
 # GRAPHICAL REPRESENTATION
 
-A=list(range(1,1000))
+To=list(range(1,1000))
 
 v=1
 stepsA=[]
-for i in range(1,1000):
-    A=list(range(1,i))
+for the in range(1,1000):
+    To=list(range(1,the))
     tic=time.perf_counter()
-    linearSearch(A,v)
+    linearSearch(To,v)
     toc=time.perf_counter()
     stepsA.append(round(toc-tic,7))
 
 
 v=2321
 stepsB=[]
-for i in range(1,1000):
-    A=list(range(1,i))
+for the in range(1,1000):
+    To=list(range(1,the))
     tic=time.perf_counter()
-    linearSearch(A,v)
+    linearSearch(To,v)
     toc=time.perf_counter()
     stepsB.append(round(toc-tic,7))
 

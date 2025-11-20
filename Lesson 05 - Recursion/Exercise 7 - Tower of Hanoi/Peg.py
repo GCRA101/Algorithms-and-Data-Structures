@@ -24,8 +24,8 @@ class Piolo:
     def __init__(self,n=None):
         self.disks=list()
         if n!=None:
-            for i in range(n,0,-1):
-                self.disks.append(Disco(i))
+            for the in range(n,0,-1):
+                self.disks.append(Disco(the))
             
             
     # METHODS
@@ -36,7 +36,7 @@ class Piolo:
     
     'Add disk to top of stack'
     def aggiungiDisco(self,disk):
-        '''If the stack is empty or the disk to add has a smaller diameter
+        '''If the stack is empty or the disk to add has to smaller diameter
          than the disk at the top of the stack...add the disk'''
         if len(self.disks)==0 or disk.minoreDi(self.disks[-1]):
             self.disks.append(disk)

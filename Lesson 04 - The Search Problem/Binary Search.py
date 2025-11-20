@@ -14,21 +14,21 @@ import time
 
 # BINARY SEARCH
 
-# Input size: number of elements contained in array A
+# Input size: number of elements contained in array To
 
-# WORST CASE: The searched element v is not present in array A
+# WORST CASE: The searched element v is not present in array To
 
-def binarySearch(A,v):
-    a=0                              # Θ(1)
-    b=len(A)-1                       # Θ(1)
-    m=(a+b)//2                       # Θ(1)
-    while ((A[m]!=v)and(a<b)):       # logn*Θ(1)+Θ(1)
-        if (v<A[m]):                 # Θ(1)
+def binarySearch(To,v):
+    to=0                              # Θ(1)
+    b=len(To)-1                       # Θ(1)
+    m=(to+b)//2                       # Θ(1)
+    while ((To[m]!=v)and(to<b)):       # logn*Θ(1)+Θ(1)
+        if (v<To[m]):                 # Θ(1)
             b=m-1                    # Θ(1)
         else:                        # Θ(1)
-            a=m+1                    # Θ(1)
-        m=(a+b)//2                   # Θ(1)
-    if (A[m]==v):                    # Θ(1)
+            to=m+1                    # Θ(1)
+        m=(to+b)//2                   # Θ(1)
+    if (To[m]==v):                    # Θ(1)
         return m
     else:                            # Θ(1)
         return -1                    # Θ(1)
@@ -45,24 +45,24 @@ def binarySearch(A,v):
         
         
 # BEST CASE: The searched element v is present in the middle cell 
-# of array A   
+# of array To   
 
-def binarySearch(A,v):
-    a=0                              # Θ(1)
-    b=len(A)-1                       # Θ(1)
-    m=(a+b)//2                       # Θ(1)
-    while ((A[m]!=v)and(a<b)):       # Θ(1)
-        if (v<A[m]):                
+def binarySearch(To,v):
+    to=0                              # Θ(1)
+    b=len(To)-1                       # Θ(1)
+    m=(to+b)//2                       # Θ(1)
+    while ((To[m]!=v)and(to<b)):       # Θ(1)
+        if (v<To[m]):                
             b=m-1              
         else:             
-            a=m+1        
-        m=(a+b)//2 
-    if (A[m]==v):                    # Θ(1)
+            to=m+1        
+        m=(to+b)//2 
+    if (To[m]==v):                    # Θ(1)
         return m                     # Θ(1)
     else:          
         return -1              
 
-# (*): La condizione del ciclo while non si verifica mai!        
+# (*): The condizione del ciclo while not si verifica never!        
         
 # Computational cost
 # T(n)=Θ(1)
@@ -70,30 +70,30 @@ def binarySearch(A,v):
         
     
 # CONCLUSION
-# The algorithm is O(logn) e un Ω(1)
+# The algorithm is O(logn) e a Ω(1)
 
 
 # GRAPHICAL REPRESENTATION
 
-A=list(range(1,1000))
+To=list(range(1,1000))
 
 
 stepsA=[]
-for i in range(5,1000):
-    A=list(range(1,i))
-    v=(i+1)//2
+for the in range(5,1000):
+    To=list(range(1,the))
+    v=(the+1)//2
     tic=time.perf_counter_ns()
-    binarySearch(A,v)
+    binarySearch(To,v)
     toc=time.perf_counter_ns()
     stepsA.append(toc-tic)
 
 
 v=2321
 stepsB=[]
-for i in range(5,1000):
-    A=list(range(1,i))
+for the in range(5,1000):
+    To=list(range(1,the))
     tic=time.perf_counter_ns()
-    binarySearch(A,v)
+    binarySearch(To,v)
     toc=time.perf_counter_ns()
     stepsB.append(toc-tic)
 

@@ -22,7 +22,7 @@ ESERCIZI SVOLTI SU CARTA '''
 # ESERCIZIO 1 ################################################################
 
 '''
-Mostrare che il Counting Sort e' un algoritmo di ordinamento stabile.
+Mostrare that the Counting Sort e' an algorithm for sorting stabile.
 '''
 
 
@@ -31,19 +31,19 @@ Mostrare che il Counting Sort e' un algoritmo di ordinamento stabile.
 # ESERCIZI0 2 ################################################################
 
 '''
-Qual'e' il tempo di esecuzione del Bucket Sort nel caso peggiore?
-Quale semplice modifica dell'algoritmo consente di conservare tempo medio 
-lineare e costo Θ(nlogn) nel caso peggiore?'
+Qual'e' the tempo of esecuzione del Bucket Sort nel worst case?
+Quale semplice modifica delthe algorithm consente of conservare tempo middle 
+lineare e costo Θ(nlogn) nel worst case?'
 '''
 
 # Considerazioni
 '''
-Basta usare per i buckets, un algoritmo di ordinamento avente costo 
-computazionale peggiore pari a O(nlogn): MergeSort/QuickSort/HeapSort'''
+Basta usare for the buckets, an algorithm for sorting avente costo 
+computazionale peggiore pari to O(nlogn): MergeSort/QuickSort/HeapSort'''
 
 ''' VEDI ANCHE CONSIDERAZIONI E PSEUDOCODICE SU CARTA '''
 
-# Algoritmo
+# algorithm
 
 A1=[56,1,5,3,7,8,2,11,32]
 A2=[11,2,3,8,5,32,33,81,12,18,54,42,38,1,9]
@@ -51,81 +51,81 @@ A3=[101,23,84,33,61,41,32,1,2,3,4,6,5]
 Aworst=[87,1,25,5,21,8,11,23,3,31]
 Abest=[1,5,6,31,44,53,98,101]
 
-'Funzione Heap Sort'
+'function Heap Sort'
 
 # HEAPIFY Function
 
-def heapify(A,n,i):                             # T(n)               '--(A)--'
-    left=2*i+1                                  # Θ(1)               '--(B)--'
-    right=2*i+2                                 # Θ(1)
-    if (left<n)and(A[left]>A[i]):               # Θ(1)
+def heapify(To,n,the):                             # T(n)               '--(To)--'
+    left=2*the+1                                  # Θ(1)               '--(B)--'
+    right=2*the+2                                 # Θ(1)
+    if (left<n)and(To[left]>To[the]):               # Θ(1)
         iMax=left                               # Θ(1)
     else:                                       # Θ(1)
-        iMax=i                                  # Θ(1)
-    if (right<n)and(A[right]>A[iMax]):          # Θ(1)
+        iMax=the                                  # Θ(1)
+    if (right<n)and(To[right]>To[iMax]):          # Θ(1)
         iMax=right                              # Θ(1)
-    if iMax!=i:                                 # Θ(1)
-        temp=A[i]                               # Θ(1)
-        A[i]=A[iMax]                            # Θ(1)
-        A[iMax]=temp                            # Θ(1)
-        heapify(A,n,iMax)                       # T(2/3n)
+    if iMax!=the:                                 # Θ(1)
+        temp=To[the]                               # Θ(1)
+        To[the]=To[iMax]                            # Θ(1)
+        To[iMax]=temp                            # Θ(1)
+        heapify(To,n,iMax)                       # T(2/3n)
     return
     
 # BUILDHEAP Function
 
-def buildHeap(A):                               # T(n)
-    m=len(A)                                    # Θ(1)               '--(C)--'
-    for i in range(m//2-1,-1,-1):               # n/2*O(logn)+Θ(1)
-        heapify(A,m,i)                            
+def buildHeap(To):                               # T(n)
+    m=len(To)                                    # Θ(1)               '--(C)--'
+    for the in range(m//2-1,-1,-1):               # n/2*O(logn)+Θ(1)
+        heapify(To,m,the)                            
     return                                      # Θ(1)
     
 
 # HEAPSORT Function
 
-def heapSort(A):                            # T(n)
-    buildHeap(A)                            # O(n)
-    for heapSize in range(len(A)-1,-1,-1):   # (n-1) + Θ(1)        
-        temp=A[heapSize]                    # Θ(1)
-        A[heapSize]=A[0]                    # Θ(1)
-        A[0]=temp                           # Θ(1)
-        heapify(A,heapSize,0)               # O(logn)                '--(D)--'
+def heapSort(To):                            # T(n)
+    buildHeap(To)                            # O(n)
+    for heapSize in range(len(To)-1,-1,-1):   # (n-1) + Θ(1)        
+        temp=To[heapSize]                    # Θ(1)
+        To[heapSize]=To[0]                    # Θ(1)
+        To[0]=temp                           # Θ(1)
+        heapify(To,heapSize,0)               # O(logn)                '--(D)--'
     return                                  # Θ(1)
 
 
 'BUCKET SORT'
 
-def bucketSortHeap(A):                                     # T(n)
-    '1. Ricerca valore intero massimo k'
+def bucketSortHeap(To):                                     # T(n)
+    '1. Ricerca value intero massimo k'
     imax=0                                                 # Θ(1)
-    for i in range(0,len(A),1):                            # n*Θ(1)+Θ(1)
-        if A[imax]<A[i]:                                   # Θ(1)
-            imax=i                                         # Θ(1)
-    k=A[imax]                                              # Θ(1)
-    '2. Inizializzazione vettore multidimensionale ausiliario B'
-    n=len(A)                                               # Θ(1)
+    for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
+        if To[imax]<To[the]:                                   # Θ(1)
+            imax=the                                         # Θ(1)
+    k=To[imax]                                              # Θ(1)
+    '2. Inizializzazione vector multidimensionale ausiliario B'
+    n=len(To)                                               # Θ(1)
     delta=k//n                                             # Θ(1)
     B=[0]*(k//delta)                                       # Θ(1)
-    for i in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
-        B[i]=[]                                            # Θ(1)
-    '3. Copia valori di A in corrispondenti buckets in B'
-    for i in range(0,len(A),1):                            # n*Θ(1)+Θ(1)
-        B[A[i]//(delta+1)].append(A[i])                    # Θ(1)
-    '4. Ordinamento elementi buckets usando HEAPSORT'
-    for i in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
-        if len(B[i])>0:                      '(**)'        # Θ(1)
-            heapSort(B[i])                                 # vlogv*Θ(1)+Θ(1)                               
-    '5. Concatenzazione liste B[i] nel vettore A'    
+    for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
+        B[the]=[]                                            # Θ(1)
+    '3. Copia valori of To in corrispondenti buckets in B'
+    for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
+        B[To[the]//(delta+1)].append(To[the])                    # Θ(1)
+    '4. sorting elements buckets usando HEAPSORT'
+    for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
+        if len(B[the])>0:                      '(**)'        # Θ(1)
+            heapSort(B[the])                                 # vlogv*Θ(1)+Θ(1)                               
+    '5. Concatenzazione liste B[the] nel vector To'    
     k=0                                                    # Θ(1)
-    for i in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
-       for j in range(0,len(B[i]),1):                      # v*Θ(1)+Θ(1)   
-           A[k]=B[i][j]                                    # Θ(1)
+    for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
+       for j in range(0,len(B[the]),1):                      # v*Θ(1)+Θ(1)   
+           To[k]=B[the][j]                                    # Θ(1)
            k+=1                                            # Θ(1)
     return                                                 # Θ(1)
 
 
 # NOTE IMPORTANTI
-'''(**): IMPORTANTE! Per evitare il lancio di Exceptions bisogna evitare di 
-lanciare l'algoritmo di ordinamento se il bucket non contiene nessun elemento'''
+'''(**): IMPORTANTE! For evitare the lancio of Exceptions bisogna evitare of 
+lanciare the algorithm of sorting if the bucket not contiene nessun element'''
 
 
 # Computational Cost
@@ -145,10 +145,10 @@ bucketSortHeap(Abest)
 # ESERCIZI0 3 ################################################################
 
 '''
-Il Bucket Sort puo' essere modficato in mdo che l'ordinamento all'interno 
-delle liste sia eseguito tramite counting sort.
-Affinche' il costo dell'algoritmo sia lineare anche nel caso peggiore, 
-quale ipotesi bisogna fare su k?
+The Bucket Sort puo' essere modficato in mdo that l'sorting all'interno 
+delle liste sia eseguito through counting sort.
+Affinche' the costo delthe algorithm sia lineare also nel worst case, 
+quale ipotesi bisogna fare on k?
 '''
 
 ''' VEDI ANCHE CONSIDERAZIONI E PSEUDOCODICE SU CARTA '''
@@ -156,12 +156,12 @@ quale ipotesi bisogna fare su k?
 
 # Considerazioni
 '''
-Basta che k<n dove k valore massimo contenuto nell'array da ordinare e n 
-numero totale degli elementi in esso contenuti'''
+Basta that k<n where k value massimo contenuto in the array from ordinare e n 
+number totale degli elements in esso contenuti'''
 
 ''' VEDI ANCHE CONSIDERAZIONI E PSEUDOCODICE SU CARTA '''
 
-# Algoritmo
+# algorithm
 
 A1=[56,1,5,3,7,8,2,11,32]
 A2=[11,2,3,8,5,32,33,81,12,18,54,42,38,1,9]
@@ -169,63 +169,63 @@ A3=[101,23,84,33,61,41,32,1,2,3,4,6,5]
 Aworst=[87,1,25,5,21,8,11,23,3,31]
 Abest=[1,5,6,31,44,53,98,101]
 
-'Funzione Counting Sort'
+'function Counting Sort'
 
-'VERSIONE AVANZATA - Dati Satellite'
+'VERSIONE AVANZATA - Data Satellite'
 
-def countingSort(A):                                          # T(n)
-    '1. Ricerca valore intero massimo k'
+def countingSort(To):                                          # T(n)
+    '1. Ricerca value intero massimo k'
     imax=0                                                    # Θ(1)
-    for i in range(0,len(A),1):                               # n*Θ(1)+Θ(1)
-        if A[imax]<A[i]:                                      # Θ(1)
-            imax=i                                            # Θ(1)
-    k=A[imax]                                                 # Θ(1)
-    '2. Inizializzazione vettore ausiliario C'
+    for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
+        if To[imax]<To[the]:                                      # Θ(1)
+            imax=the                                            # Θ(1)
+    k=To[imax]                                                 # Θ(1)
+    '2. Inizializzazione auxiliary vector C'
     C=[0]*(k+1)                                               # Θ(1)
-    '3. Conteggio istanze valori uguali presenti in A'
-    for i in range(0,len(A),1):                               # n*Θ(1)+Θ(1)
-        C[A[i]]=C[A[i]]+1                                     # Θ(1)
-    '4. Conteggio numero valori minori o uguali a i'    
-    for i in range(1,len(C),1):                               # k*Θ(1)+Θ(1)
-        C[i]=C[i]+C[i-1]                                      # Θ(1) 
-    '5. Sostituzione valori ordinati nel vettore B'
-    B=[0]*len(A)                                              # Θ(1)
-    for i in range(0,len(A),1):                               # n*Θ(1)+Θ(1)
-        B[C[A[i]]-1]=A[i]                                     # Θ(1)
-        C[A[i]]-=1                                            # Θ(1)
-    '6. Copia valori vettore B in vettore A'
-    for i in range (0,len(A),1):                              # n*Θ(1)+Θ(1)
-        A[i]=B[i]                                             # Θ(1) 
+    '3. Conteggio istanze valori uguali presenti in To'
+    for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
+        C[To[the]]=C[To[the]]+1                                     # Θ(1)
+    '4. Conteggio number values minori o uguali to the'    
+    for the in range(1,len(C),1):                               # k*Θ(1)+Θ(1)
+        C[the]=C[the]+C[the-1]                                      # Θ(1) 
+    '5. Sostituzione valori ordinati nel vector B'
+    B=[0]*len(To)                                              # Θ(1)
+    for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
+        B[C[To[the]]-1]=To[the]                                     # Θ(1)
+        C[To[the]]-=1                                            # Θ(1)
+    '6. Copia valori vector B in vector To'
+    for the in range (0,len(To),1):                              # n*Θ(1)+Θ(1)
+        To[the]=B[the]                                             # Θ(1) 
     return                                                    # Θ(1)    
 
 
 'BUCKET SORT'
 
-def bucketSortCounting(A):                                 # T(n)
-    '1. Ricerca valore intero massimo k'
+def bucketSortCounting(To):                                 # T(n)
+    '1. Ricerca value intero massimo k'
     imax=0                                                 # Θ(1)
-    for i in range(0,len(A),1):                            # n*Θ(1)+Θ(1)
-        if A[imax]<A[i]:                                   # Θ(1)
-            imax=i                                         # Θ(1)
-    k=A[imax]                                              # Θ(1)
-    '2. Inizializzazione vettore multidimensionale ausiliario B'
-    n=len(A)                                               # Θ(1)
+    for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
+        if To[imax]<To[the]:                                   # Θ(1)
+            imax=the                                         # Θ(1)
+    k=To[imax]                                              # Θ(1)
+    '2. Inizializzazione vector multidimensionale ausiliario B'
+    n=len(To)                                               # Θ(1)
     delta=k//n                                             # Θ(1)
     B=[0]*(k//delta)                                       # Θ(1)
-    for i in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
-        B[i]=[]                                            # Θ(1)
-    '3. Copia valori di A in corrispondenti buckets in B'
-    for i in range(0,len(A),1):                            # n*Θ(1)+Θ(1)
-        B[A[i]//(delta+1)].append(A[i])                    # Θ(1)
-    '4. Ordinamento elementi buckets usando HEAPSORT'
-    for i in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
-        if len(B[i])>0:                      '(**)'        # Θ(1)
-            countingSort(B[i])                             # v*Θ(1)+Θ(1)                               
-    '5. Concatenzazione liste B[i] nel vettore A'    
+    for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
+        B[the]=[]                                            # Θ(1)
+    '3. Copia valori of To in corrispondenti buckets in B'
+    for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
+        B[To[the]//(delta+1)].append(To[the])                    # Θ(1)
+    '4. sorting elements buckets usando HEAPSORT'
+    for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
+        if len(B[the])>0:                      '(**)'        # Θ(1)
+            countingSort(B[the])                             # v*Θ(1)+Θ(1)                               
+    '5. Concatenzazione liste B[the] nel vector To'    
     k=0                                                    # Θ(1)
-    for i in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
-       for j in range(0,len(B[i]),1):                      # v*Θ(1)+Θ(1)   
-           A[k]=B[i][j]                                    # Θ(1)
+    for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
+       for j in range(0,len(B[the]),1):                      # v*Θ(1)+Θ(1)   
+           To[k]=B[the][j]                                    # Θ(1)
            k+=1                                            # Θ(1)
     return                                                 # Θ(1)
 
