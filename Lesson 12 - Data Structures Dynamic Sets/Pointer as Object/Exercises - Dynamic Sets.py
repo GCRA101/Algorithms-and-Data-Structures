@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jun  2 22:10:30 2023
+Created on Fri Jun 2 22:10:30 2023
 
 @author: giorg
 """
@@ -116,82 +116,82 @@ keys=[1,32,54,2,5,3,7,6,4,11,23,26]
 records=[]
 # Concatenamento dei Records
 for the in range(0,len(keys),1):
-    records.append(RecordDoppio(keys[the]))
+ records.append(RecordDoppio(keys[the]))
 for the in range(0,len(records),1):
-    if the>0:
-        records[the].setPrev(records[the-1])
-    if the<len(records)-1:
-        records[the].setNext(records[the+1])
-    
+ if the>0:
+ records[the].setPrev(records[the-1])
+ if the<len(records)-1:
+ records[the].setNext(records[the+1])
+ 
 # Creazione list puntata (contiene the riferimento al record of testa)
 listaPuntataDopp=ListaPuntataDoppia(records[0])
 
 
 def ordinaListaDoppia(list):
-    
-    'Inizializzazione Records of supporto'
-    p_corr,p_prev=RecordDoppio(),RecordDoppio()
-    p_next,p_forward=RecordDoppio(),RecordDoppio()
-    'Salva second record of the list in p_corr'
-    p_corr=list.getPrimoRecord().getNext()
-    'Salva first record of the list in p_prev'
-    p_prev=list.getPrimoRecord()
-    
-    'Fino to that not si raggiunge the fine of the list...'
-    while p_corr!=None:
-        'If p_corr punta to a record, stora quel record in p_forward'
-        if p_corr.getNext()!=None:
-            p_forward=p_corr.getNext()
-        else: 
-            p_forward=None
-        
-        'Fino to that not si raggiunge l''inizio of the list...'
-        while p_corr.getPrev()!=None:
-            'Aggiorna the record precedente p_corr'
-            p_prev=p_corr.getPrev()
-            '''If the key of p_corr is minore of that of p_prev...scambia 
-            'the two record of position...'''
-            if p_corr.getData()<p_prev.getData():
-               'Memorizza the record successivo in p_next, if esso esiste...'
-               if p_corr.getNext()!=None:
-                    p_next=p_corr.getNext()
-               else: 
-                    p_next=None    
-               'Aggiorna the record precedente p_corr'
-               p_prev=p_corr.getPrev()
-               'Scambia the puntatori dei records p_next and (p_prev->prev)'
-               if (p_prev.getPrev()!=None):
-                    p_prev.getPrev().setNext(p_corr)
-               if (p_next!=None):
-                    p_next.setPrev(p_prev)
-                    
-               'Memorizza campi next and prev of p_corr and p_prev '
-               'in variables supporto.'
-               p1=p_prev.getPrev()
-               p2=p_prev.getNext()
-               p3=p_corr.getPrev()
-               p4=p_corr.getNext()
-                
-               'Scambio campi next and prev of p_corr and p_prev'
-               p_corr.setPrev(p1)
-               p_corr.setNext(p3)
-               p_prev.setPrev(p2)
-               p_prev.setNext(p4)
-            else:
-                break
-        'Aggiorna p_corr spostandolo of a position in avanti in the list.'
-        p_corr=p_forward
-        'Aggiorna p_prev.'
-        if p_corr!=None:
-            p_prev=p_corr.getPrev()
+ 
+ 'Inizializzazione Records of supporto'
+ p_corr,p_prev=RecordDoppio(),RecordDoppio()
+ p_next,p_forward=RecordDoppio(),RecordDoppio()
+ 'Salva second record of the list in p_corr'
+ p_corr=list.getPrimoRecord().getNext()
+ 'Salva first record of the list in p_prev'
+ p_prev=list.getPrimoRecord()
+ 
+ 'Fino to that not si raggiunge the fine of the list...'
+ while p_corr!=None:
+ 'If p_corr punta to a record, stora quel record in p_forward'
+ if p_corr.getNext()!=None:
+ p_forward=p_corr.getNext()
+ else: 
+ p_forward=None
+ 
+ 'Fino to that not si raggiunge l''inizio of the list...'
+ while p_corr.getPrev()!=None:
+ 'Aggiorna the record precedente p_corr'
+ p_prev=p_corr.getPrev()
+ '''If the key of p_corr is minore of that of p_prev...scambia 
+ 'the two record of position...'''
+ if p_corr.getData()<p_prev.getData():
+ 'Memorizza the record successivo in p_next, if esso esiste...'
+ if p_corr.getNext()!=None:
+ p_next=p_corr.getNext()
+ else: 
+ p_next=None 
+ 'Aggiorna the record precedente p_corr'
+ p_prev=p_corr.getPrev()
+ 'Scambia the puntatori dei records p_next and (p_prev->prev)'
+ if (p_prev.getPrev()!=None):
+ p_prev.getPrev().setNext(p_corr)
+ if (p_next!=None):
+ p_next.setPrev(p_prev)
+ 
+ 'Memorizza campi next and prev of p_corr and p_prev '
+ 'in variables supporto.'
+ p1=p_prev.getPrev()
+ p2=p_prev.getNext()
+ p3=p_corr.getPrev()
+ p4=p_corr.getNext()
+ 
+ 'Scambio campi next and prev of p_corr and p_prev'
+ p_corr.setPrev(p1)
+ p_corr.setNext(p3)
+ p_prev.setPrev(p2)
+ p_prev.setNext(p4)
+ else:
+ break
+ 'Aggiorna p_corr spostandolo of a position in avanti in the list.'
+ p_corr=p_forward
+ 'Aggiorna p_prev.'
+ if p_corr!=None:
+ p_prev=p_corr.getPrev()
 
-    
-    
+ 
+ 
 p=records[0]
 
 print("\n\nLista DISORDINATA\n")
 print(listaPuntataDopp)
-    
+ 
 
 ordinaListaDoppia(listaPuntataDopp)
 

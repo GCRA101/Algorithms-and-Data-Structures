@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jun  2 22:10:30 2023
+Created on Fri Jun 2 22:10:30 2023
 
 @author: giorg
 """
@@ -52,41 +52,41 @@ Abest=[1,5,6,31,44,53,98,101]
 
 # HEAPIFY Function
 
-def heapify(To,n,the):                             # T(n)=O(logn)            
-    left=2*the+1                                  # Θ(1)             
-    right=2*the+2                                 # Θ(1)
-    if (left<n)and(To[left]>To[the]):               # Θ(1)
-        iMax=left                               # Θ(1)
-    else:                                       # Θ(1)
-        iMax=the                                  # Θ(1)
-    if (right<n)and(To[right]>To[iMax]):          # Θ(1)
-        iMax=right                              # Θ(1)
-    if iMax!=the:                                 # Θ(1)
-        temp=To[the]                               # Θ(1)
-        To[the]=To[iMax]                            # Θ(1)
-        To[iMax]=temp                            # Θ(1)
-        heapify(To,n,iMax)                       # T(2/3n)
-    return
-    
+def heapify(To,n,the): # T(n)=O(logn) 
+ left=2*the+1 # Θ(1) 
+ right=2*the+2 # Θ(1)
+ if (left<n)and(To[left]>To[the]): # Θ(1)
+ iMax=left # Θ(1)
+ else: # Θ(1)
+ iMax=the # Θ(1)
+ if (right<n)and(To[right]>To[iMax]): # Θ(1)
+ iMax=right # Θ(1)
+ if iMax!=the: # Θ(1)
+ temp=To[the] # Θ(1)
+ To[the]=To[iMax] # Θ(1)
+ To[iMax]=temp # Θ(1)
+ heapify(To,n,iMax) # T(2/3n)
+ return
+ 
 # BUILDHEAP Function
 
-def buildHeap(To):                               # T(n)=O(n)
-    m=len(To)                                    # Θ(1)           
-    for the in range(m//2-1,-1,-1):               # n/2*O(logn)+Θ(1)
-        heapify(To,m,the)                            
-    return                                      # Θ(1)
+def buildHeap(To): # T(n)=O(n)
+ m=len(To) # Θ(1) 
+ for the in range(m//2-1,-1,-1): # n/2*O(logn)+Θ(1)
+ heapify(To,m,the) 
+ return # Θ(1)
 
 # HEAPMINIMUM Function
 
-def heapMinimum(To):                             # T(n)
-    buildHeap(To)                                # O(n)
-    iStart=(len(To)-1)//2                        # Θ(1)
-    iMin=iStart                                 # Θ(1)
-    for the in range(iStart,len(To)-1,1):          # log(n+1)*Θ(1)+Θ(1)
-        if To[the+1]<To[the]:                         # Θ(1)
-            iMin=the+1                            # Θ(1)
-    return To[iMin]                              # Θ(1)
-        
+def heapMinimum(To): # T(n)
+ buildHeap(To) # O(n)
+ iStart=(len(To)-1)//2 # Θ(1)
+ iMin=iStart # Θ(1)
+ for the in range(iStart,len(To)-1,1): # log(n+1)*Θ(1)+Θ(1)
+ if To[the+1]<To[the]: # Θ(1)
+ iMin=the+1 # Θ(1)
+ return To[iMin] # Θ(1)
+ 
 
 # Input size: number n of elements in array To
 # Computational Cost: T(n)=O(n)+Θ(1)+Θ(logn)+Θ(1)=O(n)
@@ -124,53 +124,53 @@ Abest=[1,5,6,31,44,53,98,101]
 
 # HEAPIFY Function
 
-def heapifyMin(To,n,the):                      # T(n)           
-    left=2*the+1                              # Θ(1)         
-    right=2*the+2                             # Θ(1)
-    if (left<n)and(To[left]<To[the]):           # Θ(1)             ** != heapify 
-        iMin=left                           # Θ(1)             ** != heapify
-    else:                                   # Θ(1)
-        iMin=the                              # Θ(1)             ** != heapify
-    if (right<n)and(To[right]<To[iMin]):      # Θ(1)             ** != heapify
-        iMin=right                          # Θ(1)             ** != heapify
-    if iMin!=the:                             # Θ(1)             ** != heapify
-        temp=To[the]                           # Θ(1)
-        To[the]=To[iMin]                        # Θ(1)
-        To[iMin]=temp                        # Θ(1)
-        heapifyMin(To,n,iMin)                # T(2/3n)
-    return
-    
+def heapifyMin(To,n,the): # T(n) 
+ left=2*the+1 # Θ(1) 
+ right=2*the+2 # Θ(1)
+ if (left<n)and(To[left]<To[the]): # Θ(1) ** != heapify 
+ iMin=left # Θ(1) ** != heapify
+ else: # Θ(1)
+ iMin=the # Θ(1) ** != heapify
+ if (right<n)and(To[right]<To[iMin]): # Θ(1) ** != heapify
+ iMin=right # Θ(1) ** != heapify
+ if iMin!=the: # Θ(1) ** != heapify
+ temp=To[the] # Θ(1)
+ To[the]=To[iMin] # Θ(1)
+ To[iMin]=temp # Θ(1)
+ heapifyMin(To,n,iMin) # T(2/3n)
+ return
+ 
 # BUILDHEAP Function
 
-def buildHeapMin(To):                        # T(n)
-    m=len(To)                                # Θ(1)       
-    for the in range(m//2-1,-1,-1):           # n/2*O(logn)+Θ(1)
-        heapifyMin(To,m,the)                            
-    return                                  # Θ(1)
-    
+def buildHeapMin(To): # T(n)
+ m=len(To) # Θ(1) 
+ for the in range(m//2-1,-1,-1): # n/2*O(logn)+Θ(1)
+ heapifyMin(To,m,the) 
+ return # Θ(1)
+ 
 
 ' function HEAPSORT'
 
-def heapSortMin(To):                         # T(n)
-    buildHeapMin(To)                         # O(n)
-    for heapSize in range(len(To)-1,-1,-1):  # (n-1) + Θ(1)      
-        temp=To[heapSize]                    # Θ(1)
-        To[heapSize]=To[0]                    # Θ(1)
-        To[0]=temp                           # Θ(1)
-        heapifyMin(To,heapSize,0)            # O(logn)
-    return                                  # Θ(1)
+def heapSortMin(To): # T(n)
+ buildHeapMin(To) # O(n)
+ for heapSize in range(len(To)-1,-1,-1): # (n-1) + Θ(1) 
+ temp=To[heapSize] # Θ(1)
+ To[heapSize]=To[0] # Θ(1)
+ To[0]=temp # Θ(1)
+ heapifyMin(To,heapSize,0) # O(logn)
+ return # Θ(1)
 
 
 # Input size: number n of elements in array To
 # Best case and worst case coincide.
 # The computational cost dei 3 algoritmi Heapify, BuildHeap and HeapSort is 
 # as follows:
-# - Heapify:   T(n)=T(2/3n)+Θ(1)  -> T(n)=O(logn)
-# - BuildHeap: T(n)=O(n)          -> T(n)=O(n)
-# - HeapSort:  T(n)=O(nlogn)      -> T(n)=O(nlogn)
+# - Heapify: T(n)=T(2/3n)+Θ(1) -> T(n)=O(logn)
+# - BuildHeap: T(n)=O(n) -> T(n)=O(n)
+# - HeapSort: T(n)=O(nlogn) -> T(n)=O(nlogn)
 
 
-heapSortMin(A1)   
+heapSortMin(A1) 
 heapSortMin(A2) 
 heapSortMin(A3) 
 heapSortMin(Aworst)

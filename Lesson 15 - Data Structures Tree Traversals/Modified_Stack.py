@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun  1 20:48:46 2023
+Created on Thu Jun 1 20:48:46 2023
 @author: giorg
 """
 
@@ -27,56 +27,56 @@ The Stack is therefore costituita from a successione of record singoli that si p
 to vicenda in sequenza and where ciascuno of essi contiene the riferimento to 
 ciascun nodo corrispondente dell'Tree Binario.
 Therefore...
-    - Campo DATA : Riferimento to Nodo Tree Binario
-    - Campo NEXT : Riferimento to Record Singolo Successivo in the Stack
+ - Campo DATA : Riferimento to Nodo Tree Binario
+ - Campo NEXT : Riferimento to Record Singolo Successivo in the Stack
 '''
 
 class Stack:
-    
-    # ATTRIBUTES
-    _top=None
-    
-    # CONSTRUCTOR
-    'Default and Overloaded'
-    def __init__(self,_top=None):
-        self._top=_top
-        
-    # METHODS
-    
-    'PUSH'
-    def push(self,el):                          # T(n)
-        nuovoRecord=RecordSingolo(el,None)      # Θ(1)
-        nuovoRecord.setNext(self._top)          # Θ(1)
-        self._top=nuovoRecord                   # Θ(1)
-        return                                  # Θ(1)
+ 
+ # ATTRIBUTES
+ _top=None
+ 
+ # CONSTRUCTOR
+ 'Default and Overloaded'
+ def __init__(self,_top=None):
+ self._top=_top
+ 
+ # METHODS
+ 
+ 'PUSH'
+ def push(self,el): # T(n)
+ nuovoRecord=RecordSingolo(el,None) # Θ(1)
+ nuovoRecord.setNext(self._top) # Θ(1)
+ self._top=nuovoRecord # Θ(1)
+ return # Θ(1)
 
-    'POP'    
-    def pop(self):                              # T(n)
-        if self._top==None:                     # Θ(1)
-            return None                         # Θ(1)
-        else:                                   # Θ(1)
-            el=self._top.getData()              # Θ(1)
-            self._top=self._top.getNext()       # Θ(1)
-        return el                               # Θ(1)
-    
-    'LENGTH'
-    def length(self):                           # T(n)
-        refRecord=self._top                     # Θ(1)
-        the=0                                     # Θ(1)
-        while refRecord!=None:                  # n*Θ(1)+Θ(1)
-            the+=1                                # Θ(1)
-            refRecord=refRecord.getNext()       # Θ(1)
-        return the                                # Θ(1)
-    
-    'ToString'
-    def __str__(self):
-        p_corr=self._top
-        output=""
-        while p_corr!=None:
-            if p_corr.getNext()!=None:
-                output+="["+str(p_corr)+"]" + " - "
-            else:
-                output+="["+str(p_corr)+"]"
-            p_corr=p_corr.getNext()
-        return output
-        
+ 'POP' 
+ def pop(self): # T(n)
+ if self._top==None: # Θ(1)
+ return None # Θ(1)
+ else: # Θ(1)
+ el=self._top.getData() # Θ(1)
+ self._top=self._top.getNext() # Θ(1)
+ return el # Θ(1)
+ 
+ 'LENGTH'
+ def length(self): # T(n)
+ refRecord=self._top # Θ(1)
+ the=0 # Θ(1)
+ while refRecord!=None: # n*Θ(1)+Θ(1)
+ the+=1 # Θ(1)
+ refRecord=refRecord.getNext() # Θ(1)
+ return the # Θ(1)
+ 
+ 'ToString'
+ def __str__(self):
+ p_corr=self._top
+ output=""
+ while p_corr!=None:
+ if p_corr.getNext()!=None:
+ output+="["+str(p_corr)+"]" + " - "
+ else:
+ output+="["+str(p_corr)+"]"
+ p_corr=p_corr.getNext()
+ return output
+ 

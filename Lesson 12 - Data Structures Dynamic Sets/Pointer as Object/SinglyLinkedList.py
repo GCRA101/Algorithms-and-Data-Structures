@@ -9,145 +9,145 @@ from SingleRecord import RecordSingolo
 
 
 class ListaPuntataSingola:
-    
-    # ATTRIBUTES
-    _primoRecord=None
-    
-    # CONSTRUCTOR
-    def __init__(self,_primoRecord):
-        self._primoRecord=_primoRecord
-    
-    # METHODS
-    
-    'Setters'
-    def setPrimoRecord(self,_primoRecord):
-        self._primoRecord=_primoRecord
-    
-    'Getters'
-    def getPrimoRecord(self):
-        return self._primoRecord
-    
-    'ToString'
-    def __str__(self):
-        p_corr=self._primoRecord
-        output=""
-        while p_corr!=None:
-            if p_corr.getNext()!=None:
-                output+="["+str(p_corr) +"]" +" - "
-            else:
-                output+="["+str(p_corr) +"]"
-            p_corr=p_corr.getNext()
-        return output
-    
+ 
+ # ATTRIBUTES
+ _primoRecord=None
+ 
+ # CONSTRUCTOR
+ def __init__(self,_primoRecord):
+ self._primoRecord=_primoRecord
+ 
+ # METHODS
+ 
+ 'Setters'
+ def setPrimoRecord(self,_primoRecord):
+ self._primoRecord=_primoRecord
+ 
+ 'Getters'
+ def getPrimoRecord(self):
+ return self._primoRecord
+ 
+ 'ToString'
+ def __str__(self):
+ p_corr=self._primoRecord
+ output=""
+ while p_corr!=None:
+ if p_corr.getNext()!=None:
+ output+="["+str(p_corr) +"]" +" - "
+ else:
+ output+="["+str(p_corr) +"]"
+ p_corr=p_corr.getNext()
+ return output
+ 
 
-    'LETTURA - READING'
-    
-    '''For definizione, the lettura (reading) consente of ottenere the value
-    of a element to partire dal suo index all'inner of a list'''
-    def read(self,index):                                # T(n)
-        'Controllo input'
-        if index<0:                                      # Θ(1)
-            return None                                  # Θ(1)
-        'Inizializzazione record corrente'
-        p_corr=self._primoRecord                         # Θ(1)
-        'Search record corrispondente to index'
-        for the in range(0,index,1):                       # n*Θ(1)
-            p_corr=p_corr.getNext()                      # Θ(1)
-            if p_corr==None:                             # Θ(1)
-                return None                              # Θ(1)
-        'Restituzione value contained in the Record'
-        return p_corr.getData()                          # Θ(1)
-        
-    # Computational Cost: 
-    # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -l'index is maggiore del max'
-    # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -l'index is zero'
+ 'LETTURA - READING'
+ 
+ '''For definizione, the lettura (reading) consente of ottenere the value
+ of a element to partire dal suo index all'inner of a list'''
+ def read(self,index): # T(n)
+ 'Controllo input'
+ if index<0: # Θ(1)
+ return None # Θ(1)
+ 'Inizializzazione record corrente'
+ p_corr=self._primoRecord # Θ(1)
+ 'Search record corrispondente to index'
+ for the in range(0,index,1): # n*Θ(1)
+ p_corr=p_corr.getNext() # Θ(1)
+ if p_corr==None: # Θ(1)
+ return None # Θ(1)
+ 'Restituzione value contained in the Record'
+ return p_corr.getData() # Θ(1)
+ 
+ # Computational Cost: 
+ # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -l'index is maggiore del max'
+ # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -l'index is zero'
 
 
-    'RICERCA - SEARCH'
-    
-    '''For definizione, the search consente of ottenere l'index of a element
-     all'inner of a list to partire dal suo value'''
-    def search(self,key):                                # T(n)
-        p_corr=self._primoRecord                         # Θ(1)
-        the=0                                              # Θ(1)
-        while p_corr!=None and p_corr.getData()!=key:    # n*Θ(1)+Θ(1)
-            p_corr=p_corr.getNext()                      # Θ(1)
-            the+=1                                         # Θ(1)
-        if p_corr!=None:                                 # Θ(1)
-            return the                                     # Θ(1)
-        return None                                      # Θ(1)
-    
-    # Computational Cost: 
-    # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -the key not c'e' 
-    # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -the key is in first position
-    
-    
-    
-    'INSERIMENTO - INSERTION'
-    
-    '''For definizione, l'inserimento consente of add a element ad 
-    one specificato index inside thela list'''
-    
-    def insert(self,index,given):                        # T(n)
-    
-        'PREPARATIVI'
-        'Controllo input'
-        if index<0:                                     # Θ(1)
-            return                                      # Θ(1)
-        'Creazione nuovo record'
-        record=RecordSingolo(given)                      # Θ(1)
-        
-        'INSERIMENTO IN TESTA'
-        if index==0:                                    # Θ(1)
-            record.setNext(self.getPrimoRecord())       # Θ(1)
-            self.setPrimoRecord(record)                 # Θ(1)
-            return                                      # Θ(1)
-        
-        'INSERIMENTO IN MEZZO'    
-        p_corr=self._primoRecord                        # Θ(1)
-        for the in range(0,index-1,1):                    # k*Θ(1)+Θ(1)
-            p_corr=p_corr.getNext()                     # Θ(1)
-            if p_corr==None:                            # Θ(1)
-                return                                  # Θ(1)
-        record.setNext(p_corr.getNext())                # Θ(1)
-        p_corr.setNext(record)                          # Θ(1)
-        
-        return                                          # Θ(1)
-            
-        
-    # Computational Cost: 
-    # T(n)=Θ(1)+n*Θ(1)=O(n) (for worst case - index>indexMax)
-    # T(n)=Θ(1)+1*Θ(1)=Ω(1) (for best case - index<=0)
-    
-    
-    
-    'DELETION - DELETION'
-    
-    '''For definizione, the cancellazione consente of eliminare a element 
-    contenuto in a list on the base del suo index'''
-    
-    def delete (self,index):                              # T(n)
-      'Controllo input'
-      if index<0:                                         # Θ(1)
-          return                                          # Θ(1)
-      'Inizializzazione Record corrente'
-      p_corr=self._primoRecord                            # Θ(1)
-      
-      'Cancellazione first element'
-      if index==0:                                        # Θ(1)
-          self.setPrimoRecord(p_corr.getNext())           # Θ(1)
-      
-      'Cancellazione element Intermedio'
-      for the in range(0,index-1,1):                        # k*Θ(1)+Θ(1)
-          p_corr=p_corr.getNext()                         # Θ(1)
-          if p_corr==None:                                # Θ(1)
-              return                                      # Θ(1)
-      p_corr.setNext(p_corr.getNext().getNext())          # Θ(1)
-      
-      return                                              # Θ(1)
-        
-  
-  # Computational Cost: 
-  # T(n)=O(n) - Worst case (element from eliminare not esiste)
-  # T(n)=Ω(1) - Best case (element from eliminare is the first of the list)  
-    
+ 'RICERCA - SEARCH'
+ 
+ '''For definizione, the search consente of ottenere l'index of a element
+ all'inner of a list to partire dal suo value'''
+ def search(self,key): # T(n)
+ p_corr=self._primoRecord # Θ(1)
+ the=0 # Θ(1)
+ while p_corr!=None and p_corr.getData()!=key: # n*Θ(1)+Θ(1)
+ p_corr=p_corr.getNext() # Θ(1)
+ the+=1 # Θ(1)
+ if p_corr!=None: # Θ(1)
+ return the # Θ(1)
+ return None # Θ(1)
+ 
+ # Computational Cost: 
+ # Worst case - T(n)=Θ(1)+n*Θ(1)+Θ(1)=O(n) -the key not c'e' 
+ # Best case - T(n)=Θ(1)+1*Θ(1)+Θ(1)=Ω(1) -the key is in first position
+ 
+ 
+ 
+ 'INSERIMENTO - INSERTION'
+ 
+ '''For definizione, l'inserimento consente of add a element ad 
+ one specificato index inside thela list'''
+ 
+ def insert(self,index,given): # T(n)
+ 
+ 'PREPARATIVI'
+ 'Controllo input'
+ if index<0: # Θ(1)
+ return # Θ(1)
+ 'Creazione nuovo record'
+ record=RecordSingolo(given) # Θ(1)
+ 
+ 'INSERIMENTO IN TESTA'
+ if index==0: # Θ(1)
+ record.setNext(self.getPrimoRecord()) # Θ(1)
+ self.setPrimoRecord(record) # Θ(1)
+ return # Θ(1)
+ 
+ 'INSERIMENTO IN MEZZO' 
+ p_corr=self._primoRecord # Θ(1)
+ for the in range(0,index-1,1): # k*Θ(1)+Θ(1)
+ p_corr=p_corr.getNext() # Θ(1)
+ if p_corr==None: # Θ(1)
+ return # Θ(1)
+ record.setNext(p_corr.getNext()) # Θ(1)
+ p_corr.setNext(record) # Θ(1)
+ 
+ return # Θ(1)
+ 
+ 
+ # Computational Cost: 
+ # T(n)=Θ(1)+n*Θ(1)=O(n) (for worst case - index>indexMax)
+ # T(n)=Θ(1)+1*Θ(1)=Ω(1) (for best case - index<=0)
+ 
+ 
+ 
+ 'DELETION - DELETION'
+ 
+ '''For definizione, the cancellazione consente of eliminare a element 
+ contenuto in a list on the base del suo index'''
+ 
+ def delete (self,index): # T(n)
+ 'Controllo input'
+ if index<0: # Θ(1)
+ return # Θ(1)
+ 'Inizializzazione Record corrente'
+ p_corr=self._primoRecord # Θ(1)
+ 
+ 'Cancellazione first element'
+ if index==0: # Θ(1)
+ self.setPrimoRecord(p_corr.getNext()) # Θ(1)
+ 
+ 'Cancellazione element Intermedio'
+ for the in range(0,index-1,1): # k*Θ(1)+Θ(1)
+ p_corr=p_corr.getNext() # Θ(1)
+ if p_corr==None: # Θ(1)
+ return # Θ(1)
+ p_corr.setNext(p_corr.getNext().getNext()) # Θ(1)
+ 
+ return # Θ(1)
+ 
+ 
+ # Computational Cost: 
+ # T(n)=O(n) - Worst case (element from eliminare not esiste)
+ # T(n)=Ω(1) - Best case (element from eliminare is the first of the list) 
+ 

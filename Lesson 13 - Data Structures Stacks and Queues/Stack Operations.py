@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun  1 20:48:46 2023
+Created on Thu Jun 1 20:48:46 2023
 @author: giorg
 """
 
@@ -21,16 +21,16 @@ from Stack import Stack
 keys=[3,1,613,34,6,13,7,45,78]
 records=[]
 for the in range(0,len(keys),1):
-    records.append(RecordSingolo(keys[the]))    
+ records.append(RecordSingolo(keys[the])) 
 for the in range(0,len(records)-1,1):
-    records[the].setNext(records[the+1])
-    
+ records[the].setNext(records[the+1])
+ 
 'COSTRUZIONE PILA'
-stack = Stack()    
+stack = Stack() 
 
 'PUSH'
 for record in records:
-    stack.push(record)
+ stack.push(record)
 print("PILA COMPLETA\n" +str(stack))
 
 

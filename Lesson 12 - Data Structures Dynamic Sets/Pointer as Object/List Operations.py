@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Jun  1 20:48:46 2023
+Created on Thu Jun 1 20:48:46 2023
 @author: giorg
 """
 
@@ -22,12 +22,12 @@ from DoublyLinkedList import ListaPuntataDoppia
 # OPERAZIONI SU LISTE
 
 '''
-LISTE PUNTATE  
-- Lettura                       - Cost: O(n)
-- Search                       - Cost: O(n)
-- Inserimento (in testa)        - Cost: Θ(1)
-- Inserimento (in mezzo)        - Cost: Θ(1)
-- Eliminazione                  - Cost: O(n)
+LISTE PUNTATE 
+- Lettura - Cost: O(n)
+- Search - Cost: O(n)
+- Inserimento (in testa) - Cost: Θ(1)
+- Inserimento (in mezzo) - Cost: Θ(1)
+- Eliminazione - Cost: O(n)
 '''
 
 
@@ -42,16 +42,16 @@ keys=[1,32,54,2,5,3,7,6,4,11,23,26]
 records=[]
 # Concatenamento dei Records
 for the in range(0,len(keys),1):
-    records.append(RecordSingolo(keys[the]))
+ records.append(RecordSingolo(keys[the]))
 for the in range(0,len(records)-1,1):
-    records[the].setNext(records[the+1])
+ records[the].setNext(records[the+1])
 # Creazione list puntata (contiene the riferimento al record of testa)
 listaPuntataSing=ListaPuntataSingola(records[0])
 
 # Creazione list puntata (contiene the riferimento al record of testa)
 listaPuntataSing=ListaPuntataSingola(records[0])
 
-    
+ 
 'Creazione Record aggiuntivo'
 
 addRecord=RecordSingolo(15,None)
@@ -105,13 +105,13 @@ keys=[1,32,54,2,5,3,7,6,4,11,23,26]
 records=[]
 # Concatenamento dei Records
 for the in range(0,len(keys),1):
-    records.append(RecordDoppio(keys[the]))
+ records.append(RecordDoppio(keys[the]))
 for the in range(0,len(records),1):
-    if the>0:
-        records[the].setPrev(records[the-1])
-    if the<len(records)-1:
-        records[the].setNext(records[the+1])
-    
+ if the>0:
+ records[the].setPrev(records[the-1])
+ if the<len(records)-1:
+ records[the].setNext(records[the+1])
+ 
 # Creazione list puntata (contiene the riferimento al record of testa)
 listaPuntataDopp=ListaPuntataDoppia(records[0])
 

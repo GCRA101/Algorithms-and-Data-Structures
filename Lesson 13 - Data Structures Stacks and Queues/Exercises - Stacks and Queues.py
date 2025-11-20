@@ -2,7 +2,7 @@
 
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jun  2 22:10:30 2023
+Created on Fri Jun 2 22:10:30 2023
 
 @author: giorg
 """
@@ -49,58 +49,58 @@ Costruita servendosi of the Struttura Data of ARRAY
 '''
 
 class Queue:
-    
-    # ATTRIBUTES
-    _head=0
-    _tail=-1
-    nElem=0
-    array=[]
-    
-    # CONSTRUCTOR
-    'Default and Overloaded'
-    def __init__(self,maxDim):
-        self.array=[None]*maxDim
-        
-    # METHODS
+ 
+ # ATTRIBUTES
+ _head=0
+ _tail=-1
+ nElem=0
+ array=[]
+ 
+ # CONSTRUCTOR
+ 'Default and Overloaded'
+ def __init__(self,maxDim):
+ self.array=[None]*maxDim
+ 
+ # METHODS
 
-    'ENQUEUE'
-    def enqueue(self,el):                       # T(n)
-        'If l''array e'' pieno, not si fa nulla'
-        if self.nElem==len(self.array):
-            return
-        'Incremento dell''index of tail'
-        if 0<=self._tail<len(self.array)-1:
-            self._tail+=1
-        else:
-            self._tail=0
-        'Si aggiunge l''element in the nuova tail'
-        self.array[self._tail]=el
-        'Si aggiorna the contatore of the elements (cresce of a unita)'
-        self.nElem+=1
-        return
-    
+ 'ENQUEUE'
+ def enqueue(self,el): # T(n)
+ 'If l''array e'' pieno, not si fa nulla'
+ if self.nElem==len(self.array):
+ return
+ 'Incremento dell''index of tail'
+ if 0<=self._tail<len(self.array)-1:
+ self._tail+=1
+ else:
+ self._tail=0
+ 'Si aggiunge l''element in the nuova tail'
+ self.array[self._tail]=el
+ 'Si aggiorna the contatore of the elements (cresce of a unita)'
+ self.nElem+=1
+ return
+ 
 
-    'DEQUEUE'    
-    def dequeue(self):
-        'If l''array e'' vuoto, not si fa nulla'
-        if self.nElem==0:
-            return
-        'Si rimuove l''element contained in thela head corrente'
-        el=self.array[self._head]
-        self.array[self._head]=None
-        'Incremento dell''index of head'
-        if self._head<len(self.array)-1:
-            self._head+=1
-        else:
-            self._head=0
-        'Si aggiorna the contatore of the elements (decresce of a unita)'
-        self.nElem-=1
-        return el
-    
-    'ToString'
-    def __str__(self):
-        return str(self.array)
-        
+ 'DEQUEUE' 
+ def dequeue(self):
+ 'If l''array e'' vuoto, not si fa nulla'
+ if self.nElem==0:
+ return
+ 'Si rimuove l''element contained in thela head corrente'
+ el=self.array[self._head]
+ self.array[self._head]=None
+ 'Incremento dell''index of head'
+ if self._head<len(self.array)-1:
+ self._head+=1
+ else:
+ self._head=0
+ 'Si aggiorna the contatore of the elements (decresce of a unita)'
+ self.nElem-=1
+ return el
+ 
+ 'ToString'
+ def __str__(self):
+ return str(self.array)
+ 
 
 'TEST'
 
@@ -108,20 +108,20 @@ arrQueue=Queue(10)
 
 'Enqueuing'
 for the in range(3,40,2):
-    arrQueue.enqueue(the)   
-    print(arrQueue)
+ arrQueue.enqueue(the) 
+ print(arrQueue)
 'Dequeuing'
 for the in range(0,12,1):
-    n=arrQueue.dequeue()
-    print(arrQueue)
+ n=arrQueue.dequeue()
+ print(arrQueue)
 'Enqueing again'
 for the in range(3,40,2):
-    arrQueue.enqueue(the)   
-    print(arrQueue)
-    
-    
-    
-    
+ arrQueue.enqueue(the) 
+ print(arrQueue)
+ 
+ 
+ 
+ 
 # ESERCIZIO 2 ################################################################
 
 '''
@@ -147,51 +147,51 @@ Costruita servendosi of the Struttura Data of ARRAY
 '''
 
 class Stack:
-    
-    # ATTRIBUTES
-    _top=-1
-    nElem=0
-    array=[]
-    
-    # CONSTRUCTOR
-    'Default and Overloaded'
-    def __init__(self,maxDim):
-        self.array=[None]*maxDim
-        
-    # METHODS
+ 
+ # ATTRIBUTES
+ _top=-1
+ nElem=0
+ array=[]
+ 
+ # CONSTRUCTOR
+ 'Default and Overloaded'
+ def __init__(self,maxDim):
+ self.array=[None]*maxDim
+ 
+ # METHODS
 
-    'PUSH'
-    def push(self,el):                       # T(n)
-        'If l''array e'' pieno, not si fa nulla'
-        if self.nElem==len(self.array):
-            return
-        'Incremento dell''index of top'
-        self._top+=1
-        'Si aggiunge l''element in cima'
-        self.array[self._top]=el
-        'Si aggiorna the contatore of the elements (cresce of a unita)'
-        self.nElem+=1
-        return
-    
+ 'PUSH'
+ def push(self,el): # T(n)
+ 'If l''array e'' pieno, not si fa nulla'
+ if self.nElem==len(self.array):
+ return
+ 'Incremento dell''index of top'
+ self._top+=1
+ 'Si aggiunge l''element in cima'
+ self.array[self._top]=el
+ 'Si aggiorna the contatore of the elements (cresce of a unita)'
+ self.nElem+=1
+ return
+ 
 
-    'POP'    
-    def pop(self):
-        'If l''array e'' vuoto, not si fa nulla'
-        if self.nElem==0:
-            return
-        'Si rimuove l''element in cima'
-        el=self.array[self._top]
-        self.array[self._top]=None
-        'Decremento dell''index of top'
-        self._top-=1
-        'Si aggiorna the contatore of the elements (decresce of a unita)'
-        self.nElem-=1
-        return el
-    
-    'ToString'
-    def __str__(self):
-        return str(self.array)
-        
+ 'POP' 
+ def pop(self):
+ 'If l''array e'' vuoto, not si fa nulla'
+ if self.nElem==0:
+ return
+ 'Si rimuove l''element in cima'
+ el=self.array[self._top]
+ self.array[self._top]=None
+ 'Decremento dell''index of top'
+ self._top-=1
+ 'Si aggiorna the contatore of the elements (decresce of a unita)'
+ self.nElem-=1
+ return el
+ 
+ 'ToString'
+ def __str__(self):
+ return str(self.array)
+ 
 
 'TEST'
 
@@ -199,13 +199,13 @@ arrStack=Stack(10)
 
 'Pushing'
 for the in range(3,40,2):
-    arrStack.push(the)   
-    print(arrStack)
+ arrStack.push(the) 
+ print(arrStack)
 'Popping'
 for the in range(0,12,1):
-    n=arrStack.pop()
-    print(arrStack)
+ n=arrStack.pop()
+ print(arrStack)
 'Pushing again'
 for the in range(3,40,2):
-    arrStack.push(the)   
-    print(arrStack)
+ arrStack.push(the) 
+ print(arrStack)

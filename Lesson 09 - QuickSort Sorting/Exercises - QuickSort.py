@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Jun  2 22:10:30 2023
+Created on Fri Jun 2 22:10:30 2023
 
 @author: giorg
 """
@@ -42,22 +42,22 @@ A3=[0,0,0,0,0,0,2,2,2,2,2,]
 
 
 
-def partition(To,indStart,indEnd):         # T(n)
-    pivot=1                               # Θ(1)
-    the=indStart                            # Θ(1)
-    j=indEnd                              # Θ(1)
-    while True:                           # Θ(1)
-        while To[the]<pivot:                 # (n-k)*Θ(1)+Θ(1)
-            the+=1                          # Θ(1)
-        while To[j]>pivot:                 # k*Θ(1)+Θ(1)
-            j-=1                          # Θ(1)
-        if the<j:                           # Θ(1)
-            temp=To[j]                     # Θ(1)
-            To[j]=To[the]                     # Θ(1)
-            To[the]=temp                     # Θ(1)
-            the,j=the+1,j-1                   # Θ(1)
-        else:                             # Θ(1)
-            return                        # Θ(1)
+def partition(To,indStart,indEnd): # T(n)
+ pivot=1 # Θ(1)
+ the=indStart # Θ(1)
+ j=indEnd # Θ(1)
+ while True: # Θ(1)
+ while To[the]<pivot: # (n-k)*Θ(1)+Θ(1)
+ the+=1 # Θ(1)
+ while To[j]>pivot: # k*Θ(1)+Θ(1)
+ j-=1 # Θ(1)
+ if the<j: # Θ(1)
+ temp=To[j] # Θ(1)
+ To[j]=To[the] # Θ(1)
+ To[the]=temp # Θ(1)
+ the,j=the+1,j-1 # Θ(1)
+ else: # Θ(1)
+ return # Θ(1)
 
 
 # Input size: number n of elements in array To
@@ -81,9 +81,9 @@ partition(A3,0,len(A3)-1)
 
 '''
 Design an algorithm the piu' efficiente possibile for the seguente problema.
-  - Given aa matrice mxn, si vogliono rimescolare the suoi elements in a way that 
-    all the vectors row and all the vectors colonna siano sorted in senso 
-    not decrescente.'
+ - Given aa matrice mxn, si vogliono rimescolare the suoi elements in a way that 
+ all the vectors row and all the vectors colonna siano sorted in senso 
+ not decrescente.'
 '''
 # algorithm
 
@@ -93,54 +93,54 @@ Design an algorithm the piu' efficiente possibile for the seguente problema.
 
 # QuickSort Algorithm
 
-def partition(To,indStart,indEnd):                  # S(n)
-    pivot=To[indStart]                              # Θ(1)
-    the=indStart                                     # Θ(1)
-    j=indEnd                                       # Θ(1)
-    while True:                                    # n*Θ(1)+Θ(1) 
-        while To[the]<pivot:                          # Θ(1)
-            the=the+1                                  # Θ(1)
-        while To[j]>pivot:                          # Θ(1)
-            j=j-1                                  # Θ(1)
-        if the<j:                                    # Θ(1)
-            temp=To[the]                              # Θ(1)
-            To[the]=To[j]                              # Θ(1)
-            To[j]=temp                              # Θ(1)
-            the,j=the+1,j-1                            # Θ(1) 
-        else:                                      # Θ(1)
-            return j                               # Θ(1)
+def partition(To,indStart,indEnd): # S(n)
+ pivot=To[indStart] # Θ(1)
+ the=indStart # Θ(1)
+ j=indEnd # Θ(1)
+ while True: # n*Θ(1)+Θ(1) 
+ while To[the]<pivot: # Θ(1)
+ the=the+1 # Θ(1)
+ while To[j]>pivot: # Θ(1)
+ j=j-1 # Θ(1)
+ if the<j: # Θ(1)
+ temp=To[the] # Θ(1)
+ To[the]=To[j] # Θ(1)
+ To[j]=temp # Θ(1)
+ the,j=the+1,j-1 # Θ(1) 
+ else: # Θ(1)
+ return j # Θ(1)
 
 
-def quickSort(To,indStart,indEnd):                  # T(n)
-    if (indStart<indEnd):                          # Θ(1)
-        indMid=partition(To,indStart,indEnd)        # S(n)
-        quickSort(To,indStart,indMid)               # T(n/2)
-        quickSort(To,indMid+1,indEnd)               # T(n/2)
-    return 
+def quickSort(To,indStart,indEnd): # T(n)
+ if (indStart<indEnd): # Θ(1)
+ indMid=partition(To,indStart,indEnd) # S(n)
+ quickSort(To,indStart,indMid) # T(n/2)
+ quickSort(To,indMid+1,indEnd) # T(n/2)
+ return 
 
 
 # Sort Matrix Algorithm
 
 def sortMatrix(M):
-    m=len(M)                        # Θ(1)
-    n=len(M[0,:])                   # Θ(1)
-    for the in range(0,m,1):          # m*Θ(1)+Θ(1)
-        quickSort(M[the,:],0,n-1)     # Θ(n*logn)
-    for j in range(0,n,1):          # n*Θ(1)+Θ(1)
-        quickSort(M[:,j],0,m-1)     # Θ(m*logm)
-        
+ m=len(M) # Θ(1)
+ n=len(M[0,:]) # Θ(1)
+ for the in range(0,m,1): # m*Θ(1)+Θ(1)
+ quickSort(M[the,:],0,n-1) # Θ(n*logn)
+ for j in range(0,n,1): # n*Θ(1)+Θ(1)
+ quickSort(M[:,j],0,m-1) # Θ(m*logm)
+ 
 # Input size: n,m that is number rows/colonne matrice M
 # Computational Cost:
 # T(n,m)=Θ(1)+m*Θ(n*logn)+n*Θ(m*logm)=Θ(n*m*logn)+Θ(m*n*logm)
 # Assumendo n==m avremo... T(n)=Θ((n^2)*logn)
-        
+ 
 
 # Test
 
 M1=np.array([[3,2,6,11],[16,2,5,1],[61,6,6,6],[0,29,7,14]])
-M2=np.array([[0,0,0,11,1],[3,1,16,83,84],[44,31,22,34,11]])   
-M3=np.array([[1,6,3],[6,11,23],[0,0,82],[6,3,1],[65,33,12]])           
-        
+M2=np.array([[0,0,0,11,1],[3,1,16,83,84],[44,31,22,34,11]]) 
+M3=np.array([[1,6,3],[6,11,23],[0,0,82],[6,3,1],[65,33,12]]) 
+ 
 sortMatrix(M1)
 sortMatrix(M2)
 sortMatrix(M3)

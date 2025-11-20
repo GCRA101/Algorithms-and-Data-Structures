@@ -15,39 +15,39 @@ In a Tree Binario sorted, the figlio Sx viene first del figlio Dx.
 
 
 class Nodo:
-    
-    # ATTRIBUTES
-    value=None
-    figlioSx=None
-    figlioDx=None
-    
-    # CONSTRUCTOR
-    'Default and Overloaded'
-    def __init__(self,value=None, figlioSx=None, figlioDx=None):
-        self.value=value
-        self.figlioSx=figlioSx
-        self.figlioDx=figlioDx
-        
-        
-    # METHODS
-    
-    'Setters'
-    def setValore(self, value):
-        self.value=value
-    def setFiglioSx(self, figlioSx):
-        self.figlioSx=figlioSx
-    def setFiglioDx(self, figlioDx):
-        self.figlioDx=figlioDx
-    
-    'Getters'
-    def getValore(self):
-        return self.value
-    def getFiglioSx(self):
-        return self.figlioSx
-    def getFiglioDx(self):
-        return self.figlioDx
-    
-    'Overridden ToString()'
-    def __str__(self):
-        return (str(self.value))
-    
+ 
+ # ATTRIBUTES
+ value=None
+ figlioSx=None
+ figlioDx=None
+ 
+ # CONSTRUCTOR
+ 'Default and Overloaded'
+ def __init__(self,value=None, figlioSx=None, figlioDx=None):
+ self.value=value
+ self.figlioSx=figlioSx
+ self.figlioDx=figlioDx
+ 
+ 
+ # METHODS
+ 
+ 'Setters'
+ def setValore(self, value):
+ self.value=value
+ def setFiglioSx(self, figlioSx):
+ self.figlioSx=figlioSx
+ def setFiglioDx(self, figlioDx):
+ self.figlioDx=figlioDx
+ 
+ 'Getters'
+ def getValore(self):
+ return self.value
+ def getFiglioSx(self):
+ return self.figlioSx
+ def getFiglioDx(self):
+ return self.figlioDx
+ 
+ 'Overridden ToString()'
+ def __str__(self):
+ return (str(self.value))
+ 
