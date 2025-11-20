@@ -31,7 +31,7 @@ Mostrare that the Counting Sort is an algorithm for sorting stabile.
 # ESERCIZI0 2 ################################################################
 
 '''
-Qual'e' the tempo of esecuzione del Bucket Sort nel worst case?
+What is the tempo of esecuzione del Bucket Sort nel worst case?
 Quale semplice modifica than the algorithm consente of conservare tempo middle 
 lineare and cost Θ(nlogn) nel worst case?'
 '''
@@ -107,7 +107,7 @@ def bucketSortHeap(To):                                     # T(n)
     B=[0]*(k//delta)                                       # Θ(1)
     for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
         B[the]=[]                                            # Θ(1)
-    '3. Copia valori of To in corrispondenti buckets in B'
+    '3. Copy values of A to corresponding buckets in B'
     for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
         B[To[the]//(delta+1)].append(To[the])                    # Θ(1)
     '4. sorting elements buckets usando HEAPSORT'
@@ -147,7 +147,7 @@ bucketSortHeap(Abest)
 '''
 The Bucket Sort puo' essere modficato in mdo that l'sorting all'inner 
 of the lists sia executed through counting sort.
-Affinche' the cost than the algorithm sia lineare also nel worst case, 
+So that the cost than the algorithm sia lineare also nel worst case, 
 quale ipotesi bisogna fare on k?
 '''
 
@@ -171,7 +171,7 @@ Abest=[1,5,6,31,44,53,98,101]
 
 'function Counting Sort'
 
-'VERSIONE AVANZATA - Data Satellite'
+'ADVANCED VERSION - Satellite Data'
 
 def countingSort(To):                                          # T(n)
     '1. Search value intero massimo k'
@@ -182,18 +182,18 @@ def countingSort(To):                                          # T(n)
     k=To[imax]                                                 # Θ(1)
     '2. Inizializzazione auxiliary vector C'
     C=[0]*(k+1)                                               # Θ(1)
-    '3. Conteggio istanze valori uguali presenti in To'
+    '3. Counting instances of equal values present in A'
     for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
         C[To[the]]=C[To[the]]+1                                     # Θ(1)
     '4. Conteggio number values minori o uguali to the'    
     for the in range(1,len(C),1):                               # k*Θ(1)+Θ(1)
         C[the]=C[the]+C[the-1]                                      # Θ(1) 
-    '5. Sostituzione valori ordinati nel vector B'
+    '5. Substitution of sorted values in vector B'
     B=[0]*len(To)                                              # Θ(1)
     for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
         B[C[To[the]]-1]=To[the]                                     # Θ(1)
         C[To[the]]-=1                                            # Θ(1)
-    '6. Copia valori vector B in vector To'
+    '6. Copy values vector B in vector To'
     for the in range (0,len(To),1):                              # n*Θ(1)+Θ(1)
         To[the]=B[the]                                             # Θ(1) 
     return                                                    # Θ(1)    
@@ -214,7 +214,7 @@ def bucketSortCounting(To):                                 # T(n)
     B=[0]*(k//delta)                                       # Θ(1)
     for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
         B[the]=[]                                            # Θ(1)
-    '3. Copia valori of To in corrispondenti buckets in B'
+    '3. Copy values of A to corresponding buckets in B'
     for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
         B[To[the]//(delta+1)].append(To[the])                    # Θ(1)
     '4. sorting elements buckets usando HEAPSORT'

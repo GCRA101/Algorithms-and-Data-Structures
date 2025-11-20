@@ -25,7 +25,7 @@ fino ad ora (Insertion Sort, Selection Sort, Bubble Sort, Merge Sort, Quick
 Sort and Heap Sort). The fatto that si basi on a approccio diverso, the consente
 of having an even lower computational cost compared to the lower bound
 valido for the algorithms basati on the comparison. Esso, indeed, ha cost Θ(n) 
-anziche' Θ(nlogn).
+instead of Θ(nlogn).
 The vantaggio that ha rispetto al suo simile algorithm of COUNTING SORT sta nel 
 fatto that esso not ha bisogno of alcun limite/condizione on the value of k (
 that is, the value massimo contained in the vector not deve essere minore del 
@@ -35,10 +35,10 @@ number of elements contained in the vector medesimo)
 The caratteristiche principali than the algorithm BUCKET SORT are the following:
     - ITERATIVE Algorithm (NON RICORSIVO!!)
     - NOT IN-PLACE sorting process
-    - Funziona only for valori interi positivi 
+    - Works only for positive integer values 
         - if not siano interi e/o positivi, it is necessary to make them 
           such first of eseguire the algorithm and poi ritrasformarli nel loro
-          value originale'
+          original value'
     - I values nel vector in input devono essere distribuiti in a way 
       uniforme
     
@@ -76,7 +76,7 @@ def bucketSort(To):                                         # T(n)
     B=[0]*(k//delta)                                       # Θ(1)
     for the in range(0,len(B),1):                            # k//delta*Θ(1)+Θ(1)
         B[the]=[]                                            # Θ(1)
-    '3. Copia valori of To in corrispondenti buckets in B'
+    '3. Copy values of A to corresponding buckets in B'
     for the in range(0,len(To),1):                            # n*Θ(1)+Θ(1)
         B[To[the]//(delta+1)].append(To[the])                    # Θ(1)
     '4. sorting elements buckets usando selection sort'

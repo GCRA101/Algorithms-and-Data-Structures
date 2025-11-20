@@ -231,7 +231,7 @@ plt.show()
 # worst case/MIGLIORE: The two cases coincide also in this algorithm. 
 # One would be tempted to identify, as worst case, the case where n<100, 
 # such that the for loop would be skipped, stopping at the line of code 
-# return 1....ma the notazione asintotica vale only for valori grandi 
+# return 1....ma the asymptotic notation holds only for large values 
 # dell'input (n->infinito)...so both the worst case and the best case 
 # devono essere valutati for n->infinito.
 # Therefore, in both cases, the algorithm terminates at the row return 1!

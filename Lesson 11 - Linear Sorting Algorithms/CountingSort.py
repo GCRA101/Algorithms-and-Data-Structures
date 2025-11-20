@@ -25,7 +25,7 @@ fino ad ora (Insertion Sort, Selection Sort, Bubble Sort, Merge Sort, Quick
 Sort and Heap Sort). The fatto that si basi on a approccio diverso, the consente
 of having an even lower computational cost compared to the lower bound
 valido for the algorithms basati on the comparison. Esso, indeed, ha cost Θ(n) 
-anziche' Θ(nlogn).'
+instead of Θ(nlogn).'
 
 * Caratteristiche Principali *
 The caratteristiche principali than the algorithm COUNTING SORT are the following:
@@ -35,17 +35,17 @@ The caratteristiche principali than the algorithm COUNTING SORT are the followin
       (presenza of data satellite/metadata)
     - Processo of sorting IN LOCO (versione Classica) and NON IN LOCO 
       (versione Avanzata)
-    - Funziona only for valori interi positivi 
+    - Works only for positive integer values 
         - if not siano interi e/o positivi, it is necessary to make them 
           such first of eseguire the algorithm and poi ritrasformarli nel loro
-          value originale'
+          original value'
     
 - Computational Cost: Θ(n)
 
 '''
 
 
-'VERSIONE CLASSICA - No Data Satellite'
+'CLASSIC VERSION - No Satellite Data'
 
 def countingSortv1(To):                                        # T(n)
     '1. Search value intero massimo k'
@@ -56,10 +56,10 @@ def countingSortv1(To):                                        # T(n)
     k=To[imax]                                                 # Θ(1)
     '2. Inizializzazione auxiliary vector C'
     C=[0]*(k+1)                                               # Θ(1)
-    '3. Conteggio istanze valori uguali presenti in To'
+    '3. Counting instances of equal values present in A'
     for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
         C[To[the]]=C[To[the]]+1                                     # Θ(1)
-    '4. Sostituzione valori ordinati nel vector To'
+    '4. Substitution of values ordinati nel vector To'
     j=0                                                       # Θ(1)
     for the in range(0,len(C),1):                               # k*Θ(1)+Θ(1)
         while C[the]>0:                                         # tk**Θ(1)+Θ(1)
@@ -69,7 +69,7 @@ def countingSortv1(To):                                        # T(n)
     return                                                    # Θ(1)
 
 
-'VERSIONE AVANZATA - Data Satellite'
+'ADVANCED VERSION - Satellite Data'
 
 def countingSortv2(To):                                        # T(n)
     '1. Search value intero massimo k'
@@ -80,18 +80,18 @@ def countingSortv2(To):                                        # T(n)
     k=To[imax]                                                 # Θ(1)
     '2. Inizializzazione auxiliary vector C'
     C=[0]*(k+1)                                               # Θ(1)
-    '3. Conteggio istanze valori uguali presenti in To'
+    '3. Counting instances of equal values present in A'
     for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
         C[To[the]]=C[To[the]]+1                                     # Θ(1)
     '4. Conteggio number values minori o uguali to the'    
     for the in range(1,len(C),1):                               # k*Θ(1)+Θ(1)
         C[the]=C[the]+C[the-1]                                      # Θ(1) 
-    '5. Sostituzione valori ordinati nel vector B'
+    '5. Substitution of sorted values in vector B'
     B=[0]*len(To)                                              # Θ(1)
     for the in range(0,len(To),1):                               # n*Θ(1)+Θ(1)
         B[C[To[the]]-1]=To[the]                                     # Θ(1)
         C[To[the]]-=1                                            # Θ(1)
-    '6. Copia valori vector B in vector To'
+    '6. Copy values vector B in vector To'
     for the in range (0,len(To),1):                              # n*Θ(1)+Θ(1)
         To[the]=B[the]                                             # Θ(1) 
     return                                                    # Θ(1)    

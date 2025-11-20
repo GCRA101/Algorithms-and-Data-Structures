@@ -29,7 +29,7 @@ computazionale.
 # Considerazioni
 '''
 In a Heap the value minimo it will always be from ricercare between the leaves dell'tree
-(that is between the elements/valori that not presentano figli). Quando l'tree e'
+(that is between the elements/valori that do not have children). When the tree is
 complete the leaves will all be concentrated at the last level, while when
 the tree is incomplete there will also be leaves at the level immediately 
 preceding the last.

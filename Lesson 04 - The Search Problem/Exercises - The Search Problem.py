@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 '''
 Given to array To of n values numerici and two values estremi to and b, tale that 
-to<b, creare two algoritmi for the conteggio dei valori contained in thel'array
+to<b, creare two algorithms for counting the values contained in the array
 that siano compresi between to and b.
 One algorithm must be based on sequential search (Linear Search) while
 the other on binary search (Binary Search)

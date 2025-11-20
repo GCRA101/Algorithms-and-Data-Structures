@@ -665,7 +665,7 @@ class AlberoRossoNero:
     
         '** CASO BASE **'
         # If the nodo coincide with the root dell'tree, enough cambiare
-        # the suo colore from ROSSO to NERO and l'aggiustamento dell'tree e'
+        # the suo colore from ROSSO to NERO and l'aggiustamento delthe tree is
         # finalmente concluso.
         # This implica also that l'tree avra' adesso a b-altezza
         # of a'unita' superiore rispetto to that that aveva first dell'

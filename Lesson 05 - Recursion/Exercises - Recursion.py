@@ -36,7 +36,7 @@ def es1(n,k):                     # T(k)
 # Input size: value del coefficiente intero k
 # The worst case and the best case coincidono. Indeed, also if for k=0,
 # the computational cost would be = Θ(1), the asymptotic notation is calculated
-# only for valori grandi dell'input (the.e. k->∞) for which the computational cost
+# only for large values dell'input (the.e. k->∞) for which the computational cost
 # is greater than Θ(1) and cresce as the value of ... grows k.
 # Computational Cost: T(k)=Θ(1)+T(k-1) -> Recurrence Equations
 
@@ -148,7 +148,7 @@ The algorithm deve ritornare a output of tipo boolean depending on whether the a
 input sia palindrome o less.
 Cases base: 1) differenza indices estremi subArray <=1 
            2) values at the extreme indices are different
-Recursive step: confronto valori indices estremi for indices that si avvicinano
+Recursive step: comparison of extreme index values for indices that approach
                  verso the punto medio dell'array'''
 
 'Best Case'

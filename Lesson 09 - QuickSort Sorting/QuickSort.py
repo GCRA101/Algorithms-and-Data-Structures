@@ -29,7 +29,7 @@ Esso si differenzia rispetto althe algorithm of MergeSort nei seguenti punti:
             - The elements del vector vengono riordinati IN LOCO and what'
               consente of aver a MIGLIORE complexity' SPAZIALE
     - Sadvantage: Alto Computational Cost nel worst case
-            - Nel worst case, the computational cost is O(n^2) anziche' 
+            - Nel worst case, the computational cost is O(n^2) instead of 
               O(nlogn). The worst case, in any case, can be easily
               evitato andando to RANDOMIZZARE/DISORDINARE the given as input'
 Conclusione: the QuickSort is MEGLIO del MergeSort

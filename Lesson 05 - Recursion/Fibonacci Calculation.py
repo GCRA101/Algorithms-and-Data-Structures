@@ -31,7 +31,7 @@ def fibRicorsivo(n):
 
 
 # Input size: value del number n
-# Best case and worst case coincide for valori grandi of n (the unici
+# Best case and worst case coincide for large values of n (the unici
 # validi for the calcolo of notazione asintotica).
 # Computational Cost: T(n)=Θ(1)+T(n-1)+T(n-2) -> Recurrence Equations
 
@@ -49,7 +49,7 @@ def fibIterativo(n):
     return fib                           # Θ(1)
 
 # Input size: value del number n
-# Best case and worst case coincide for valori grandi of n (the unici
+# Best case and worst case coincide for large values of n (the unici
 # validi for the calcolo of notazione asintotica).
 # Computational Cost: T(n)=Θ(1)+n*Θ(1)+Θ(1)=Θ(n)    
 
