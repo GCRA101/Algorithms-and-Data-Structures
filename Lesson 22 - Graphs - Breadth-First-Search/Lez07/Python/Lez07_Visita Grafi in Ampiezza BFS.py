@@ -27,7 +27,7 @@ def BFS_la(u,G):                                            # T(n)
         for y in G[u]:                                      # k*Θ(1)+Θ(1)
             if padri[y] == -1:                              # Θ(1)
                 padri[y] = u                                # Θ(1)
-                dist[y] = dist[u] + 1                       # Θ(1)                                           # Θ(1)
+                dist[y] = dist[u] + 1                       # Θ(1)
                 q.append(y)                                 # Θ(1)
         print(str(u) + " <-- " + str(q))                    # Θ(1)
     return padri, dist                                      # Θ(1)
@@ -85,31 +85,31 @@ L_gnc={0: [1,2],
        6: []}
 
 'Grafo Indiretto Connesso'
-L_gc={
-      "Baker Street":   ["Regent's Park"],
-      "Bond Street":    ["Green Park", "Marble Arch", "Oxford Circus"],
-      "Chancery Lane":  ["Holborn"],
-      "Charing Cross":  ["Piccadilly Circus","Waterloo"],
-      "Covent Garden":  ["Holborn", "Leicester Sq"],
-      "Green Park":     ["Bond Street", "Oxford Circus", "Piccadilly Circus", 
-                         "Victoria"],
-      "Holborn":        ["Chancery Lane", "Covent Garden", "Oxford Circus", 
-                         "Russell Sq"],
-      "King's Cross":   ["Russell Sq", "Warren Street"],
-      "Leicester Sq":   ["Covent Garden", "Piccadilly Circus"],
-      "Marble Arch":    ["Bond Street"],
-      "Oxford Circus":  ["Bond Street", "Green Park", "Holborn", 
-                         "Piccadilly Circus", 
-                         "Regent's Park", "Warren Street"],
-      "Piccadilly Circus": ["Charing Cross", "Green Park", "Leicester Sq", 
-                            "Oxford Circus"],
-      "Pimlico":        ["Victoria"],
-      "Regent's Park":  ["Baker Street", "Oxford Circus"],
-      "Russell Sq":     ["Holborn", "King's Cross"],
-      "Victoria":       ["Green Park","Pimlico"],
-      "Warren Street":  ["King's Cross", "Oxford Circus"],
-      "Waterloo":       ["Charing Cross"]
-     }
+L_gc = {
+    "Baker Street":      ["Regent's Park"],
+    "Bond Street":       ["Green Park", "Marble Arch", "Oxford Circus"],
+    "Chancery Lane":     ["Holborn"],
+    "Charing Cross":     ["Piccadilly Circus", "Waterloo"],
+    "Covent Garden":     ["Holborn", "Leicester Sq"],
+    "Green Park":        ["Bond Street", "Oxford Circus", "Piccadilly Circus", 
+                          "Victoria"],
+    "Holborn":           ["Chancery Lane", "Covent Garden", "Oxford Circus", 
+                          "Russell Sq"],
+    "Kings Cross":       ["Russell Sq", "Warren Street"],
+    "Leicester Sq":      ["Covent Garden", "Piccadilly Circus"],
+    "Marble Arch":       ["Bond Street"],
+    "Oxford Circus":     ["Bond Street", "Green Park", "Holborn", 
+                          "Piccadilly Circus","Regent's Park", 
+                          "Warren Street"],
+    "Piccadilly Circus": ["Charing Cross", "Green Park", "Leicester Sq", 
+                          "Oxford Circus"],
+    "Pimlico":           ["Victoria"],
+    "Regent's Park":     ["Baker Street", "Oxford Circus"],
+    "Russell Sq":        ["Holborn", "Kings Cross"],
+    "Victoria":          ["Green Park", "Pimlico"],
+    "Warren Street":     ["Kings Cross", "Oxford Circus"],
+    "Waterloo":          ["Charing Cross"],
+}
 
 
 
@@ -195,11 +195,11 @@ print("BFS con Liste di Adiacenza - Grafo Indiretto Connesso: "+"\n"+
 # DFS con MATRICE di ADIACENZA
 
 'Grafo Indiretto Non Connesso'
-vm0=BFS_ma(0,MM_gnc, MMgnc_keys) # Partendo da 0 si possono visitare solo i nodi 1 e 2
-vm1=BFS_ma(1,MM_gnc, MMgnc_keys) # Partendo da 1 si possono visitare tutti i nodi tranne l'1
-vm2=BFS_ma(2,MM_gnc, MMgnc_keys) # Partendo da 2 si possono visitare tutti i nodi tranne l'1
-vm3=BFS_ma(3,MM_gnc, MMgnc_keys) # Partendo da 3 si possono visitare tutti i nodi tranne l'1
-vm4=BFS_ma(4,MM_gnc, MMgnc_keys) # Partendo da 4 si puo' visitare solo il nodo 4
+vm0=BFS_ma(0,MM_gnc, MMgnc_keys)
+vm1=BFS_ma(1,MM_gnc, MMgnc_keys)
+vm2=BFS_ma(2,MM_gnc, MMgnc_keys)
+vm3=BFS_ma(3,MM_gnc, MMgnc_keys)
+vm4=BFS_ma(4,MM_gnc, MMgnc_keys)
 
 print("BFS con Matrice di Adiacenza - Grafo Indiretto Non Connesso: "+"\n"+
       "0 -> "+ str(vm0)+"\n"+
