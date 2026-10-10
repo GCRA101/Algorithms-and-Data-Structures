@@ -438,14 +438,17 @@ print("\n---------------------------------------------------------------"+"\n"+
       "    - Vettore dei Nodi Visitati: "+ str(prim_v01[0]) +"\n"+
       "    - Vettore dei Padri: "+ str(prim_v01[1]) +"\n"+
       "    - Vettore dei Costi: "+ str(prim_v01[2]) +"\n"+
+      "    - Costo Minimo Totale: "+ str(sum(prim_v01[2].values())) +"\n"+
       " > Algoritmo di Prim con Vettore [O(n^2)]: "+"\n"+
       "    - Vettore dei Nodi Visitati: "+ str(prim_v02[0]) +"\n"+
       "    - Vettore dei Padri: "+ str(prim_v02[1]) +"\n"+
       "    - Vettore dei Costi: "+ str(prim_v02[2]) +"\n"+
+      "    - Costo Minimo Totale: "+ str(sum(prim_v02[2].values())) +"\n"+
       " > Algoritmo di Prim con Heap Minimo [O((n+m)*logn)]: "+"\n"+
       "    - Vettore dei Nodi Visitati: "+ str(prim_v03[0]) +"\n"+
       "    - Vettore dei Padri: "+ str(prim_v03[1]) +"\n"+
-      "    - Vettore dei Costi: "+ str(prim_v03[2])+"\n")
+      "    - Vettore dei Costi: "+ str(prim_v03[2])+"\n"+
+      "    - Costo Minimo Totale: "+ str(sum(prim_v03[2].values())))
 
 
 'Grafo Indiretto Connesso - Esempio Roman Road Network  ----------------------'
@@ -461,14 +464,17 @@ print("-----------------------------------------------------------------"+"\n"+
       "    - Vettore dei Nodi Visitati: "+ str(prim_v01[0]) +"\n"+
       "    - Vettore dei Padri: "+ str(prim_v01[1]) +"\n"+
       "    - Vettore dei Costi: "+ str(prim_v01[2]) +"\n"+
+      "    - Costo Minimo Totale: "+ str(sum(prim_v01[2].values())) +"\n"+      
       " > Algoritmo di Prim con Vettore [O(n^2)]: "+"\n"+
       "    - Vettore dei Nodi Visitati: "+ str(prim_v02[0]) +"\n"+
       "    - Vettore dei Padri: "+ str(prim_v02[1]) +"\n"+
       "    - Vettore dei Costi: "+ str(prim_v02[2]) +"\n"+
+      "    - Costo Minimo Totale: "+ str(sum(prim_v02[2].values())) +"\n"+      
       " > Algoritmo di Prim con Heap Minimo [O((n+m)*logn)]: "+"\n"+
       "    - Vettore dei Nodi Visitati: "+ str(prim_v03[0]) +"\n"+
       "    - Vettore dei Padri: "+ str(prim_v03[1]) +"\n"+
-      "    - Vettore dei Costi: "+ str(prim_v03[2])+"\n")
+      "    - Vettore dei Costi: "+ str(prim_v03[2])+"\n"+
+      "    - Costo Minimo Totale: "+ str(sum(prim_v03[2].values())) +"\n")
 
 
 'Grafo Indiretto Connesso - Esempio Matrix  ----------------------------------'
@@ -484,11 +490,14 @@ print("-----------------------------------------------------------------"+"\n"+
       "    - Vettore dei Nodi Visitati: "+ str(prim_v01[0]) +"\n"+
       "    - Vettore dei Padri: "+ str(prim_v01[1]) +"\n"+
       "    - Vettore dei Costi: "+ str(prim_v01[2]) +"\n"+
+      "    - Costo Minimo Totale: "+ str(sum(prim_v01[2].values())) +"\n"+  
       " > Algoritmo di Prim con Vettore [O(n^2)]: "+"\n"+
       "    - Vettore dei Nodi Visitati: "+ str(prim_v02[0]) +"\n"+
       "    - Vettore dei Padri: "+ str(prim_v02[1]) +"\n"+
       "    - Vettore dei Costi: "+ str(prim_v02[2]) +"\n"+
+      "    - Costo Minimo Totale: "+ str(sum(prim_v02[2].values())) +"\n"+    
       " > Algoritmo di Prim con Heap Minimo [O((n+m)*logn)]: "+"\n"+
       "    - Vettore dei Nodi Visitati: "+ str(prim_v03[0]) +"\n"+
       "    - Vettore dei Padri: "+ str(prim_v03[1]) +"\n"+
-      "    - Vettore dei Costi: "+ str(prim_v03[2])+"\n")
+      "    - Vettore dei Costi: "+ str(prim_v03[2])+"\n"+
+      "    - Costo Minimo Totale: "+ str(sum(prim_v03[2].values())) +"\n")
