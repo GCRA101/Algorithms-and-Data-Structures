@@ -219,14 +219,23 @@ def estraiMin(N,C,pos):                         # T(n)
     N[0] = N[ultimo]                            # Θ(1)
     C[0] = C[ultimo]                            # Θ(1)
     pos[N[0]] = 0                               # Θ(1)
-    N.pop()                                     # Θ(1)
-    C.pop()                                     # Θ(1)
-    del pos[u]                                  # Θ(1)
+    N.pop()                                     # Θ(1) (A)
+    C.pop()                                     # Θ(1) (A)
+    del pos[u]                                  # Θ(1) (A)
     if N:                                       # Θ(1)
         heapify(N,C,pos,len(N),0)               # O(logn)
     return u                                    # Θ(1)
 
 # Costo Computazionale: O(logn) - un heapify dalla radice ad una foglia
+
+# Commenti
+# (A): N e C sono LISTE e pos e' una HASH TABLE. Questo e' un dettaglio 
+#      fondamentale! Se fossero VETTORI, la cancellazione del loro primo
+#      elemento avrebbe un costo Θ(n). Questo farebbe crescere il costo
+#      di estraiMin da Θ(logn) a Θ(n) e, quindi, il costo dell'intero algoritmo
+#      da O((n+m)*logn) a O((n^2) annullando il beneficio di utilizzare la 
+#      struttura dati HEAP! IMPORTANTISSIMO!!
+
 
 # DECREMENTA CHIAVE - abbassa la chiave (Dist) di un nodo e risale l'Heap
 def decrementaChiave(N,D,pos,v,nuovaChiave):    # T(n)
