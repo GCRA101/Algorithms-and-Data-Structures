@@ -448,16 +448,101 @@ def MinimumSpanningTree_Kruskal_v02b(E,u):                  # T(n,m)
 
 # ALGORITMO di KRUSKAL - v03 - Vettore Archi Ordinato + Vettore Comp. Connesse
 # ----------------------------------------------------------------------------
-# def MinimumSpanningTree_Kruskal_v03(E,u):                   # T(n,m)
+def MinimumSpanningTree_Kruskal_v03(E,u):                   # T(n,m)
+    sol = []                                                # Θ(1)         (A)
+    E_ordinato = copy.deepcopy(E)                           # Θ(m)         (B) 
+    mergeSort(E_ordinato, 0, len(E_ordinato)-1)             # Θ(mlogn)     (C)
+    nodiSet = set()                                         # Θ(1)         (D)
+    for e in E_ordinato:                                    # m*Θ(1)+Θ(1)  (E)
+        if e.u not in nodiSet:                              # Θ(1)         
+            nodiSet.add(e.u)                                # Θ(1)
+        if e.v not in nodiSet:                              # Θ(1)
+            nodiSet.add(e.v)                                # Θ(1)
+    nodi = [None]*len(nodiSet)                              # Θ(n)         (F)
+    i = 0                                                   # Θ(1)
+    for nodo in nodiSet:                                    # n*Θ(1)+Θ(1)
+        nodi[i] = nodo                                      # Θ(1)
+        i = i + 1                                           # Θ(1)
+    E_list = ListaLinkata(E_ordinato[0])                    # Θ(1)         (G)
+    for i in range(1, len(E_ordinato)):                     # (m-1)*Θ(1)
+        E_list.append(E_ordinato[i])                        # Θ(1) 
+    cc = {nodo:-1 for nodo in nodi}                         # Θ(n)         (H)
+    for i in range(0,len(nodi)):                            # n*Θ(1)+Θ(1)  (I)
+        cc[nodi[i]]=i                                       # Θ(1) 
+    while len(E_list) != 0:                                 # m*Θ(1)+Θ(1)  (J)                       
+        e_min = E_list.head.valore                          # Θ(1)         (K)                   
+        E_list.remove(e_min)                                # Θ(1)         (L)                          
+        if cc[e_min.u]!=cc[e_min.v]:                        # Θ(1)         (M) 
+            sol.append(e_min)                               # Θ(1)         (N) 
+            a = min(cc[e_min.u], cc[e_min.v])               # Θ(1)         (O) 
+            b = max(cc[e_min.u], cc[e_min.v])               # Θ(1)
+            for i in range(0,len(nodi)):                    # n*Θ(1)+Θ(1)  (P)
+                if cc[nodi[i]] == b:                        # Θ(1) 
+                    cc[nodi[i]] = a                         # Θ(1) 
+    return sol
+    
+# Costo Computazionale: T(n,m) = Θ(m)+Θ(mlogn)+Θ(m)+Θ(n)+Θ(n)+Θ(m)+Θ(n)+Θ(n)+
+#                                +m*[Θ(n)+Θ(1)] = Θ(mlogn + n^2)
+
+# Commenti
+# (A): sol, ovvero la lista degli archi dell'albero di minima copertura di
+#      Kruskal viene definita come una lista. In tal modo, il costo di
+#      inizializzazione resta Θ(1) anziche' Θ(n) (vettore).
+# (B): Il Vettore degli Archi passato in input viene ricopiato in un nuovo
+#      vettore cosi che tutte le operazioni eseguite su di esso non vadano a
+#      modificare l'originale.
+# (C): Il Vettore degli Archi viene ordinato per ordine di costo crescente
+#      utilizzando l'algoritmo MergeSort - algoritmo ottimale di ordinamento
+#      basato sui confronti.
+# (D): L'estrazione dei nodi dal Vettore degli Archi richiederebbe costo Θ(n*m)
+#      se utilizzassimo un vettore per immagazzinare i nodi. Infatti, si
+#      scorrono tutti gli archi estraend i nodi u e v corrispondenti e li si 
+#      ricercano scorrendo ogni volta l'intero vettore dei nodi.
+#      Usando un HashSet per immagazzinare i nodi, invece, il costo della
+#      ricerca diviene Θ(1). Quindi l'intera costruzione del vettore dei nodi
+#      costa semplicemente Θ(m).
+# (E): Si estraggono i nodi dal Vettore degli Archi e li si immagazzinano nel
+#      Vettore dei Nodi.
+# (F): A questo punto e' possibile ri-costruire il vettore dei nodi copiandoli
+#      direttamente dall'HashSet creato con costo complessivo Θ(n)
+# (G): Se vogliamo eliminare dal Vettore degli Archi l'arco di costo minimo ad
+#      ogni iterazione, ad ogni iterazione il costo di tale eliminazione sara'
+#      Θ(n). Troppo!
+#      O scorriamo il vettore con un indice (vedi v02a sopra) o convertiamo il
+#      vettore in una lista linkata per la quale l'eliminazione del primo
+#      elemento (ovver arco di costo minimo) ha costo unitario Θ(1).
+# (H): Dato che e' necessario eseguire ricerche di nodi all'interno del Vettore
+#      delle Componenti Connesse cc...se vogliamo evitare che ciascuna di esse
+#      comporti costo O(n) dobbiamo rappresentare la struttura dati come una
+#      Hash Table...per cui il costo della ricerca diviene unitario Θ(1).
+# (I): Si scorrono tutti i nodi (ovvero le chiavi della HashTable cc) e si 
+#      assegna un numero intero crescente a ciascuno all'interno di cc.
+#      Ovvero, ad ogni nodo si associa una componente connessa di indice intero
+#      e che corrisponde al nodo stesso.
+# (J): Si scorrono tutti gli archi contenuti nella lista linkata degli archi
+# (K): Si estra la testa della lista linkata che corrisponde all'arco di costo
+#      minimo
+# (L): Si rimuove la testa della lista linkata. L'operazione e' di costo Θ(1).
+# (M): Se la componente connessa dei due nodi u e v dell'arco e' la stessa,vuol
+#      dire che i due nodi sono gia' connessi e, quindi, aggiungere l'arco all'
+#      albero di minima copertura genererebbe un ciclo, il che' non e'
+#      consentito. Altrimenti prosegui come segue...
+# (N): Aggiungi l'arco minimo all'albero minimo di copertura
+# (O): Ricava la componente di indice minimo (a) e quella di indice massimo (b)
+#      L'algoritmo di Kruskal prevede, come convenzione, che quando due
+#      componenti a e b disconnesse vengono connesse, la nuova componente
+#      risultante sara' a dove a<b.
+# (P): Scorri l'intera Hash Table delle componenti connesse (dimensione n =
+#      numero di nodi) e per ogni nodo aggiorna la componente corrispondente.
 
 
 
 # # ALGORITMO di KRUSKAL - v04 - Vettore Archi Ordinato + Lista Comp. Connesse
 # # ----------------------------------------------------------------------------
-# def MinimumSpanningTree_Kruskal_v04(E,u):                   # T(n,m)
+def MinimumSpanningTree_Kruskal_v04(E,u):                   # T(n,m)
+    return [ArcoPesato('Roma','Iulius',250)]
 
-
-
+    
 
 
 " ESEMPI ********************************************************************"
@@ -495,65 +580,89 @@ E_gc_Numeric = [
 Costo degli Archi -> Costo realizzazione connessione in migliaia di Sesterzi
 ''' 
 E_gc_Roman = [
-    # --- PLAIN ROADS (green) ---
-    ArcoPesato("Roma",              "Capua",              190),
-    ArcoPesato("Massilia",          "Narbo",              150),
-    ArcoPesato("Narbo",             "Burdigala",          300),
-    ArcoPesato("Emerita Augusta",   "Corduba",            250),
-    # --- HILL ROADS (blue) ---
-    ArcoPesato("Mediolanum",        "Ravenna",            220),
-    ArcoPesato("Lugdunum",          "Burdigala",          810),
-    ArcoPesato("Corduba",           "Carthago Nova",      500),
-    ArcoPesato("Lutetia",           "Narbo",             1252),
-    ArcoPesato("Vindobona",         "Augusta Treverorum",2939),
-    # --- MOUNTAIN / ALPINE ROADS (red) ---
-    ArcoPesato("Roma",              "Mediolanum",        1680),
-    ArcoPesato("Mediolanum",        "Colonia Agrippina", 1930),
-    ArcoPesato("Colonia Agrippina", "Aquincum",          3330),
-    ArcoPesato("Colonia Agrippina", "Augusta Treverorum", 700),
-    ArcoPesato("Aquincum",          "Vindobona",          500),
-    ArcoPesato("Aquincum",          "Byzantium",           45),
-    # --- SEA LANES (purple) ---
-    ArcoPesato("Roma",              "Massilia",            20),
-    ArcoPesato("Roma",              "Carthago",            18),
-    ArcoPesato("Roma",              "Alexandria",          59),
-    ArcoPesato("Capua",             "Carthago",            17),
-    ArcoPesato("Ravenna",           "Alexandria",          40),
-    ArcoPesato("Narbo",             "Byzantium",           78),
-    ArcoPesato("Narbo",             "Tarraco",             80),
-    ArcoPesato("Tarraco",           "Carthago Nova",      100),
-    ArcoPesato("Tarraco",           "Massilia",            90),
-    ArcoPesato("Tarraco",           "Carthago",            85),
-    ArcoPesato("Tarraco",           "Alexandria",          95),
-    ArcoPesato("Corduba",           "Byzantium",           96),
-    ArcoPesato("Corduba",           "Carthago",            70),
-    ArcoPesato("Corduba",           "Alexandria",          97),
-    ArcoPesato("Carthago Nova",     "Carthago",            55),
-    ArcoPesato("Carthago Nova",     "Massilia",           110),
-    ArcoPesato("Emerita Augusta",   "Carthago",            80),
-    ArcoPesato("Emerita Augusta",   "Londinium",           49),
-    ArcoPesato("Londinium",         "Lutetia",             11),
-    ArcoPesato("Londinium",         "Eboracum",            50),
-    ArcoPesato("Eboracum",          "Narbo",               43),
-    ArcoPesato("Lutetia",           "Burdigala",          400),
-    ArcoPesato("Lugdunum",          "Massilia",           200),
-    ArcoPesato("Lugdunum",          "Narbo",              250),
-    ArcoPesato("Massilia",          "Carthago",            35),
-    ArcoPesato("Massilia",          "Alexandria",          45),
-    ArcoPesato("Byzantium",         "Alexandria",          33),
-    ArcoPesato("Carthago",          "Alexandria",          25),
-    # --- RIVER / DANUBE ROUTE ---
-    ArcoPesato("Vindobona",         "Aquincum",           200),
-    # --- REMAINING CONNECTIVITY EDGES ---
-    ArcoPesato("Burdigala",         "Lutetia",            400),
-    ArcoPesato("Augusta Treverorum","Colonia Agrippina",  150),
-    ArcoPesato("Augusta Treverorum","Lugdunum",           350),
-    ArcoPesato("Mediolanum",        "Lugdunum",           500),
-    ArcoPesato("Mediolanum",        "Ravenna",            220),
-    ArcoPesato("Ravenna",           "Capua",              400),
-    ArcoPesato("Ravenna",           "Byzantium",           50),
-    ArcoPesato("Capua",             "Tarraco",            120),
-    ArcoPesato("Eboracum",          "Londinium",           50),
+    ArcoPesato("Alexandria",         "Bisantium",          33),
+    ArcoPesato("Alexandria",         "Carthago",           57),
+    ArcoPesato("Alexandria",         "Corduba",            97),
+    ArcoPesato("Alexandria",         "Massilia",           76),
+    ArcoPesato("Alexandria",         "Ravenna",            64),
+    ArcoPesato("Alexandria",         "Roma",               59),
+    ArcoPesato("Alexandria",         "Tarraco",            84),
+    ArcoPesato("Aquincum",           "Augusta Treverorum", 3080),
+    ArcoPesato("Aquincum",           "Bisantium",          35),
+    ArcoPesato("Aquincum",           "Colonia Agrippina",  3330),
+    ArcoPesato("Aquincum",           "Mediolanum",         2100),
+    ArcoPesato("Aquincum",           "Ravenna",            990),
+    ArcoPesato("Aquincum",           "Vindobona",          220),
+    ArcoPesato("Augusta Treverorum", "Colonia Agrippina",  230),
+    ArcoPesato("Augusta Treverorum", "Eboracum",           20),
+    ArcoPesato("Augusta Treverorum", "Londinium",          17),
+    ArcoPesato("Augusta Treverorum", "Lugdunum",           900),
+    ArcoPesato("Augusta Treverorum", "Lutetia",            400),
+    ArcoPesato("Augusta Treverorum", "Mediolanum",         1680),
+    ArcoPesato("Augusta Treverorum", "Vindobona",          2939),
+    ArcoPesato("Burdigala",          "Corduba",            36),
+    ArcoPesato("Burdigala",          "Eboracum",           33),
+    ArcoPesato("Burdigala",          "Emerita Augusta",    1350),
+    ArcoPesato("Burdigala",          "Londinium",          21),
+    ArcoPesato("Burdigala",          "Lugdunum",           810),
+    ArcoPesato("Burdigala",          "Lutetia",            500),
+    ArcoPesato("Burdigala",          "Narbo",              300),
+    ArcoPesato("Bisantium",          "Capua",              36),
+    ArcoPesato("Bisantium",          "Corduba",            96),
+    ArcoPesato("Bisantium",          "Narbo",              78),
+    ArcoPesato("Bisantium",          "Ravenna",            33),
+    ArcoPesato("Bisantium",          "Vindobona",          39),
+    ArcoPesato("Capua",              "Carthago",           17),
+    ArcoPesato("Capua",              "Carthago Nova",      30),
+    ArcoPesato("Capua",              "Corduba",            60),
+    ArcoPesato("Capua",              "Ravenna",            720),
+    ArcoPesato("Capua",              "Roma",               190),
+    ArcoPesato("Capua",              "Tarraco",            34),
+    ArcoPesato("Carthago",           "Carthago Nova",      30),
+    ArcoPesato("Carthago",           "Emerita Augusta",    44),
+    ArcoPesato("Carthago",           "Massilia",           25),
+    ArcoPesato("Carthago",           "Narbo",              28),
+    ArcoPesato("Carthago",           "Roma",               18),
+    ArcoPesato("Carthago",           "Tarraco",            27),
+    ArcoPesato("Carthago Nova",      "Corduba",            500),
+    ArcoPesato("Carthago Nova",      "Emerita Augusta",    860),
+    ArcoPesato("Carthago Nova",      "Massilia",           15),
+    ArcoPesato("Carthago Nova",      "Narbo",              11),
+    ArcoPesato("Carthago Nova",      "Roma",               27),
+    ArcoPesato("Carthago Nova",      "Tarraco",            230),
+    ArcoPesato("Colonia Agrippina",  "Eboracum",           17),
+    ArcoPesato("Colonia Agrippina",  "Londinium",          14),
+    ArcoPesato("Colonia Agrippina",  "Lutetia",            320),
+    ArcoPesato("Colonia Agrippina",  "Mediolanum",         1930),
+    ArcoPesato("Colonia Agrippina",  "Vindobona",          1930),
+    ArcoPesato("Corduba",            "Emerita Augusta",    250),
+    ArcoPesato("Corduba",            "Massilia",           39),
+    ArcoPesato("Corduba",            "Tarraco",            1930),
+    ArcoPesato("Eboracum",           "Londinium",          320),
+    ArcoPesato("Eboracum",           "Lutetia",            21),
+    ArcoPesato("Eboracum",           "Narbo",              43),
+    ArcoPesato("Eboracum",           "Tarraco",            63),
+    ArcoPesato("Emerita Augusta",    "Londinium",          49),
+    ArcoPesato("Emerita Augusta",    "Massilia",           60),
+    ArcoPesato("Emerita Augusta",    "Roma",               78),
+    ArcoPesato("Emerita Augusta",    "Tarraco",            30),
+    ArcoPesato("Londinium",          "Lutetia",            11),
+    ArcoPesato("Londinium",          "Tarraco",            57),
+    ArcoPesato("Lugdunum",           "Lutetia",            460),
+    ArcoPesato("Lugdunum",           "Massilia",           500),
+    ArcoPesato("Lugdunum",           "Mediolanum",         1120),
+    ArcoPesato("Lugdunum",           "Narbo",              540),
+    ArcoPesato("Lugdunum",           "Vindobona",          2630),
+    ArcoPesato("Lutetia",            "Narbo",              1252),
+    ArcoPesato("Massilia",           "Mediolanum",         500),
+    ArcoPesato("Massilia",           "Narbo",              150),
+    ArcoPesato("Massilia",           "Roma",               20),
+    ArcoPesato("Mediolanum",         "Ravenna",            220),
+    ArcoPesato("Mediolanum",         "Roma",               1680),
+    ArcoPesato("Mediolanum",         "Vindobona",          2100),
+    ArcoPesato("Narbo",              "Tarraco",            230),
+    ArcoPesato("Ravenna",            "Roma",               540),
+    ArcoPesato("Ravenna",            "Vindobona",          860),
 ]
 
 
@@ -630,8 +739,8 @@ u = "A"
 kruskal_v01 = MinimumSpanningTree_Kruskal_v01(E_gc_Numeric,u)
 kruskal_v02a = MinimumSpanningTree_Kruskal_v02a(E_gc_Numeric,u)
 kruskal_v02b = MinimumSpanningTree_Kruskal_v02b(E_gc_Numeric,u)
-# kruskal_v03 = MinimumSpanningTree_Kruskal_v03(E_gc_Numeric,u)
-# kruskal_v04 = MinimumSpanningTree_Kruskal_v04(E_gc_Numeric,u)
+kruskal_v03 = MinimumSpanningTree_Kruskal_v03(E_gc_Numeric,u)
+kruskal_v04 = MinimumSpanningTree_Kruskal_v04(E_gc_Numeric,u)
 
 print("\n---------------------------------------------------------------"+"\n"+
       "Grafo Indiretto Connesso - Esempio Numerico: "+"\n"+
@@ -639,19 +748,23 @@ print("\n---------------------------------------------------------------"+"\n"+
       " > Algoritmo di Kruskal con E Disordinato [O(m^2)]: "+"\n"+
       "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v01)+"\n"+
       "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v01)+"\n"+
-      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v01))+"\n")
-      # " > Algoritmo di Kruskal con E Ordinato [O(n*m)]: "+"\n"+
-      # "    - Vettore degli Archi Visitati: "+ str(kruskal_v02[0]) +"\n"+
-      # "    - Vettore dei Costi: "+ str(kruskal_v02[2]) +"\n"+
-      # "    - Costo Minimo Totale: "+ str(sum(kruskal_v02[2].values())) +"\n"+
-      # " > Algoritmo di Kruskal con E Ordinato + v_CC [O(mlogn + n^2)]: "+"\n"+
-      # "    - Vettore degli Archi Visitati: "+ str(kruskal_v02[0]) +"\n"+
-      # "    - Vettore dei Costi: "+ str(kruskal_v02[2]) +"\n"+
-      # "    - Costo Minimo Totale: "+ str(sum(kruskal_v02[2].values())) +"\n"+
-      # " > Algoritmo di Kruskal con E Ordinato + l_CC [O(mlogn)]: "+"\n"+
-      # "    - Vettore degli Archi Visitati: "+ str(kruskal_v03[0]) +"\n"+
-      # "    - Vettore dei Costi: "+ str(kruskal_v03[2])+"\n"+
-      # "    - Costo Minimo Totale: "+ str(sum(kruskal_v03[2].values())))
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v01))+"\n"+
+      " > Algoritmo di Kruskal con E Vettore Ordinato [O(n*m)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v02a)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v02a)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v02a))+"\n"+
+      " > Algoritmo di Kruskal con E Lista Linkata Ordinata [O(n*m)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v02b)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v02b)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v02b))+"\n"+
+      " > Algoritmo di Kruskal con E Ordinato + v_CC [O(mlogn + n^2)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v03)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v03)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v03))+"\n"+
+      " > Algoritmo di Kruskal con E Ordinato + l_CC [O(mlogn)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v04)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v04)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v04)))
 
 
 'Grafo Indiretto Connesso - Esempio Roman Road Network  ----------------------'
@@ -659,8 +772,8 @@ u = "Roma"
 kruskal_v01 = MinimumSpanningTree_Kruskal_v01(E_gc_Roman,u)
 kruskal_v02a = MinimumSpanningTree_Kruskal_v02a(E_gc_Roman,u)
 kruskal_v02b = MinimumSpanningTree_Kruskal_v02b(E_gc_Roman,u)
-# kruskal_v03 = MinimumSpanningTree_Kruskal_v03(E_gc_Roman,u)
-# kruskal_v04 = MinimumSpanningTree_Kruskal_v04(E_gc_Roman,u)
+kruskal_v03 = MinimumSpanningTree_Kruskal_v03(E_gc_Roman,u)
+kruskal_v04 = MinimumSpanningTree_Kruskal_v04(E_gc_Roman,u)
 
 print("\n---------------------------------------------------------------"+"\n"+
       "Grafo Indiretto Connesso - Esempio Roman Road Network: "+"\n"+
@@ -668,19 +781,23 @@ print("\n---------------------------------------------------------------"+"\n"+
       " > Algoritmo di Kruskal con E Disordinato [O(m^2)]: "+"\n"+
       "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v01)+"\n"+
       "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v01)+"\n"+
-      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v01))+"\n")
-      # " > Algoritmo di Kruskal con E Ordinato [O(n*m)]: "+"\n"+
-      # "    - Vettore degli Archi Visitati: "+ str(kruskal_v02[0]) +"\n"+
-      # "    - Vettore dei Costi: "+ str(kruskal_v02[2]) +"\n"+
-      # "    - Costo Minimo Totale: "+ str(sum(kruskal_v02[2].values())) +"\n"+
-      # " > Algoritmo di Kruskal con E Ordinato + v_CC [O(mlogn + n^2)]: "+"\n"+
-      # "    - Vettore degli Archi Visitati: "+ str(kruskal_v02[0]) +"\n"+
-      # "    - Vettore dei Costi: "+ str(kruskal_v02[2]) +"\n"+
-      # "    - Costo Minimo Totale: "+ str(sum(kruskal_v02[2].values())) +"\n"+
-      # " > Algoritmo di Kruskal con E Ordinato + l_CC [O(mlogn)]: "+"\n"+
-      # "    - Vettore degli Archi Visitati: "+ str(kruskal_v03[0]) +"\n"+
-      # "    - Vettore dei Costi: "+ str(kruskal_v03[2])+"\n"+
-      # "    - Costo Minimo Totale: "+ str(sum(kruskal_v03[2].values())))
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v01))+"\n"+
+      " > Algoritmo di Kruskal con E Vettore Ordinato [O(n*m)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v02a)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v02a)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v02a))+"\n"+
+      " > Algoritmo di Kruskal con E Lista Linkata Ordinata [O(n*m)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v02b)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v02b)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v02b))+"\n"+
+      " > Algoritmo di Kruskal con E Ordinato + v_CC [O(mlogn + n^2)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v03)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v03)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v03))+"\n"+
+      " > Algoritmo di Kruskal con E Ordinato + l_CC [O(mlogn)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v04)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v04)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v04)))
 
 
 'Grafo Indiretto Connesso - Esempio Matrix  ----------------------------------'
@@ -688,8 +805,8 @@ u = "A"
 kruskal_v01 = MinimumSpanningTree_Kruskal_v01(E_gc_Matrix,u)
 kruskal_v02a = MinimumSpanningTree_Kruskal_v02a(E_gc_Matrix,u)
 kruskal_v02b = MinimumSpanningTree_Kruskal_v02b(E_gc_Matrix,u)
-# kruskal_v03 = MinimumSpanningTree_Kruskal_v03(E_gc_Matrix,u)
-# kruskal_v04 = MinimumSpanningTree_Kruskal_v04(E_gc_Matrix,u)
+kruskal_v03 = MinimumSpanningTree_Kruskal_v03(E_gc_Matrix,u)
+kruskal_v04 = MinimumSpanningTree_Kruskal_v04(E_gc_Matrix,u)
 
 print("\n---------------------------------------------------------------"+"\n"+
       "Grafo Indiretto Connesso - Esempio Matrix: "+"\n"+
@@ -697,16 +814,20 @@ print("\n---------------------------------------------------------------"+"\n"+
       " > Algoritmo di Kruskal con E Disordinato [O(m^2)]: "+"\n"+
       "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v01)+"\n"+
       "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v01)+"\n"+
-      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v01))+"\n")
-      # " > Algoritmo di Kruskal con E Ordinato [O(n*m)]: "+"\n"+
-      # "    - Vettore degli Archi Visitati: "+ str(kruskal_v02[0]) +"\n"+
-      # "    - Vettore dei Costi: "+ str(kruskal_v02[2]) +"\n"+
-      # "    - Costo Minimo Totale: "+ str(sum(kruskal_v02[2].values())) +"\n"+
-      # " > Algoritmo di Kruskal con E Ordinato + v_CC [O(mlogn + n^2)]: "+"\n"+
-      # "    - Vettore degli Archi Visitati: "+ str(kruskal_v02[0]) +"\n"+
-      # "    - Vettore dei Costi: "+ str(kruskal_v02[2]) +"\n"+
-      # "    - Costo Minimo Totale: "+ str(sum(kruskal_v02[2].values())) +"\n"+
-      # " > Algoritmo di Kruskal con E Ordinato + l_CC [O(mlogn)]: "+"\n"+
-      # "    - Vettore degli Archi Visitati: "+ str(kruskal_v03[0]) +"\n"+
-      # "    - Vettore dei Costi: "+ str(kruskal_v03[2])+"\n"+
-      # "    - Costo Minimo Totale: "+ str(sum(kruskal_v03[2].values())))
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v01))+"\n"+
+      " > Algoritmo di Kruskal con E Vettore Ordinato [O(n*m)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v02a)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v02a)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v02a))+"\n"+
+      " > Algoritmo di Kruskal con E Lista Linkata Ordinata [O(n*m)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v02b)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v02b)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v02b))+"\n"+
+      " > Algoritmo di Kruskal con E Ordinato + v_CC [O(mlogn + n^2)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v03)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v03)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v03))+"\n"+
+      " > Algoritmo di Kruskal con E Ordinato + l_CC [O(mlogn)]: "+"\n"+
+      "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v04)+"\n"+
+      "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v04)+"\n"+
+      "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v04)))
