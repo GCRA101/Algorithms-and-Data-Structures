@@ -9,14 +9,14 @@ Tale albero minimo di copertura differisce dall'albero di visita BFS e DFS e
 viene determinato utilizzando l'algoritmo di Kruskal
 
 Algoritmo di Kruskal
-    - Formulazione con E disordinato      - O(m^2)
-    - Formulazione con E ordinato         - O(n*m)
-    - Formulazione con E ordinato + v_CC  - O(mlogn+n^2)
-    - Formulazione con E ordinato + l_CC  - O(mlogn)
+  - Formulazione con E disordinato      - O(m^2)
+  - Formulazione con E ordinato         - O(n*m)
+  - Formulazione con E ordinato + v_CC  - O(mlogn+n^2)
+  - Formulazione con E ordinato + fa_CC  - O(mlogn)
     
-    dove E    : vettore degli Archi (Edges)
-         v_CC : vettore delle Componenti Connesse
-         l_CC : lista   delle Componenti Connesse
+  dove E    : vettore degli Archi (Edges)
+       v_CC : vettore delle Componenti Connesse
+       fa_CC : foresta di alberi delle Componenti Connesse con Unione per Rango
 
 
 Confronto Algoritmo di Prim vs Algoritmo di Kruskal --------------------------
@@ -94,7 +94,7 @@ class Nodo:
         self.valore = valore
         self.next = None
 
-class ListaLinkata:
+class ListaConcatenata:
     
     # Costruttore
     def __init__(self, valore):                               # T(n) 
@@ -406,10 +406,10 @@ def MinimumSpanningTree_Kruskal_v02b(E,u):                  # T(n,m)
     sol = []                                                # Θ(1)         (A)
     E_ordinato = copy.deepcopy(E)                           # Θ(m) 
     mergeSort(E_ordinato, 0, len(E_ordinato) - 1)           # Θ(mlogn)     (B)
-    E_list = ListaLinkata(E_ordinato[0])                    # Θ(1)         (C)
+    E_list = ListaConcatenata(E_ordinato[0])                # Θ(1)         (C)
     for i in range(1,len(E_ordinato)):                      # (m-1)*Θ(1)
         E_list.append(E_ordinato[i])                        # Θ(1) 
-    while len(E_list) != 0:                                 # m*Θ(1)+Θ(1)  (D)
+    while E_list.head!=None:                                # m*Θ(1)+Θ(1)  (D)
         e_min = E_list.head.valore                          # Θ(1)         (E)
         E_list.remove(e_min)                                # Θ(1)         (F)
         if not isCycle(sol,e_min.u,e_min.v):                # Θ(k+s)       (G)
@@ -433,6 +433,9 @@ def MinimumSpanningTree_Kruskal_v02b(E,u):                  # T(n,m)
 #      per scorrere a mano a mano tutti i suoi elementi - Vedi v02a.
 # (D): Si ripete il ciclo fino a che tutti gli archi contenuti nella lista
 #      linkata E_list sono stati eliminati - ovvero E_list diviene vuota.
+#      Invece di controllare ogni volta la lunghezza della lista, che avrebbe
+#      costo O(n) - while len(E_list)!=0: - meglio semplicemente controllare
+#      se la testa della lista e' ancora non nulla - while E_list.head != None.
 # (E): L'arco di costo minimo e' sempre in testa alla lista in quanto ordinata.
 # (F): Ogni volta che si estrae l'arco di costo minimo, lo si elimina dalla
 #      lista. Dato che si tratta di una lista linkata e l'elemento e' sempre
@@ -463,13 +466,13 @@ def MinimumSpanningTree_Kruskal_v03(E,u):                   # T(n,m)
     for nodo in nodiSet:                                    # n*Θ(1)+Θ(1)
         nodi[i] = nodo                                      # Θ(1)
         i = i + 1                                           # Θ(1)
-    E_list = ListaLinkata(E_ordinato[0])                    # Θ(1)         (G)
+    E_list = ListaConcatenata(E_ordinato[0])                # Θ(1)         (G)
     for i in range(1, len(E_ordinato)):                     # (m-1)*Θ(1)
         E_list.append(E_ordinato[i])                        # Θ(1) 
     cc = {nodo:-1 for nodo in nodi}                         # Θ(n)         (H)
     for i in range(0,len(nodi)):                            # n*Θ(1)+Θ(1)  (I)
         cc[nodi[i]]=i                                       # Θ(1) 
-    while len(E_list) != 0:                                 # m*Θ(1)+Θ(1)  (J)                       
+    while E_list.head!=None:                                # m*Θ(1)+Θ(1)  (J)                       
         e_min = E_list.head.valore                          # Θ(1)         (K)                   
         E_list.remove(e_min)                                # Θ(1)         (L)                          
         if cc[e_min.u]!=cc[e_min.v]:                        # Θ(1)         (M) 
@@ -483,6 +486,17 @@ def MinimumSpanningTree_Kruskal_v03(E,u):                   # T(n,m)
     
 # Costo Computazionale: T(n,m) = Θ(m)+Θ(mlogn)+Θ(m)+Θ(n)+Θ(n)+Θ(m)+Θ(n)+Θ(n)+
 #                                +m*[Θ(n)+Θ(1)] = Θ(mlogn + n^2)
+# IMPORTANTE!
+# Il cicle for (P), all'interno del while (J), ha costo Θ(n) ma non viene 
+# eseguito tutte le m volte in cui viene ripetuto il ciclo while!
+# Infatti il ciclo for e' all'interno di un if (M) che controlla se i nodi dell
+# arco appartengono alla stessa componente! Per ottenere un'unica componente
+# che copre tutto il grafo, bastano n-1 fusioni. Cio' significa che la
+# condizione dell'if (M) sara' soddisfatta solo n-1 volte. Le restanti
+# m-(n-1) volte non sara' soddisfatta e, quindi, il codice in esso contenuto
+# non verra' eseguito. Cio' significa che il costo del ciclo while e' come
+# segue:
+# [m-(n-1)]*Θ(1) + (n-1)*Θ(n) = Θ(m) - Θ(n) + Θ(1) + Θ(n^2) - Θ(n) = Θ(n^2)
 
 # Commenti
 # (A): sol, ovvero la lista degli archi dell'albero di minima copertura di
@@ -519,7 +533,11 @@ def MinimumSpanningTree_Kruskal_v03(E,u):                   # T(n,m)
 #      assegna un numero intero crescente a ciascuno all'interno di cc.
 #      Ovvero, ad ogni nodo si associa una componente connessa di indice intero
 #      e che corrisponde al nodo stesso.
-# (J): Si scorrono tutti gli archi contenuti nella lista linkata degli archi
+# (J): Si ripete il ciclo fino a che tutti gli archi contenuti nella lista
+#      linkata E_list sono stati eliminati - ovvero E_list diviene vuota.
+#      Invece di controllare ogni volta la lunghezza della lista, che avrebbe
+#      costo O(n) - while len(E_list)!=0: - meglio semplicemente controllare
+#      se la testa della lista e' ancora non nulla - while E_list.head != None.
 # (K): Si estra la testa della lista linkata che corrisponde all'arco di costo
 #      minimo
 # (L): Si rimuove la testa della lista linkata. L'operazione e' di costo Θ(1).
@@ -537,13 +555,134 @@ def MinimumSpanningTree_Kruskal_v03(E,u):                   # T(n,m)
 
 
 
-# # ALGORITMO di KRUSKAL - v04 - Vettore Archi Ordinato + Lista Comp. Connesse
-# # ----------------------------------------------------------------------------
-def MinimumSpanningTree_Kruskal_v04(E,u):                   # T(n,m)
-    return [ArcoPesato('Roma','Iulius',250)]
+# # ALGORITMO di KRUSKAL - v04 - Vettore Archi Ordinato + Foresta di Alberi
+#                                per Componenti Connesse + Unione per Rango
+# # ---------------------------------------------------------------------------
+
+def find(cc,s):                                             # S(n)
+    nodo = s                                                # Θ(1)
+    while cc[nodo][0] != nodo:                              # Ω(1)/O(logn) (A)
+        nodo = cc[nodo][0]                                  # Θ(1)         (B)
+    return nodo                                             # Θ(1)
+
+# Costo Computazionale
+# S(n) = O(logn) CASO PEGGIORE
+#        Ω(1)    CASO MIGLIORE
+
+# Commenti:
+# (A): Dato che cc e' un vettore dei padri (implementato qui come hash table)
+#      per ricavare la radice del nodo s basta spostarsi di padre in padre
+#      fino a trovare il nodo che ha come padre se' medesimo.
+# (B): Dato che il valore corrispondente alla chiave nodo e' una coppia
+#      [u,size], il nodo e' l'elemento in indice 0 - ovvero cc[nodo][0]
+
+def union(cc, r1, r2):                                      # R(n)
+    newSize = cc[r1][1] + cc[r2][1]                         # Θ(1)         (A)
+    if cc[r1][1] <= cc[r2][1]:                              # Θ(1)         (B)
+        cc[r1][0] = r2                                      # Θ(1)
+        cc[r1][1] = newSize                                 # Θ(1)
+    else:                                                   # Θ(1)
+        cc[r2][0] = r1                                      # Θ(1)
+        cc[r2][1] = newSize                                 # Θ(1)
+        
+# Costo Computazionale
+# R(n) = Θ(1)
+
+# Commenti:
+# (A): SOLO nel caso delle RADICI, il campo size (i.e. cc[nodo][1]) contiene il
+#      numero dei nodi contenuti nella componente facente capo a quella radice.
+#      Dato che le due componenti devono essere unite, la dimensione della
+#      risultante sara' data dalla somma delle due.
+# (B): In base a quale radice corrisponde all'albero componente piu' piccolo,
+#      si colleghera' la radice dell'albero piu' piccolo alla radice dell'
+#      albero piu' grande.
 
     
+def MinimumSpanningTree_Kruskal_v04(E,u):                   # T(n,m)
+    E_ordinato = copy.deepcopy(E)                           # Θ(n)         (A)
+    mergeSort(E_ordinato, 0, len(E_ordinato)-1)             # Θ(mlogn)     (B)
+    nodiSet = set()                                         # Θ(1)         (C)
+    for e in E_ordinato:                                    # m*Θ(1)+Θ(1)
+        if not e.u in nodiSet:                              # Θ(1)
+            nodiSet.add(e.u)                                # Θ(1)
+        if not e.v in nodiSet:                              # Θ(1)
+            nodiSet.add(e.v)                                # Θ(1)
+    nodi = [None]*len(nodiSet)                              # 2*Θ(n)       (D)
+    i = 0                                                   # Θ(1)
+    for nodo in nodiSet:                                    # Θ(n)+Θ(1)
+        nodi[i] = nodo                                      # Θ(1)
+        i = i + 1                                           # Θ(1)
+    sol = [None]*(len(nodi)-1)                              # Θ(n)         (E)
+    E_list = ListaConcatenata(E_ordinato[0])                # Θ(1)         (F)
+    for i in range(1, len(E_ordinato)):                     # Θ(m-1)+Θ(1)
+        E_list.append(E_ordinato[i])                        # Θ(1)
+    cc = {nodo: [nodo,1] for nodo in nodi}                  # Θ(n)         (G)
+    i = 0                                                   # Θ(1)
+    while E_list.head!=None:                                # m*Θ(1)+Θ(1)  (H)
+        e_min = E_list.head.valore                          # Θ(1)         (I)
+        E_list.remove(e_min)                                # Θ(1)         (J)
+        radice1 = find(cc,e_min.u)                          # Ω(1)/O(logn) (K)                       
+        radice2 = find(cc,e_min.v)                          # Ω(1)/O(logn) (K)
+        if radice1 != radice2:                              # Θ(1)         (L)
+            sol[i]=e_min                                    # Θ(1)
+            union(cc,radice1, radice2)                      # Θ(1)      
+            i = i + 1                                       # Θ(1)     
+    return sol                                              # Θ(1)
 
+# Costo Computazionale
+# T(n,m) = Θ(n)+Θ(mlogn)+Θ(1)+Θ(m)+Θ(n)+Θ(n)+Θ(n)+Θ(m)+Θ(n)+m*O(logn) =
+#        = O(mlogn)
+
+# Commenti
+# (A): Per evitare di modificare il vettore degli archi originale passato in
+#      input, lo cloniamo in una copia ed operiamo direttamente su di essa.
+# (B): Si ordinano tutti gli archi contenuti nel vettore degli archi per costo
+#      crescente ed utilizzando un algoritmo ottimale di ordinamento basato
+#      sui confronti: il MergeSort
+# (C): L'estrazione di nodi al vettore degli archi richiederebbe costo Θ(n*m)
+#      se volessimo direttamente immagazzinarli in un vettore.
+#      Usando, invece, un HashSet, la ricerca e l'inserimento in esso di un
+#      nodo sono entrambe operazioni di costo unitario Θ(1).
+#      In tal modo il costo di estrazione dei nodi dal vettore degli archi ha
+#      costo Θ(m).
+# (D): Trasformiamo l'HashSet in un vettore contenente i nodi per tornare in
+#      linea con la formulazione classica dell'algoritmo.
+#      L'operazione di copiatura di tutti i nodi dall'HashSet al Vettore ha
+#      ovviamente costo lineare Θ(n)
+# (E): In questo caso, definiamo sol come vettore (non come lista).
+#      Avendo il numero dei nodi del grafo, sappiamo che certamente il numero
+#      di archi di un suo qualsiasi albero minimo di copertura sara' m=n-1.
+# (F): Convertiamo il vettore ordinato contente gli archi in una lista
+#      concatenata. Cio' consente di scorrere gli archi senza un indice
+#      incrementale e consente di rimuovere l'arco di costo minimo con costo
+#      unitario Θ(1).
+# (G): Inizializzamo la struttura dati delle componenti connesse come hash
+#      table e con lo stesso funzionamento del vettore dei padri di un albero.
+#      A ciascun nodo viene associato se' stesso in quanto padre di se'
+#      medesimo. Nella configurazione iniziale, infatti, si hanno tante
+#      componenti quanto il numero dei nodi.
+# (H): Si ripete il ciclo fino a che tutti gli archi contenuti nella lista
+#      linkata E_list sono stati eliminati - ovvero E_list diviene vuota.
+#      Invece di controllare ogni volta la lunghezza della lista, che avrebbe
+#      costo O(n) - while len(E_list)!=0: - meglio semplicemente controllare
+#      se la testa della lista e' ancora non nulla - while E_list.head != None
+# (I): L'arco di costo minimo e' l'oggetto contenuto nel campo "valore" del
+#      nodo corrispondente alla testa della lista concatenata.
+# (J): La testa della lista concatenata viene rimossa a costo unitario.
+# (K): Le radici corrispondenti alle componenti connesse a cui appartengono
+#      i nodi u e v dell'arco e_min vengono estratte usando la funzione find
+# (L): Se le radici coincidono vuol dire che i due nodi sono gia' connessi
+#      e aggiungere l'arco e_min all'albero dei cammini minimi genererebbe
+#      un ciclo e cio' non lo vogliamo....quindi non lo si considera.
+#      Altrimenti, si aggiunge l'arco all'albero minimo di copertura e 
+#      si esegue l'unione delle due componenti semplicemente imponendo che
+#      il padre della radice dell'una coincida con la radice dell'altra.
+#      Per garantire che gli alberi delle componenti connesse siano meno
+#      profondi possibile (e quindi il costo di FIND sia O(logn) invece di O(n)
+#      ) si colleghera' la radice dell'albero PIU' PICCOLO a quella dell'albero
+#      PIU' GRANDE! Questo si ottiene assegnando ad ogni nodo del vettore dei
+#      padri la coppia [u,size] dove u e' il nodo radice e size e' il numero
+#      di nodi nell'insieme.
 
 " ESEMPI ********************************************************************"
 
@@ -761,7 +900,7 @@ print("\n---------------------------------------------------------------"+"\n"+
       "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v03)+"\n"+
       "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v03)+"\n"+
       "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v03))+"\n"+
-      " > Algoritmo di Kruskal con E Ordinato + l_CC [O(mlogn)]: "+"\n"+
+      " > Algoritmo di Kruskal con E Ordinato + fa_CC [O(mlogn)]: "+"\n"+
       "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v04)+"\n"+
       "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v04)+"\n"+
       "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v04)))
@@ -794,7 +933,7 @@ print("\n---------------------------------------------------------------"+"\n"+
       "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v03)+"\n"+
       "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v03)+"\n"+
       "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v03))+"\n"+
-      " > Algoritmo di Kruskal con E Ordinato + l_CC [O(mlogn)]: "+"\n"+
+      " > Algoritmo di Kruskal con E Ordinato + fa_CC [O(mlogn)]: "+"\n"+
       "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v04)+"\n"+
       "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v04)+"\n"+
       "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v04)))
@@ -827,7 +966,7 @@ print("\n---------------------------------------------------------------"+"\n"+
       "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v03)+"\n"+
       "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v03)+"\n"+
       "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v03))+"\n"+
-      " > Algoritmo di Kruskal con E Ordinato + l_CC [O(mlogn)]: "+"\n"+
+      " > Algoritmo di Kruskal con E Ordinato + fa_CC [O(mlogn)]: "+"\n"+
       "   - Archi Visitati: "+", ".join(str(arco) for arco in kruskal_v04)+"\n"+
       "   - Costi: "+", ".join(str(arco.costo) for arco in kruskal_v04)+"\n"+
       "   - Costo Min Tot: "+ str(sum(arco.costo for arco in kruskal_v04)))
