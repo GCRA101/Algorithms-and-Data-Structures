@@ -190,18 +190,18 @@ di approssimazione greedy di Gonzalez.
 '''
 def KCenter_Graphs_Wrong(G,u,k):                            # T(n,m)
     centers = [None]*k                                      # k*Θ(1)
-    dictDistanze = {}                                       # Θ(1)
+    dictDistanze = {}                                       # Θ(1)         (A)
     nodi = list(G.keys())                                   # n*Θ(1)
     i_center = 0                                            # Θ(1)
     centers[i_center] = u                                   # Θ(1)
     for i in range(0,k-1):                                  # k*Θ(1)+Θ(1)
-        distanze = dijkstra_heapMin(G,centers[i_center])    # Θ((n+m)logn)
-        dictDistanze[centers[i_center]] = distanze          # Θ(1)
+        distanze = dijkstra_heapMin(G,centers[i_center])[1] # Θ((n+m)logn)
+        dictDistanze[centers[i_center]] = distanze          # Θ(1)         (A)
         distMax = (-1)*math.inf                             # Θ(1)
         i_max = -1                                          # Θ(1)
         for j in range(0,len(nodi)):                        # n*Θ(1)+Θ(1)
             distMin = math.inf                              # Θ(1)
-            for node in dictDistanze.keys():                # O(k)+Θ(1)
+            for node in dictDistanze.keys():                # O(k)+Θ(1)    (A)
                 if distMin > dictDistanze[node][nodi[j]]:   # Θ(1)
                     distMin = dictDistanze[node][nodi[j]]   # Θ(1)
             if distMax < distMin:                           # Θ(1)
@@ -213,6 +213,21 @@ def KCenter_Graphs_Wrong(G,u,k):                            # T(n,m)
 
 # Costo Computazionale: T(n,m,k) = Θ(k)+Θ(n)+k*[Θ((n+m)logn)+O(k*n)]
 #                       T(n,m,k) = Θ(k*(n+m)logn)+O((k^2)*n)
+
+# Commenti
+# (A): La differenza tra l'implementazione scorretta/inefficiente (vedi sopra)
+#      e l'implementazione corretta/efficiente (vedi sotto) dell'algoritmo
+#      di approssimazione greedy di Gonzalez per il problema del K-Center sta
+#      nella struttura dati scelta per immagazzinare le distanze minime dei
+#      nodi del grafo dai centri selezionati.
+#      Usare una Hash Table contenente tutti i vettori delle distanze minime
+#      di Dijkstra per tutti i centri selezionati dovendoli quindi riscorrerli
+#      ogni volta per ritrovare il nodo avente la massima delle distanze minime
+#      e' inefficiente in quanto necessita di un doppio ciclo all'interno del
+#      ciclo principale (3 cicli annidati -> O(k^2*n)).
+#      Meglio utilizzare un singolo vettore contenente i valori finali e 
+#      aggiornati delle distanze minime di Dijkstra (vedi implementazione
+#      CORRETTA seguente).
 
 
 'Implementazione CORRETTA ----------------------------------------------------'
@@ -230,12 +245,12 @@ di approssimazione greedy di Gonzalez.
 '''
 def KCenter_Graphs(G,u,k):                                  # T(n,m)
     centers = [None]*k                                      # k*Θ(1)       (A)
-    nodi = list(G.keys())                                   # n*Θ(1)       (B)
+    nodi = list(G.keys())                                   # n*Θ(1)       (B) 
     distMin = [math.inf]*len(nodi)                          # n*Θ(1)       (C)
     i_center = 0                                            # Θ(1)         (D)
     centers[i_center] = u                                   # Θ(1)
     for i in range(0,k-1):                                  # (k-1)*Θ(1)+Θ(1)
-        distanze = dijkstra_heapMin(G,centers[i_center])    # Θ((n+m)logn) (E)
+        distanze = dijkstra_heapMin(G,centers[i_center])[1] # Θ((n+m)logn) (E)
         distMax = (-1)*math.inf                             # Θ(1)
         i_max = -1                                          # Θ(1)
         for j in range(0,len(nodi)):                        # n*Θ(1)+Θ(1)  (F)
@@ -252,16 +267,25 @@ def KCenter_Graphs(G,u,k):                                  # T(n,m)
 #                       T(n,m,k) = Θ(k*(n+m)logn)+O(k*n)= Θ(k*(n+m)logn)
 
 # Commenti
-# (A)
-# (B)
-# (C)
-# (D)
-# (E)
-# (F)
-# (G)
-# (H)
-# (I)
-# (J)
+# (A): I centri selezionati vengono immagazzinati in un vettore di dimensione k
+# (B): Si estraggono i nodi dalla Hash Table che modella la Lista di Adiacenza
+#      del Grafo e li si salvano in un vettore.
+# (C): Si inizializza il vettore delle distanze minime che viene aggiornato 
+#      ogni volta che si aggiunge un nuovo centro alla selezione.
+# (D): Si aggiunge il nodo selezionato u al vettore dei centri con indice = 0
+# (E): Per ciascuno dei k centri da selezionare, si esegue l'algoritmo di
+#      ricerca dei cammini minimi di Dijkstra (con Heap Minimo) a partire dal
+#      centro selezionato in partenza / nella iterazione precedente. Si
+#      inizializza il parametro distMax = -inf e i_max = -1 per individuare il
+#      successivo centro da selezionare: ovvero il nodo avente massima distanza
+#      minima dal gruppo di centri selezionati fino a quel momento.
+# (F): Si scorrono tutte le n distanze minime di Dijkstra per il centro
+# (G)  corrente aggiornando il vettore delle distanze minime distMin. 
+# (H)  Si aggiorna anche in parallelo distMax e i_max in modo da individuare il
+#      nodo avente la massima delle distanze minime dai centri selezionati fino
+#      a quel momento.
+# (I): Si incrementa il contatore dei centri selezionati.
+# (J): Si salva il nodo corrispondente nel vettore dei centri selezionati.
 
 
 # ALGORITMO di SELEZIONE dei CENTRI (K-CENTER) per GRAFI con PESI NODI ADDITIVI
@@ -279,21 +303,21 @@ Selezione dei Centri, e' necessario usare l'algoritmo di
 def KCenter_Graphs_variant(G,pesiNodi,u,k):                 # T(n,m)
     centers = [None]*k                                      # k*Θ(1)
     nodi = list(G.keys())                                   # n*Θ(1)
-    distConPesiNodi = {nodo:None for nodo in nodi}          # n*Θ(1)    
+    distConPesiNodi = {nodo:None for nodo in nodi}          # n*Θ(1)       (A)   
     distMin = [math.inf]*len(nodi)                          # n*Θ(1)
     i_center = 0                                            # Θ(1)
     centers[i_center] = u                                   # Θ(1)
     for i in range(0,k-1):                                  # (k-1)*Θ(1)+Θ(1)
-        distanze = dijkstra_heapMin(G,centers[i_center])    # Θ((n+m)logn)
+        distanze = dijkstra_heapMin(G,centers[i_center])[1] # Θ((n+m)logn)
         for nodo in nodi:                                   # n*Θ(1)+Θ(1)
             distConPesiNodi[nodo] = \
                 distanze[nodo] + pesiNodi[nodo]             # Θ(1)
-        distConPesiNodi[centers[i_center]] = 0              # Θ(1)
+        distConPesiNodi[centers[i_center]] = 0              # Θ(1)         (A) 
         distMax = (-1)*math.inf                             # Θ(1)
         i_max = -1                                          # Θ(1)
         for j in range(0,len(nodi)):                        # n*Θ(1)+Θ(1)
-            if distMin[j] > distConPesiNodi[nodi[j]]:       # Θ(1)
-                distMin[j] = distConPesiNodi[nodi[j]]       # Θ(1)
+            if distMin[j] > distConPesiNodi[nodi[j]]:       # Θ(1)         (A)
+                distMin[j] = distConPesiNodi[nodi[j]]       # Θ(1)         (A)
             if distMax < distMin[j]:                        # Θ(1)
                 distMax = distMin[j]                        # Θ(1)
                 i_max = j                                   # Θ(1)
@@ -305,16 +329,146 @@ def KCenter_Graphs_variant(G,pesiNodi,u,k):                 # T(n,m)
 #                       T(n,m,k) = Θ(k*(n+m)logn)
 
 # Commenti
-# (A)
-# (B)
-# (C)
-# (D)
-# (E)
-# (F)
-# (G)
-# (H)
-# (I)
-# (J)
+# (A): L'unica aggiunta rispetto all'implementazione CORRETTA e CLASSICA dell'
+#      algoritmo greedy di Gonzalez consiste nel sommare il peso di ciascun 
+#      nodo, nodo a nodo, alla corrispondente distanza minima di Dijkstra
+#      calcolata. La restante parte dell'algoritmo viene eseguita tale e quale
+#      utilizzando questi nuovi valori.
+#      Questo perche' il peso del nodo deve essere considerato solo quando
+#      il nodo e' la destinazione del cammino. Quando il nodo viene 
+#      semplicemente attraversato da un cammino che punta a un altro nodo, il
+#      suo peso non viene considerato.
+
+
+# ALGORITMO di SELEZIONE dei CENTRI (K-CENTER) per GRAFI PESATI
+# ----------------------------------------------------------------------------
+'''
+L'algoritmo di Plesnik (CENTER, 1987) risolve in modo approssimato il Priority
+K-Center su Grafo con pesi sui nodi: si scelgono k centri che minimizzano il
+massimo, su tutti i nodi v, del prodotto w(v)*d(v,S), con d cammino minimo.
+Fissata una soglia R, ogni nodo v ha raggio r(v) = R/w(v). La procedura Filter
+scorre i nodi in ordine di priorita' decrescente (raggio crescente): il primo
+nodo non ancora coperto diventa centro e copre tutti i nodi scoperti v con
+d(u,v) <= r(u)+r(v). Se Filter apre al piu' k centri la soglia e' accettabile.
+Il valore ottimo e' uno dei prodotti w(v)*d(u,v): si cerca con una ricerca 
+binaria il piu' piccolo R accettabile. Il valore della soluzione e' al piu' 
+2R <= 2*OTT: approssimazione di fattore 2. Con tutti i pesi uguali coincide con 
+il metodo a soglie di Hochbaum e Shmoys.
+'''
+
+def Filter_Plesnik(nodi,ordine,dist,pesiNodi,R,k):          # T(n,k)
+    scoperti = {v:True for v in nodi}                       # n*Θ(1)       (J)
+    S = []                                                  # Θ(1)
+    for u in ordine:                                        # n*Θ(1)+Θ(1)  (K)
+        if scoperti[u]:                                     # Θ(1)
+            S.append(u)                                     # Θ(1)         (L)
+            if len(S) > k:                                  # Θ(1)         (M) 
+                return S                                    # Θ(1)
+            for v in nodi:                                  # n*Θ(1)+Θ(1)
+                if scoperti[v] and \
+                   dist[u][v]*pesiNodi[u]*pesiNodi[v] \
+                       <= R*(pesiNodi[u]+pesiNodi[v]):      # Θ(1)         (N) 
+                    scoperti[v] = False                     # Θ(1)
+    return S                                                # Θ(1)
+
+def KCenter_WeigthedGraphs(G,pesiNodi,k):                   # T(n,m)
+    nodi = list(G.keys())                                   # n*Θ(1)       (A)
+    if k >= len(nodi):                                      # Θ(1)         (B)
+        return nodi                                         # Θ(1)
+    dist = {}                                               # Θ(1)         (C)
+    for v in nodi:                                          # n*Θ(1)+Θ(1)
+        dist[v] = dijkstra_heapMin(G,v)[1]                  # Θ((n+m)logn)
+    ordine = sorted(nodi,key=lambda v:-pesiNodi[v])         # Θ(nlogn)     (D)
+    candidati = set()                                       # Θ(1)         (E)
+    for u in nodi:                                          # n*Θ(1)+Θ(1)
+        for v in nodi:                                      # n*Θ(1)+Θ(1)
+            if u != v:                                      # Θ(1)
+                candidati.add(dist[u][v]*pesiNodi[v])       # Θ(1)
+    candidati = sorted(candidati)                           # Θ(n²logn)
+    lo = 0                                                  # Θ(1)         (F)
+    hi = len(candidati)-1                                   # Θ(1)
+    while lo < hi:                                          # Θ(logn)
+        mid = (lo+hi)//2                                    # Θ(1)
+        S = Filter_Plesnik(nodi,ordine,dist, \
+                           pesiNodi,candidati[mid],k)       # Θ(nk)        (G)
+        if len(S) <= k:                                     # Θ(1)
+            hi = mid                                        # Θ(1)
+        else:                                               # Θ(1)
+            lo = mid+1                                      # Θ(1)
+    centers = Filter_Plesnik(nodi,ordine,dist, \
+                             pesiNodi,candidati[hi],k)      # Θ(nk)        (H)
+    distMin = [math.inf]*len(nodi)                          # n*Θ(1)       (I)
+    for c in centers:                                       # |S|*Θ(1)+Θ(1)
+        for j in range(0,len(nodi)):                        # n*Θ(1)+Θ(1)
+            if distMin[j] > dist[c][nodi[j]]:               # Θ(1)
+                distMin[j] = dist[c][nodi[j]]               # Θ(1)
+    while len(centers) < k:                                 # (k-|S|)*Θ(1)+Θ(1)
+        distMax = (-1)*math.inf                             # Θ(1)
+        i_max = -1                                          # Θ(1)
+        for j in range(0,len(nodi)):                        # n*Θ(1)+Θ(1)
+            if distMax < distMin[j]*pesiNodi[nodi[j]]:      # Θ(1)
+                distMax = distMin[j]*pesiNodi[nodi[j]]      # Θ(1)
+                i_max = j                                   # Θ(1)
+        centers.append(nodi[i_max])                         # Θ(1)
+        for j in range(0,len(nodi)):                        # n*Θ(1)+Θ(1)
+            if distMin[j] > dist[nodi[i_max]][nodi[j]]:     # Θ(1)
+                distMin[j] = dist[nodi[i_max]][nodi[j]]     # Θ(1)
+    return centers                                          # Θ(1)         (O)
+
+# Costo Computazionale: T(n,m) = n*Θ((n+m)logn)+Θ(n²logn)+Θ(logn)*Θ(nk)+Θ(nk)
+#                       T(n,m) = Θ(n(n+m)logn) (P)
+
+# Commenti
+# (A): Accesso ai nodi e al grafo come dizionario {nodo: lista di (vicino, 
+#      peso)}. Il grafo deve essere connesso, con archi e pesi dei nodi 
+#      positivi.
+# (B): Se k >= n ogni nodo e' un centro e il valore e' 0: caso banale.
+# (C): dist[c][v] e' la distanza minima da c a v, calcolata con n visite di 
+#      Dijkstra (dijkstra_heapMin restituisce un dizionario {nodo: distanza}). 
+#      Serve perche' Filter confronta d(u,v) per coppie qualsiasi. 
+#      Costo Θ(n(n+m)logn), memoria Θ(n²): e' il termine dominante. 
+#      Con la matrice gia' disponibile, come nell'articolo originale, 
+#      il costo scende a O(n²logn).
+# (D): I nodi sono ordinati per peso decrescente, cioe' per raggio r(v)=R/w(v)
+#      crescente. L'ordine non dipende da R e si calcola una sola volta. E' la
+#      condizione che garantisce r(u) <= r(v) per ogni v assegnato a u, quindi
+#      d(u,v) <= r(u)+r(v) <= 2r(v).
+# (E): Valori candidati per la soglia: il valore ottimo, se positivo,e' uno dei
+#      prodotti w(v)*d(u,v) con u diverso da v: al piu' n(n-1) valori distinti.
+# (F): Ricerca binaria sull'indice del piu' piccolo R per cui Filter apre al 
+#      piu' k centri. Il predicato non e' necessariamente monotono per R < OTT, 
+#      ma la ricerca restituisce comunque un R che non supera OTT (per R >= OTT 
+#      il predicato e' vero, e il candidato che precede quello trovato e' falso
+#      , quindi minore di OTT). Θ(log n) iterazioni, perche' i candidati 
+#      sono O(n²).
+# (G): Ogni chiamata di Filter costa Θ(nk) grazie all'arresto a k+1 centri (M).
+# (H): Filter finale con R* = candidati[hi]. Il valore della soluzione e' al 
+#      piu' 2R* <= 2*OTT.
+# (I): Completamento a k centri (facoltativo): se Filter apre meno di k centri 
+#      si aggiungono nodi con w(v)*distMin massimo; aggiungere centri non 
+#      peggiora il valore. distMin e' aggiornato in modo incrementale, Θ(n) per 
+#      centro aggiunto.
+# (J): scoperti[v] vale True se v non e' ancora coperto da nessun centro.
+# (K): I nodi si scorrono in ordine di priorita' decrescente: il primo nodo 
+#      scoperto che si incontra e' sempre quello con raggio r minimo tra gli 
+#      scoperti.
+# (L): u diventa centro (rappresentante) e verra' tolto dai nodi scoperti, 
+#      perche' dist[u][u] = 0 soddisfa la condizione (N).
+# (M): Arresto anticipato: se i centri superano k la soglia R e' troppo piccola
+#      (nessuna soluzione di valore R esiste). Costo di Filter: Θ(nk) invece di 
+#      O(n²).
+# (N): Condizione d(u,v) <= r(u)+r(v) con r(x)=R/w(x), scritta senza divisioni:
+#      d(u,v)*w(u)*w(v) <= R*(w(u)+w(v)). Con pesi e distanze interi il 
+#      confronto e' esatto: niente errori di arrotondamento. I nodi v che la 
+#      soddisfano formano D(u).
+# (O): Restituisce i k centri. Per ogni v assegnato al proprio u vale
+#      w(v)*d(u,v) <= 2R; i centri di Filter hanno palle B(u,r(u)) disgiunte, 
+#      quindi un ottimo di valore R ha bisogno di tanti centri quanti ne apre 
+#      Filter.
+# (P): Il valore ottenuto e' al piu' 2*OTT: fattore 2, il migliore possibile in 
+#      tempo polinomiale salvo P = NP. Greedy con w*d (farthest-first pesato): 
+#      euristica senza garanzia nota, non e' questo algoritmo.
+
 
 
 
@@ -326,7 +480,7 @@ def KCenter_Graphs_variant(G,pesiNodi,u,k):                 # T(n,m)
 '''
 L'algoritmo di K-Center Esatto (Forza Bruta) su Grafo esplora tutti i possibili
 sottoinsiemi di k nodi del grafo. Per ogni sottoinsieme, preso come insieme di
-centri, calcola il raggio: la massima distanza di un nodo dal centro piu' vicino
+centri, calcola il raggio: la massima distanza di un nodo dal centro piu'vicino
 (distanze minime calcolate una sola volta con Dijkstra da ogni nodo). Tra tutti
 gli C(n,k) sottoinsiemi restituisce quello di raggio minimo: soluzione ottima.
 I sottoinsiemi non sono generati con la ricorsione, ma con un vettore di k 
@@ -341,7 +495,7 @@ def KCenter_Graphs_BruteForce(G,k):                         # T(n,m)
     n = len(nodi)                                           # Θ(1)
     dist = {}                                               # Θ(1)         (B)
     for v in nodi:                                          # n*Θ(1)+Θ(1)
-        dist[v] = dijkstra_heapMin(G,v)                     # Θ((n+m)logn)
+        dist[v] = dijkstra_heapMin(G,v)[1]                  # Θ((n+m)logn)
     raggioMin = math.inf                                    # Θ(1)         (C)
     centers = None                                          # Θ(1)
     idx = list(range(0,k))                                  # k*Θ(1)       (D)
@@ -371,33 +525,38 @@ def KCenter_Graphs_BruteForce(G,k):                         # T(n,m)
 #                       T(n,m,k) = Θ(n(n+m)logn + C(n,k)·n·k)              (P)
 
 # Commenti
-# (A): Per poter rappresentare un sottoinsieme di centri con k indici e' necessario
-#      un accesso posizionale ai nodi: la list ricavata dalle chiavi del grafo
-#      (n*Θ(1)) permette di passare da indice a etichetta del nodo in Θ(1).
-#      Richiede che il grafo sia dato come dizionario {nodo: lista di (vicino, peso)}.
-# (B): dist e' un dizionario di dizionari: dist[c][v] e' la distanza minima da c a v,
-#      calcolata una sola volta con n visite di Dijkstra (dijkstra_heapMin restituisce
-#      un dizionario {nodo: distanza}). Senza questa precomputazione ogni
-#      sottoinsieme richiederebbe k visite di Dijkstra invece di Θ(nk) confronti.
-#      Costo: Θ(n(n+m)logn) in tempo e Θ(n²) in memoria. Il grafo deve essere
-#      connesso, altrimenti compaiono distanze infinite e il raggio puo' valere inf.
-# (C): raggioMin: raggio del miglior sottoinsieme trovato finora. Inizializzato a
-#      +inf: qualsiasi sottoinsieme sara' migliore. centers: miglior insieme di
-#      centri trovato, inizializzato a None. Si minimizza il RAGGIO, cioe' la
-#      distanza massima di un nodo dal centro piu' vicino (obiettivo del k-center).
-# (D): idx: vettore di k indici crescenti che rappresenta il sottoinsieme corrente
-#      di centri. Il primo sottoinsieme e' {0,1,...,k-1}. Sostituisce
+# (A): Per poter rappresentare un sottoinsieme di centri con k indici e' 
+#      necessario un accesso posizionale ai nodi: la list ricavata dalle chiavi 
+#      del grafo (n*Θ(1)) permette di passare da indice a etichetta del nodo in 
+#      Θ(1). Richiede che il grafo sia dato come dizionario {nodo: lista di 
+#      (vicino, peso)}.
+# (B): dist e' un dizionario di dizionari: dist[c][v] e' la distanza minima da 
+#      c a v, calcolata una sola volta con n visite di Dijkstra 
+#      (dijkstra_heapMin restituisce un dizionario {nodo: distanza}). 
+#      Senza questa precomputazione ogni sottoinsieme richiederebbe k visite di 
+#      Dijkstra invece di Θ(nk) confronti.
+#      Costo: Θ(n(n+m)logn) in tempo e Θ(n²) in memoria. 
+#      Il grafo deve essere connesso, altrimenti compaiono distanze infinite e 
+#      il raggio puo' valere inf.
+# (C): raggioMin: raggio del miglior sottoinsieme trovato finora. Inizializzato 
+#      a +inf: qualsiasi sottoinsieme sara' migliore. centers: miglior insieme 
+#      di centri trovato, inizializzato a None. Si minimizza il RAGGIO, cioe'la
+#      distanza massima di un nodo dal centro piu' vicino (obiettivo del 
+#      k-center).
+# (D): idx: vettore di k indici crescenti che rappresenta il sottoinsieme 
+#      corrente di centri. Il primo sottoinsieme e' {0,1,...,k-1}. Sostituisce
 #      itertools.combinations: niente ricorsione, memoria aggiuntiva Θ(k).
 #      Richiede 1 <= k <= n.
 # (E): Il ciclo esegue una iterazione per ogni sottoinsieme di k nodi: in tutto
 #      C(n,k) iterazioni, e termina con il break al passo (L).
-# (F): VALUTAZIONE DEL SOTTOINSIEME CORRENTE: il raggio e' il massimo, su tutti i
-#      nodi v, della distanza di v dal centro piu' vicino in idx.
+# (F): VALUTAZIONE DEL SOTTOINSIEME CORRENTE: il raggio e' il massimo, su tutti 
+#      i nodi v, della distanza di v dal centro piu' vicino in idx.
 #      Costo per sottoinsieme: n*k confronti, cioe' Θ(nk).
 # (G): distMin: distanza del nodo v dal centro piu' vicino. Va riazzerata a +inf
-#      per ogni nodo v. Se v e' esso stesso un centro vale 0, perche' dist[v][v]=0.
-# (H): Aggiorna il minimo sui k centri del sottoinsieme. Il lookup nel dizionario
-#      dist[nodi[i]][v] costa Θ(1).
+#      per ogni nodo v. Se v e' esso stesso un centro vale 0, perche' 
+#      dist[v][v]=0.
+# (H): Aggiorna il minimo sui k centri del sottoinsieme. 
+#      Il lookup nel dizionario dist[nodi[i]][v] costa Θ(1).
 # (I): Il nodo servito peggio determina il raggio: si tiene il massimo delle
 #      distanze minime distMin su tutti i nodi.
 # (J): Se il raggio e' minore del migliore trovato, aggiorna raggioMin e centers.
@@ -422,145 +581,64 @@ def KCenter_Graphs_BruteForce(G,k):                         # T(n,m)
 #      nel caso peggiore perche' il problema e' NP-difficile. Esempi: n=12 e k=3 danno
 #      220 sottoinsiemi, n=50 e k=5 ne danno circa 2,1 milioni, n=800 e k=12 sono
 #      impraticabili. Pruning non presente: una possibile ottimizzazione e'
-#      interrompere il ciclo su v appena raggio >= raggioMin (non cambia il caso peggiore).
+#      interrompere il ciclo su v appena raggio >= raggioMin (non cambia il 
+#      caso peggiore).
 
 
-# ALGORITMO ESATTO per GRAFI PESATI (Garey & Johnson 1979)
+
+# ALGORITMO ESATTO per GRAFI PESATI tramite ENUMERAZIONE
 # ----------------------------------------------------------------------------
 '''
-L'algoritmo di Vertex Cover Esatto su Grafo Pesato esplora tutti i possibili
-sottoinsiemi di nodi tramite backtracking ricorsivo. Per ogni nodo decide se
-includerlo o escluderlo dalla copertura (albero binario di profondita' n),
-accumulando il peso totale del sottoinsieme corrente lungo ogni ramo.
-Raggiunta una foglia (tutti i nodi decisi), verifica se il sottoinsieme corrente
-copre almeno un estremo per ogni arco attivo (costo >= costoMin).
-Se la verifica ha successo, aggiorna il best secondo il criterio scelto:
-  - IsMinWeight=True : minimizza il peso totale; a parita' di peso, min nodi.
-  - IsMinWeight=False: minimizza la cardinalita'; a parita' di nodi, max peso.
+L'algoritmo di Priority K-Center Esatto (Forza Bruta) su Grafo con pesi sui 
+nodi esplora tutti i possibili sottoinsiemi di k nodi del grafo. 
+Per ogni sottoinsieme, preso come insieme di centri, calcola il tempo ponderato 
+massimo: il massimo, su tutti i nodi v, del prodotto tra il peso (priorita') 
+w(v) e la distanza di v dal centro piu' vicino (distanze minime calcolate una 
+sola volta con Dijkstra da ogni nodo). 
+Tra tutti gli C(n,k) sottoinsiemi restituisce quello di valore minimo:
+soluzione ottima. I sottoinsiemi sono generati con un vettore di k indici
+crescenti che avanza in ordine lessicografico, senza itertools ne' ricorsione.
+Con tutti i pesi uguali a 1 coincide con il K-Center esatto. In questa versione
+non c'e' pruning: l'enumerazione e' esaustiva. Serve come ottimo di riferimento
+su istanze piccole, ad esempio per misurare il rapporto di approssimazione
+dell'algoritmo di Plesnik.
 '''
 
-def VertexCover_WeightedGraphs_BruteForce(E, pesiNodi,
-                                IsMinWeight, costoMin=0):   # T(n,m)
-    nodiSet = set()                                         # Θ(1)         (A)
-    for e in E:                                             # m*Θ(1)+Θ(1)
-        nodiSet.add(e.u)                                    # Θ(1)
-        nodiSet.add(e.v)                                    # Θ(1)
-    nodiCopertura = {nodo: False for nodo in nodiSet}       # Θ(n)         (B)
-    archi = copy.deepcopy(E)                                # Θ(m)         (C)
-    archi = [a for a in archi if a.costo >= costoMin]       # Θ(m)         (D)
-    if len(archi) == 0:                                     # Θ(1)         (E)
-        return nodiCopertura                                # Θ(1)
-    nodi         = list(nodiSet)                            # Θ(n)         (F)
-    n            = len(nodi)                                # Θ(1)
-    dictPesiNodi = copy.deepcopy(pesiNodi)                  # Θ(n)         (G)
-    best_set  = None                                        # Θ(1)         (H)
-    best_size = float('inf')                                # Θ(1)         (I)
-    best_cost = float('inf') if IsMinWeight else float('-inf')  # Θ(1)     (J)
+def KCenter_WeightedGraphs_BruteForce(G,pesiNodi,k):        # T(n,m)
+    nodi = list(G.keys())                                   # n*Θ(1)       (A)
+    n = len(nodi)                                           # Θ(1)
+    dist = {}                                               # Θ(1)         (B)
+    for v in nodi:                                          # n*Θ(1)+Θ(1)
+        dist[v] = dijkstra_heapMin(G,v)[1]                  # Θ((n+m)logn)
+    valoreMin = math.inf                                    # Θ(1)         (C)
+    centers = None                                          # Θ(1)
+    idx = list(range(0,k))                                  # k*Θ(1)       (D)
+    while True:                                             # C(n,k)       (E)
+        valore = (-1)*math.inf                              # Θ(1)         (F)
+        for v in nodi:                                      # n*Θ(1)+Θ(1)
+            distMin = math.inf                              # Θ(1)         (G)
+            for i in idx:                                   # k*Θ(1)+Θ(1)
+                if distMin > dist[nodi[i]][v]:              # Θ(1)
+                    distMin = dist[nodi[i]][v]              # Θ(1)
+            if valore < distMin*pesiNodi[v]:                # Θ(1)         (H)
+                valore = distMin*pesiNodi[v]                # Θ(1)
+        if valore < valoreMin:                              # Θ(1)         (I)
+            valoreMin = valore                              # Θ(1)
+            centers = [nodi[i] for i in idx]                # Θ(k)
+        j = k-1                                             # Θ(1)         (J)
+        while j >= 0 and idx[j] == n-k+j:                   # O(k)
+            j -= 1                                          # Θ(1)
+        if j < 0:                                           # Θ(1)         (K)
+            break                                           # Θ(1)
+        idx[j] += 1                                         # Θ(1)
+        for t in range(j+1,k):                              # O(k)
+            idx[t] = idx[t-1]+1                             # Θ(1)
+    return centers, valoreMin                               # Θ(1)         (L)
 
-    def backtrack(idx, S_corrente, costo_corrente):         # O(2^n·m)
-        nonlocal best_set, best_size, best_cost
-        if idx == n:                                        # Θ(1)         (K)
-            count = 0                                       # Θ(1)
-            for a in archi:                                 # Θ(m)         (L)
-                if a.u in S_corrente or a.v in S_corrente:  # Θ(1)
-                    count += 1                              # Θ(1)
-            if count == len(archi):                         # Θ(1)         (M)
-                size = len(S_corrente)                      # Θ(1)
-                if IsMinWeight:                             # Θ(1)         (N)
-                    # minimizza peso; a parita' di peso, min cardinalita'
-                    if costo_corrente < best_cost or \
-                       (costo_corrente == best_cost and
-                        size < best_size):
-                        best_set  = set(S_corrente)         # Θ(n)
-                        best_size = size                    # Θ(1)
-                        best_cost = costo_corrente          # Θ(1)
-                else:
-                    # min cardinalita'; a parita' di cardinalita', max peso
-                    if size < best_size or \
-                       (size == best_size and
-                        costo_corrente > best_cost):
-                        best_set  = set(S_corrente)         # Θ(n)
-                        best_size = size                    # Θ(1)
-                        best_cost = costo_corrente          # Θ(1)
-            return                                          # Θ(1)
-        v = nodi[idx]                                       # Θ(1)         (O)
-        backtrack(idx + 1, S_corrente, costo_corrente)      # T(n-idx-1)   (P)
-        S_corrente.add(v)                                   # Θ(1)         (Q)
-        backtrack(idx + 1, S_corrente,                      # T(n-idx-1)   (R)
-                  costo_corrente + dictPesiNodi[v])         # Θ(1)
-        S_corrente.remove(v)                                # Θ(1)         (S)
+# Costo Computazionale: T(n,m,k) = n*Θ((n+m)logn) + C(n,k)*Θ(nk)
+#                       T(n,m,k) = Θ(n(n+m)logn + C(n,k)·n·k)
 
-    backtrack(0, set(), 0)                                  # O(2^n·m)     (T)
-    if best_set is not None:                                # Θ(1)         (U)
-        for v in best_set:                                  # Θ(n)
-            nodiCopertura[v] = True                         # Θ(1)
-    return nodiCopertura                                    # Θ(1)
 
-# Costo Computazionale: T(n,m) = O(2^n · m)
-
-# Commenti
-# (A): Per costruire l'HashTable contenente la selezione dei nodi di copertura
-#      dobbiamo prima estrarre i nodi del grafo dalla lista degli archi
-#      passata in input alla funzione.
-# (B): I nodi di copertura vengono immagazzinati non in un vettore ma in una
-#      HashTable. Questa struttura dati, a differenza del vettore, consente di
-#      eseguire l'operazione di ricerca e di inserimento in costo unitario Θ(1).
-#      Questo e' fondamentale per mantenere il costo della verifica al caso base
-#      limitato a O(m).
-# (C): Per poter riutilizzare il vettore E in input in altri algoritmi nello
-#      stesso file python e' bene creare una copia del vettore originale e
-#      operare solo su di essa. Operazione extra non prevista dall'algoritmo
-#      classico come riportato in letteratura.
-# (D): Nel caso in cui si vogliano trascurare tutti gli archi aventi costo
-#      inferiore al costoMin in input, si filtra il vettore degli archi
-#      mantenendo solo quelli con costo >= costoMin.
-# (E): Se il vettore degli archi rimanenti e' vuoto, l'algoritmo non prosegue
-#      e si restituisce il dizionario dei nodi di copertura vuoto.
-# (F): Converte l'HashSet in vettore per accesso posizionale Θ(1) tramite
-#      indice. L'HashSet si usa per raccogliere i nodi senza duplicati, mentre
-#      il vettore nodi[] e' il vettore utilizzato per il backtracking.
-# (G): Copia difensiva dei pesi dei nodi per non alterare il dizionario
-#      originale passato in input. Operazione extra rispetto alla letteratura.
-# (H): best_set: variabile contenente il miglior vertex cover trovato.
-#      Inizializzata a None: nessun vertex cover valido trovato ancora.
-# (I): best_size: variabile contenente la cardinalita' del miglior vertex cover.
-#      Inizializzata a +inf: qualsiasi soluzione valida sara' migliore.
-# (J): best_cost: variabile contenente il peso totale del miglior vertex cover.
-#      Inizializzata a -inf: qualsiasi peso reale sara' maggiore all'inizio.
-#      Serve per lo spareggio: a parita' di cardinalita' si preferisce max peso.
-# (K): CASO BASE: sono stati presi tutti gli n nodi. Si verifica ora se
-#      S_corrente e' un vertex cover valido prima di aggiornare il best.
-#      Nota: nella versione PESATA non esiste pruning anticipato — aggiungere
-#      un nodo aumenta il peso ma non peggiora necessariamente la soluzione.
-# (L): Verifica di validita': per ogni arco almeno uno dei due estremi u o v
-#      deve essere in S_corrente. Il lookup sull'HashSet e' Θ(1).
-#      Costo totale: Θ(m).
-# (M): Se count == m tutti gli archi sono coperti: S_corrente e' un vertex cover
-#      valido. Se soddisfa il criterio scelto meglio del best attuale, aggiorna
-#      best_set, best_size e best_cost. set(S_corrente) crea una COPIA:
-#      necessario perche' S_corrente verra' modificato dai livelli superiori.
-# (N): Doppio criterio di aggiornamento controllato da IsMinWeight:
-#      IsMinWeight=True  → minimizza peso; a parita' di peso, min cardinalita'.
-#      IsMinWeight=False → minimizza cardinalita'; a parita', max peso.
-# (O): Nodo corrente su cui prendere la decisione includi/escludi.
-#      Accesso posizionale Θ(1) grazie alla conversione list() al passo (F).
-# (P): RAMO 1 — ESCLUDI v: ricorre sul nodo successivo senza modificare
-#      S_corrente e senza aumentare costo_corrente.
-# (Q): Aggiunge v a S_corrente prima di ricorrere nel Ramo 2.
-# (R): RAMO 2 — INCLUDI v: ricorre sul nodo successivo con v dentro S_corrente
-#      e aggiunge dictPesiNodi[v] al costo corrente accumulato.
-# (S): RIPRISTINO (backtrack): rimuove v da S_corrente prima di tornare
-#      al chiamante. S_corrente e' CONDIVISO su tutta la ricorsione; senza
-#      questo remove, il Ramo 1 del livello superiore erediterebbe le
-#      modifiche fatte dal Ramo 2 del livello corrente → soluzioni errate.
-# (T): Avvio del backtracking: idx=0 (primo nodo), S_corrente={} (vuoto),
-#      costo_corrente=0. Esplora l'intero albero binario di profondita' n.
-#      Ogni foglia costa Θ(m) per la verifica → T(n,m) = O(2^n · m).
-#      Nota: rispetto agli ipergrafi non compare d (d=2 per grafi, costante).
-# (U): Costruisce il dizionario di output nel formato standard del progetto:
-#      imposta a True solo i nodi appartenenti al miglior vertex cover trovato.
-#      Se best_set e' None (nessun vertex cover valido esiste) il dizionario
-#      rimane tutto False.
 
 
 " ESEMPI ********************************************************************"
@@ -654,8 +732,8 @@ nw_Tailandia = {
 # ALGORITMO di VERTEX COVER per GRAFI -----------------------------------------
 
 'Grafo Indiretto Connesso - Esempio Scali Aerei  -----------------------------'
-u, k = "CDG", 3
-cc_Graphs_Exact =  KCenter_Graphs_BruteForce(L_ScaliAerei,u,k)
+u, k = "MXP", 3
+cc_Graphs_Exact =  KCenter_Graphs_BruteForce(L_ScaliAerei,k)[0]
 cc_Graphs_Approx = KCenter_Graphs(L_ScaliAerei,u,k)
 
 print(
@@ -664,19 +742,22 @@ print(
     "Selezione dei Centri in Grafo Indiretto\n"
     "-> Algoritmo Esatto con Grafo Non Pesato:\n"
     " - Centri Selezionati: "
-    + ", ".join(str(k) for k in cc_Graphs_Exact.items())
+    + ", ".join(str(k) for k in cc_Graphs_Exact)
     + "\n"
     "-> Algoritmo di Approssimazione con Grafo Non Pesato:\n"
     " - Centri Selezionati: "
-    + ", ".join(str(k) for k in cc_Graphs_Approx.items())
+    + ", ".join(str(k) for k in cc_Graphs_Approx)
 )
 
 
 'Grafo Indiretto Connesso - Esempio Isole Tailandesi  ------------------------'
-u, k = "Lipe", 5
-cc_Graphs_Exact =  KCenter_Graphs_BruteForce(L_Tailandia,u,k)
+u, k = "Bulon Le", 5
+cc_Graphs_Exact =  KCenter_Graphs_BruteForce(L_Tailandia,k)[0]
 cc_Graphs_Approx = KCenter_Graphs(L_Tailandia, u, k)
 cc_Graphs_Approx_v2 = KCenter_Graphs_variant(L_Tailandia, nw_Tailandia, u, k)
+cc_WGraphs_Exact =  KCenter_WeightedGraphs_BruteForce( \
+                            L_Tailandia,nw_Tailandia, k)[0]
+cc_WGraphs_Approx = KCenter_WeigthedGraphs(L_Tailandia,nw_Tailandia,k)
 
 print(
     "\n---------------------------------------------------------------------\n"
@@ -684,17 +765,21 @@ print(
     "Selezione dei Centri in Grafo Indiretto\n"
     "-> Algoritmo Esatto con Grafo Non Pesato:\n"
     " - Centri Selezionati: "
-    + ", ".join(str(k) for k, v in vc_Graphs_Exact.items() if v)
+    + ", ".join(str(k) for k in cc_Graphs_Exact)
     + "\n"
     "-> Algoritmo di Approssimazione con Grafo Non Pesato (Gonzalez):\n"
     " - Centri Selezionati: "
-    + ", ".join(str(k) for k, v in vc_Graphs_Approx.items() if v)
+    + ", ".join(str(k) for k in cc_Graphs_Approx)
     + "\n"
     "-> Algoritmo di Approssimazione con Pesi Additivi sui Nodi:\n"
     " - Centri Selezionati: "
-    + ", ".join(str(k) for k, v in vc_WGraphs_Exact.items() if v)
+    + ", ".join(str(k) for k in cc_Graphs_Approx_v2)
+    + "\n"
+    "-> Algoritmo Esatto con Grafo Pesato:\n"
+    " - Centri Selezionati: "
+    + ", ".join(str(k) for k in cc_WGraphs_Exact)
     + "\n"
     "-> Algoritmo di Approssimazione con Grafo Pesato (Plesnik):\n"
     " - Centri Selezionati: "
-    + ", ".join(str(k) for k, v in vc_WGraphs_Approx.items() if v)
+    + ", ".join(str(k) for k in cc_WGraphs_Approx)
 )
