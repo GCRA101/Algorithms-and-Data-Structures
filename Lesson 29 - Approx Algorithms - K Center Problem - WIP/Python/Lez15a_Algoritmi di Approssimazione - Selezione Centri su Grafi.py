@@ -669,6 +669,45 @@ def KCenter_Graphs_BruteForce(G,k):                         # T(n,m)
 #      caso peggiore).
 
 
+# ALGORITMO ESATTO per GRAFI NON PESATI con PESI ADDITIVI tramite ENUMERAZIONE
+# ----------------------------------------------------------------------------
+
+def KCenter_Graphs_BruteForce_variant(G,pesiNodi,k):        # T(n,m)
+    nodi = list(G.keys())                                   # n*Θ(1)  
+    n = len(nodi)                                           # Θ(1)
+    matrixDistMin = {}                                      # Θ(1)  
+    for v in nodi:                                          # n*Θ(1)+Θ(1)
+        matrixDistMin[v] = dijkstra_heapMin(G,v)[1]         # Θ((n+m)logn)
+    raggioMin = math.inf                                    # Θ(1)    
+    centers = None                                          # Θ(1)
+    idx = list(range(0,k))                                  # k*Θ(1)   
+    while True:                                             # C(n,k)  
+        raggio = (-1)*math.inf                              # Θ(1)  
+        for v in nodi:                                      # n*Θ(1)+Θ(1)
+            distMin = math.inf                              # Θ(1)   
+            for i in idx:                                   # k*Θ(1)+Θ(1)
+                if distMin > matrixDistMin[nodi[i]][v]:     # Θ(1)
+                    distMin = matrixDistMin[nodi[i]][v]     # Θ(1)
+            if distMin == 0:                                # Θ(1)
+                costo = 0                                   # Θ(1)
+            else:                                           # Θ(1)
+                costo = distMin + pesiNodi[v]               # Θ(1)
+            if raggio < costo:                              # Θ(1) 
+                raggio = costo                              # Θ(1)
+        if raggio < raggioMin:                              # Θ(1)
+            raggioMin = raggio                              # Θ(1)
+            centers = [nodi[i] for i in idx]                # Θ(k)
+        j = k-1                                             # Θ(1)
+        while j >= 0 and idx[j] == n-k+j:                   # O(k)
+            j -= 1                                          # Θ(1)
+        if j < 0:                                           # Θ(1)
+            break                                           # Θ(1)
+        idx[j] += 1                                         # Θ(1)
+        for t in range(j+1,k):                              # O(k)
+            idx[t] = idx[t-1]+1                             # Θ(1)
+    return centers, raggioMin                               # Θ(1)
+
+
 
 # ALGORITMO ESATTO per GRAFI PESATI tramite ENUMERAZIONE
 # ----------------------------------------------------------------------------
@@ -848,6 +887,8 @@ print(
 u, k = "Bulon Le", 5
 cc_Graphs_Exact =  KCenter_Graphs_BruteForce(L_Tailandia,k)[0]
 cc_Graphs_Approx = KCenter_Graphs(L_Tailandia, u, k)
+cc_Graphs_Exact_v2 = KCenter_Graphs_BruteForce_variant(L_Tailandia, \
+                                                       nw_Tailandia, k)[0]
 cc_Graphs_Approx_v2 = KCenter_Graphs_variant(L_Tailandia, nw_Tailandia, u, k)
 cc_WGraphs_Exact =  KCenter_WeightedGraphs_BruteForce( \
                             L_Tailandia,nw_Tailandia, k)[0]
@@ -864,6 +905,10 @@ print(
     "-> Algoritmo di Approssimazione con Grafo Non Pesato (Gonzalez):\n"
     " - Centri Selezionati: "
     + ", ".join(str(k) for k in cc_Graphs_Approx)
+    + "\n"
+    "-> Algoritmo Esatto con Pesi Additivi sui Nodi:\n"
+    " - Centri Selezionati: "
+    + ", ".join(str(k) for k in cc_Graphs_Exact_v2)
     + "\n"
     "-> Algoritmo di Approssimazione con Pesi Additivi sui Nodi:\n"
     " - Centri Selezionati: "
